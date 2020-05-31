@@ -1,0 +1,4 @@
+flask
+requests
+cryptography
+websocket_client

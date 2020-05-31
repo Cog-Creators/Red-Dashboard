@@ -1,0 +1,52 @@
+{% extends "base-site.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                  <h1 class="title">Login</h1>
+                </div>
+                {% if redirect %}
+                  <div class="card-body">
+
+                      <div class="row">
+
+                        <div class="col-md-1 px-md-1"></div>
+
+                        <div class="col-md-11 px-md-1">
+                          <h5>Welcome to the Red Discord Bot dashboard!  A lot of the magic here is hidden behind authorization.  Want to see some of it?  Login with Discord below!</h5>
+                        </div>
+
+                      </div>
+                  </div>
+                  <div class="card-footer">
+                    <a href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button class="btn">Login with Discord</button></a>
+                  </div>
+                {% else %}
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-1 px-md-1"></div>
+                      <div class="col-md-11 px-md-1">
+                        <h5>Welcome to the Red Discord Bot dashboard!  A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot.</h5>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}  
+            </div>
+          </div>
+      </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

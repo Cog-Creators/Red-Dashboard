@@ -1,0 +1,107 @@
+{% extends "base-site.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+    <style>
+        .status {
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-profile">
+                <div class="card-body">
+                    {% if data['status'] == 1 and data['data']['status'] == 1 %}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-5">
+                                    <img src="{{ data['data']['icon'] }}png" style="height: auto; width: 300px; margin: auto; display: block;" onmouseover="playGif(this)" onmouseout="stopGif(this)" data-is-animated="{{ data['data']['animated'] }}" data-src-url="{{ data['data']['icon'] }}">
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-7">
+                                    <h2 class="card-title">{{ data['data']['name'] }}</h2>
+                                    <h5 class="card-category text-gray">Created on {{ data['data']['created'] }}
+                                        {% if data['data']['joined'] %}
+                                            | Joined on {{ data['data']['joined'] }}
+                                        {% endif %}
+                                    </h5>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4>
+                                                {{ data['data']['members'] }} Members | {{ data['data']['humans'] }} Humans | {{ data['data']['bots'] }} Bots<br>
+                                                <img src="/static/assets/img/online.png" class="status"> {{ data['data']['online'] }}<br>
+                                                <img src="/static/assets/img/idle.png" class="status"> {{ data['data']['idle'] }}<br>
+                                                <img src="/static/assets/img/dnd.png" class="status"> {{ data['data']['dnd'] }}<br>
+                                                <img src="/static/assets/img/offline.png" class="status"> {{ data['data']['offline'] }}<br>
+                                            </h4>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4>
+                                                <b>Owner</b>: {{ data['data']['owner'] }}<br>
+                                                <b>Verification Level</b>: {{ data['data']['vl'] }}<br>
+                                                <b>Region</b>: {{ data['data']['region'] }}<br>
+                                                <b>Server ID</b>: {{ data['data']['id'] }}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <h4>Your permissions: {{ data['data']['perms'] }}</h4>
+                                    {% if data['data']['roleswarn'] %}
+                                        <div class="alert alert-danger">
+                                            <span><b> Warning - </b> You haven't registered any roles with the dashboard.  Please use <code>[p]dashboard roles create</code> to allow other people to use it.</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% elif data['status'] == 1 %}
+                        <h6 class="card-category text-gray">Guild not found</h6>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <h5>The specified guild wasn't found.  Did you enter the URL correctly?</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <h5>Click <a href="/dashboard">here</a> to go to the dashboard, or <a href="/">here</a> to go home.</h5>
+                        </div>
+                    {% else %}
+                        <h6 class="card-category text-gray">Error</h6>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <h5>{{ data['message'] }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+    <script>
+        function playGif(elm) {
+            var img = $(elm)
+            if (img.attr('data-is-animated') === "True") {
+                img.attr("src", `${img.attr("data-src-url")}gif`)
+            }
+        }
+        function stopGif(elm) {
+            var img = $(elm)
+            if (img.attr('data-is-animated') === "True") {
+                img.attr("src", `${img.attr("data-src-url")}png`)
+            }
+        }
+    </script>
+{% endblock javascripts %}
