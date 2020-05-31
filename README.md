@@ -41,6 +41,10 @@ Now, to view the dashboard, go to `http://127.0.0.1:<webport>` if on the same de
 ## Connecting the webserver to the bot
 In case you have not already, install the Dashboard cog on the Toxic-Cogs repository, and configure it by following the instructions on the README there.
 
+## Issues
+If you have an issues installing or running, feel free to stop by my support server.
+[![Discord server](https://discordapp.com/api/guilds/540613833237069836/embed.png?style=banner3)](https://discord.gg/vQZTdB9)
+
 ## Credits
 I would like to thank the following, for all the contributions they have made that helped this bcome what it is today.
 * Cog Creators, for making such an amazing bot.
