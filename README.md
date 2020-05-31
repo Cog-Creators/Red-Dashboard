@@ -43,6 +43,7 @@ In case you have not already, install the Dashboard cog on the Toxic-Cogs reposi
 
 ## Issues
 If you have an issues installing or running, feel free to stop by my support server.
+
 [![Discord server](https://discordapp.com/api/guilds/540613833237069836/embed.png?style=banner3)](https://discord.gg/vQZTdB9)
 
 ## Credits
