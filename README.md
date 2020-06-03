@@ -2,12 +2,12 @@
 *An easy-to-use interactive web dashboard to control your Redbot.*
 
 ## Installation
-A virtual environment is required for use/support.  Follow the documentation below (based upong Red Discord Bot documentation) according to your OS.
+A virtual environment is required for use/support.  Follow the documentation below (based upon Red Discord Bot documentation) according to your OS.
 
 > :warning: Every time you start the webserver, you must enter your environment before starting it.
 
 ### Windows
-1. Start by opening up a command prompt (click on Search and type `cmd`).
+1. Start by opening up a Command Prompt (click on Search and type `cmd`).
 2. Type `py -3.8 -m venv "%userprofile%\redashenv"` to create the environment.
 3. Enter your environment by typing `"%userprofile%\redashenv\Scripts\activate.bat"`.
 4. Type `python -m pip install Red-Dashboard` and let it install.
@@ -26,9 +26,9 @@ After you have installed the package, you can start the webserver with the comma
 > To find your public IP address, google "what is my ip".
 
 ### Running the webserver with multiple bots
-If you are running multiple webservers for multiple bots, it will be a little bit more tricky.  First off, create two port numbers between 1 and 65,535 for each bot, and choose one for rpc (from now on referred to as `<rpcport>`) and one for webserver port (from now on referred to as `<webport>`).
+If you are running multiple webservers for multiple bots, it will be a little bit more tricky.  First off, create two port numbers between 1 and 65,535 for each bot, and choose one for RPC (from now on referred to as `<rpcport>`) and one for webserver port (from now on referred to as `<webport>`).
 
-> :warning: It is recommended to choose ports with higher numbers, as lower numbered ports are frequently used by other process.
+> :warning: It is recommended to choose ports with higher numbers, as lower numbered ports are frequently used by other processes.
 
 > If you have already made a list of ports when following the instructions for the dashboard cog on the Toxic Cogs repository, USE THOSE INSTEAD.
 
@@ -42,12 +42,12 @@ Now, to view the dashboard, go to `http://127.0.0.1:<webport>` if on the same de
 In case you have not already, install the Dashboard cog on the Toxic-Cogs repository, and configure it by following the instructions on the README there.
 
 ## Issues
-If you have an issues installing or running, feel free to stop by my support server.
+If you have any issues installing or running, feel free to stop by my support server.
 
 [![Discord server](https://discordapp.com/api/guilds/540613833237069836/embed.png?style=banner3)](https://discord.gg/vQZTdB9)
 
 ## Credits
-I would like to thank the following, for all the contributions they have made that helped this bcome what it is today.
+I would like to thank the following, for all the contributions they have made that helped this become what it is today.
 * Cog Creators, for making such an amazing bot.
 * All the people who tested the dashboard, and gave feedback.
 * AppSeed, for creating a template that I use as the base for the Dashboard.
