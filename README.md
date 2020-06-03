@@ -12,7 +12,7 @@ A virtual environment is required for use/support.  Follow the documentation bel
 3. Enter your environment by typing `"%userprofile%\redashenv\Scripts\activate.bat"`.
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
-### Max / Linux
+### Mac / Linux
 1. Open a terminal.
 2. Type `python3.8 -m venv ~/redashenv`.
 3. Enter your environment with `source ~/redashenv/bin/activate`.
