@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="Red-Dashboard",
-    version="0.1.2a",
+    version="0.1.3a",
     description="An easy-to-use interactive web dashboard to control your Redbot.",
     long_description=README,
     long_description_content_type="text/markdown",

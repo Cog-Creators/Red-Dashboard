@@ -48,7 +48,7 @@ class Lock:
         self.lock.release()
 
 global __version__
-__version__ = "0.1.2a"
+__version__ = "0.1.3a"
 __author__ = "Neuro Assassin#4779"
 
 # In case the dashboard cog isn't loaded
