@@ -19,7 +19,7 @@ setup(
     ],
     packages=["reddash"],
     include_package_data=True,
-    install_requires=["flask", "requests", "cryptography", "websocket_client"],
+    install_requires=["flask==1.1.2", "requests==2.23.0", "cryptography==2.9.2", "websocket_client==0.57.0", "waitress==1.4.3", "rich==1.3.1"],
     entry_points={
         "console_scripts": [
             "reddash=reddash.__main__:main"

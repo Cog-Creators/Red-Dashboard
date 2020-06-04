@@ -13,6 +13,9 @@ from reddash.app.base.util import verify_pass
 import requests
 import websocket
 import json
+import logging
+
+dashlog = logging.getLogger("reddash")
 
 @blueprint.route('/')
 def route_default():
@@ -42,12 +45,12 @@ def callback():
         result = json.loads(app.ws.recv())
         if 'error' in result:
             if result['error']['message'] == "Method not found":
-                data = {"msg": "Not connected to bot"}
+                return jsonify({"msg": "Not connected to bot"})
             else:
-                print(result['error'])
-                data = {"msg": "Something went wrong"}
+                dashlog.error(result['error'])
+                return jsonify({"msg": "Something went wrong"})
         if isinstance(result['result'], dict) and result['result'].get("disconnected", False):
-            data = {"msg": "Not connected to bot"}
+            return jsonify({"msg": "Not connected to bot"})
         secret = result['result']['secret']
     data = {
         "client_id": int(app.variables['botid']),
@@ -62,6 +65,7 @@ def callback():
     try:
         token = response.json()["access_token"]
     except KeyError:
+        dashlog.error(f"Failed to log someone in.\n{response.json()}")
         return jsonify({"msg": "Failed to obtain token", "returned": response.json()})
     new = requests.get("https://discordapp.com/api/v6/users/@me", headers={"Authorization": f"Bearer {token}"})
     new_data = new.json()
@@ -70,6 +74,7 @@ def callback():
         session['avatar'] = f"https://cdn.discordapp.com/avatars/{new_data['id']}/{new_data['avatar']}.png"
         session['username'] = new_data['username']
         return redirect(url_for('home_blueprint.index'))
+    dashlog.error(f"Failed to obtain a user's profile.\n{new.json()}")
     return jsonify({"msg": "Failed to obtain user profile", "returned": new.json()})
 
 @blueprint.route('/login', methods=['GET', 'POST'])

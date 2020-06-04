@@ -38,7 +38,7 @@
     // Since the serer loading could take who knows how long, we'll load in JS so it says "Loading..."" in the page
     $(document).ready(function(){
         var xhr = new XMLHttpRequest();
-        var url = "/getservers"
+        var url = "/api/getservers"
         xhr.open("GET", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
         xhr.onreadystatechange = function() {

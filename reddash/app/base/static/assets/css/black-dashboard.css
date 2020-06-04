@@ -193,11 +193,11 @@ a:hover {
   text-decoration: none;
 }
 
-a[data="primary"], a[data="primary"]:hover {
+a[data="primary"], a[data="primary"]:hover:not(.dontcolor) {
   color: #e14eca;
 }
 
-a[data="blue"], a[data="blue"]:hover {
+a[data="blue"], a[data="blue"]:hover:not(.dontcolor) {
   color: #1d8cf9;
 }
 
@@ -206,7 +206,7 @@ a[data="blue"].active:not(.list-group-item) {
   background-color: #1d8cf9 !important;
 }
 
-a[data="green"], a[data="green"]:hover {
+a[data="green"], a[data="green"]:hover:not(.dontcolor) {
   color: #00dff0;
 }
 
@@ -222,8 +222,12 @@ a:not([href]):not([tabindex]) {
 
 a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
-  color: inherit;
   text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):not(.dontcolor):hover,
+a:not([href]):not([tabindex]):not(.dontcolor):focus {
+  color: inherit;
 }
 
 a:not([href]):not([tabindex]):focus {
@@ -519,6 +523,10 @@ mark,
 .mark {
   padding: 0.2em;
   background-color: #fcf8e3;
+}
+
+.clickable {
+  cursor: pointer
 }
 
 .list-unstyled {
@@ -3719,6 +3727,12 @@ input[type="button"].btn-block {
   border: 0 solid rgba(34, 42, 66, 0.15);
   border-radius: 0.1428rem;
   box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1), 0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
 }
 
 .dropdown-menu-left {
@@ -14752,16 +14766,24 @@ fieldset[disabled] .btn-link.active {
 }
 
 .form-control:focus {
-  border-color: #e14eca;
   background-color: transparent;
   box-shadow: none;
+}
+
+.form-control[data="primary"]:focus {
+  border-color: #e14eca;
+}
+.form-control[data="blue"]:focus {
+  border-color: #1d8cf9;
+}
+.form-control[data="green"]:focus {
+  border-color: #00dff0;
 }
 
 .form-control:focus+.input-group-append .input-group-text,
 .form-control:focus~.input-group-append .input-group-text,
 .form-control:focus+.input-group-prepend .input-group-text,
 .form-control:focus~.input-group-prepend .input-group-text {
-  border: 1px solid #e14eca;
   border-left: none;
   background-color: transparent;
 }
@@ -19734,10 +19756,6 @@ Copyright (c) 2015 Daniel Eden
 .white-content .form-control {
   color: #222a42;
   border-color: rgba(29, 37, 59, 0.5);
-}
-
-.white-content .form-control:focus {
-  border-color: #e14eca;
 }
 
 .white-content .form-group.no-border .form-control,

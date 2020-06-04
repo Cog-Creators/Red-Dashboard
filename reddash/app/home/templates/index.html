@@ -77,7 +77,7 @@
   <script>
     $(document).ready(function() {
       // RPC Connecting
-      var eventSource = new EventSource("/stream")
+      var eventSource = new EventSource("/api/stream")
       eventSource.onmessage = function(e) {
         data = e.data.split(", ")
         $("#servers").text(data[0])

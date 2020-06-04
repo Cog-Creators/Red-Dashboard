@@ -85,6 +85,7 @@
     // Add data attributes to button's and a's
     $('button').attr("data", localStorage.getItem("theme") || 'primary')
     $('a').attr("data", localStorage.getItem("theme") || 'primary')
+    $('input').attr("data", localStorage.getItem("theme") || 'primary')
     $('.main-panel').attr("data", localStorage.getItem("theme") || 'primary')
     $('.sidebar').attr("data", localStorage.getItem("theme") || 'primary')
     if (localStorage.getItem("color") === "white") {

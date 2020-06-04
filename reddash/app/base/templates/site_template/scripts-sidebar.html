@@ -7,6 +7,7 @@
         $main_panel = $('.main-panel');
         $buttons = $('button');
         $as = $('a')
+        $inputs = $('input')
         $bcitems = $('.breadcrumb-item')
 
         $full_page = $('.full-page');
@@ -15,20 +16,7 @@
         sidebar_mini_active = true;
         white_color = false;
 
-        var xhr = new XMLHttpRequest();
-        var url = "/gettheme"
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState !== 4) { return }
-          var json = JSON.parse(xhr.responseText)
-          white_color = json['iswhitetheme']
-        }
-        try {
-          xhr.send()
-        } catch(error) {
-          console.log(error)
-        }
+        white_color = localStorage.getItem("color") === "white"
 
 
         window_width = $(window).width();
@@ -72,6 +60,7 @@
           $buttons.attr('data', new_color)
           $as.attr('data', new_color)
           $bcitems.attr('data', new_color)
+          $inputs.attr('data', new_color)
           
 
           localStorage.setItem("theme", new_color)
