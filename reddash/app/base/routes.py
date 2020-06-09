@@ -30,28 +30,34 @@ def route_errors(error):
 @blueprint.route('/callback', methods=['GET'])
 def callback():
     try:
-        code = request.args.get("code")
+        code = request.args['code']
     except KeyError:
-        return jsonify({"msg": "Missing code argument", "args": str(request.args)})
-    redirectstr = app.variables['redirect']
+        return render_template( 'login/login.html', status="1")
     requestobj = {
         "jsonrpc": "2.0",
         "id": 0,
         "method": "DASHBOARDRPC__GET_SECRET",
         "params": []
     }
-    with app.lock:
-        app.ws.send(json.dumps(requestobj))
-        result = json.loads(app.ws.recv())
-        if 'error' in result:
-            if result['error']['message'] == "Method not found":
-                return jsonify({"msg": "Not connected to bot"})
-            else:
-                dashlog.error(result['error'])
-                return jsonify({"msg": "Something went wrong"})
-        if isinstance(result['result'], dict) and result['result'].get("disconnected", False):
-            return jsonify({"msg": "Not connected to bot"})
-        secret = result['result']['secret']
+    if app.ws and app.ws.connected:
+        with app.lock:
+            try:
+                app.ws.send(json.dumps(requestobj))
+                result = json.loads(app.ws.recv())
+            except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                return render_template( 'login/login.html', status="4")
+            if 'error' in result:
+                if result['error']['message'] == "Method not found":
+                    return render_template( 'login/login.html', status="4")
+                else:
+                    dashlog.error(result['error'])
+                    return render_template( 'login/login.html', status="5")
+            if isinstance(result['result'], dict) and result['result'].get("disconnected", False):
+                return render_template( 'login/login.html', status="4")
+            secret = result['result']['secret']
+    else:
+        return render_template( 'login/login.html', status="4")
+    redirectstr = app.variables['redirect']
     data = {
         "client_id": int(app.variables['botid']),
         "client_secret": secret,
@@ -66,7 +72,7 @@ def callback():
         token = response.json()["access_token"]
     except KeyError:
         dashlog.error(f"Failed to log someone in.\n{response.json()}")
-        return jsonify({"msg": "Failed to obtain token", "returned": response.json()})
+        return render_template( 'login/login.html', status="2")
     new = requests.get("https://discordapp.com/api/v6/users/@me", headers={"Authorization": f"Bearer {token}"})
     new_data = new.json()
     if "id" in new_data:
@@ -75,12 +81,12 @@ def callback():
         session['username'] = new_data['username']
         return redirect(url_for('home_blueprint.index'))
     dashlog.error(f"Failed to obtain a user's profile.\n{new.json()}")
-    return jsonify({"msg": "Failed to obtain user profile", "returned": new.json()})
+    return render_template( 'login/login.html', status="3")
 
 @blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     if not session.get("id"):
-        return render_template( 'login/login.html')
+        return render_template( 'login/login.html', status="0")
     return redirect(url_for('home_blueprint.index'))
 
 @blueprint.route('/logout')
