@@ -57,7 +57,8 @@ defaults = {
     'botname': 'Red Discord Bot',
     'botavatar': 'https://cdn.discordapp.com/icons/133049272517001216/a_aab012f3206eb514cac0432182e9e9ec.gif?size=1024',
     'botinfo': 'Hello, welcome to the Red Discord Bot dashboard!  Here you can see basic information, commands list and even interact with your bot!  Unfortunately, this dashboard is not connected to any bot currently, so none of these features are available.  If you are the owner of the bot, please load the dashboard cog from Toxic Cogs.',
-    'owner': 'Cog Creators'
+    'owner': 'Cog Creators',
+    'color': 'red'
 }
 
 global url

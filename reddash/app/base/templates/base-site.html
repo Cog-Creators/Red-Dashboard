@@ -83,11 +83,11 @@
       }
     })
     // Add data attributes to button's and a's
-    $('button').attr("data", localStorage.getItem("theme") || 'primary')
-    $('a').attr("data", localStorage.getItem("theme") || 'primary')
-    $('input').attr("data", localStorage.getItem("theme") || 'primary')
-    $('.main-panel').attr("data", localStorage.getItem("theme") || 'primary')
-    $('.sidebar').attr("data", localStorage.getItem("theme") || 'primary')
+    $('button').attr("data", localStorage.getItem("theme") || "{{ color }}")
+    $('a').attr("data", localStorage.getItem("theme") || "{{ color }}")
+    $('input').attr("data", localStorage.getItem("theme") || "{{ color }}")
+    $('.main-panel').attr("data", localStorage.getItem("theme") || "{{ color }}")
+    $('.sidebar').attr("data", localStorage.getItem("theme") || "{{ color }}")
     if (localStorage.getItem("color") === "white") {
       $('body').addClass("white-content")
       $('nav').addClass("white-content")
