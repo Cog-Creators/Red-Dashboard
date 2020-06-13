@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Dashboard Cog](README.md)
-* [Help & Support](help-and-support.md)
 
 ## Installation Guides
 
@@ -9,6 +8,8 @@
 * [Windows Installation](installation-guides/windows-installation.md)
 
 ## Support
+
+* [Help & Support](support/help-and-support.md)
 
 ## Launching Dashboard
 
