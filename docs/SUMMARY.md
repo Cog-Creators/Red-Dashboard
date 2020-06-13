@@ -1,12 +1,12 @@
 # Table of contents
 
 * [Dashboard Cog](README.md)
+* [Help & Support](help-and-support.md)
 
 ## Installation Guides
 
 * [Mac/Linux Installation](installation-guides/mac-linux-installation.md)
 * [Windows Installation](installation-guides/windows-installation.md)
-* [Help & Support](help-and-support.md)
 
 ## Launching Dashboard
 
