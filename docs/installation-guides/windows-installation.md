@@ -29,5 +29,5 @@ _Every time you start the webserver, you must enter your environment before star
 3. Enter your environment by typing `"%userprofile%\redashenv\Scripts\activate.bat"`.
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/untitled.md)_._
+_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md)_._
 

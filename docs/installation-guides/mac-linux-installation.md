@@ -36,7 +36,7 @@ You have two options for creating the virtual environment, depending on how you 
 3. Enter your environment with `pyenv shell redashenv`.
 4. Type `python -m pip install Red-Dashboard`and let it install.
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/untitled.md)_._
+_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md)_._
 
 ### Using venv
 
@@ -45,5 +45,5 @@ _You can continue to_ [_Launch Dashboard_](../launching-dashboard/untitled.md)_.
 3. Enter your environment with `source ~/redashenv/bin/activate`.
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/untitled.md)_._
+_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md)_._
 
