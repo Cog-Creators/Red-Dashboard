@@ -6,7 +6,7 @@
 
 After you have installed the package and entered your environment, you can start the webserver with the command `reddash`. Once you type that command, it will launch the webserver and be open on your device's IP address. If you are on the same device, you can view it at [http://127.0.0.1:42356](http://127.0.0.1:42356/) or at your computer's local or public IP address at http://ipaddress:42356. 
 
-If you are on a different device, you must use the device's public IP address and set up a port forwarding rule \(unless your VPS does it for you\).7
+If you are on a different device, you must use the device's public IP address and set up a port forwarding rule \(unless your VPS does it for you\).
 
 > To find your public IP address, google "what is my ip".
 
