@@ -22,7 +22,7 @@ Welcome to the Mac/Linux Installation Guide for the Red Discord Bot Dashboard We
 _Every time you start the webserver, you must enter your environment before starting it._
 {% endhint %}
 
-**A virtual environment is required for use/support. This helps prevent a multitude of issues, and thus you void support for your installation if you are not using a virtual environment.**
+**A virtual environment is required for use/support. This helps prevent a multitude of issues, and this way you won't void support for your installation if you are not using a virtual environment.**
 
 You have two options for creating the virtual environment, depending on how you installed Red/python:
 
@@ -32,18 +32,18 @@ You have two options for creating the virtual environment, depending on how you 
 ### Using pyenv virtualenv
 
 1. Open a terminal.
-2. Type `pyenv virtualenv redashenv`.
+2. Type `pyenv virtualenv redashenv` to create a virtual environment.
 3. Enter your environment with `pyenv shell redashenv`.
 4. Type `python -m pip install Red-Dashboard`and let it install.
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md)_._
+_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md) _or_ [_Automatic Startup_](automatic-startup-systemctl.md)_._
 
 ### Using venv
 
 1. Open a terminal.
-2. Type `python3.8 -m venv ~/redashenv`.
+2. Type `python3.8 -m venv ~/redashenv`to create a virtual environment.
 3. Enter your environment with `source ~/redashenv/bin/activate`.
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md)_._
+_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md) _or_ [_Automatic Startup_](automatic-startup-systemctl.md)_._
 
