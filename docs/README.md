@@ -26,5 +26,3 @@ Follow the appropriate guide below, depending on the OS your device uses.
 
 {% page-ref page="installation-guides/automatic-startup-systemctl.md" %}
 
-
-
