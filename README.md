@@ -15,6 +15,7 @@ If you want to read the documeantion and know how to install dashboard or get su
 
 ## Credits
 I would like to thank the following, for all the contributions they have made that helped this become what it is today.
+* Predeactor, for setting up a huge amount of the documentation.
 * Cog Creators, for making such an amazing bot.
 * All the people who tested the dashboard, and gave feedback.
 * AppSeed, for creating a template that I use as the base for the Dashboard.
