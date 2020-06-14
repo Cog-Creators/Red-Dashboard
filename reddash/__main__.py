@@ -11,7 +11,8 @@ from rich.console import Console
 from rich.logging import RichHandler
 import os
 
-os.system('cls' if os.name == 'nt' else 'clear')
+if sys.stdin.isatty():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 os.environ["WERKZEUG_RUN_MAIN"] = "true"
 
