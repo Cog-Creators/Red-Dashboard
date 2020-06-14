@@ -1,19 +1,25 @@
 # Table of contents
 
-* [Dashboard Cog](README.md)
+* [Red Discord Bot - Dashboard](README.md)
 
-## Installation Guides
+## Webserver Installation
 
-* [Mac/Linux Installation](installation-guides/mac-linux-installation.md)
-* [Windows Installation](installation-guides/windows-installation.md)
-* [Automatic Startup \(systemctl\)](installation-guides/automatic-startup-systemctl.md)
+* [Mac/Linux Installation](webserver-installation/mac-linux-installation.md)
+* [Windows Installation](webserver-installation/windows-installation.md)
+* [Automatic Startup \(systemctl\)](webserver-installation/automatic-startup-systemctl.md)
 
-## Support
+## Cog installation
 
-* [Help & Support](support/help-and-support.md)
+* [Cog Installation](cog-installation/installing-cog.md)
+* [Cog configuration with one bot](cog-installation/cog-configuration-with-one-bot.md)
+* [Cog configuration with multiple bots](cog-installation/cog-configuration-with-multiple-bots.md)
 
 ## Launching Dashboard
 
 * [Running the Webserver](launching-dashboard/running-the-webserver.md)
 * [Running multiples Webservers](launching-dashboard/running-with-multiples-bots.md)
+
+## Support
+
+* [Help & Support](support/help-and-support.md)
 
