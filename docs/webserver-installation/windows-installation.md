@@ -15,9 +15,6 @@ Welcome to the Windows Installation Guide for the Red Discord Bot Dashboard Webs
 * You are on a Windows distribution.
 * You have all pre-requisites of Red Discord Bot installed.
 * You have an instance of Red Discord Bot, set up and initialized.
-* You are on a Windows distribution
-* You have all pre-requisites of Red Discord Bot installed
-* You have an instance of Red Discord Bot, set up and initialized
 
 ## Creating a virtual environment
 
@@ -33,6 +30,4 @@ _Every time you start the webserver, you must enter your environment before star
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
 _You can continue to_ [_Installing the cog_](../cog-installation/installing-cog.md)_._
-
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md) _or_ [_Automatic Startup_](automatic-startup-systemctl.md)_._
 

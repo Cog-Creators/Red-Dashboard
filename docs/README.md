@@ -18,21 +18,17 @@ This webserver is in alpha stages. Please refrain from installing this if you do
 
 Follow the appropriate guide below, depending on the OS your device uses.
 
-Follow the appropriate guide below, depending on the OS your device uses.
-
 {% page-ref page="webserver-installation/mac-linux-installation.md" %}
 
 {% page-ref page="webserver-installation/windows-installation.md" %}
 
-{% page-ref page="webserver-installation/windows-installation.md" %}
+After that, proceed to the following guide to set up the dashboard cog.
+
+{% page-ref page="cog-installation/installing-cog.md" %}
 
 ## Automatic Startup
 
 {% page-ref page="webserver-installation/automatic-startup-systemctl.md" %}
-
-After that, proceed to the following guide to set up the dashboard cog.
-
-{% page-ref page="cog-installation/installing-cog.md" %}
 
 
 

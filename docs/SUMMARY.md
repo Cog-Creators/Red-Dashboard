@@ -17,7 +17,7 @@
 ## Launching Dashboard
 
 * [Running the Webserver](launching-dashboard/running-the-webserver.md)
-* [Running multiples Webservers](launching-dashboard/running-with-multiples-bots.md)
+* [Running the Webserver with multiple bots](launching-dashboard/running-with-multiples-bots.md)
 
 ## Support
 

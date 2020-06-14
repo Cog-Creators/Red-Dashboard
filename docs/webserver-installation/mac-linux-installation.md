@@ -15,9 +15,6 @@ Welcome to the Mac/Linux Installation Guide for the Red Discord Bot Dashboard We
 * You are on a Mac or Linux distribution.
 * You have all pre-requisites of Red Discord Bot installed.
 * You have an instance of Red Discord Bot, set up and initialized.
-* You are on a Mac or Linux distribution
-* You have all pre-requisites of Red Discord Bot installed
-* You have an instance of Red Discord Bot, set up and initialized
 
 ## Creating a virtual environment
 
@@ -41,8 +38,6 @@ You have two options for creating the virtual environment, depending on how you 
 
 _You can continue to_ [_Installing the cog_](../cog-installation/installing-cog.md)_._
 
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md) _or_ [_Automatic Startup_](automatic-startup-systemctl.md)_._
-
 ### Using venv
 
 1. Open a terminal.
@@ -51,6 +46,4 @@ _You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-we
 4. Type `python -m pip install Red-Dashboard` and let it install.
 
 _You can continue to_ [_Installing the cog_](../cog-installation/installing-cog.md)_._
-
-_You can continue to_ [_Launch Dashboard_](../launching-dashboard/running-the-webserver.md) _or_ [_Automatic Startup_](automatic-startup-systemctl.md)_._
 
