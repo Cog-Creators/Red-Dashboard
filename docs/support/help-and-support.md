@@ -22,7 +22,7 @@ As said before, this cog is in very early stage development, and is not intended
 * Have you tried reloading the dashboard cog/restarting the webserver?
 * Have you tried updating the dashboard cog and dashboard itself?
 
-**My browser said The website take too much time to answer or a similar error**
+**My browser said the website take too much time to answer or a similar error**
 
 Your firewall is maybe not configured to accept the port Dashboard is listening for, if you are on Linux, run `sudo ufw allow <Port>` \(Default is 42356\). If you are on Windows, type `Firewall` in your search bar and add a new rule.
 
