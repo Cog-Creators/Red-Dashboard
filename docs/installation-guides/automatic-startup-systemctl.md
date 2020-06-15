@@ -96,6 +96,6 @@ sudo journalctl -eu redash
 ```
 
 {% hint style="success" %}
-You can use the `--following` flag to check if there's any trouble while using the dashboard.
+You can use the `--following` flag to see live logs, to check if there's any trouble while using the dashboard.
 {% endhint %}
 
