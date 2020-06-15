@@ -1,5 +1,5 @@
 ---
-description: This tutorials is made for peoples who use more than one Red's instances.
+description: This tutorials is made for peoples who use more than one Red instance.
 ---
 
 # Running the Webserver with multiple bots
@@ -23,7 +23,7 @@ Now, for each bot follow these instructions:
 3. After you do that, the webserver should be launched, and should be viewable at the domain/IP address specified in [Cog configuration with multiple bots](../cog-installation/cog-configuration-with-multiple-bots.md).
 
 {% hint style="info" %}
-Make sure to not go directly to the `/callback` endpoint.  It is not for going to directly, and instead only servers for when redirecting by Discord.
+Make sure to not go directly to the `/callback` endpoint.  It is not for going to directly, and instead only serves for when redirected by Discord during logon.
 {% endhint %}
 
 If you wish for the webserver to run with Automatic Startup, check out the [Automatic Startup \(systemctl\)](../webserver-installation/automatic-startup-systemctl.md) guide if you are on Linux.
