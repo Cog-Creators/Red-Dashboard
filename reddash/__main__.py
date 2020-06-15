@@ -10,6 +10,7 @@ import logging
 from rich.console import Console
 from rich.logging import RichHandler
 import os
+import sys
 
 if sys.stdin.isatty():
     os.system('cls' if os.name == 'nt' else 'clear')
