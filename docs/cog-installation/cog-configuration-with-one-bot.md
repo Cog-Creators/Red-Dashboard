@@ -42,7 +42,7 @@ This option is only available of the following is true:
 2. You acknowledge that direct support will not be given for connecting the dashboard to the domain.
 {% endhint %}
 
-When running on a domain, the redirect should be something like `https://domain.com/callback`. For example, if my domain was `reddashboard.io`, my redirect would be `https://reddashboard.io/callback`. Have this redirect to your clipboard.
+When running on a domain, the redirect should be something like `https://domain.com/callback`. For example, if my domain was `reddashboard.io`, my redirect would be `https://reddashboard.io/callback`. Save this redirect to your clipboard.
 
 {% hint style="danger" %}
 **Warning! It is recommended to use a reverse proxy when setting up the dashboard. Documentation is not available for this at the current moment.**
