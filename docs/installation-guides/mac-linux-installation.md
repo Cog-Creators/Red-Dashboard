@@ -24,7 +24,7 @@ _Every time you start the webserver, you must enter your environment before star
 
 **A virtual environment is required for use/support. This helps prevent a multitude of issues, and this way you won't void support for your installation if you are not using a virtual environment.**
 
-You have two options for creating the virtual environment, depending on how you installed Red/python:
+You have two options for creating the virtual environment, depending on how you installed Red/Python:
 
 1. Using [`pyenv virtualenv`](mac-linux-installation.md#using-pyenv-virtualenv) \(only available for those who installed `pyenv` when installing Red\)
 2. Using [`venv`](mac-linux-installation.md#using-venv) \(available to anyone\)

@@ -1,6 +1,6 @@
 ---
 description: >-
-  This guide is only for those who are running only one webserver.  If you are
+  This guide is only for those who are running only one webserver. If you are
   planning on running multiple, please follow the instructions on the other
   Launching page.
 ---
@@ -16,14 +16,14 @@ After you have installed the package and entered your environment, you can start
 ![You should get this screen, but with RPC connected.](../.gitbook/assets/annotation-2020-06-15-134714.png)
 
 {% hint style="info" %}
-Make sure to not go directly to the `/callback` endpoint.  It is not for going to directly, and instead only servers for when redirecting by Discord.
+Make sure to not go directly to the `/callback` endpoint. It is not for going to directly, and instead only serves for when redirected by Discord during logon.
 {% endhint %}
 
 If you wish for the webserver to run with Automatic Startup, check out the [Automatic Startup \(systemctl\)](../webserver-installation/automatic-startup-systemctl.md) guide if you are on Linux.
 
 ## Interact with the bot
 
-You may notice on the terminal that it says it is disconnected from RPC. If so, restart your bot adding the `--rpc` flag.  If you're using systemctl for starting Red, go to your configuration file, at the end of the line `ExecStart`, add the flag.  If this still does not work, refer to [Help & Support](../support/help-and-support.md) for a list of fixes.
+You may notice on the terminal that it says it is disconnected from RPC. If so, restart your bot adding the `--rpc` flag. If you're using systemctl for starting Red, go to your configuration file, at the end of the line `ExecStart`, add the flag. If this still does not work, refer to [Help & Support](../support/help-and-support.md) for a list of fixes.
 
 In case you have not already, follow the instructions on [Installing the cog](../cog-installation/installing-cog.md) to install and configure the dashboard cog to work with the webserver.
 

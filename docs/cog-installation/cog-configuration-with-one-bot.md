@@ -1,17 +1,17 @@
 ---
 description: >-
-  This guide is only for those setting up one webserver.  If you are planning on
+  This guide is only for those setting up one webserver. If you are planning on
   hosting multiple, please follow the instructions on the other cog
   configuration page.
 ---
 
 # Cog configuration with one bot
 
-Welcome to the Dashboard Cog Configuration Guide.  While running the below directions, it is assumed that you have installed the dashboard cog from the Toxic Cogs repository, and have loaded it, according to the [Installing the cog](installing-cog.md) guide.
+Welcome to the Dashboard Cog Configuration Guide. While running the below directions, it is assumed that you have installed the dashboard cog from the Toxic Cogs repository, and have loaded it, according to the [Installing the cog](installing-cog.md) guide.
 
 ## Set the client secret
 
-The client secret is used so that the bot can obtain a user's profile when logging in, and restricts what the user can do on the dashboard according to their assigned permissions.  The client secret is never used maliciously, nor is user's data.
+The client secret is used so that the bot can obtain a user's profile when logging in, and restricts what the user can do on the dashboard according to their assigned permissions. The client secret is never used maliciously, nor is user's data.
 
 1. Login to the Discord Developer Console \(found [here](https://discord.com/developers/applications)\) and click on your bot's application.
 2. Under your bot's name, on the right, there should be text that says "Client Secret" \(NOT "Client ID"\), and a "Copy" button underneath it.
@@ -27,7 +27,7 @@ Keep the Discord Developer Console page open for later.
 
 ## Set the redirect URL
 
-The redirect URL is where the user will be redirected after authorizing the bot access to their profile.  In order for the bot to process the data correctly, the URL must be at the `/callback` endpoint of the server.
+The redirect URL is where the user will be redirected after authorizing the bot access to their profile. In order for the bot to process the data correctly, the URL must be at the `/callback` endpoint of the server.
 
 ### Determine your redirect
 
@@ -42,10 +42,10 @@ This option is only available of the following is true:
 2. You acknowledge that direct support will not be given for connecting the dashboard to the domain.
 {% endhint %}
 
-When running on a domain, the redirect should be something like `https://domain.com/callback`.  For example, if my domain was `reddashboard.io`, my redirect would be `https://reddashboard.io/callback`.  Save this redirect to your clipboard.
+When running on a domain, the redirect should be something like `https://domain.com/callback`. For example, if my domain was `reddashboard.io`, my redirect would be `https://reddashboard.io/callback`. Save this redirect to your clipboard.
 
 {% hint style="danger" %}
-**Warning!  It is recommended to use a reverse proxy when setting up the dashboard.  Documentation is not available for this at the current moment.**
+**Warning! It is recommended to use a reverse proxy when setting up the dashboard. Documentation is not available for this at the current moment.**
 {% endhint %}
 
 #### Option \#2: Local/Private IP address
@@ -57,12 +57,12 @@ This option is only available if the following is true:
 2. You are running the webserver on a the same network as the computer you will access the dashboard from.
 {% endhint %}
 
-There are two options for the redirect URL in this situation, depending on how you will be accessing the dashboard.  Follow the step below depending on which one you prefer:
+There are two options for the redirect URL in this situation, depending on how you will be accessing the dashboard. Follow the step below depending on which one you prefer:
 
 * Accessing the dashboard from the same device the bot is running on \(Local\):
   * Your redirect URL will be `http://127.0.0.1:42356/callback`.
 * Accessing the dashboard from a different device the bot is running on, but on the same network \(Private\):
-  * Your redirect URL will be `http://ipaddress:42356/callback`.  Replace `ipaddress` with your private IP address.  For example, if my private IP address was `192.168.1.2`, my redirect would be `http://192.168.1.2:42356/callback`.
+  * Your redirect URL will be `http://ipaddress:42356/callback`. Replace `ipaddress` with your private IP address. For example, if my private IP address was `192.168.1.2`, my redirect would be `http://192.168.1.2:42356/callback`.
 
 {% hint style="info" %}
 You can find your private IP address by running `ipconfig` on Windows, or`ifconfig` on Mac/Linux.
@@ -84,11 +84,11 @@ The redirect set in the dashboard cog and the developer portal must be EXACTLY t
 
 ## Register support server \(Optional\)
 
-You may want to have a link to your support server in case anybody needs help with the dashboard.  To do this, grab an invite link for your server, and paste it into the command below, replacing `<invite>` with the link to your server:
+You may want to have a link to your support server in case anybody needs help with the dashboard. To do this, grab an invite link for your server, and paste it into the command below, replacing `<invite>` with the link to your server:
 
 ```python
 [p]dashboard settings support <invite>
 ```
 
-_If you have not yet installed the webserver, head over to_ [_Mac/Linux Installation_](../webserver-installation/mac-linux-installation.md) _or_ [_Windows Installation_](../webserver-installation/windows-installation.md)_, depending on your OS, to install it.  If you already have, head over to_ [_Running the Webserver_](../launching-dashboard/running-the-webserver.md) _to finish up the process._
+_If you have not yet installed the webserver, head over to_ [_Mac/Linux Installation_](../webserver-installation/mac-linux-installation.md) _or_ [_Windows Installation_](../webserver-installation/windows-installation.md)_, depending on your OS, to install it. If you already have, head over to_ [_Running the Webserver_](../launching-dashboard/running-the-webserver.md) _to finish up the process._
 
