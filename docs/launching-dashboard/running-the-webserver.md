@@ -13,6 +13,8 @@ description: >-
 
 After you have installed the package and entered your environment, you can start the webserver with the command `reddash`. Once you type that command, it will launch the webserver, which should be viewable at the domain/IP specified in [Cog configuration with one bot](../cog-installation/cog-configuration-with-one-bot.md).
 
+![You should get this screen, but with RPC connected.](../.gitbook/assets/annotation-2020-06-15-134714.png)
+
 {% hint style="info" %}
 Make sure to not go directly to the `/callback` endpoint.  It is not for going to directly, and instead only servers for when redirecting by Discord.
 {% endhint %}
