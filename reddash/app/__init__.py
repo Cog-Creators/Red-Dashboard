@@ -332,7 +332,7 @@ def create_app(host, port, rpcport, interval, debug, dev, selenium=False):
     table.add_row("Logging level", "Debug" if debug else "Warning")
 
     progress.print(Rule("Red Discord Bot Dashboard - Webserver"))
-    disclaimer = "This is an instance of Red Discord Bot Dashboard,\ncreated by Neuro Assassin. This package is\nprotected under an MIT License. Any action\nthat will breach this license (including but not\nlimited to, removal of credits) may result in a\nDMCA request, or possibly more.\n\n\n\nYou can view the license at\nhttps://github.com/NeuroAssassin/\nRed-Dashboard/blob/master/LICENSE."
+    disclaimer = "This is an instance of Red Discord Bot Dashboard,\ncreated by Neuro Assassin. This package is\nprotected under an MIT License. Any action\nthat will breach this license (including but not\nlimited to, removal of credits) may result in a\nDMCA takedown request, or other form of legal action.\n\n\n\nYou can view the license at\nhttps://github.com/NeuroAssassin/\nRed-Dashboard/blob/master/LICENSE."
 
     vartask = progress.add_task("Update variable task:", status="[bold blue]Starting[/bold blue]")
     cmdtask = progress.add_task("Update command task:", status="[bold blue]Starting[/bold blue]")
