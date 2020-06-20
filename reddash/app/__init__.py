@@ -28,14 +28,17 @@ import json
 import sys
 import os
 
-log = logging.getLogger('werkzeug')
-dashlog = logging.getLogger('reddash')
+log = logging.getLogger("werkzeug")
+dashlog = logging.getLogger("reddash")
+queuelog = logging.getLogger("waitress.queue")
 
 console = Console()
 oldexcepthook = install()
 progress = Progress("{task.description}", TextColumn("{task.fields[status]}\n"))
 
 logging.basicConfig(format="%(message)s", handlers=[RichHandler(console=progress)])
+queuelog.setLevel(logging.ERROR)
+
 
 class Lock:
     def __init__(self):
@@ -47,6 +50,7 @@ class Lock:
     def __exit__(self, *args):
         self.lock.release()
 
+
 global __version__
 __version__ = "0.1.3a.dev"
 __author__ = "Neuro Assassin#4779"
@@ -54,11 +58,11 @@ __author__ = "Neuro Assassin#4779"
 # In case the dashboard cog isn't loaded
 global defaults
 defaults = {
-    'botname': 'Red Discord Bot',
-    'botavatar': 'https://cdn.discordapp.com/icons/133049272517001216/a_aab012f3206eb514cac0432182e9e9ec.gif?size=1024',
-    'botinfo': 'Hello, welcome to the Red Discord Bot dashboard!  Here you can see basic information, commands list and even interact with your bot!  Unfortunately, this dashboard is not connected to any bot currently, so none of these features are available.  If you are the owner of the bot, please load the dashboard cog from Toxic Cogs.',
-    'owner': 'Cog Creators',
-    'color': 'red'
+    "botname": "Red Discord Bot",
+    "botavatar": "https://cdn.discordapp.com/icons/133049272517001216/a_aab012f3206eb514cac0432182e9e9ec.gif?size=1024",
+    "botinfo": "Hello, welcome to the Red Discord Bot dashboard!  Here you can see basic information, commands list and even interact with your bot!  Unfortunately, this dashboard is not connected to any bot currently, so none of these features are available.  If you are the owner of the bot, please load the dashboard cog from Toxic Cogs.",
+    "owner": "Cog Creators",
+    "color": "red",
 }
 
 global url
@@ -72,6 +76,7 @@ lock = Lock()
 
 global running
 running = True
+
 
 def update_variables(method, task):
     progress.update(task, status="[bold green]Running[/bold green]")
@@ -93,49 +98,58 @@ def update_variables(method, task):
                 progress.refresh()
                 return
 
-            request = {
-                "jsonrpc": "2.0",
-                "id": _id,
-                "method": method,
-                "params": []
-            }
+            request = {"jsonrpc": "2.0", "id": _id, "method": method, "params": []}
             with app.lock:
                 # This needs to be inside the lock, or both threads will create a websocket
                 if not app.ws:
                     app.ws = websocket.WebSocket()
                     try:
                         app.ws.connect(url)
-                    except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                    except (
+                        ConnectionRefusedError,
+                        websocket._exceptions.WebSocketConnectionClosedException,
+                        ConnectionResetError,
+                    ):
                         app.ws.close()
                         app.ws = None
                         continue
                 try:
                     app.ws.send(json.dumps(request))
-                except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                except (
+                    ConnectionRefusedError,
+                    websocket._exceptions.WebSocketConnectionClosedException,
+                    ConnectionResetError,
+                ):
                     dashlog.warning("Connection reset")
                     app.ws.close()
                     app.ws = None
                     continue
-                    
+
                 try:
                     result = json.loads(app.ws.recv())
-                except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                except (
+                    ConnectionRefusedError,
+                    websocket._exceptions.WebSocketConnectionClosedException,
+                    ConnectionResetError,
+                ):
                     dashlog.warning("Connection reset")
                     app.ws.close()
                     app.ws = None
                     continue
-                if 'error' in result:
-                    if result['error']['message'] == "Method not found":
+                if "error" in result:
+                    if result["error"]["message"] == "Method not found":
                         if method == "DASHBOARDRPC__GET_VARIABLES":
                             app.variables = {}
                         app.ws.close()
                         app.ws = None
                         continue
-                    dashlog.error(result['error'])
+                    dashlog.error(result["error"])
                     app.ws.close()
                     app.ws = None
                     continue
-                if isinstance(result['result'], dict) and result['result'].get("disconnected", False):
+                if isinstance(result["result"], dict) and result["result"].get(
+                    "disconnected", False
+                ):
                     # Dashboard cog unloaded, disconnect
                     if method == "DASHBOARDRPC__GET_VARIABLES":
                         app.variables = {}
@@ -143,9 +157,9 @@ def update_variables(method, task):
                     app.ws = None
                     continue
             if method == "DASHBOARDRPC__GET_VARIABLES":
-                app.variables = result['result']
+                app.variables = result["result"]
             else:
-                app.commanddata = result['result']
+                app.commanddata = result["result"]
             app.variables["disconnected"] = False
     except Exception as e:
         progress.update(task, status="[bold red]Stopped[/bold red]")
@@ -156,6 +170,7 @@ def update_variables(method, task):
             console.print_exception()
             if console.is_terminal:
                 console.print(progress._live_render)
+
 
 def update_version(task):
     progress.update(task, status="[bold green]Running[/bold green]")
@@ -173,40 +188,52 @@ def update_version(task):
                     "jsonrpc": "2.0",
                     "id": 0,
                     "method": "DASHBOARDRPC__CHECK_VERSION",
-                    "params": [app.rpcversion]
+                    "params": [],
                 }
                 with app.lock:
                     if not app.ws:
                         app.ws = websocket.WebSocket()
                         try:
                             app.ws.connect(url)
-                        except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                        except (
+                            ConnectionRefusedError,
+                            websocket._exceptions.WebSocketConnectionClosedException,
+                            ConnectionResetError,
+                        ):
                             app.ws.close()
                             app.ws = None
                             continue
 
                     try:
                         app.ws.send(json.dumps(request))
-                    except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                    except (
+                        ConnectionRefusedError,
+                        websocket._exceptions.WebSocketConnectionClosedException,
+                        ConnectionResetError,
+                    ):
                         continue
-                        
+
                     try:
                         result = json.loads(app.ws.recv())
-                    except (ConnectionRefusedError, websocket._exceptions.WebSocketConnectionClosedException, ConnectionResetError):
+                    except (
+                        ConnectionRefusedError,
+                        websocket._exceptions.WebSocketConnectionClosedException,
+                        ConnectionResetError,
+                    ):
                         continue
 
-                    if 'error' in result:
+                    if "error" in result:
                         continue
 
-                    if "disconnected" in result['result']:
+                    if "disconnected" in result["result"]:
                         continue
 
-                    if result['result']['v'] != app.rpcversion and app.rpcversion != 0:
+                    if result["result"]["v"] != app.rpcversion and app.rpcversion != 0:
                         dashlog.warning("RPC websocket behind.  Closing and restarting...")
                         app.ws.close()
                         app.ws = websocket.WebSocket()
                         app.ws.connect(url)
-                    app.rpcversion = result['result']['v']
+                    app.rpcversion = result["result"]["v"]
     except Exception as e:
         progress.update(task, status="[bold red]Stopped[/bold red]")
         progress.refresh()
@@ -216,6 +243,7 @@ def update_version(task):
             console.print_exception()
             if console.is_terminal:
                 console.print(progress._live_render)
+
 
 def check_if_connected(task):
     while True:
@@ -234,14 +262,16 @@ def check_if_connected(task):
             progress.update(task, status="[bold green]Connected[/bold green]")
             progress.refresh()
 
+
 def register_blueprints(app):
-    for module_name in ('base', 'home'):
-        module = import_module('reddash.app.{}.routes'.format(module_name))
+    for module_name in ("base", "home"):
+        module = import_module("reddash.app.{}.routes".format(module_name))
         app.register_blueprint(module.blueprint)
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return render_template('page-404.html'), 404
+        return render_template("page-404.html"), 404
+
 
 def apply_themes(app):
     """
@@ -258,19 +288,21 @@ def apply_themes(app):
       the url will not be modified and the file is expected to be
       in the default /static/ location
     """
+
     @app.context_processor
     def override_url_for():
         return dict(url_for=_generate_url_for_theme)
 
     def _generate_url_for_theme(endpoint, **values):
-        if endpoint.endswith('static'):
-            themename = values.get('theme', None) or \
-                app.config.get('DEFAULT_THEME', None)
+        if endpoint.endswith("static"):
+            themename = values.get("theme", None) or app.config.get("DEFAULT_THEME", None)
             if themename:
-                theme_file = "{}/{}".format(themename, values.get('filename', ''))
+                theme_file = "{}/{}".format(themename, values.get("filename", ""))
                 if path.isfile(path.join(app.static_folder, theme_file)):
-                    values['filename'] = theme_file
+                    values["filename"] = theme_file
+            values["q"] = time.time()  # So Flask doesn't cache
         return url_for(endpoint, **values)
+
 
 def add_constants(app):
     @app.context_processor
@@ -280,23 +312,24 @@ def add_constants(app):
             return dict(version=__version__, **defaults)
         return dict(version=__version__, **app.variables)
 
+
 def create_app(host, port, rpcport, interval, debug, dev, selenium=False):
     global url
     global app
     global lock
 
     url += str(rpcport)
-    
+
     fernet_key = fernet.Fernet.generate_key()
     secret_key = base64.urlsafe_b64decode(fernet_key)
 
-    app = Flask('reddash', static_folder='app/base/static')
+    app = Flask("reddash", static_folder="app/base/static")
     app.ws = None
     app.lock = lock
     app.variables = {}
     app.commanddata = {}
     app.config.from_object(__name__)
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.secret_key = secret_key
     app.rpcport = str(rpcport)
     app.rpcversion = 0
@@ -306,11 +339,18 @@ def create_app(host, port, rpcport, interval, debug, dev, selenium=False):
     app.cooldowns = {
         "serverprefix": {},
         "adminroles": {},
-        "modroles": {}
+        "modroles": {},
+        "fetchrules": {},
+        "fetchtargets": {},
+        "fetchcogcommands": {},
+        "addrule": {},
+        "adddefaultrule": {},
+        "removerule": {},
+        "removedefaultrule": {},
     }
-    
+
     if selenium:
-        app.config['LOGIN_DISABLED'] = True
+        app.config["LOGIN_DISABLED"] = True
     register_blueprints(app)
     apply_themes(app)
     add_constants(app)
@@ -342,8 +382,16 @@ def create_app(host, port, rpcport, interval, debug, dev, selenium=False):
     progress.print(Columns([Panel(table), Panel(disclaimer)], equal=True))
 
     threads = []
-    threads.append(threading.Thread(target=update_variables, args=["DASHBOARDRPC__GET_VARIABLES", vartask], daemon=True))
-    threads.append(threading.Thread(target=update_variables, args=["DASHBOARDRPC__GET_COMMANDS", cmdtask], daemon=True))
+    threads.append(
+        threading.Thread(
+            target=update_variables, args=["DASHBOARDRPC__GET_VARIABLES", vartask], daemon=True,
+        )
+    )
+    threads.append(
+        threading.Thread(
+            target=update_variables, args=["DASHBOARDRPC__GET_COMMANDS", cmdtask], daemon=True,
+        )
+    )
     threads.append(threading.Thread(target=update_version, args=[vertask], daemon=True))
     threads.append(threading.Thread(target=check_if_connected, args=[contask], daemon=True))
 
@@ -354,11 +402,11 @@ def create_app(host, port, rpcport, interval, debug, dev, selenium=False):
         app.run(host=host, port=port, debug=debug)
     else:
         serve(app, host=host, port=port, _quiet=True)
-    
+
     dashlog.fatal("Shutting down...")
     global running
     running = False
     for t in threads:
         t.join()
-    
+
     dashlog.fatal("Webserver terminated")

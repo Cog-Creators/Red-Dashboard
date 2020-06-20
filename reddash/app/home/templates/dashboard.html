@@ -24,6 +24,23 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-profile">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <input class="form-control form-control-sm ml-3 w-75" id="guildsearch" type="text" placeholder="Search" aria-label="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row" id="serverrow">
         <div class="col-md-12">
             <h1>Loading servers...</h1>
@@ -34,6 +51,7 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.0.4"></script>
 <script>
     // Since the serer loading could take who knows how long, we'll load in JS so it says "Loading..."" in the page
     $(document).ready(function(){
@@ -53,7 +71,7 @@
                     $("#serverrow").html("")
                     for (let g of json.data) {
                         $("#serverrow").append(`
-                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12" style="margin-bottom: 50px">
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 guildcard" style="margin-bottom: 50px">
                                 <a href="/guild/${g.id}">
                                     <div class="card h-100" onmouseover="playGif(this)" onmouseout="stopGif(this)">
                                         <img class="card-img-top" src="${g.icon}png" alt="Card image cap" data-src-url="${g.icon}" data-is-animated=${g.animated}>
@@ -88,5 +106,19 @@
             img.attr("src", `${img.attr("data-src-url")}png`)
         }
     }
+    $(document).ready(function() {
+        $("#guildsearch").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('.guildcard').filter(function() {
+                var name = $(this).find('h5').text().toLowerCase()
+                var list = [name]
+                var options = {
+                    threshold: '0.3'
+                }
+                var fuse = new Fuse(list, options)
+                $(this).toggle(fuse.search(value).length === 1 || value === "")
+            });
+        });
+    });
 </script>
 {% endblock javascripts %}
