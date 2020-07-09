@@ -52,7 +52,7 @@ class Lock:
 
 
 global __version__
-__version__ = "0.1.3a.dev"
+__version__ = "0.1.4a"
 __author__ = "Neuro Assassin#4779"
 
 # In case the dashboard cog isn't loaded
