@@ -1,0 +1,94 @@
+{% extends "base-site.html" %}
+
+{% block title %} Home {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+
+  <div class="col-12">
+    <div class="card card-chart">
+      <div class="card-header ">
+        <div class="row">
+          <div class="col-sm-12 text-left">
+            <h5 class="card-category">{{ botname }} • Owned by {{ owner }}</h5>
+            <h2 class="card-title">About</h2>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-3">
+            <img src="{{ botavatar }}"
+              style="height: 200px; width: 200px; border-radius: 50%; margin: auto; display: block;">
+          </div>
+          <div class="col-lg-8">
+            <h4>{{ botinfo|safe }}</h4>
+            <br />
+            {% if redirect %}
+            <a href="https://discordapp.com/oauth2/authorize?client_id={{ botid }}&scope=bot&permissions=0">Invite</a>
+            {% endif %}
+            {% if support %}
+            • <a href="{{ support }}">Join support server</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% if redirect %}
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category">Total Servers</h5>
+        <h3 class="card-title"><i class="tim-icons icon-bank text-primary"></i><span id="servers">{{ servers }}</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category">Total Members</h5>
+        <h3 class="card-title"><i class="tim-icons icon-single-02 text-info"></i><span id="users">{{ users }}</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category">Online members</h5>
+        <h3 class="card-title"><i class="tim-icons icon-badge text-success"></i><span
+            id="onlineusers">{{ onlineusers }}</span></h3>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+  $(document).ready(function () {
+    // RPC Connecting
+    var eventSource = new EventSource("/api/stream")
+    eventSource.onmessage = function (e) {
+      data = e.data.split(", ")
+      $("#servers").text(data[0])
+      $("#users").text(data[1])
+      $("#onlineusers").text(data[2])
+    }
+  });
+</script>
+
+{% endblock javascripts %}

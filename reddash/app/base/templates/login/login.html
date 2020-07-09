@@ -1,0 +1,168 @@
+{% extends "base-site.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      {% if status == '0' %}
+      <div class="card-header">
+        <h1 class="title">Login</h1>
+      </div>
+      {% if redirect %}
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-1 px-md-1"></div>
+          <div class="col-md-11 px-md-1">
+            <h5>Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want
+              to see some of it? Login with Discord below!</h5>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a
+          href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
+            class="btn">Login with Discord</button></a>
+      </div>
+      {% else %}
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-1 px-md-1"></div>
+          <div class="col-md-11 px-md-1">
+            <h5>Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but
+              unfortunately, login is currently not available because the dashboard is not connected to any bot.</h5>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% elif status == '1' %}
+      <div class="card-header">
+        <h1 class="title">Login Failed</h1>
+      </div>
+      {% if redirect %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like you denied authorization. Made a mistake? Click the button below to try again.</h5>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a
+          href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
+            class="btn">Login with Discord</button></a>
+      </div>
+      {% else %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated.
+            Check back later.</h5>
+        </div>
+      </div>
+      {% endif %}
+      {% elif status == '2' %}
+      <div class="card-header">
+        <h1 class="title">Login Failed</h1>
+      </div>
+      {% if redirect %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like the bot owner may have not configured the dashboard properly. You can try again below if you
+            believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know.
+          </h5>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a
+          href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
+            class="btn">Login with Discord</button></a>
+      </div>
+      {% else %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's
+            connection to the bot has terminated. Check back later.</h5>
+        </div>
+      </div>
+      {% endif %}
+      {% elif status == '3' %}
+      <div class="card-header">
+        <h1 class="title">Login Failed</h1>
+      </div>
+      {% if redirect %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is
+            having API issues.</h5>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a
+          href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
+            class="btn">Login with Discord</button></a>
+      </div>
+      {% else %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has
+            terminated. Check back later.</h5>
+        </div>
+      </div>
+      {% endif %}
+      {% elif status == '4' %}
+      <div class="card-header">
+        <h1 class="title">Login Failed</h1>
+      </div>
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like the bot owner just terminated the connection to the bot. Check back later.</h5>
+        </div>
+      </div>
+      {% elif status == '5' %}
+      <div class="card-header">
+        <h1 class="title">Login Failed</h1>
+      </div>
+      {% if redirect %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot
+            owner or server owner.</h5>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a
+          href="https://discordapp.com/api/oauth2/authorize?client_id={{ botid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
+            class="btn">Login with Discord</button></a>
+      </div>
+      {% else %}
+      <div class="card-body">
+        <div class="col-md-1 px-md-1"></div>
+        <div class="col-md-11 px-md-1">
+          <h5>Looks like something went wrong. Unfortunately, the dashboard's connection to the bot has terminated. Try
+            again later. If it continues to occur, please report to bot owner or server owner.</h5>
+        </div>
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+{% endblock javascripts %}

@@ -1,0 +1,134 @@
+<!--
+=========================================================
+* * Black Dashboard - v1.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/black-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!--
+  This dashboard was based upon the Black Dashboard Theme, who's credits are above.
+  It was changed and recoded by Neuro Assassin <@473541068378341376> to work with Red Discord Bot.
+  The changes are protected under an MIT License, which can be found here: https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE
+  Thank you to Red Discord Bot and all of its developers for making such an amazing bot that has allowed me to create this.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ botavatar }}">
+  <link rel="icon" type="image/png" href="{{ botavatar }}">
+  <title>
+    Red Dashboard - {% block title %}{% endblock %}
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/css/bootstrap-select.min.css">
+  <!-- Nucleo Icons -->
+  <link href="/static/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="/static/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+
+  <!-- Specific Page CSS goes HERE  -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body>
+  <!-- This has to be run before everything, so it reduces the flash of default CSS -->
+  {% include 'site_template/scripts.html' %}
+  <script>
+    function pre_load_interval() {
+      c = localStorage.getItem("theme")
+      $('button').attr("data", c || "{{ color }}")
+      $('a').attr("data", c || "{{ color }}")
+      $('input').attr("data", c || "{{ color }}")
+      $('.main-panel').attr("data", c || "{{ color }}")
+      $('.sidebar').attr("data", c || "{{ color }}")
+      $('.option').attr("data", c || "{{ color }}")
+      if (localStorage.getItem("color") === "white") {
+        $('body').addClass("white-content")
+        $('nav').addClass("white-content")
+        $('.prefixdiv').addClass("white-content")
+      }
+    }
+    var plid = setInterval(pre_load_interval, 10)
+    $(document).ready(function () {
+      clearInterval(plid)
+    })
+  </script>
+  <div class="wrapper">
+
+    {% include 'site_template/sidebar.html' %}
+
+    <div class="main-panel">
+
+      {% include 'site_template/navigation.html' %}
+
+      <div class="content">
+
+        {% block content %}{% endblock content %}
+
+      </div>
+
+      {% include 'site_template/footer.html' %}
+
+    </div>
+
+  </div>
+
+  {% include 'site_template/fixed-plugin.html' %}
+
+  {% include 'site_template/scripts-sidebar.html' %}
+
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}{% endblock javascripts %}
+  <script>
+    $(document).ready(function () {
+      // Sidebar active
+      var path = window.location.pathname.slice(1)
+      try {
+        $("#nav" + path).addClass("active")
+      } catch {
+        $("#navdashboard").addClass("active")
+      }
+    })
+    // Add data attributes to button's and a's
+    c = localStorage.getItem("theme")
+    $('button').attr("data", c || "{{ color }}")
+    $('a').attr("data", c || "{{ color }}")
+    $('input').attr("data", c || "{{ color }}")
+    $('.main-panel').attr("data", c || "{{ color }}")
+    $('.sidebar').attr("data", c || "{{ color }}")
+    $('.option').attr("data", c || "{{ color }}")
+    if (localStorage.getItem("color") === "white") {
+      $('body').addClass("white-content")
+      $('nav').addClass("white-content")
+      $('.prefixdiv').addClass("white-content")
+    }
+    function updateinterval() {
+      $('a.active').attr("data", localStorage.getItem("theme") || "{{ color }}")
+      if (localStorage.getItem("color") === "white") {
+        $('.no-content').addClass("white-content")
+      }
+    }
+    // Add white border to seleted color
+    $('span[data-color]').removeClass("active")
+    $(`span[data-color=${c}`).addClass("active")
+
+    setInterval(updateinterval, 100)
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.17/dist/js/bootstrap-select.min.js"></script>
+</body>
+
+</html>

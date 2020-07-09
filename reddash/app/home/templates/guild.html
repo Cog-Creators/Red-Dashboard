@@ -1,0 +1,1307 @@
+{% extends "base-site.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+    .status {
+        height: 20px;
+        width: 20px;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+{% if data['status'] == 1 and data['data']['status'] == 1 %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-4 col-md-5">
+                            <img src="{{ data['data']['icon'] }}png"
+                                style="height: auto; width: 300px; margin: auto; display: block; border-radius: 50%;"
+                                onmouseover="playGif(this)" onmouseout="stopGif(this)"
+                                data-is-animated="{{ data['data']['animated'] }}"
+                                data-src-url="{{ data['data']['icon'] }}">
+                        </div>
+                        <div class="col-xl-8 col-lg-8 col-md-7">
+                            <h2 class="card-title">{{ data['data']['name'] }}</h2>
+                            <h5 class="card-category text-gray">Created on {{ data['data']['created'] }}
+                                {% if data['data']['joined'] %}
+                                | Joined on {{ data['data']['joined'] }}
+                                {% endif %}
+                            </h5>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h4>
+                                        {{ data['data']['members'] }} Members | {{ data['data']['humans'] }} Humans |
+                                        {{ data['data']['bots'] }} Bots<br>
+                                        <img src="/static/assets/img/online.png" class="status">
+                                        {{ data['data']['online'] }}<br>
+                                        <img src="/static/assets/img/idle.png" class="status">
+                                        {{ data['data']['idle'] }}<br>
+                                        <img src="/static/assets/img/dnd.png" class="status">
+                                        {{ data['data']['dnd'] }}<br>
+                                        <img src="/static/assets/img/offline.png" class="status">
+                                        {{ data['data']['offline'] }}<br>
+                                    </h4>
+                                </div>
+                                <div class="col-6">
+                                    <h4>
+                                        <b>Owner</b>: {{ data['data']['owner'] }}<br>
+                                        <b>Verification Level</b>: {{ data['data']['vl'] }}<br>
+                                        <b>Region</b>: {{ data['data']['region'] }}<br>
+                                        <b>Server ID</b>: {{ data['data']['id'] }}
+                                    </h4>
+                                </div>
+                            </div>
+                            <h4>Your permissions: {{ data['data']['perms'] }}</h4>
+                            {% if data['data']['roleswarn'] %}
+                            <div class="alert alert-danger">
+                                <span><b> Warning - </b> You haven't registered any roles with the dashboard. Please use
+                                    <code>[p]dashboard roles create</code> to allow other people to use it.</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{# Permission groups #}
+{% if 'botsettings' in data['data']['permslist'] %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">Guild-specific bot settings</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link taboption" id="serverprefix-tab" data-toggle="pill" href="#serverprefix"
+                                role="tab" aria-controls="serverprefix" aria-selected="false">Server prefix</a>
+                            <a class="nav-link taboption" id="adminroles-tab" data-toggle="pill" href="#adminroles"
+                                role="tab" aria-controls="adminroles" aria-selected="false">Admin roles</a>
+                            <a class="nav-link taboption" id="modroles-tab" data-toggle="pill" href="#modroles"
+                                role="tab" aria-controls="modroles" aria-selected="false">Mod roles</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="botsettingTabContent">
+                            <!-- Start server prefix -->
+                            <div class="tab-pane fade" id="serverprefix" role="tabpanel"
+                                aria-labelledby="serverprefix-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Set server prefix</h4>
+                                                        <p>Sets {{ botname }}'s server prefix(es)</p>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>set serverprefix</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-5 col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <label>Prefixes</label>
+                                                            <ul id="prefixlist">
+                                                                {% for prefix in data['data']['prefixes']%}
+                                                                <li>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-8">
+                                                                            <input class="form-control prefixinput"
+                                                                                value="{{ prefix }}">
+                                                                        </div>
+                                                                        <div class="col-md-1 col-1">
+                                                                            <span class="prefix-x clickable"><i
+                                                                                    class="tim-icons icon-simple-remove"
+                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                            <button class="btn" id="prefixupdate">Update
+                                                                Prefixes</button>
+                                                            <button class="btn" id="addprefix">Add Prefix</button>
+                                                            <br>
+                                                            <span id="prefixstatus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End server prefix -->
+                            <!-- Start admin roles -->
+                            <div class="tab-pane fade" id="adminroles" role="tabpanel" aria-labelledby="adminroles-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Set admin roles</h4>
+                                                        <p>Sets {{ botname }}'s admin roles in
+                                                            {{ data['data']['name'] }}</p>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>set addadminrole &ltrole&gt</code>
+                                                        </p>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>set removeadminrole &ltrole&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-5 col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <label>Roles</label>
+                                                            <ul id="adminrolelist">
+                                                                {% for role in data['data']['adminroles']%}
+                                                                <li>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-8">
+                                                                            <input class="form-control adminroleinput"
+                                                                                value="{{ role[1] }}" disabled=True
+                                                                                data-id="{{ role[0] }}">
+                                                                        </div>
+                                                                        <div class="col-md-1 col-1">
+                                                                            <span class="admin-role-x clickable"><i
+                                                                                    class="tim-icons icon-simple-remove"
+                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                            <div class="buttondiv dropup">
+                                                                <button class="btn" id="adminroleupdate">Update Admin
+                                                                    Roles</button>
+                                                                <button class="btn dropdown-toggle" href="#"
+                                                                    role="button" id="roledrop" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"
+                                                                    id="addadminrole"
+                                                                    style="height: 40px; margin-top: 5px;">Add Admin
+                                                                    Role</button>
+                                                                <div class="dropdown-menu dropdown-menu-right"
+                                                                    aria-labelledby="roledrop">
+                                                                    <div class="scrollable-menu">
+                                                                        {% for role in data['data']['roles'] %}
+                                                                        {% if role not in data['data']['adminroles'] %}
+                                                                        <a class="dropdown-item clickable adminroleoption"
+                                                                            data-id="{{ role[0] }}">{{ role[1] }}</a>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <span id="adminrolestatus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End admin roles -->
+                            <!-- Start mod roles -->
+                            <div class="tab-pane fade" id="modroles" role="tabpanel" aria-labelledby="modroles-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Set mod roles</h4>
+                                                        <p>Sets {{ botname }}'s mod roles in {{ data['data']['name'] }}
+                                                        </p>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>set addmodrole &ltrole&gt</code>
+                                                        </p>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>set removemodrole &ltrole&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-4 col-lg-5 col-md-6 col-12">
+                                                        <div class="form-group">
+                                                            <label>Roles</label>
+                                                            <ul id="modrolelist">
+                                                                {% for role in data['data']['modroles']%}
+                                                                <li>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-8">
+                                                                            <input class="form-control modroleinput"
+                                                                                value="{{ role[1] }}" disabled=True
+                                                                                data-id="{{ role[0] }}">
+                                                                        </div>
+                                                                        <div class="col-md-1 col-1">
+                                                                            <span class="mod-role-x clickable"><i
+                                                                                    class="tim-icons icon-simple-remove"
+                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                            <div class="buttondiv dropup">
+                                                                <button class="btn" id="modroleupdate">Update Mod
+                                                                    Roles</button>
+                                                                <button class="btn dropdown-toggle" href="#"
+                                                                    role="button" id="roledrop" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"
+                                                                    id="addmodrole"
+                                                                    style="height: 40px; margin-top: 5px;">Add Mod
+                                                                    Role</button>
+                                                                <div class="dropdown-menu dropdown-menu-right"
+                                                                    aria-labelledby="roledrop">
+                                                                    <div class="scrollable-menu">
+                                                                        {% for role in data['data']['roles'] %}
+                                                                        {% if role not in data['data']['modroles'] %}
+                                                                        <a class="dropdown-item clickable modroleoption"
+                                                                            data-id="{{ role[0] }}">{{ role[1] }}</a>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                            <span id="modrolestatus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End mod roles -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% if 'permissions' in data['data']['permslist'] %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">Guild-specific command permissions</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
+                            aria-orientation="vertical">
+                            <a class="nav-link taboption" id="viewrules-tab" data-toggle="pill" href="#viewrules"
+                                role="tab" aria-controls="viewrules" aria-selected="false">View rules</a>
+                            <a class="nav-link taboption" id="adddefaultrule-tab" data-toggle="pill"
+                                href="#adddefaultrule" role="tab" aria-controls="adddefaultrule"
+                                aria-selected="false">Add default rule</a>
+                            <a class="nav-link taboption" id="addrule-tab" data-toggle="pill" href="#addrule" role="tab"
+                                aria-controls="addrule" aria-selected="false">Add rule</a>
+                            <a class="nav-link taboption" id="removedefaultrule-tab" data-toggle="pill"
+                                href="#removedefaultrule" role="tab" aria-controls="removedefaultrule"
+                                aria-selected="false">Remove default rule</a>
+                            <a class="nav-link taboption" id="removerule-tab" data-toggle="pill" href="#removerule"
+                                role="tab" aria-controls="removerule" aria-selected="false">Remove rule</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="permissionsTabContent">
+                            <!-- Start View Rules -->
+                            <div class="tab-pane fade" id="viewrules" role="tabpanel" aria-labelledby="viewrules-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Permission rules</h4>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <div id="rulesdiv">
+                                                        <p class="card-category text-gray"
+                                                            style="text-transform: none;">Permission rules have not been
+                                                            loaded. Please re-click View Rules on the left</p>
+                                                    </div>
+                                                    <br>
+                                                    <span id="fetchrulesstatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End view rules -->
+                            <!-- Start Add Default Rule -->
+                            <div class="tab-pane fade" id="adddefaultrule" role="tabpanel"
+                                aria-labelledby="adddefaultrule-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Add Default Rule</h4>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>permissions setdefaultserverrule &ltallow_or_deny&gt &ltcog_or_command&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <h3>Step #1: Set permission action</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker" title="Allow/Deny"
+                                                                id="adddefaultruleallowdeny" size=false>
+                                                                <option value="allow" class="selectoption">Allow
+                                                                </option>
+                                                                <option value="deny" class="selectoption">Deny
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Step #2: Select cog/command</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker cogcommands"
+                                                                data-live-search="true" title="Loading..." disabled
+                                                                id="adddefaultrulecogcommands" data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn" id="adddefaultrulesubmit">Add Default
+                                                        Rule</button>
+                                                    <br>
+                                                    <span id="adddefaultrulestatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Add Default Rule -->
+                            <!-- Start Add Rule -->
+                            <div class="tab-pane fade" id="addrule" role="tabpanel" aria-labelledby="addrule-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Add Rule</h4>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>permissions addserverrule &ltallow_or_deny&gt &ltcog_or_command&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <h3>Step #1: Set permission action</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker" title="Allow/Deny"
+                                                                id="addruleallowdeny">
+                                                                <option value="allow" class="selectoption">Allow
+                                                                </option>
+                                                                <option value="deny" class="selectoption">Deny
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Step #2: Select target</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker ruletargets"
+                                                                data-live-search="true" title="Loading..."
+                                                                class="permissiontargets" id="addruletargets" disabled
+                                                                data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Step #3: Select cog/command</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker cogcommands"
+                                                                data-live-search="true" title="Loading..." disabled
+                                                                id="addrulecogcommands" data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn" id="addrulesubmit">Add Rule</button>
+                                                    <br>
+                                                    <span id="addrulestatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End add rule -->
+                            <!-- Start Remove Default Rule -->
+                            <div class="tab-pane fade" id="removedefaultrule" role="tabpanel"
+                                aria-labelledby="removedefaultrule-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Remove Default Rule</h4>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>permissions setdefaultserverrule &ltallow_or_deny&gt &ltcog_or_command&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <h3>Select the cog/command</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker cogcommands"
+                                                                data-live-search="true" title="Loading..." disabled
+                                                                id="removedefaultrulecogcommands"
+                                                                data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn" id="removedefaultrulesubmit">Remove Default
+                                                        Rule</button>
+                                                    <br>
+                                                    <span id="removedefaultrulestatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Remove Default Rule -->
+                            <!-- Start Remove Rule -->
+                            <div class="tab-pane fade" id="removerule" role="tabpanel" aria-labelledby="removerule-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h4 class="card-title">Remove Rule</h4>
+                                                        <p>Syntax:
+                                                            <code><span class="prefix">{{ prefix[0] }}</span>permissions removeserverrule &ltallow_or_deny&gt &ltcog_or_command&gt</code>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6 text-left">
+                                                        <div class="dropdown float-right">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="prefixdrop" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                Prefix
+                                                            </a>
+
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
+                                                                aria-labelledby="prefixdrop">
+                                                                {% for p in data['data']['prefixes'] %}
+                                                                <a
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <h3>Step #1: Select target</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker ruletargets"
+                                                                data-live-search="true" title="Loading..."
+                                                                class="permissiontargets" id="removeruletargets"
+                                                                disabled data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Step #2: Select cog/command</h3>
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-md-6">
+                                                            <select class="selectpicker cogcommands"
+                                                                data-live-search="true" title="Loading..." disabled
+                                                                id="removerulecogcommands" data-size="5"></select>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn" id="removerulesubmit">Remove Rule</button>
+                                                    <br>
+                                                    <span id="removerulestatus"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Remove Rule -->
+                        </div>
+                    </div>
+                </div>
+                <p id="targetstatus"></p>
+                <p id="cogcommandstatus"></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% elif data['status'] == 1 %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h6 class="card-category text-gray">Guild not found</h6>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <h5>The specified guild wasn't found. Did you enter the URL correctly?</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <h5>Click <a href="/dashboard">here</a> to go to the dashboard, or <a href="/">here</a> to go home.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h6 class="card-category text-gray">Error</h6>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <h5>{{ data['message'] }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+    $(".prefix-option").click(function () {
+        var prefix = $(this).text()
+        $('.prefix').text(prefix)
+
+        // Change others to inactive, and the correct ones to active
+        $('.prefix-option').removeClass('active')
+        var index = $(this).index()
+        $(".prefixdiv").each(function (someotherindexidontneed) {
+            $(this).children().eq(index).addClass('active')
+        })
+    })
+    function playGif(elm) {
+        var img = $(elm)
+        if (img.attr('data-is-animated') === "True") {
+            img.attr("src", `${img.attr("data-src-url")}gif`)
+        }
+    }
+    function stopGif(elm) {
+        var img = $(elm)
+        if (img.attr('data-is-animated') === "True") {
+            img.attr("src", `${img.attr("data-src-url")}png`)
+        }
+    }
+</script>
+
+{% if data['status'] == 1 and data['data']['status'] == 1 %}
+
+{% if 'permissions' in data['data']['permslist'] %}
+<script>
+    /* ---------------------------------------------------------------------------------------------------------------------
+                                                        Permissions group
+       --------------------------------------------------------------------------------------------------------------------- */
+
+    // Add Default Server Rule
+    $("#adddefaultrulesubmit").click(function () {
+        $("#adddefaultrulestatus").html("Loading...")
+        var allow_or_deny = $("#adddefaultruleallowdeny").val()
+        var cog_or_command = $("#adddefaultrulecogcommands").val()
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/adddefaultrule`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#adddefaultrulestatus").html(`Failed to add rule: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#adddefaultrulestatus").html(`Failed to add rule: ${json.data.message}`)
+            } else {
+                $("#adddefaultrulestatus").html("Rule successfully added.")
+            }
+        }
+        var data = {
+            ad: allow_or_deny,
+            cc: cog_or_command
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Add Server Rule
+    $("#addrulesubmit").click(function () {
+        $("#addrulestatus").html("Loading...")
+        var allow_or_deny = $("#addruleallowdeny").val()
+        var who_or_what = $("#addruletargets").val()
+        var cog_or_command = $("#addrulecogcommands").val()
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/addrule`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#addrulestatus").html(`Failed to add rule: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#addrulestatus").html(`Failed to add rule: ${json.data.message}`)
+            } else {
+                $("#addrulestatus").html("Rule successfully added.")
+            }
+        }
+        var data = {
+            ad: allow_or_deny,
+            ww: who_or_what,
+            cc: cog_or_command
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Remove Default Server Rule
+    $("#removedefaultrulesubmit").click(function () {
+        $("#removedefaultrulestatus").html("Loading...")
+        var cog_or_command = $("#removedefaultrulecogcommands").val()
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/removedefaultrule`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#removedefaultrulestatus").html(`Failed to remove rule: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#removedefaultrulestatus").html(`Failed to remove rule: ${json.data.message}`)
+            } else {
+                $("#removedefaultrulestatus").html("Rule successfully removed.")
+            }
+        }
+        var data = {
+            cc: cog_or_command
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Remove Server Rule
+    $("#removerulesubmit").click(function () {
+        $("#removerulestatus").html("Loading...")
+        var who_or_what = $("#removeruletargets").val()
+        var cog_or_command = $("#removerulecogcommands").val()
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/removerule`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#removerulestatus").html(`Failed to remove rule: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#removerulestatus").html(`Failed to remove rule: ${json.data.message}`)
+            } else {
+                $("#removerulestatus").html("Rule successfully removed.")
+            }
+        }
+        var data = {
+            ww: who_or_what,
+            cc: cog_or_command
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Fetch users/roles/channels
+    $(document).ready(function () {
+        var select = $(".ruletargets")
+        select.selectpicker({ title: "Loading..." })
+        select.attr("disabled", true)
+        select.selectpicker("refresh")
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/fetchtargets`
+
+        xhr.open("GET", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+
+            var json = JSON.parse(xhr.responseText)
+
+            if (json.status === 0) {
+                $("#targetstatus").html(`Failed to fetch targets: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#targetstatus").html(`Failed to fetch targets: ${json.data.message}`)
+            } else {
+                select.html("")
+
+                var chopt = [`<optgroup label="Channels">`]
+                for (let [id, name] of json.data.CHANNELS) {
+                    chopt.push(`<option value=${id}>${name}</option>`)
+                }
+                chopt.push("</optgroup>")
+                select.append(chopt.join(""))
+
+                var ropt = [`<optgroup label="Roles">`]
+                for (let [id, name] of json.data.ROLES) {
+                    ropt.push(`<option value=${id}>${name}</option>`)
+                }
+                ropt.push("</optgroup>")
+                select.append(ropt.join(""))
+
+                var uopt = [`<optgroup label="Users">`]
+                for (let [id, name] of json.data.USERS) {
+                    uopt.push(`<option value=${id}>${name}</option>`)
+                }
+                uopt.push("</optgroup>")
+                select.append(uopt.join(""))
+            }
+            select.selectpicker({ title: "Choose target" })
+            select.removeAttr("disabled")
+            select.selectpicker("refresh")
+        }
+        try {
+            xhr.send()
+        } catch (error) {
+            console.log(error)
+            select.selectpicker({ title: "Choose target" })
+            select.removeAttr("disabled")
+            select.selectpicker("refresh")
+        }
+    })
+
+    // Fetch cogs/commands
+    $(document).ready(function () {
+        var select = $(".cogcommands")
+        select.selectpicker({ title: "Loading..." })
+        select.attr("disabled", true)
+        select.selectpicker("refresh")
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/fetchcogcommands`
+
+        xhr.open("GET", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+
+            var json = JSON.parse(xhr.responseText)
+
+            if (json.status === 0) {
+                $("#cogcommandstatus").html(`Failed to fetch commands: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#cogcommandstatus").html(`Failed to fetch commands: ${json.data.message}`)
+            } else {
+                select.html("")
+
+                var copt = [`<optgroup label="Cogs">`]
+                for (let name of json.data.COGS) {
+                    copt.push(`<option value="${name}">${name}</option>`)
+                }
+                copt.push("</optgroup>")
+                select.append(copt.join(""))
+
+                var cmopt = [`<optgroup label="Commands">`]
+                for (let name of json.data.COMMANDS) {
+                    cmopt.push(`<option value="${name}">${name}</option>`)
+                }
+                cmopt.push("</optgroup>")
+                select.append(cmopt.join(""))
+            }
+            select.selectpicker({ title: "Choose target" })
+            select.removeAttr("disabled")
+            select.selectpicker("refresh")
+        }
+        try {
+            xhr.send()
+        } catch (error) {
+            console.log(error)
+            select.selectpicker({ title: "Choose target" })
+            select.removeAttr("disabled")
+            select.selectpicker("refresh")
+        }
+    })
+
+    // Fetch rules
+    $("#viewrules-tab").click(function () {
+        $("#fetchrulesstatus").html("Loading...")
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/fetchrules`
+        xhr.open("GET", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#fetchrulesstatus").html(`Failed to fetch rules: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#fetchrulesstatus").html(`Failed to fetch rules: ${json.data.message}`)
+            } else {
+                $("#rulesdiv").html("")
+                var overall = ['<h3 style="margin-bottom: 10px">Cog rules</h3>']
+                var allcoglines = ["<ul>"]
+                for (let [cog, rules] of Object.entries(json.data.COG)) {
+                    var coglines = []
+                    for (let rule of rules) {
+                        if (rule.type === "Default") {
+                            coglines.unshift(`<li>By default, users are ${rule.permission} permission to use the <code>${cog}</code> cog.</li>`)
+                        } else if (rule.type === "Role") {
+                            coglines.push(`<li>Users with the <code>${rule.name}</code> role (${rule.id}) are ${rule.permission} permission to use the <code>${cog}</code> cog.</li>`)
+                        } else if (rule.type === "Channel") {
+                            coglines.push(`<li>Users in the <code>${rule.name}</code> channel (${rule.id}) are ${rule.permission} permission to use the <code>${cog}</code> cog.</li>`)
+                        } else {
+                            coglines.push(`<li>User <code>${rule.name}</code> (${rule.id}) is ${rule.permission} permission to use the <code>${cog}</code> cog.</li>`)
+                        }
+                    }
+                    if (coglines) {
+                        allcoglines = allcoglines.concat(coglines)
+                    }
+                }
+                allcoglines.push("</ul>")
+                if (allcoglines.length == 2) {
+                    allcoglines = ["<p>No cog rules have been created.</p>"]
+                }
+                overall = overall.concat(allcoglines)
+
+                overall.push('<h3 style="margin-bottom: 10px">Command rules</h3>')
+                var allcmdlines = ["<ul>"]
+                for (let [cmd, rules] of Object.entries(json.data.COMMAND)) {
+                    var cmdlines = []
+                    for (let rule of rules) {
+                        if (rule.type === "Default") {
+                            cmdlines.unshift(`<li>By default, users are ${rule.permission} permission to use the <code>${cmd}</code> command.</li>`)
+                        } else if (rule.type === "Role") {
+                            cmdlines.push(`<li>Users with the <code>${rule.name}</code> role (${rule.id}) are ${rule.permission} permission to use the <code>${cmd}</code> command.</li>`)
+                        } else if (rule.type === "Channel") {
+                            cmdlines.push(`<li>Users in the <code>${rule.name}</code> channel (${rule.id}) are ${rule.permission} permission to use the <code>${cmd}</code> command.</li>`)
+                        } else {
+                            cmdlines.push(`<li>User <code>${rule.name}</code> (${rule.id}) is ${rule.permission} permission to use the <code>${cmd}</code> command.</li>`)
+                        }
+                    }
+                    if (cmdlines) {
+                        allcmdlines = allcmdlines.concat(cmdlines)
+                    }
+                }
+                allcmdlines.push("</ul>")
+                if (allcmdlines.length === 2) {
+                    allcmdlines = ["<p>No cmd rules have been created.</p>"]
+                }
+                overall = overall.concat(allcmdlines)
+                $("#rulesdiv").html(overall.join(""))
+                $("#fetchrulesstatus").html("Refreshed rules.")
+            }
+        }
+        try {
+            xhr.send()
+        } catch (error) {
+            console.log(error)
+        }
+    })
+</script>
+{% endif %}
+
+{% if 'botsettings' in data['data']['permslist'] %}
+<script>
+    /* ---------------------------------------------------------------------------------------------------------------------
+                                                        Bot settings group
+       --------------------------------------------------------------------------------------------------------------------- */
+    // Admin role controls
+    $(document).on('click', '.admin-role-x', function () {
+        var input = $(this).parent().siblings().first().children().first()
+        $(".adminroleoption").parent().append(`
+                <a class="dropdown-item clickable adminroleoption" data-id="${input.attr("data-id")}">${input.val()}</a>
+            `)
+        var li = $(this).parent().parent().parent()
+        li.fadeOut(complete = function () {
+            li.remove()
+        })
+    })
+
+    $(document).on('click', '.adminroleoption', function () {
+        var elm = $(this)
+        $("#adminrolelist").append(`
+                <li>
+                    <div class="row">
+                        <div class="col-md-10 col-8">
+                            <input class="form-control adminroleinput" value="${elm.text()}" disabled=True data-id="${elm.attr("data-id")}">
+                        </div>
+                        <div class="col-md-1 col-1">
+                            <span class="admin-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
+                        </div>
+                    </div>
+                </li>
+            `)
+        elm.remove()
+    })
+
+    $("#adminroleupdate").click(function () {
+        $("#adminrolestatus").html("Loading...")
+        var roles = []
+        $(".adminroleinput").each(function (index, elm) {
+            roles.push($(elm).attr("data-id"))
+        })
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/adminroles`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#adminrolestatus").html(`Failed to update admin roles: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#adminrolestatus").html(`Failed to update admin roles: ${json.data.message}`)
+            } else {
+                $("#adminrolestatus").html("Admin roles successfully updated.")
+            }
+        }
+        var data = {
+            "roles": roles
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Mod role controls
+    $(document).on('click', '.mod-role-x', function () {
+        var input = $(this).parent().siblings().first().children().first()
+        $(".modroleoption").parent().append(`
+                <a class="dropdown-item clickable modroleoption" data-id="${input.attr("data-id")}">${input.val()}</a>
+            `)
+        var li = $(this).parent().parent().parent()
+        li.fadeOut(complete = function () {
+            li.remove()
+        })
+    })
+
+    $(document).on('click', '.modroleoption', function () {
+        var elm = $(this)
+        $("#modrolelist").append(`
+                <li>
+                    <div class="row">
+                        <div class="col-md-10 col-8">
+                            <input class="form-control modroleinput" value="${elm.text()}" disabled=True data-id="${elm.attr("data-id")}">
+                        </div>
+                        <div class="col-md-1 col-1">
+                            <span class="mod-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
+                        </div>
+                    </div>
+                </li>
+            `)
+        elm.remove()
+    })
+
+    $("#modroleupdate").click(function () {
+        $("#modrolestatus").html("Loading...")
+        var roles = []
+        $(".modroleinput").each(function (index, elm) {
+            roles.push($(elm).attr("data-id"))
+        })
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/modroles`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#modrolestatus").html(`Failed to update mod roles: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#modrolestatus").html(`Failed to update mod roles: ${json.data.message}`)
+            } else {
+                $("#modrolestatus").html("Mod roles successfully updated.")
+            }
+        }
+        var data = {
+            "roles": roles
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    // Prefix Controls
+    $(document).on('click', '.prefix-x', function () {
+        var li = $(this).parent().parent().parent()
+        li.fadeOut(complete = function () {
+            li.remove()
+        })
+    })
+    $("#addprefix").click(function () {
+        $("#prefixlist").append(`
+                <li>
+                    <div class="row">
+                        <div class="col-md-10 col-8">
+                            <input class="form-control prefixinput">
+                        </div>
+                        <div class="col-md-1 col-1">
+                            <span class="prefix-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
+                        </div>
+                    </div>
+                </li>
+            `)
+    })
+    $("#prefixupdate").click(function () {
+        $("#prefixstatus").html("Loading...")
+        var prefixes = []
+        $(".prefixinput").each(function (index, elm) {
+            var text = $(elm).val()
+            if (text) {
+                prefixes.push(text)
+            }
+        })
+
+        var parts = window.location.pathname.split("/")
+        var id = parts[parts.length - 1]
+        var xhr = new XMLHttpRequest();
+        var url = `/api/${id}/serverprefix`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#prefixstatus").html(`Failed to update prefixes: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#prefixstatus").html(`Failed to update prefixes: ${json.data.message}`)
+            } else {
+                $("#prefixstatus").html("Prefixes successfully updated.")
+            }
+        }
+        var data = {
+            "prefixes": prefixes
+        }
+        try {
+            xhr.send(JSON.stringify(data))
+        } catch (error) {
+            console.log(error)
+        }
+    })
+</script>
+{% endif %}
+
+{% endif %}
+{% endblock javascripts %}

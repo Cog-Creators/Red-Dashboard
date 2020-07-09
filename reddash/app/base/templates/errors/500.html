@@ -1,0 +1,29 @@
+{% extends "base-site.html" %}
+
+{% block title %} Page 404 {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h6 class="card-category text-gray">Uh oh!</h6>
+                <h4 class="card-title">
+                    Error 500
+                </h4>
+                <p>Looks like the server run into an error... Strange...</p>
+                <a href="/"><button class="btn">Home</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
