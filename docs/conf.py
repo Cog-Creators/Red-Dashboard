@@ -43,6 +43,9 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # Role which is assigned when you make a simple reference within backticks
 default_role = "any"
 
+# The master toctree document
+master_doc = "index"
+
 
 # -- Options for HTML output -------------------------------------------------
 
