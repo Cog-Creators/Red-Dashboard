@@ -4,6 +4,9 @@ License: Commercial
 Copyright (c) 2019 - present AppSeed.us
 """
 
+a = ("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz")
+try
+
 from reddash.app import create_app
 import argparse
 import logging
