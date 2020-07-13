@@ -30,6 +30,7 @@ dashlog.setLevel(logging.WARNING)
 parser = argparse.ArgumentParser(
     description="Argument parser for Red Discord Bot Dashboard - Client"
 )
+parser.add_argument("--host", dest="host", type=str, default="0.0.0.0")
 parser.add_argument("--port", dest="port", type=int, default=42356)
 parser.add_argument("--rpc-port", dest="rpcport", type=int, default=6133)
 parser.add_argument("--interval", dest="interval", type=int, default=5, help=argparse.SUPPRESS)
@@ -65,7 +66,7 @@ def main():
             args["dev"] = False
 
     create_app(
-        "0.0.0.0", args["port"], args["rpcport"], args["interval"], args["debug"], args["dev"],
+        args["host"], args["port"], args["rpcport"], args["interval"], args["debug"], args["dev"],
     )
 
 
