@@ -43,5 +43,5 @@ jobs:
           pip install tox
       - name: Tox test
         env:
-          TOKENV: ${{ matrix.tox_env }}
+          TOXENV: ${{ matrix.tox_env }}
         run: tox
