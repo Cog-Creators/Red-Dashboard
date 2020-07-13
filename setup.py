@@ -30,6 +30,6 @@ setup(
     extras_require={
         "style": ["black==19.10b0"],
         "docs": ["Sphinx==2.4.4", "sphinx-rtd-theme==0.4.3"]
-    }
+    },
     entry_points={"console_scripts": ["reddash=reddash.__main__:main"]},
 )
