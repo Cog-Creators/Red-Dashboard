@@ -31,6 +31,12 @@ Welcome to Red Dashboard's documentation!
 
 .. toctree::
    :maxdepth: 1
+   :caption: Reverse proxy:
+
+   reverse_proxy_apache
+
+.. toctree::
+   :maxdepth: 1
    :caption: Support
 
    help_and_support
