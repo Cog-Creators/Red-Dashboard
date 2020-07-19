@@ -4,11 +4,11 @@ License: MIT
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from flask import jsonify, render_template, redirect, request, url_for, session
+from flask import jsonify, render_template, redirect, request, url_for, session, g
+from flask_babel import _, refresh
 
 from reddash.app.base import blueprint
 from reddash.app import app
-from reddash.app.base.util import verify_pass
 
 import requests
 import websocket

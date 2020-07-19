@@ -1,6 +1,6 @@
 {% extends "base-site.html" %}
 
-{% block title %} Commands {% endblock %}
+{% block title %} {{ _('Commands') }} {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="card card-profile">
                 <div class="card-header">
-                    <h6 class="card-category text-gray">Commands</h6>
+                    <h6 class="card-category text-gray">{{ _('Commands') }}</h6>
                 </div>
                 <div class="card-body">
                     {% if data %}
@@ -46,7 +46,7 @@
                                                                 <a class="btn btn-secondary dropdown-toggle" href="#"
                                                                     role="button" id="prefixdrop" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false">
-                                                                    Prefix
+                                                                    {{ _('Prefix') }}
                                                                 </a>
 
                                                                 <div class="dropdown-menu dropdown-menu-right prefixdiv"
@@ -61,30 +61,27 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table tablesorter">
-                                                            <thead class="text-primary">
-                                                                <tr>
-                                                                    <th>Command</th>
-                                                                    <th>Description</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {%- for command in cog['cmds'] recursive %}
-                                                                <tr>
-                                                                    <th
-                                                                        style="padding-left: {{ loop.depth0 * 40 + 7 }}px">
-                                                                        <code><span class="prefix">{{ prefixes[0] }}</span>{{ command.name }}</code>
-                                                                    </th>
-                                                                    <th>{{ command.desc }}</th>
-                                                                </tr>
-                                                                {%- if command.subs -%}
-                                                                {{ loop(command.subs) }}
-                                                                {%- endif %}
-                                                                {%- endfor %}
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                    <table class="table tablesorter">
+                                                        <thead class="text-primary">
+                                                            <tr>
+                                                                <th>{{ _('Command') }}</th>
+                                                                <th>{{ _('Description') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {%- for command in cog['cmds'] recursive %}
+                                                            <tr>
+                                                                <th style="padding-left: {{ loop.depth0 * 40 + 7 }}px">
+                                                                    <code><span class="prefix">{{ prefixes[0] }}</span>{{ command.name }}</code>
+                                                                </th>
+                                                                <th>{{ command.desc }}</th>
+                                                            </tr>
+                                                            {%- if command.subs -%}
+                                                            {{ loop(command.subs) }}
+                                                            {%- endif %}
+                                                            {%- endfor %}
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,7 +92,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <h4 class="card-title">Loading data... Please wait a few seconds then reload</h4>
+                    <h4 class="card-title">{{ _('Loading data... Please wait a few seconds then reload') }}</h4>
                     {% endif %}
                 </div>
             </div>

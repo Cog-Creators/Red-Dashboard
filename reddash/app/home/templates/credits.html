@@ -1,6 +1,6 @@
 {% extends "base-site.html" %}
 
-{% block title %} Credits {% endblock %}
+{% block title %} {{ _('Credits') }} {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -14,24 +14,27 @@
                 <h6 class="card-category text-gray">Dashboard Credits</h6>
                 <h4 class="card-title">
                     {% if redirect %}
-                    This instance of Red Discord Bot is owned by {{ owner }}. <br />
+                    {{ _('This instance of Red Discord Bot is owned by {owner}.').format(owner=owner) }} <br />
                     {% endif %}
-                    The base template for this dashboard was created by <a
-                        href="https://appseed.us/app-generator">AppSeed Web App Generator</a>, protected under <a
+                    {{ _('The base template for this dashboard was created by') }} <a
+                        href="https://appseed.us/app-generator">AppSeed Web App Generator</a>,
+                    {{ _('protected under') }} <a
                         href="https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md">MIT
-                        License</a>.<br />
-                    The dashboard was edited and recoded to work with Red Discord Bot by <a
-                        href="https://github.com/NeuroAssassin">Neuro Assassin#4779</a>, protected under <a
-                        href="https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE">MIT License</a>.<br />
-                    This dashboard was made for <a href="https://github.com/Cog-Creators/Red-DiscordBot">Red Discord
-                        Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.
-                    Red Discord Bot is protected under <a
-                        href="https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE">GNU General Public
-                        License v3.0</a>.
+                        {{ _('License') }}</a>.<br />
+                    {{ _('The dashboard was edited and recoded to work with Red Discord Bot by') }} <a
+                        href="https://github.com/NeuroAssassin">Neuro Assassin#4779</a>, {{ _('protected under') }} <a
+                        href="https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE">MIT
+                        {{ _('License') }}</a>.<br />
+                    {{ _('This dashboard was made for') }} <a href="https://github.com/Cog-Creators/Red-DiscordBot">Red
+                        Discord
+                        Bot</a>,
+                    {{ _('a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under') }}
+                    <a
+                        href="https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE">{{ _('GNU General Public License v3.0') }}</a>.
                 </h4>
             </div>
             <div class="card-footer">
-                Dashboard Version {{ version }}
+                {{ _('Dashboard Version {version}').format(version=version) }}'
             </div>
         </div>
     </div>

@@ -22,8 +22,15 @@
 
       fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
+      reversed_locales = { 'Afrikaans': 'af', 'العربية': 'ar', 'български': 'bg', 'català': 'ca', 'čeština': 'cs', 'dansk': 'da', 'Deutsch': 'de', 'Ελληνικά': 'el', 'English': 'en', 'español - España': 'es_es', 'suomi': 'fi', 'français': 'fr', 'עברית': 'he', 'magyar': 'hu', 'Indonesia': 'id', 'italiano': 'it', '日本語': 'ja', '한국어': 'ko', 'Nederlands': 'nl', 'norsk bokmål - Norge': 'no', 'polski': 'pl', 'português - Brasil': 'pt_br', 'português - Portugal': 'pt_pt', 'română': 'ro', 'русский': 'ru', 'slovenčina': 'sk', 'српски': 'sr', 'svenska - Sverige': 'sv_se', 'Türkçe': 'tr', 'українська': 'uk', 'Tiếng Việt': 'vi', '中文 - 中国': 'zh_cn', '中文 - 中國香港特別行政區': 'zh_hk', '中文 - 台灣': 'zh_tw' }
 
 
+      $("#changelocale").click(function (event) {
+        var locale = $("#localepicker").val()
+        var real_locale = reversed_locales[locale]
+        var redirect = "{{ url_for('home_blueprint.index') }}".replace("{{ session.get('lang_code') }}", real_locale)
+        window.location.replace(redirect)
+      })
       $('.fixed-plugin a').click(function (event) {
         if ($(this).hasClass('switch-trigger')) {
           if (event.stopPropagation) {

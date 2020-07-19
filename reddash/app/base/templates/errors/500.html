@@ -1,6 +1,6 @@
 {% extends "base-site.html" %}
 
-{% block title %} Page 404 {% endblock %}
+{% block title %} {{ _('Page 500') }} {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -11,12 +11,12 @@
     <div class="col-md-12">
         <div class="card card-profile">
             <div class="card-body">
-                <h6 class="card-category text-gray">Uh oh!</h6>
+                <h6 class="card-category text-gray">{{ _('Uh oh!') }}</h6>
                 <h4 class="card-title">
-                    Error 500
+                    {{ _('Error 500') }}
                 </h4>
-                <p>Looks like the server run into an error... Strange...</p>
-                <a href="/"><button class="btn">Home</button></a>
+                <p>{{ _("Looks like the server ran into an issue... Strange...") }}</p>
+                <a href="{{ url_for('home_blueprint.index') }}"><button class="btn">{{ _('Home') }}</button></a>
             </div>
         </div>
     </div>

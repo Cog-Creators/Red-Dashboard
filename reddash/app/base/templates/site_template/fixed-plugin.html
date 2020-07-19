@@ -1,10 +1,34 @@
+<div class="modal fade" id="localeModal" tabindex="-1" role="dialog" aria-labelledby="localeModalLabel"
+  data-backdrop="static" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="localeModalLabel">{{ _('Choose locale') }}</h5>
+        <span class="clickable" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <select class="selectpicker" title="{{ _('Choose Locale') }}" data-live-search="true" id="localepicker">
+          {% for locale, humanized in locales.items() %}
+          <option data-locale="{{ locale }}" {% if locale == selectedlocale %} selected {% endif %}>
+            {{ humanized }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">{{ _('Close') }}</button>
+        <button type="button" class="btn" id="changelocale">{{ _('Save changes') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="fixed-plugin">
   <div class="dropdown show-dropdown">
     <a href="#" data-toggle="dropdown">
       <i class="fa fa-cog fa-2x"> </i>
     </a>
     <ul class="dropdown-menu">
-      <li class="header-title"> Sidebar Background</li>
+      <li class="header-title">{{ _('Sidebar Background') }}</li>
       <li class="adjustments-line">
         <a href="javascript:void(0)" class="switch-trigger background-color">
           <div class="badge-colors text-center">
@@ -19,13 +43,15 @@
         </a>
       </li>
       <li class="adjustments-line text-center color-change">
-        <span class="color-label">LIGHT MODE</span>
+        <span class="color-label">{{ _('LIGHT MODE') }}</span>
         <span class="badge light-badge mr-2"></span>
         <span class="badge dark-badge ml-2"></span>
-        <span class="color-label">DARK MODE</span>
+        <span class="color-label">{{ _('DARK MODE') }}</span>
+      </li>
+      <li class="adjustments-line text-center">
+        <button class="btn" data-toggle="modal" data-target="#localeModal">{{ _('Open locale picker') }}</button>
       </li>
     </ul>
-
     <br />
   </div>
 </div>

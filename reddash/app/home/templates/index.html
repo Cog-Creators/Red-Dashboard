@@ -1,6 +1,6 @@
 {% extends "base-site.html" %}
 
-{% block title %} Home {% endblock %}
+{% block title %} {{ _('Home') }} {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -14,8 +14,8 @@
       <div class="card-header ">
         <div class="row">
           <div class="col-sm-12 text-left">
-            <h5 class="card-category">{{ botname }} • Owned by {{ owner }}</h5>
-            <h2 class="card-title">About</h2>
+            <h5 class="card-category">{{ _('{botname} • Owned by {owner}').format(botname=botname, owner=owner) }}</h5>
+            <h2 class="card-title">{{ _('About') }}</h2>
           </div>
         </div>
       </div>
@@ -29,10 +29,10 @@
             <h4>{{ botinfo|safe }}</h4>
             <br />
             {% if redirect %}
-            <a href="https://discordapp.com/oauth2/authorize?client_id={{ botid }}&scope=bot&permissions=0">Invite</a>
+            <a href="https://discord.com/oauth2/authorize?client_id={{ botid }}&scope=bot&permissions=0">Invite</a>
             {% endif %}
             {% if support %}
-            • <a href="{{ support }}">Join support server</a>
+            • <a href="{{ support }}">{{ _('Join support server') }}</a>
             {% endif %}
           </div>
         </div>
@@ -46,7 +46,7 @@
   <div class="col-lg-4">
     <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-category">Total Servers</h5>
+        <h5 class="card-category">{{ _('Total Servers') }}</h5>
         <h3 class="card-title"><i class="tim-icons icon-bank text-primary"></i><span id="servers">{{ servers }}</span>
         </h3>
       </div>
@@ -55,7 +55,7 @@
   <div class="col-lg-4">
     <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-category">Total Members</h5>
+        <h5 class="card-category">{{ _('Total Members') }}</h5>
         <h3 class="card-title"><i class="tim-icons icon-single-02 text-info"></i><span id="users">{{ users }}</span>
         </h3>
       </div>
@@ -64,7 +64,7 @@
   <div class="col-lg-4">
     <div class="card card-chart">
       <div class="card-header">
-        <h5 class="card-category">Online members</h5>
+        <h5 class="card-category">{{ _('Online members') }}</h5>
         <h3 class="card-title"><i class="tim-icons icon-badge text-success"></i><span
             id="onlineusers">{{ onlineusers }}</span></h3>
       </div>
@@ -81,7 +81,7 @@
 <script>
   $(document).ready(function () {
     // RPC Connecting
-    var eventSource = new EventSource("/api/stream")
+    var eventSource = new EventSource("{{ url_for('home_blueprint.stream') }}")
     eventSource.onmessage = function (e) {
       data = e.data.split(", ")
       $("#servers").text(data[0])
