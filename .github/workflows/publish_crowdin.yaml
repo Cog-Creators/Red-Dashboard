@@ -1,5 +1,10 @@
 name: Publish to Crowdin
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * WED'
+  repository_dispatch:
+    types: crowdin
 
 env:
   CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
