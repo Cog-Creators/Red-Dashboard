@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-20 20:53+0000\n"
-"PO-Revision-Date: 2020-07-20 20:54\n"
+"POT-Creation-Date: 2020-07-20 22:08+0000\n"
+"PO-Revision-Date: 2020-07-20 22:08\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -22,33 +22,33 @@ msgstr ""
 #: reddash/app/base/templates/base-site.html:34
 #: reddash/app/base/templates/site_template/navigation.html:12
 msgid "{name} Dashboard"
-msgstr ""
+msgstr "{name} Verwaltung"
 
 #: reddash/app/base/templates/base-site.html:35
 msgid "Interactive dashboard to control and interact with {name}"
-msgstr ""
+msgstr "Interaktive Webseite um {name} zu kontrollieren"
 
 #: reddash/app/base/templates/base-site.html:37
 msgid "Red Dashboard"
-msgstr ""
+msgstr "Red Dashboard"
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
-msgstr ""
+msgstr "Seite 403"
 
 #: reddash/app/base/templates/errors/403.html:14
 #: reddash/app/base/templates/errors/404.html:14
 #: reddash/app/base/templates/errors/500.html:14
 msgid "Uh oh!"
-msgstr ""
+msgstr "Oh oh!"
 
 #: reddash/app/base/templates/errors/403.html:16
 msgid "Error 403"
-msgstr ""
+msgstr "Fehler 403"
 
 #: reddash/app/base/templates/errors/403.html:18
 msgid "Looks like you're not allowed to access that page... Strange..."
-msgstr ""
+msgstr "Es scheint als ob du diese Seite nicht besuchen darfst... merkwürdig..."
 
 #: reddash/app/base/templates/errors/403.html:19
 #: reddash/app/base/templates/errors/404.html:19
@@ -57,41 +57,41 @@ msgstr ""
 #: reddash/app/base/templates/site_template/sidebar.html:50
 #: reddash/app/home/templates/index.html:3
 msgid "Home"
-msgstr ""
+msgstr "Startseite"
 
 #: reddash/app/base/templates/errors/404.html:3
 msgid "Page 404"
-msgstr ""
+msgstr "Seite 404"
 
 #: reddash/app/base/templates/errors/404.html:16
 msgid "Error 404"
-msgstr ""
+msgstr "Fehler 404"
 
 #: reddash/app/base/templates/errors/404.html:18
 msgid "Looks like that pages doesn't exist... Strange..."
-msgstr ""
+msgstr "Diese Seite scheint nicht zu existieren... merkwürdig..."
 
 #: reddash/app/base/templates/errors/500.html:3
 msgid "Page 500"
-msgstr ""
+msgstr "Seite 500"
 
 #: reddash/app/base/templates/errors/500.html:16
 msgid "Error 500"
-msgstr ""
+msgstr "Fehler 500"
 
 #: reddash/app/base/templates/errors/500.html:18
 msgid "Looks like the server ran into an issue... Strange..."
-msgstr ""
+msgstr "Der Server hat scheinbar ein problem... merkwürdig..."
 
 #: reddash/app/base/templates/login/login.html:3
 #: reddash/app/base/templates/login/login.html:15
 #: reddash/app/base/templates/site_template/sidebar.html:70
 msgid "Login"
-msgstr ""
+msgstr "Anmelden"
 
 #: reddash/app/base/templates/login/login.html:23
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!"
-msgstr ""
+msgstr "Wilkommen auf der Verwaltungswebseite für Red Discord Bot. Ein großteil der Magie ist hinter einer Sicherheitstür versteckt. Willst du etwas davon sehen? Melde dich mit deinem Discord-Profil an!"
 
 #: reddash/app/base/templates/login/login.html:31
 #: reddash/app/base/templates/login/login.html:59
@@ -99,11 +99,11 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:115
 #: reddash/app/base/templates/login/login.html:153
 msgid "Login with Discord"
-msgstr ""
+msgstr "Mit Discord einloggen"
 
 #: reddash/app/base/templates/login/login.html:39
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
-msgstr ""
+msgstr "Wilkommen auf der Verwaltungswebseite für Red Discord Bot. Ein großteil der Magie ist hinter einer Sicherheitstür versteckt. Der Schlüssel zu dieser Tür scheint aktuell verloren zu sein. Vielleicht taucht er wieder auf wenn ein Bot verbunden wird. (Der Bot ist aktuell nicht mit der Webseite verbunden)"
 
 #: reddash/app/base/templates/login/login.html:47
 #: reddash/app/base/templates/login/login.html:73
@@ -111,35 +111,35 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:129
 #: reddash/app/base/templates/login/login.html:139
 msgid "Login Failed"
-msgstr ""
+msgstr "Anmeldung fehlgeschlagen"
 
 #: reddash/app/base/templates/login/login.html:53
 msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
-msgstr ""
+msgstr "Du hast die Autorisierung verweigert. Versuch es nochmal."
 
 #: reddash/app/base/templates/login/login.html:66
 msgid "Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Du hast die Autorisierung verweigert. Leider ist gerade die Verbindung mit dem Bot abgebrochen. Versuch es später erneut."
 
 #: reddash/app/base/templates/login/login.html:80
 msgid "Looks like the bot owner may have not configured the dashboard properly. You can try again below if you believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know."
-msgstr ""
+msgstr "Der Bot-Eigentümer hat das Dashboard eventuell nicht korrekt konfiguriert. Wenn du glaubst, dass das ein Fehler war kannst du es erneut versuchen. Sollte dieses Problem bestehen informiere bitte den Bot-Eigentümer oder Serverbesitzer."
 
 #: reddash/app/base/templates/login/login.html:94
 msgid "Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Der Bot-Eigentümer hat das Dashboard eventuell nicht korrekt konfiguriert. Die Verbindung zum Bot ist abgebrochen. Versuche es später erneut."
 
 #: reddash/app/base/templates/login/login.html:108
 msgid "Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is having API issues."
-msgstr ""
+msgstr "Da ist wohl etwas schief gelaufen. Discord ist schuld. Versuche dich erneut anzumelden oder überprüfe ob Discord API Probleme hat."
 
 #: reddash/app/base/templates/login/login.html:122
 msgid "Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Da ist wohl etwas schief gelaufen. Discord ist schuld. Die Verbindung zum Bot ist abgebrochen. Versuche es später erneut."
 
 #: reddash/app/base/templates/login/login.html:134
 msgid "Looks like the bot owner just terminated the connection to the bot. Check back later."
-msgstr ""
+msgstr "Der Bot-Eigentümer hat soeben die Verbindung abgebrochen. Versuche es später erneut."
 
 #: reddash/app/base/templates/login/login.html:146
 msgid "Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot owner or server owner."
@@ -151,54 +151,54 @@ msgstr ""
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:6
 msgid "Choose locale"
-msgstr ""
+msgstr "Sprache wählen"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:10
 msgid "Choose Locale"
-msgstr ""
+msgstr "Sprache wählen"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:18
 #: reddash/app/home/templates/guild.html:722
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:19
 #: reddash/app/home/templates/guild.html:723
 msgid "Save changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:31
 msgid "Sidebar Background"
-msgstr ""
+msgstr "Hintergrund der Seitenleiste"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:46
 msgid "LIGHT MODE"
-msgstr ""
+msgstr "Heller modus (Aaaaah meine Augen)"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:49
 msgid "DARK MODE"
-msgstr ""
+msgstr "Dunkler modus"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:52
 msgid "Open locale picker"
-msgstr ""
+msgstr "Sprachauswahl öffnen"
 
 #: reddash/app/base/templates/site_template/footer.html:6
 msgid "Flask Dashboard Black"
-msgstr ""
+msgstr "Flask Dashboard Black"
 
 #: reddash/app/base/templates/site_template/footer.html:11
 msgid "Adapted for Red Discord Bot"
-msgstr ""
+msgstr "Angepasst auf Red Discord Bot"
 
 #: reddash/app/base/templates/site_template/footer.html:16
 msgid "Coded in Flask by AppSeed"
-msgstr ""
+msgstr "In Flask programmiert von AppSeed"
 
 #: reddash/app/base/templates/site_template/navigation.html:31
 #: reddash/app/base/templates/site_template/navigation.html:38
 msgid "Log out"
-msgstr ""
+msgstr "Abmelden"
 
 #: reddash/app/base/templates/site_template/sidebar.html:8
 #: reddash/app/base/templates/site_template/sidebar.html:29
@@ -206,7 +206,7 @@ msgstr ""
 #: reddash/app/home/templates/dashboard.html:14
 #: reddash/app/home/templates/guild.html:3
 msgid "Dashboard"
-msgstr ""
+msgstr "Kontrollzentrum"
 
 #: reddash/app/base/templates/site_template/sidebar.html:23
 #: reddash/app/base/templates/site_template/sidebar.html:57
@@ -214,17 +214,17 @@ msgstr ""
 #: reddash/app/home/templates/commands.html:14
 #: reddash/app/home/templates/guild.html:1244
 msgid "Commands"
-msgstr ""
+msgstr "Befehle"
 
 #: reddash/app/base/templates/site_template/sidebar.html:35
 #: reddash/app/base/templates/site_template/sidebar.html:64
 #: reddash/app/home/templates/credits.html:3
 msgid "Credits"
-msgstr ""
+msgstr "Mitwirkende"
 
 #: reddash/app/base/templates/site_template/sidebar.html:41
 msgid "Logout"
-msgstr ""
+msgstr "Abmelden"
 
 #: reddash/app/home/templates/commands.html:49
 #: reddash/app/home/templates/guild.html:120
@@ -238,56 +238,38 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:770
 #: reddash/app/home/templates/guild.html:825
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 #: reddash/app/home/templates/commands.html:67
 #: reddash/app/home/templates/guild.html:981
 msgid "Command"
-msgstr ""
+msgstr "Befehl"
 
 #: reddash/app/home/templates/commands.html:68
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: reddash/app/home/templates/commands.html:95
 msgid "Loading data... Please wait a few seconds then reload"
-msgstr ""
+msgstr "Daten werden geladen... Lade die Seite in einigen Sekunden erneut"
 
 #: reddash/app/home/templates/credits.html:17
 msgid "This instance of Red Discord Bot is owned by {owner}."
-msgstr ""
+msgstr "Dies Instanz von Red Discord Bot gehört {owner}."
 
 #: reddash/app/home/templates/credits.html:19
-msgid "The base template for this dashboard was created by"
+msgid "The base template for this dashboard was created by <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, protected under <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT {{ _(\"License\") }}</a>."
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:21
-#: reddash/app/home/templates/credits.html:25
-msgid "protected under"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:23
-#: reddash/app/home/templates/credits.html:27
-msgid "License"
+#: reddash/app/home/templates/credits.html:22
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT {{ _(\"License\") }}</a>."
 msgstr ""
 
 #: reddash/app/home/templates/credits.html:24
-msgid "The dashboard was edited and recoded to work with Red Discord Bot by"
+msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">{{ _(\"GNU General Public License v3.0\") }}</a>."
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:28
-msgid "This dashboard was made for"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:31
-msgid "a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:33
-msgid "GNU General Public License v3.0"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:37
+#: reddash/app/home/templates/credits.html:29
 msgid "Dashboard Version {version}"
 msgstr ""
 
