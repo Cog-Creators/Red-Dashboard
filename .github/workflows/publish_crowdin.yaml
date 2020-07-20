@@ -38,7 +38,7 @@ jobs:
       run: |
         git config user.name 'Github'
         git config user.email 'noreply@github.com'
-        git add -f app/translations
+        git add -f reddash/app/translations
         git commit -m "Automated Crowdin downstream"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v2
