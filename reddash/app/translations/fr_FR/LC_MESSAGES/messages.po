@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-20 20:53+0000\n"
-"PO-Revision-Date: 2020-07-20 20:54\n"
+"POT-Creation-Date: 2020-07-20 18:17-0400\n"
+"PO-Revision-Date: 2020-07-22 12:14\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -34,21 +34,21 @@ msgstr ""
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
-msgstr ""
+msgstr "Page 403"
 
 #: reddash/app/base/templates/errors/403.html:14
 #: reddash/app/base/templates/errors/404.html:14
 #: reddash/app/base/templates/errors/500.html:14
 msgid "Uh oh!"
-msgstr ""
+msgstr "Uh oh !"
 
 #: reddash/app/base/templates/errors/403.html:16
 msgid "Error 403"
-msgstr ""
+msgstr "Erreur 403"
 
 #: reddash/app/base/templates/errors/403.html:18
 msgid "Looks like you're not allowed to access that page... Strange..."
-msgstr ""
+msgstr "On dirait que vous n'êtes pas autorisé à accéder à cette page... Étrange..."
 
 #: reddash/app/base/templates/errors/403.html:19
 #: reddash/app/base/templates/errors/404.html:19
@@ -57,37 +57,37 @@ msgstr ""
 #: reddash/app/base/templates/site_template/sidebar.html:50
 #: reddash/app/home/templates/index.html:3
 msgid "Home"
-msgstr ""
+msgstr "Page d’accueil"
 
 #: reddash/app/base/templates/errors/404.html:3
 msgid "Page 404"
-msgstr ""
+msgstr "Page 404"
 
 #: reddash/app/base/templates/errors/404.html:16
 msgid "Error 404"
-msgstr ""
+msgstr "Erreur 404"
 
 #: reddash/app/base/templates/errors/404.html:18
 msgid "Looks like that pages doesn't exist... Strange..."
-msgstr ""
+msgstr "On dirait que cette page n'existe pas... Étrange..."
 
 #: reddash/app/base/templates/errors/500.html:3
 msgid "Page 500"
-msgstr ""
+msgstr "Page 500"
 
 #: reddash/app/base/templates/errors/500.html:16
 msgid "Error 500"
-msgstr ""
+msgstr "Erreur 500"
 
 #: reddash/app/base/templates/errors/500.html:18
 msgid "Looks like the server ran into an issue... Strange..."
-msgstr ""
+msgstr "On dirait que le serveur a rencontré un problème... Étrange..."
 
 #: reddash/app/base/templates/login/login.html:3
 #: reddash/app/base/templates/login/login.html:15
 #: reddash/app/base/templates/site_template/sidebar.html:70
 msgid "Login"
-msgstr ""
+msgstr "Connexion"
 
 #: reddash/app/base/templates/login/login.html:23
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!"
@@ -99,7 +99,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:115
 #: reddash/app/base/templates/login/login.html:153
 msgid "Login with Discord"
-msgstr ""
+msgstr "Se connecter avec Discord"
 
 #: reddash/app/base/templates/login/login.html:39
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
@@ -111,7 +111,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:129
 #: reddash/app/base/templates/login/login.html:139
 msgid "Login Failed"
-msgstr ""
+msgstr "Échec de la connexion"
 
 #: reddash/app/base/templates/login/login.html:53
 msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
@@ -151,41 +151,37 @@ msgstr ""
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:6
 msgid "Choose locale"
-msgstr ""
+msgstr "Choisir la langue"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:10
 msgid "Choose Locale"
-msgstr ""
+msgstr "Choisir la langue"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:18
 #: reddash/app/home/templates/guild.html:722
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:19
 #: reddash/app/home/templates/guild.html:723
 msgid "Save changes"
-msgstr ""
+msgstr "Sauvegarder les modifications"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:31
 msgid "Sidebar Background"
-msgstr ""
+msgstr "Arrière-plan de la barre latérale"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:46
 msgid "LIGHT MODE"
-msgstr ""
+msgstr "MODE CLAIR"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:49
 msgid "DARK MODE"
-msgstr ""
+msgstr "MODE SOMBRE"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:52
 msgid "Open locale picker"
-msgstr ""
-
-#: reddash/app/base/templates/site_template/footer.html:6
-msgid "Flask Dashboard Black"
-msgstr ""
+msgstr "Ouvrir le sélecteur de langue"
 
 #: reddash/app/base/templates/site_template/footer.html:11
 msgid "Adapted for Red Discord Bot"
@@ -198,7 +194,7 @@ msgstr ""
 #: reddash/app/base/templates/site_template/navigation.html:31
 #: reddash/app/base/templates/site_template/navigation.html:38
 msgid "Log out"
-msgstr ""
+msgstr "Déconnexion"
 
 #: reddash/app/base/templates/site_template/sidebar.html:8
 #: reddash/app/base/templates/site_template/sidebar.html:29
@@ -214,17 +210,17 @@ msgstr ""
 #: reddash/app/home/templates/commands.html:14
 #: reddash/app/home/templates/guild.html:1244
 msgid "Commands"
-msgstr ""
+msgstr "Commandes"
 
 #: reddash/app/base/templates/site_template/sidebar.html:35
 #: reddash/app/base/templates/site_template/sidebar.html:64
 #: reddash/app/home/templates/credits.html:3
 msgid "Credits"
-msgstr ""
+msgstr "Crédits"
 
 #: reddash/app/base/templates/site_template/sidebar.html:41
 msgid "Logout"
-msgstr ""
+msgstr "Déconnexion"
 
 #: reddash/app/home/templates/commands.html:49
 #: reddash/app/home/templates/guild.html:120
@@ -238,56 +234,38 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:770
 #: reddash/app/home/templates/guild.html:825
 msgid "Prefix"
-msgstr ""
+msgstr "Préfixe"
 
 #: reddash/app/home/templates/commands.html:67
 #: reddash/app/home/templates/guild.html:981
 msgid "Command"
-msgstr ""
+msgstr "Commande"
 
 #: reddash/app/home/templates/commands.html:68
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: reddash/app/home/templates/commands.html:95
 msgid "Loading data... Please wait a few seconds then reload"
-msgstr ""
+msgstr "Chargement des données... Veuillez patienter quelques secondes, puis recharger"
 
 #: reddash/app/home/templates/credits.html:17
 msgid "This instance of Red Discord Bot is owned by {owner}."
-msgstr ""
+msgstr "Cette instance de Red Discord Bot appartient à {owner}."
 
 #: reddash/app/home/templates/credits.html:19
-msgid "The base template for this dashboard was created by"
+msgid "The base template for this dashboard was created by <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, protected under <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT License</a>."
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:21
-#: reddash/app/home/templates/credits.html:25
-msgid "protected under"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:23
-#: reddash/app/home/templates/credits.html:27
-msgid "License"
+#: reddash/app/home/templates/credits.html:22
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT License</a>."
 msgstr ""
 
 #: reddash/app/home/templates/credits.html:24
-msgid "The dashboard was edited and recoded to work with Red Discord Bot by"
+msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:28
-msgid "This dashboard was made for"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:31
-msgid "a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:33
-msgid "GNU General Public License v3.0"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:37
+#: reddash/app/home/templates/credits.html:29
 msgid "Dashboard Version {version}"
 msgstr ""
 
@@ -301,7 +279,7 @@ msgstr ""
 
 #: reddash/app/home/templates/dashboard.html:48
 msgid "Loading servers..."
-msgstr ""
+msgstr "Chargement des serveurs..."
 
 #: reddash/app/home/templates/dashboard.html:71
 msgid "You're not in any servers with elevated permissions!"
@@ -309,31 +287,31 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:34
 msgid "Created on {date}"
-msgstr ""
+msgstr "Créé le {date}"
 
 #: reddash/app/home/templates/guild.html:36
 msgid "Joined on {date}"
-msgstr ""
+msgstr "Rejoint le {date}"
 
 #: reddash/app/home/templates/guild.html:42
 msgid "{members} Members | {humans} Humans | {bots} Bots"
-msgstr ""
+msgstr "{members} Membres | {humans} Humains | {bots} Bots"
 
 #: reddash/app/home/templates/guild.html:55
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
 #: reddash/app/home/templates/guild.html:56
 msgid "Verification Level"
-msgstr ""
+msgstr "Niveau de vérification"
 
 #: reddash/app/home/templates/guild.html:57
 msgid "Region"
-msgstr ""
+msgstr "Région"
 
 #: reddash/app/home/templates/guild.html:58
 msgid "Server ID"
-msgstr ""
+msgstr "ID du serveur"
 
 #: reddash/app/home/templates/guild.html:62
 msgid "Your permissions"
@@ -349,23 +327,23 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:90
 msgid "Server prefix"
-msgstr ""
+msgstr "Préfixe du serveur"
 
 #: reddash/app/home/templates/guild.html:92
 msgid "Admin roles"
-msgstr ""
+msgstr "Rôles administrateur"
 
 #: reddash/app/home/templates/guild.html:94
 msgid "Mod roles"
-msgstr ""
+msgstr "Rôles modérateurs"
 
 #: reddash/app/home/templates/guild.html:108
 msgid "Set server prefix"
-msgstr ""
+msgstr "Définir le préfixe du serveur"
 
 #: reddash/app/home/templates/guild.html:109
 msgid "Sets {botname}'s server prefix(es)"
-msgstr ""
+msgstr "Définit le(s) préfixe(s) de serveur de {botname}"
 
 #: reddash/app/home/templates/guild.html:111
 #: reddash/app/home/templates/guild.html:182
@@ -379,57 +357,57 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:759
 #: reddash/app/home/templates/guild.html:814
 msgid "Syntax"
-msgstr ""
+msgstr "Syntaxe"
 
 #: reddash/app/home/templates/guild.html:138
 msgid "Prefixes"
-msgstr ""
+msgstr "Préfixes"
 
 #: reddash/app/home/templates/guild.html:157
 msgid "Update Prefixes"
-msgstr ""
+msgstr "Mettre à jour les préfixes"
 
 #: reddash/app/home/templates/guild.html:159
 msgid "Add Prefix"
-msgstr ""
+msgstr "Ajouter un préfixe"
 
 #: reddash/app/home/templates/guild.html:179
 msgid "Set admin roles"
-msgstr ""
+msgstr "Définir les rôles d'administrateur"
 
 #: reddash/app/home/templates/guild.html:180
 msgid "Sets {botname}'s admin roles in {guild}"
-msgstr ""
+msgstr "Définit les rôles de modérateur de {botname} dans {guild}"
 
 #: reddash/app/home/templates/guild.html:212
 #: reddash/app/home/templates/guild.html:303
 #: reddash/app/home/templates/guild.html:1183
 msgid "Roles"
-msgstr ""
+msgstr "Rôles"
 
 #: reddash/app/home/templates/guild.html:233
 msgid "Update Admin Roles"
-msgstr ""
+msgstr "Mettre à jour les rôles d'administrateur"
 
 #: reddash/app/home/templates/guild.html:238
 msgid "Add Admin Role"
-msgstr ""
+msgstr "Ajouter un rôle d'administrateur"
 
 #: reddash/app/home/templates/guild.html:270
 msgid "Set mod roles"
-msgstr ""
+msgstr "Définir les rôles de modérateur"
 
 #: reddash/app/home/templates/guild.html:271
 msgid "Sets {botname}'s mod roles in {guild}"
-msgstr ""
+msgstr "Définit les rôles de modérateur de {botname} dans {guild}"
 
 #: reddash/app/home/templates/guild.html:324
 msgid "Update Mod Roles"
-msgstr ""
+msgstr "Mettre à jour les rôles de modérateur"
 
 #: reddash/app/home/templates/guild.html:329
 msgid "Add Mod Role"
-msgstr ""
+msgstr "Ajouter un rôle de modérateur"
 
 #: reddash/app/home/templates/guild.html:366
 msgid "Guild-specific command permissions"
@@ -437,7 +415,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:374
 msgid "View rules"
-msgstr ""
+msgstr "Afficher les règles"
 
 #: reddash/app/home/templates/guild.html:377
 msgid "Add default rule"
@@ -506,7 +484,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1446
 #: reddash/app/home/templates/guild.html:1502
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 #: reddash/app/home/templates/guild.html:512
 #: reddash/app/home/templates/guild.html:569
@@ -558,7 +536,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:756
 msgid "View server aliases"
-msgstr ""
+msgstr "Afficher les alias du serveur"
 
 #: reddash/app/home/templates/guild.html:757
 msgid "See {botname}'s registered server aliases"
@@ -582,11 +560,11 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:869
 msgid "Guild not found"
-msgstr ""
+msgstr "Serveur introuvable"
 
 #: reddash/app/home/templates/guild.html:873
 msgid "The specified guild wasn't found. Did you enter the URL correctly?"
-msgstr ""
+msgstr "Le serveur spécifié n'a pas été trouvé. Avez-vous entré l'URL correctement ?"
 
 #: reddash/app/home/templates/guild.html:878
 msgid "Click <a href=\"{dashboard}\">here</a> to go to the dashboard, or <a href=\"{home}\">here</a> to go home."
@@ -594,7 +572,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:890
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: reddash/app/home/templates/guild.html:956
 #: reddash/app/home/templates/guild.html:958
@@ -642,11 +620,11 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:1176
 msgid "Channels"
-msgstr ""
+msgstr "Salons"
 
 #: reddash/app/home/templates/guild.html:1190
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 #: reddash/app/home/templates/guild.html:1197
 #: reddash/app/home/templates/guild.html:1205
@@ -658,20 +636,20 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1231
 #: reddash/app/home/templates/guild.html:1233
 msgid "Failed to fetch commands"
-msgstr ""
+msgstr "Échec de la récupération des commandes"
 
 #: reddash/app/home/templates/guild.html:1237
 msgid "Cogs"
-msgstr ""
+msgstr "Cogs"
 
 #: reddash/app/home/templates/guild.html:1285
 msgid "Cog rules"
-msgstr ""
+msgstr "Règles du cog"
 
 #: reddash/app/home/templates/guild.html:1291
 #: reddash/app/home/templates/guild.html:1316
 msgid "By default, users are"
-msgstr ""
+msgstr "Par défaut, les utilisateurs sont"
 
 #: reddash/app/home/templates/guild.html:1291
 #: reddash/app/home/templates/guild.html:1293
@@ -699,14 +677,14 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1293
 #: reddash/app/home/templates/guild.html:1318
 msgid "role"
-msgstr ""
+msgstr "rôle"
 
 #: reddash/app/home/templates/guild.html:1293
 #: reddash/app/home/templates/guild.html:1295
 #: reddash/app/home/templates/guild.html:1318
 #: reddash/app/home/templates/guild.html:1320
 msgid "are"
-msgstr ""
+msgstr "sont"
 
 #: reddash/app/home/templates/guild.html:1295
 #: reddash/app/home/templates/guild.html:1320
@@ -716,17 +694,17 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1295
 #: reddash/app/home/templates/guild.html:1320
 msgid "channel"
-msgstr ""
+msgstr "salon"
 
 #: reddash/app/home/templates/guild.html:1297
 #: reddash/app/home/templates/guild.html:1322
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: reddash/app/home/templates/guild.html:1297
 #: reddash/app/home/templates/guild.html:1322
 msgid "is"
-msgstr ""
+msgstr "est"
 
 #: reddash/app/home/templates/guild.html:1306
 msgid "No cog rules have been created"
@@ -754,51 +732,51 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1399
 #: reddash/app/home/templates/guild.html:1401
 msgid "Failed to update admin roles"
-msgstr ""
+msgstr "Échec de la mise à jour des rôles d'administrateur"
 
 #: reddash/app/home/templates/guild.html:1403
 msgid "Admin roles successfully updated"
-msgstr ""
+msgstr "Rôles administrateur mis à jour avec succès"
 
 #: reddash/app/home/templates/guild.html:1463
 #: reddash/app/home/templates/guild.html:1465
 msgid "Failed to update mod roles"
-msgstr ""
+msgstr "Échec de la mise à jour des rôles de modérateur"
 
 #: reddash/app/home/templates/guild.html:1467
 msgid "Mod roles successfully updated."
-msgstr ""
+msgstr "Rôles modérateur mis à jour avec succès."
 
 #: reddash/app/home/templates/guild.html:1522
 #: reddash/app/home/templates/guild.html:1524
 msgid "Failed to update prefixes"
-msgstr ""
+msgstr "Échec de la mise à jour des préfixes"
 
 #: reddash/app/home/templates/guild.html:1526
 msgid "Prefixes successfully updated"
-msgstr ""
+msgstr "Préfixes mis à jour avec succès"
 
 #: reddash/app/home/templates/index.html:17
 msgid "{botname} • Owned by {owner}"
-msgstr ""
+msgstr "{botname} • Propriétaire : {owner}"
 
 #: reddash/app/home/templates/index.html:18
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: reddash/app/home/templates/index.html:35
 msgid "Join support server"
-msgstr ""
+msgstr "Rejoindre le serveur de support"
 
 #: reddash/app/home/templates/index.html:49
 msgid "Total Servers"
-msgstr ""
+msgstr "Nombre total de serveurs"
 
 #: reddash/app/home/templates/index.html:58
 msgid "Total Members"
-msgstr ""
+msgstr "Nombre total de membres"
 
 #: reddash/app/home/templates/index.html:67
 msgid "Online members"
-msgstr ""
+msgstr "Membres en ligne"
 
