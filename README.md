@@ -10,8 +10,8 @@ This webserver is in alpha stages.  Please refrain from installing this if you d
 
 > If you don't like this, uninstall the cog and leave the server.  Its your choice.
 
-## Documeantation
-If you want to read the documeantion and know how to install dashboard or get support, click on [this link](https://red-dashboard.gitbook.io/)
+## Installation
+Still looking to install?  Check out the [documentation](https://red-dashboard.readthedocs.io/en/latest/) to get started.
 
 ## Credits
 I would like to thank the following, for all the contributions they have made that helped this become what it is today.

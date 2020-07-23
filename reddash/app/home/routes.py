@@ -3,17 +3,10 @@
 License: MIT
 Copyright (c) 2019 - present AppSeed.us
 """
-from reddash.app import app, update_variables
+from reddash.app import app
 from reddash.app.home import blueprint
-from flask import (
-    render_template,
-    redirect,
-    url_for,
-    session,
-    request,
-    jsonify,
-    Response,
-)
+from flask import render_template, redirect, url_for, session, request, jsonify, Response, g
+from flask_babel import _, refresh
 from jinja2 import TemplateNotFound
 import websocket
 import json
@@ -23,6 +16,19 @@ import logging
 import datetime
 
 dashlog = logging.getLogger("reddash")
+
+
+def get_result(app, requeststr):
+    app.ws.send(json.dumps(requeststr))
+    result = json.loads(app.ws.recv())
+    if "error" in result:
+        if result["error"]["message"] == "Method not found":
+            return jsonify({"status": 0, "message": _("Not connected to bot")})
+        dashlog.error(result["error"])
+        return jsonify({"status": 0, "message": _("Something went wrong")})
+    if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
+        return jsonify({"status": 0, "message": _("Not connected to bot")})
+    return jsonify({"status": 1, "data": result["result"]})
 
 
 def update_core():
@@ -45,33 +51,24 @@ def stream():
 @blueprint.route("/api/getservers")
 def getservers():
     if not session.get("id"):
-        return jsonify({"status": 0, "message": "Not logged in"})
+        return jsonify({"status": 0, "message": _("Not logged in")})
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC__GET_USERS_SERVERS",
-            "params": [int(session["id"])],
+            "params": [str(session["id"])],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
-        return jsonify({"status": 0, "message": "Not connected to bot"})
+        return jsonify({"status": 0, "message": _("Not connected to bot")})
 
 
-@blueprint.route("/api/serverprefix", methods=["POST"])
-def serverprefix():
+@blueprint.route("/api/<guild>/serverprefix", methods=["POST"])
+def serverprefix(guild):
     if not session.get("id"):
-        return jsonify({"status": 0, "message": "Not logged in"})
+        return jsonify({"status": 0, "message": _("Not logged in")})
 
     if (
         end := app.cooldowns["serverprefix"].get(
@@ -81,7 +78,9 @@ def serverprefix():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["serverprefix"][
@@ -89,36 +88,33 @@ def serverprefix():
     ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
     data = request.json
-    guildid = data.get("guild")
     userid = session.get("id")
     method = "set"
     prefixes = data.get("prefixes")
-    if not (guildid and prefixes):
-        return jsonify({"status": 0, "message": "Guild ID and prefixes must be specified"})
+
+    if not prefixes:
+        return jsonify({"status": 0, "message": _("Prefixes must be specified")})
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_BOTSETTINGS__SERVERPREFIX",
-            "params": [int(guildid), int(userid), method, prefixes],
+            "params": [str(guild), str(userid), method, prefixes],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/adminroles", methods=["POST"])
-def adminroles():
+@blueprint.route("/api/<guild>/adminroles", methods=["POST"])
+def adminroles(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
@@ -130,7 +126,9 @@ def adminroles():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["adminroles"][session.get("id")] = datetime.datetime.now() + datetime.timedelta(
@@ -138,36 +136,30 @@ def adminroles():
     )
 
     data = request.json
-    guildid = data.get("guild")
     userid = session.get("id")
     method = "set"
     roles = data.get("roles")
-    if not guildid:
-        return jsonify({"status": 0, "message": "Guild ID must be specified"})
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_BOTSETTINGS__ADMINROLES",
-            "params": [int(guildid), int(userid), method, roles],
+            "params": [str(guild), str(userid), method, roles],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/modroles", methods=["POST"])
-def modroles():
+@blueprint.route("/api/<guild>/modroles", methods=["POST"])
+def modroles(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
@@ -179,7 +171,9 @@ def modroles():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["modroles"][session.get("id")] = datetime.datetime.now() + datetime.timedelta(
@@ -187,35 +181,29 @@ def modroles():
     )
 
     data = request.json
-    guildid = data.get("guild")
     userid = session.get("id")
     method = "set"
     roles = data.get("roles")
-    if not guildid:
-        return jsonify({"status": 0, "message": "Guild ID must be specified"})
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_BOTSETTINGS__MODROLES",
-            "params": [int(guildid), int(userid), method, roles],
+            "params": [str(guild), str(userid), method, roles],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/fetchrules", methods=["GET"])
+@blueprint.route("/api/<guild>/fetchrules", methods=["GET"])
 def fetchrules(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
@@ -228,7 +216,9 @@ def fetchrules(guild):
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["fetchrules"][session.get("id")] = datetime.datetime.now() + datetime.timedelta(
@@ -236,132 +226,129 @@ def fetchrules(guild):
     )
 
     userid = session.get("id")
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__FETCH_GUILD_RULES",
-            "params": [guild, int(userid)],
+            "params": [str(guild), str(userid)],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/fetchtargets", methods=["GET"])
+@blueprint.route("/api/<guild>/fetchtargets", methods=["GET"])
 def fetchtargets(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["fetchtargets"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=20)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["fetchtargets"][
         session.get("id")
-    ] = datetime.datetime.now() + datetime.timedelta(seconds=20)
+    ] = datetime.datetime.now() + datetime.timedelta(seconds=10)
 
     userid = session.get("id")
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__FETCH_GUILD_TARGETS",
-            "params": [guild, int(userid)],
+            "params": [str(guild), str(userid)],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/fetchcogcommands", methods=["GET"])
+@blueprint.route("/api/<guild>/fetchcogcommands", methods=["GET"])
 def fetchcogcommands(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["fetchcogcommands"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["fetchcogcommands"][
         session.get("id")
-    ] = datetime.datetime.now() + datetime.timedelta(seconds=10)
+    ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
     userid = session.get("id")
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__FETCH_COG_COMMANDS",
-            "params": [guild, int(userid)],
+            "params": [str(guild), str(userid)],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/addrule", methods=["POST"])
+@blueprint.route("/api/<guild>/addrule", methods=["POST"])
 def addrule(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["addrule"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["addrule"][session.get("id")] = datetime.datetime.now() + datetime.timedelta(
-        seconds=10
+        seconds=5
     )
 
     data = request.json
@@ -370,48 +357,46 @@ def addrule(guild):
     allow_or_deny = data.get("ad")
     who_or_what = data.get("ww")
     cog_or_command = data.get("cc")
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
 
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__ADD_RULE",
-            "params": [guild, int(userid), allow_or_deny, str(who_or_what), cog_or_command],
+            "params": [str(guild), str(userid), allow_or_deny, str(who_or_what), cog_or_command],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/adddefaultrule", methods=["POST"])
+@blueprint.route("/api/<guild>/adddefaultrule", methods=["POST"])
 def adddefaultrule(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["adddefaultrule"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["adddefaultrule"][
         session.get("id")
-    ] = datetime.datetime.now() + datetime.timedelta(seconds=10)
+    ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
     data = request.json
 
@@ -420,45 +405,43 @@ def adddefaultrule(guild):
     cog_or_command = data.get("cc")
 
     try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
+    try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__ADD_DEFAULT_RULE",
-            "params": [guild, int(userid), allow_or_deny, cog_or_command],
+            "params": [str(guild), str(userid), allow_or_deny, cog_or_command],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/removerule", methods=["POST"])
+@blueprint.route("/api/<guild>/removerule", methods=["POST"])
 def removerule(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["removerule"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["removerule"][session.get("id")] = datetime.datetime.now() + datetime.timedelta(
-        seconds=10
+        seconds=5
     )
 
     data = request.json
@@ -468,46 +451,44 @@ def removerule(guild):
     cog_or_command = data.get("cc")
 
     try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
+    try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__REMOVE_RULE",
-            "params": [guild, int(userid), str(who_or_what), cog_or_command],
+            "params": [str(guild), str(userid), str(who_or_what), cog_or_command],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
-@blueprint.route("/api/<int:guild>/removedefaultrule", methods=["POST"])
+@blueprint.route("/api/<guild>/removedefaultrule", methods=["POST"])
 def removedefaultrule(guild):
     if not session.get("id"):
         return jsonify({"status": 0, "message": "Not logged in"})
 
     if (
         end := app.cooldowns["removedefaultrule"].get(
-            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=10)
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
         )
     ) > datetime.datetime.now():
         return jsonify(
             {
                 "status": 0,
-                "message": f"You are doing that too much.  Try again in {(end - datetime.datetime.now()).seconds} seconds",
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
             }
         )
     app.cooldowns["removedefaultrule"][
         session.get("id")
-    ] = datetime.datetime.now() + datetime.timedelta(seconds=10)
+    ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
     data = request.json
 
@@ -515,23 +496,61 @@ def removedefaultrule(guild):
     cog_or_command = data.get("cc")
 
     try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
+    try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_PERMISSIONS__REMOVE_DEFAULT_RULE",
-            "params": [guild, int(userid), cog_or_command],
+            "params": [str(guild), str(userid), cog_or_command],
         }
         with app.lock:
-            app.ws.send(json.dumps(requeststr))
-            result = json.loads(app.ws.recv())
-            if "error" in result:
-                if result["error"]["message"] == "Method not found":
-                    return jsonify({"status": 0, "message": "Not connected to bot"})
-                dashlog.error(result["error"])
-                return jsonify({"status": 0, "message": "Something went wrong"})
-            if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
-                return jsonify({"status": 0, "message": "Not connected to bot"})
-            return jsonify({"status": 1, "data": result["result"]})
+            return get_result(app, requeststr)
+    except:
+        return jsonify({"status": 0, "message": "Not connected to bot"})
+
+
+@blueprint.route("/api/<guild>/fetchaliases", methods=["GET"])
+def fetchaliases(guild):
+    if not session.get("id"):
+        return jsonify({"status": 0, "message": "Not logged in"})
+
+    if (
+        end := app.cooldowns["fetchaliases"].get(
+            session.get("id"), datetime.datetime.now() - datetime.timedelta(seconds=5)
+        )
+    ) > datetime.datetime.now():
+        return jsonify(
+            {
+                "status": 0,
+                "message": _("You are doing that too much.  Try again in {wait} seconds").format(
+                    wait=(end - datetime.datetime.now()).seconds
+                ),
+            }
+        )
+    app.cooldowns["fetchaliases"][
+        session.get("id")
+    ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
+
+    userid = session.get("id")
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
+    try:
+        requeststr = {
+            "jsonrpc": "2.0",
+            "id": 0,
+            "method": "DASHBOARDRPC_ALIASCC__FETCH_ALIASES",
+            "params": [str(guild), str(userid)],
+        }
+        with app.lock:
+            return get_result(app, requeststr)
     except:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
@@ -539,11 +558,6 @@ def removedefaultrule(guild):
 # --------------------------------------- API ---------------------------------------
 
 # -------------------------------------- Routes -------------------------------------
-
-
-@blueprint.route("/")
-def root():
-    return redirect("/index")
 
 
 @blueprint.route("/index")
@@ -573,10 +587,16 @@ def dashboard():
     return render_template("dashboard.html")
 
 
-@blueprint.route("/guild/<int:guild>")
+@blueprint.route("/guild/<guild>")
 def guild(guild):
     if not session.get("id"):
         return redirect(url_for("base_blueprint.login"))
+
+    try:
+        int(guild)
+    except ValueError:
+        raise ValueError("Guild ID must be integer")
+
     # We won't disconnect the websocket here, even if it fails, so that the main updating thread doesnt run into issues
     try:
         request = {

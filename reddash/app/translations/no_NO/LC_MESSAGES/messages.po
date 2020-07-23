@@ -1,0 +1,782 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: reddashboard\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-07-20 18:17-0400\n"
+"PO-Revision-Date: 2020-07-22 12:14\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: reddashboard\n"
+"X-Crowdin-Project-ID: 412602\n"
+"X-Crowdin-Language: no\n"
+"X-Crowdin-File: messages.pot\n"
+"X-Crowdin-File-ID: 6\n"
+"Language: no_NO\n"
+
+#: reddash/app/base/templates/base-site.html:31
+#: reddash/app/base/templates/base-site.html:34
+#: reddash/app/base/templates/site_template/navigation.html:12
+msgid "{name} Dashboard"
+msgstr "{name} Dashboard"
+
+#: reddash/app/base/templates/base-site.html:35
+msgid "Interactive dashboard to control and interact with {name}"
+msgstr "Interaktivt instrumentbord for å kontrollere og samhandle med {name}"
+
+#: reddash/app/base/templates/base-site.html:37
+msgid "Red Dashboard"
+msgstr "Rødt Dashboard"
+
+#: reddash/app/base/templates/errors/403.html:3
+msgid "Page 403"
+msgstr "Side 403"
+
+#: reddash/app/base/templates/errors/403.html:14
+#: reddash/app/base/templates/errors/404.html:14
+#: reddash/app/base/templates/errors/500.html:14
+msgid "Uh oh!"
+msgstr "Uh oh!"
+
+#: reddash/app/base/templates/errors/403.html:16
+msgid "Error 403"
+msgstr "Feil 403"
+
+#: reddash/app/base/templates/errors/403.html:18
+msgid "Looks like you're not allowed to access that page... Strange..."
+msgstr "Ser ut som du ikke har tilgang til den siden... Merkelig..."
+
+#: reddash/app/base/templates/errors/403.html:19
+#: reddash/app/base/templates/errors/404.html:19
+#: reddash/app/base/templates/errors/500.html:19
+#: reddash/app/base/templates/site_template/sidebar.html:17
+#: reddash/app/base/templates/site_template/sidebar.html:50
+#: reddash/app/home/templates/index.html:3
+msgid "Home"
+msgstr "Hjem"
+
+#: reddash/app/base/templates/errors/404.html:3
+msgid "Page 404"
+msgstr "Side 404"
+
+#: reddash/app/base/templates/errors/404.html:16
+msgid "Error 404"
+msgstr "Feil 404"
+
+#: reddash/app/base/templates/errors/404.html:18
+msgid "Looks like that pages doesn't exist... Strange..."
+msgstr "Ser ut som at sidene ikke finnes... Merkelig..."
+
+#: reddash/app/base/templates/errors/500.html:3
+msgid "Page 500"
+msgstr "Side 500"
+
+#: reddash/app/base/templates/errors/500.html:16
+msgid "Error 500"
+msgstr "Feil 500"
+
+#: reddash/app/base/templates/errors/500.html:18
+msgid "Looks like the server ran into an issue... Strange..."
+msgstr "Ser ut som serveren kjørte på en problem... Merkelig..."
+
+#: reddash/app/base/templates/login/login.html:3
+#: reddash/app/base/templates/login/login.html:15
+#: reddash/app/base/templates/site_template/sidebar.html:70
+msgid "Login"
+msgstr "Logg inn"
+
+#: reddash/app/base/templates/login/login.html:23
+msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!"
+msgstr "Velkommen til den røde Discord Bot oversikten! Mye magi her er skjult bak autorisasjonen. Vil du se noe av det? Logg inn med Discord nedenfor!"
+
+#: reddash/app/base/templates/login/login.html:31
+#: reddash/app/base/templates/login/login.html:59
+#: reddash/app/base/templates/login/login.html:87
+#: reddash/app/base/templates/login/login.html:115
+#: reddash/app/base/templates/login/login.html:153
+msgid "Login with Discord"
+msgstr "Logg inn med Discord"
+
+#: reddash/app/base/templates/login/login.html:39
+msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
+msgstr "Velkommen til den røde Discord Bot oversikten! Mye av magien her er skjult bak godkjenning, men dessverre Pålogging er ikke tilgjengelig fordi dashbordet ikke er koblet til en hvilken som helst bot."
+
+#: reddash/app/base/templates/login/login.html:47
+#: reddash/app/base/templates/login/login.html:73
+#: reddash/app/base/templates/login/login.html:101
+#: reddash/app/base/templates/login/login.html:129
+#: reddash/app/base/templates/login/login.html:139
+msgid "Login Failed"
+msgstr "Påloggingen mislyktes"
+
+#: reddash/app/base/templates/login/login.html:53
+msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
+msgstr "Ser ut som du nektet autorisasjon. Gjort en feil? Klikk knappen nedenfor for å prøve igjen."
+
+#: reddash/app/base/templates/login/login.html:66
+msgid "Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
+msgstr "Ser ut som du nektet autorisasjon. Dessverre har dashbordets tilkobling til boten avsluttet. Kom tilbake senere."
+
+#: reddash/app/base/templates/login/login.html:80
+msgid "Looks like the bot owner may have not configured the dashboard properly. You can try again below if you believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know."
+msgstr "Ser ut som om boteeieren ikke har konfigurert dashbordet ordentlig. Du kan prøve igjen nedenfor hvis du mener at dette var en fluke. Hvis dette skjer flere ganger, vennligst la boteieren eller servereieren få vite det."
+
+#: reddash/app/base/templates/login/login.html:94
+msgid "Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
+msgstr "Ser ut som om boteeieren ikke har konfigurert dashbordet ordentlig. Dessverre har dashbordets forbindelse til boten avsluttet. Sjekke innom senere."
+
+#: reddash/app/base/templates/login/login.html:108
+msgid "Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is having API issues."
+msgstr "Ser ut som noe gikk galt på Discords ende. Prøv å logge inn igjen, eller sjekk for å se om Discord har API problemer."
+
+#: reddash/app/base/templates/login/login.html:122
+msgid "Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
+msgstr "Ser ut som om noe gikk galt på slutten av Discord. Dessverre har dashbordets forbindelse til boten avsluttet. Sjekke innom senere."
+
+#: reddash/app/base/templates/login/login.html:134
+msgid "Looks like the bot owner just terminated the connection to the bot. Check back later."
+msgstr "Ser ut som bot eieren akkurat avsluttet tilkoblingen til boten. Kom tilbake senere."
+
+#: reddash/app/base/templates/login/login.html:146
+msgid "Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot owner or server owner."
+msgstr "Ser ut som noe gikk galt. Prøv å logge inn igjen nedenfor. Hvis dette fortsetter å skje, vennligst rapporter til bot eieren eller server eieren."
+
+#: reddash/app/base/templates/login/login.html:160
+msgid "Looks like something went wrong. Unfortunately, the dashboard's connection to the bot has terminated. Try again later. If it continues to occur, please report to bot owner or server owner."
+msgstr "Ser ut som at noe gikk galt. Dessverre har dashbordets forbindelse til boten avsluttet. Prøv igjen senere. Hvis det fortsetter å skje, kan du rapportere til boteier eller servereier."
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:6
+msgid "Choose locale"
+msgstr "Velg språk"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:10
+msgid "Choose Locale"
+msgstr "Velg språk"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:18
+#: reddash/app/home/templates/guild.html:722
+msgid "Close"
+msgstr "Lukk"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:19
+#: reddash/app/home/templates/guild.html:723
+msgid "Save changes"
+msgstr "Lagre endringer"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:31
+msgid "Sidebar Background"
+msgstr "Sidepanel bakgrunn"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:46
+msgid "LIGHT MODE"
+msgstr "LYSMODUS"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:49
+msgid "DARK MODE"
+msgstr "MØR MODUS"
+
+#: reddash/app/base/templates/site_template/fixed-plugin.html:52
+msgid "Open locale picker"
+msgstr "Åpne språkvalg"
+
+#: reddash/app/base/templates/site_template/footer.html:11
+msgid "Adapted for Red Discord Bot"
+msgstr "Tilpasset for Rød Discord Bot"
+
+#: reddash/app/base/templates/site_template/footer.html:16
+msgid "Coded in Flask by AppSeed"
+msgstr "Kodet i Flask av AppSeed"
+
+#: reddash/app/base/templates/site_template/navigation.html:31
+#: reddash/app/base/templates/site_template/navigation.html:38
+msgid "Log out"
+msgstr "Logg ut"
+
+#: reddash/app/base/templates/site_template/sidebar.html:8
+#: reddash/app/base/templates/site_template/sidebar.html:29
+#: reddash/app/home/templates/dashboard.html:3
+#: reddash/app/home/templates/dashboard.html:14
+#: reddash/app/home/templates/guild.html:3
+msgid "Dashboard"
+msgstr "Dashbord"
+
+#: reddash/app/base/templates/site_template/sidebar.html:23
+#: reddash/app/base/templates/site_template/sidebar.html:57
+#: reddash/app/home/templates/commands.html:3
+#: reddash/app/home/templates/commands.html:14
+#: reddash/app/home/templates/guild.html:1244
+msgid "Commands"
+msgstr "Kommandoer"
+
+#: reddash/app/base/templates/site_template/sidebar.html:35
+#: reddash/app/base/templates/site_template/sidebar.html:64
+#: reddash/app/home/templates/credits.html:3
+msgid "Credits"
+msgstr "Kreditt"
+
+#: reddash/app/base/templates/site_template/sidebar.html:41
+msgid "Logout"
+msgstr "Logg ut"
+
+#: reddash/app/home/templates/commands.html:49
+#: reddash/app/home/templates/guild.html:120
+#: reddash/app/home/templates/guild.html:194
+#: reddash/app/home/templates/guild.html:285
+#: reddash/app/home/templates/guild.html:404
+#: reddash/app/home/templates/guild.html:454
+#: reddash/app/home/templates/guild.html:522
+#: reddash/app/home/templates/guild.html:598
+#: reddash/app/home/templates/guild.html:652
+#: reddash/app/home/templates/guild.html:770
+#: reddash/app/home/templates/guild.html:825
+msgid "Prefix"
+msgstr "Prefiks"
+
+#: reddash/app/home/templates/commands.html:67
+#: reddash/app/home/templates/guild.html:981
+msgid "Command"
+msgstr "Kommando"
+
+#: reddash/app/home/templates/commands.html:68
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: reddash/app/home/templates/commands.html:95
+msgid "Loading data... Please wait a few seconds then reload"
+msgstr "Laster inn data... Vennligst vent noen sekunder og last inn på nytt"
+
+#: reddash/app/home/templates/credits.html:17
+msgid "This instance of Red Discord Bot is owned by {owner}."
+msgstr "Denne forekomsten av Rød Discord Bot eies av {owner}."
+
+#: reddash/app/home/templates/credits.html:19
+msgid "The base template for this dashboard was created by <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, protected under <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT License</a>."
+msgstr "Grunnmalen for dette dashbordet ble opprettet av <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, beskyttet under <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT {{ _(\"License\")}}</a>."
+
+#: reddash/app/home/templates/credits.html:22
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT License</a>."
+msgstr "Dashbordet ble redigert og rekodet for å arbeide med Rød Discord Bot av <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, beskyttet under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT {}</a>."
+
+#: reddash/app/home/templates/credits.html:24
+msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
+msgstr "Dette dashbordet ble laget for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Rød Discord Bot</a>, en multifunksjonell, fullt modulær Discord bot, laget av Twentysix, laget av mange. Rød Discord Bot er beskyttet under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">{{ _(\"GNU General Publikk License v3.0\")}}</a>."
+
+#: reddash/app/home/templates/credits.html:29
+msgid "Dashboard Version {version}"
+msgstr "Installert versjon {version}"
+
+#: reddash/app/home/templates/dashboard.html:18
+msgid "Welcome to the interactive dashboard, where you can control your bot via this easy-to-use interface. Choose a server that you have elevated permissions in below. If you don't see your server below, check to make sure that your server's owner has set roles with <code>{command}</code>"
+msgstr "Velkommen til det interaktive dashbordet, hvor du kan kontrollere boten din via dette brukervennlige grensesnittet. Velg en server som du har forhøyede tillatelser nedenfor. Hvis du ikke ser serveren din nedenfor, må du kontrollere at serverens eier har satt roller med <code>{command}</code>"
+
+#: reddash/app/home/templates/dashboard.html:37
+msgid "Search"
+msgstr "Søk"
+
+#: reddash/app/home/templates/dashboard.html:48
+msgid "Loading servers..."
+msgstr "Laster inn servere..."
+
+#: reddash/app/home/templates/dashboard.html:71
+msgid "You're not in any servers with elevated permissions!"
+msgstr "Du er ikke i noen servere med forhøyede tillatelser!"
+
+#: reddash/app/home/templates/guild.html:34
+msgid "Created on {date}"
+msgstr "Opprettet på {date}"
+
+#: reddash/app/home/templates/guild.html:36
+msgid "Joined on {date}"
+msgstr "Ble med den {date}"
+
+#: reddash/app/home/templates/guild.html:42
+msgid "{members} Members | {humans} Humans | {bots} Bots"
+msgstr "{members} medlemmer | {humans} Mennesker | {bots} bots"
+
+#: reddash/app/home/templates/guild.html:55
+msgid "Owner"
+msgstr "Eier"
+
+#: reddash/app/home/templates/guild.html:56
+msgid "Verification Level"
+msgstr "Verifiseringsnivå"
+
+#: reddash/app/home/templates/guild.html:57
+msgid "Region"
+msgstr "Region"
+
+#: reddash/app/home/templates/guild.html:58
+msgid "Server ID"
+msgstr "Server ID"
+
+#: reddash/app/home/templates/guild.html:62
+msgid "Your permissions"
+msgstr "Dine tillatelser"
+
+#: reddash/app/home/templates/guild.html:65
+msgid "<b>Warning - </b> You haven't registered any roles with the dashboard. Please use <code>{command}</code> to allow other people to use it."
+msgstr "<b>Advarsel - </b> Du har ikke registrert noen roller med dashbordet. Bruk <code>{command}</code> for å tillate andre å bruke den."
+
+#: reddash/app/home/templates/guild.html:81
+msgid "Guild-specific bot settings"
+msgstr "Guild-spesifikke bot innstillinger"
+
+#: reddash/app/home/templates/guild.html:90
+msgid "Server prefix"
+msgstr "Prefiks for server"
+
+#: reddash/app/home/templates/guild.html:92
+msgid "Admin roles"
+msgstr "Admin roller"
+
+#: reddash/app/home/templates/guild.html:94
+msgid "Mod roles"
+msgstr "Mod roller"
+
+#: reddash/app/home/templates/guild.html:108
+msgid "Set server prefix"
+msgstr "Angi server prefiks"
+
+#: reddash/app/home/templates/guild.html:109
+msgid "Sets {botname}'s server prefix(es)"
+msgstr "Angir {botname} sine server prefiks(er)"
+
+#: reddash/app/home/templates/guild.html:111
+#: reddash/app/home/templates/guild.html:182
+#: reddash/app/home/templates/guild.html:185
+#: reddash/app/home/templates/guild.html:273
+#: reddash/app/home/templates/guild.html:276
+#: reddash/app/home/templates/guild.html:445
+#: reddash/app/home/templates/guild.html:513
+#: reddash/app/home/templates/guild.html:589
+#: reddash/app/home/templates/guild.html:643
+#: reddash/app/home/templates/guild.html:759
+#: reddash/app/home/templates/guild.html:814
+msgid "Syntax"
+msgstr "Syntaks"
+
+#: reddash/app/home/templates/guild.html:138
+msgid "Prefixes"
+msgstr "Prefikser"
+
+#: reddash/app/home/templates/guild.html:157
+msgid "Update Prefixes"
+msgstr "Oppdater prefikser"
+
+#: reddash/app/home/templates/guild.html:159
+msgid "Add Prefix"
+msgstr "Legg til prefiks"
+
+#: reddash/app/home/templates/guild.html:179
+msgid "Set admin roles"
+msgstr "Angi admin-roller"
+
+#: reddash/app/home/templates/guild.html:180
+msgid "Sets {botname}'s admin roles in {guild}"
+msgstr "Setter {botname}'s admin roller i {guild}"
+
+#: reddash/app/home/templates/guild.html:212
+#: reddash/app/home/templates/guild.html:303
+#: reddash/app/home/templates/guild.html:1183
+msgid "Roles"
+msgstr "Roller"
+
+#: reddash/app/home/templates/guild.html:233
+msgid "Update Admin Roles"
+msgstr "Oppdater admin roller"
+
+#: reddash/app/home/templates/guild.html:238
+msgid "Add Admin Role"
+msgstr "Legg til Admin rolle"
+
+#: reddash/app/home/templates/guild.html:270
+msgid "Set mod roles"
+msgstr "Angi mod-roller"
+
+#: reddash/app/home/templates/guild.html:271
+msgid "Sets {botname}'s mod roles in {guild}"
+msgstr "Setter {botname}'s admin roller i {guild}"
+
+#: reddash/app/home/templates/guild.html:324
+msgid "Update Mod Roles"
+msgstr "Oppdater Mod roller"
+
+#: reddash/app/home/templates/guild.html:329
+msgid "Add Mod Role"
+msgstr "Legg til Mod Rolle"
+
+#: reddash/app/home/templates/guild.html:366
+msgid "Guild-specific command permissions"
+msgstr "Guild-spesifikke kommandotillatelser"
+
+#: reddash/app/home/templates/guild.html:374
+msgid "View rules"
+msgstr "Se reglene"
+
+#: reddash/app/home/templates/guild.html:377
+msgid "Add default rule"
+msgstr "Legg til standardregel"
+
+#: reddash/app/home/templates/guild.html:379
+msgid "Add rule"
+msgstr "Legg til regel"
+
+#: reddash/app/home/templates/guild.html:382
+msgid "Remove default rule"
+msgstr "Fjern standard regel"
+
+#: reddash/app/home/templates/guild.html:384
+msgid "Remove rule"
+msgstr "Fjern regel"
+
+#: reddash/app/home/templates/guild.html:397
+msgid "Permission rules"
+msgstr "Rettighets regler"
+
+#: reddash/app/home/templates/guild.html:423
+msgid "Permission rules have not been loaded. Please re-click View Rules on the left"
+msgstr "Du har ikke lastet inn noen tillatelser. Klikk regler for visning på nytt til venstre"
+
+#: reddash/app/home/templates/guild.html:444
+#: reddash/app/home/templates/guild.html:494
+msgid "Add Default Rule"
+msgstr "Legg til standard regel"
+
+#: reddash/app/home/templates/guild.html:470
+#: reddash/app/home/templates/guild.html:538
+msgid "Step #1: Set permission action"
+msgstr "Steg #1: Angi tillatelseshandling"
+
+#: reddash/app/home/templates/guild.html:476
+#: reddash/app/home/templates/guild.html:544
+msgid "Allow"
+msgstr "Tillatt"
+
+#: reddash/app/home/templates/guild.html:479
+#: reddash/app/home/templates/guild.html:547
+msgid "Deny"
+msgstr "Avslå"
+
+#: reddash/app/home/templates/guild.html:484
+#: reddash/app/home/templates/guild.html:677
+msgid "Step #2: Select cog/command"
+msgstr "Steg #2: Velg cog/kommando"
+
+#: reddash/app/home/templates/guild.html:488
+#: reddash/app/home/templates/guild.html:556
+#: reddash/app/home/templates/guild.html:565
+#: reddash/app/home/templates/guild.html:618
+#: reddash/app/home/templates/guild.html:672
+#: reddash/app/home/templates/guild.html:681
+#: reddash/app/home/templates/guild.html:943
+#: reddash/app/home/templates/guild.html:1012
+#: reddash/app/home/templates/guild.html:1047
+#: reddash/app/home/templates/guild.html:1084
+#: reddash/app/home/templates/guild.html:1117
+#: reddash/app/home/templates/guild.html:1153
+#: reddash/app/home/templates/guild.html:1214
+#: reddash/app/home/templates/guild.html:1267
+#: reddash/app/home/templates/guild.html:1382
+#: reddash/app/home/templates/guild.html:1446
+#: reddash/app/home/templates/guild.html:1502
+msgid "Loading..."
+msgstr "Laster inn..."
+
+#: reddash/app/home/templates/guild.html:512
+#: reddash/app/home/templates/guild.html:569
+msgid "Add Rule"
+msgstr "Legg til regel"
+
+#: reddash/app/home/templates/guild.html:552
+msgid "Step #2: Select target"
+msgstr "Steg #2: Velg mål"
+
+#: reddash/app/home/templates/guild.html:561
+msgid "Step #3: Select cog/command"
+msgstr "Steg #3: Velg cog/kommando"
+
+#: reddash/app/home/templates/guild.html:588
+#: reddash/app/home/templates/guild.html:624
+msgid "Remove Default Rule"
+msgstr "Fjern standard regel"
+
+#: reddash/app/home/templates/guild.html:614
+msgid "Select the cog/command"
+msgstr "Velg en cog/kommando"
+
+#: reddash/app/home/templates/guild.html:642
+#: reddash/app/home/templates/guild.html:687
+msgid "Remove Rule"
+msgstr "Fjern regel"
+
+#: reddash/app/home/templates/guild.html:668
+msgid "Step #1: Select target"
+msgstr "Steg #1: Velg mål"
+
+#: reddash/app/home/templates/guild.html:713
+msgid "Edit command alias"
+msgstr "Rediger kommandoen alias"
+
+#: reddash/app/home/templates/guild.html:732
+msgid "Guild-specific custom commands and aliases"
+msgstr "Guild-spesifikke tilpassede kommandoer og aliaser"
+
+#: reddash/app/home/templates/guild.html:740
+#: reddash/app/home/templates/guild.html:982
+msgid "Aliases"
+msgstr "Aliaser"
+
+#: reddash/app/home/templates/guild.html:743
+msgid "Custom Commands"
+msgstr "Tilpassede kommandoer"
+
+#: reddash/app/home/templates/guild.html:756
+msgid "View server aliases"
+msgstr "Vis serveraliaser"
+
+#: reddash/app/home/templates/guild.html:757
+msgid "See {botname}'s registered server aliases"
+msgstr "Se {botname} s registrerte serveraliaser"
+
+#: reddash/app/home/templates/guild.html:789
+msgid "Aliases have not been loaded. Please re-click Aliases on the left"
+msgstr "Aliaser har ikke blitt lastet. Vennligst klikk Aliases på nytt til venstre"
+
+#: reddash/app/home/templates/guild.html:810
+msgid "View server customcommands"
+msgstr "Vis serverens tilpasningskommandoer"
+
+#: reddash/app/home/templates/guild.html:812
+msgid "See {botname}'s registered server custom commands"
+msgstr "Se {botname}'s registrerte server-tilpassede kommandoer"
+
+#: reddash/app/home/templates/guild.html:844
+msgid "This tab is not available yet."
+msgstr "Denne kategorien er ikke tilgjengelig ennå."
+
+#: reddash/app/home/templates/guild.html:869
+msgid "Guild not found"
+msgstr "Guild ikke funnet"
+
+#: reddash/app/home/templates/guild.html:873
+msgid "The specified guild wasn't found. Did you enter the URL correctly?"
+msgstr "Den angitte guilden ble ikke funnet. Tok du URL'en riktig?"
+
+#: reddash/app/home/templates/guild.html:878
+msgid "Click <a href=\"{dashboard}\">here</a> to go to the dashboard, or <a href=\"{home}\">here</a> to go home."
+msgstr "Klikk <a href=\"{dashboard}\">her</a> for å gå til dashbordet, eller <a href=\"{home}\">her</a> for å dra hjem."
+
+#: reddash/app/home/templates/guild.html:890
+msgid "Error"
+msgstr "Feil"
+
+#: reddash/app/home/templates/guild.html:956
+#: reddash/app/home/templates/guild.html:958
+#: reddash/app/home/templates/guild.html:1280
+#: reddash/app/home/templates/guild.html:1282
+msgid "Failed to fetch rules"
+msgstr "Kunne ikke hente regler"
+
+#: reddash/app/home/templates/guild.html:975
+msgid "No aliases are registered on this server"
+msgstr "Ingen aliaser er registrert på denne serveren"
+
+#: reddash/app/home/templates/guild.html:992
+msgid "Refreshed aliases."
+msgstr "Oppdaterte aliaser."
+
+#: reddash/app/home/templates/guild.html:1027
+#: reddash/app/home/templates/guild.html:1029
+#: reddash/app/home/templates/guild.html:1063
+#: reddash/app/home/templates/guild.html:1065
+msgid "Failed to add rule"
+msgstr "Kunne ikke lagre regel"
+
+#: reddash/app/home/templates/guild.html:1031
+#: reddash/app/home/templates/guild.html:1067
+msgid "Rule successfully added"
+msgstr "Regel lagt til"
+
+#: reddash/app/home/templates/guild.html:1098
+#: reddash/app/home/templates/guild.html:1100
+#: reddash/app/home/templates/guild.html:1132
+#: reddash/app/home/templates/guild.html:1134
+msgid "Failed to remove rule"
+msgstr "Kunne ikke fjerne regel"
+
+#: reddash/app/home/templates/guild.html:1102
+#: reddash/app/home/templates/guild.html:1136
+msgid "Rule successfully removed"
+msgstr "Regel fjernet"
+
+#: reddash/app/home/templates/guild.html:1170
+#: reddash/app/home/templates/guild.html:1172
+msgid "Failed to fetch targets"
+msgstr "Kunne ikke hente mål"
+
+#: reddash/app/home/templates/guild.html:1176
+msgid "Channels"
+msgstr "Kanaler"
+
+#: reddash/app/home/templates/guild.html:1190
+msgid "Users"
+msgstr "Brukere"
+
+#: reddash/app/home/templates/guild.html:1197
+#: reddash/app/home/templates/guild.html:1205
+#: reddash/app/home/templates/guild.html:1251
+#: reddash/app/home/templates/guild.html:1259
+msgid "Choose target"
+msgstr "Velg mål"
+
+#: reddash/app/home/templates/guild.html:1231
+#: reddash/app/home/templates/guild.html:1233
+msgid "Failed to fetch commands"
+msgstr "Kunne ikke hente kommandoer"
+
+#: reddash/app/home/templates/guild.html:1237
+msgid "Cogs"
+msgstr "Cogs"
+
+#: reddash/app/home/templates/guild.html:1285
+msgid "Cog rules"
+msgstr "Cog regler"
+
+#: reddash/app/home/templates/guild.html:1291
+#: reddash/app/home/templates/guild.html:1316
+msgid "By default, users are"
+msgstr "Som standard er brukere"
+
+#: reddash/app/home/templates/guild.html:1291
+#: reddash/app/home/templates/guild.html:1293
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1316
+#: reddash/app/home/templates/guild.html:1318
+#: reddash/app/home/templates/guild.html:1320
+#: reddash/app/home/templates/guild.html:1322
+msgid "permission to use the"
+msgstr "tillatelse til å bruke"
+
+#: reddash/app/home/templates/guild.html:1291
+#: reddash/app/home/templates/guild.html:1293
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1297
+msgid "cog"
+msgstr "cog"
+
+#: reddash/app/home/templates/guild.html:1293
+#: reddash/app/home/templates/guild.html:1318
+msgid "Users with the"
+msgstr "Brukere med"
+
+#: reddash/app/home/templates/guild.html:1293
+#: reddash/app/home/templates/guild.html:1318
+msgid "role"
+msgstr "rolle"
+
+#: reddash/app/home/templates/guild.html:1293
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1318
+#: reddash/app/home/templates/guild.html:1320
+msgid "are"
+msgstr "er"
+
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1320
+msgid "Users in the"
+msgstr "Brukerne i"
+
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1320
+msgid "channel"
+msgstr "kanal"
+
+#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1322
+msgid "User"
+msgstr "Bruker"
+
+#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1322
+msgid "is"
+msgstr "er"
+
+#: reddash/app/home/templates/guild.html:1306
+msgid "No cog rules have been created"
+msgstr "Ingen cog regler er opprettet"
+
+#: reddash/app/home/templates/guild.html:1310
+msgid "Command rules"
+msgstr "Regler for kommando"
+
+#: reddash/app/home/templates/guild.html:1316
+#: reddash/app/home/templates/guild.html:1318
+#: reddash/app/home/templates/guild.html:1320
+#: reddash/app/home/templates/guild.html:1322
+msgid "command"
+msgstr "kommando"
+
+#: reddash/app/home/templates/guild.html:1331
+msgid "No command rules have been created"
+msgstr "Ingen kommandoregler er opprettet"
+
+#: reddash/app/home/templates/guild.html:1335
+msgid "Refreshed rules"
+msgstr "Oppdaterte regler"
+
+#: reddash/app/home/templates/guild.html:1399
+#: reddash/app/home/templates/guild.html:1401
+msgid "Failed to update admin roles"
+msgstr "Kunne ikke oppdatere admin-roller"
+
+#: reddash/app/home/templates/guild.html:1403
+msgid "Admin roles successfully updated"
+msgstr "Admin-roller oppdatert"
+
+#: reddash/app/home/templates/guild.html:1463
+#: reddash/app/home/templates/guild.html:1465
+msgid "Failed to update mod roles"
+msgstr "Kunne ikke oppdatere mod roller"
+
+#: reddash/app/home/templates/guild.html:1467
+msgid "Mod roles successfully updated."
+msgstr "Mod roller oppdatert."
+
+#: reddash/app/home/templates/guild.html:1522
+#: reddash/app/home/templates/guild.html:1524
+msgid "Failed to update prefixes"
+msgstr "Kunne ikke oppdatere prefikser"
+
+#: reddash/app/home/templates/guild.html:1526
+msgid "Prefixes successfully updated"
+msgstr "Prefikser oppdatert"
+
+#: reddash/app/home/templates/index.html:17
+msgid "{botname} • Owned by {owner}"
+msgstr "{botname} • Eies av {owner}"
+
+#: reddash/app/home/templates/index.html:18
+msgid "About"
+msgstr "Om"
+
+#: reddash/app/home/templates/index.html:35
+msgid "Join support server"
+msgstr "Bli med i support serveren"
+
+#: reddash/app/home/templates/index.html:49
+msgid "Total Servers"
+msgstr "Totalt Servere"
+
+#: reddash/app/home/templates/index.html:58
+msgid "Total Members"
+msgstr "Totalt medlemmer"
+
+#: reddash/app/home/templates/index.html:67
+msgid "Online members"
+msgstr "Påloggede brukere"
+

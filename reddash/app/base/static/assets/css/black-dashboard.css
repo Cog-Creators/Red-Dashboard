@@ -3757,6 +3757,7 @@ input[type="button"].btn-block {
   background-clip: padding-box;
   border: 0 solid rgba(34, 42, 66, 0.15);
   border-radius: 0.1428rem;
+  overflow: hidden;
   box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1), 0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -6766,7 +6767,7 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #ffffff;
+  background-color: #1e1e2f;
   background-clip: padding-box;
   border: 1px solid rgba(34, 42, 66, 0.2);
   border-radius: 0.2857rem;
@@ -14419,9 +14420,6 @@ fieldset[disabled] .btn-link.active {
 .dropdown-menu .dropdown-item,
 .bootstrap-select .dropdown-menu.inner li a {
   font-size: 0.75rem;
-  padding-top: .6rem;
-  padding-bottom: .6rem;
-  margin-top: 5px;
   -webkit-transition: all 150ms linear;
   -moz-transition: all 150ms linear;
   -o-transition: all 150ms linear;
@@ -17241,6 +17239,7 @@ table.tablesorter thead tr .headerSortDown {
   left: auto !important;
   top: -52px !important;
   width: 290px;
+  height: 250px;
   border-radius: 0.1875rem;
   padding: 0 10px;
   background: linear-gradient(#222a42, #1d253b);

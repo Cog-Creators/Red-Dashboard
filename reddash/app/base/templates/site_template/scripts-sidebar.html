@@ -1,145 +1,154 @@
+<script>
+  $(document).ready(function () {
+    $().ready(function () {
+      $sidebar = $('.sidebar');
+      $navbar = $('.navbar');
+      $main_panel = $('.main-panel');
+      $buttons = $('button');
+      $as = $('a')
+      $inputs = $('input')
+      $bcitems = $('.breadcrumb-item')
 
-  <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
-        $navbar = $('.navbar');
-        $main_panel = $('.main-panel');
-        $buttons = $('button');
-        $as = $('a')
-        $inputs = $('input')
-        $bcitems = $('.breadcrumb-item')
+      $full_page = $('.full-page');
 
-        $full_page = $('.full-page');
+      $sidebar_responsive = $('body > .navbar-collapse');
+      sidebar_mini_active = true;
+      white_color = false;
 
-        $sidebar_responsive = $('body > .navbar-collapse');
-        sidebar_mini_active = true;
-        white_color = false;
-
-        white_color = localStorage.getItem("color") === "white"
-
-
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+      white_color = localStorage.getItem("color") === "white"
 
 
+      window_width = $(window).width();
 
-        $('.fixed-plugin a').click(function(event) {
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
+      fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+      reversed_locales = { 'Afrikaans - Suid-Afrika': 'af_ZA', 'العربية - المملكة العربية السعودية': 'ar_SA', 'български - България': 'bg_BG', 'català - Espanya': 'ca_ES', 'čeština - Česko': 'cs_CZ', 'dansk - Danmark': 'da_DK', 'Deutsch - Deutschland': 'de_DE', 'Ελληνικά - Ελλάδα': 'el_GR', 'English': 'en', 'español - España': 'es_ES', 'suomi - Suomi': 'fi_FI', 'français': 'fr', 'français - France': 'fr_FR', 'עברית - ישראל': 'he_IL', 'magyar - Magyarország': 'hu_HU', 'Indonesia - Indonesia': 'id_ID', 'italiano - Italia': 'it_IT', '日本語 - 日本': 'ja_JP', '한국어 - 대한민국': 'ko_KR', 'Nederlands - Nederland': 'nl_NL', 'norsk bokmål - Norge': 'no_NO', 'polski - Polska': 'pl_PL', 'português - Brasil': 'pt_BR', 'português - Portugal': 'pt_PT', 'română - România': 'ro_RO', 'русский - Россия': 'ru_RU', 'slovenčina - Slovensko': 'sk_SK', 'svenska - Sverige': 'sv_SE', 'Türkçe - Türkiye': 'tr_TR', 'українська - Україна': 'uk_UA', 'Tiếng Việt - Việt Nam': 'vi_VN', '中文 - 中国': 'zh_CN', '中文 - 中國香港特別行政區': 'zh_HK', '中文 - 台灣': 'zh_TW' }
+
+
+      $("#changelocale").click(function (event) {
+        var locale = $("#localepicker").val()
+        var real_locale = reversed_locales[locale]
+        var redirect = "{{ url_for('home_blueprint.index') }}".replace("{{ session.get('lang_code') }}", real_locale)
+        window.location.replace(redirect)
+      })
+      $('.fixed-plugin a').click(function (event) {
+        if ($(this).hasClass('switch-trigger')) {
+          if (event.stopPropagation) {
+            event.stopPropagation();
+          } else if (window.event) {
+            window.event.cancelBubble = true;
           }
-        });
+        }
+      });
 
-        $('.fixed-plugin .background-color span').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
+      $('.fixed-plugin .background-color span').click(function () {
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
 
-          var new_color = $(this).data('color');
+        var new_color = $(this).data('color');
 
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data', new_color);
+        if ($sidebar.length != 0) {
+          $sidebar.attr('data', new_color);
+        }
+
+        if ($main_panel.length != 0) {
+          $main_panel.attr('data', new_color);
+        }
+
+        if ($full_page.length != 0) {
+          $full_page.attr('filter-color', new_color);
+        }
+
+        if ($sidebar_responsive.length != 0) {
+          $sidebar_responsive.attr('data', new_color);
+        }
+
+        $buttons.each(function () {
+          if (!$(this).attr("data-id")) {
+            $(this).attr("data", new_color)
           }
+        })
+        $as.attr('data', new_color)
+        $bcitems.attr('data', new_color)
+        $inputs.attr('data', new_color)
 
-          if ($main_panel.length != 0) {
-            $main_panel.attr('data', new_color);
-          }
 
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
+        localStorage.setItem("theme", new_color)
+      });
 
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data', new_color);
-          }
+      $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
+        var $btn = $(this);
 
-          $buttons.attr('data', new_color)
-          $as.attr('data', new_color)
-          $bcitems.attr('data', new_color)
-          $inputs.attr('data', new_color)
-          
+        if (sidebar_mini_active == true) {
+          $('body').removeClass('sidebar-mini');
+          sidebar_mini_active = false;
+          blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+        } else {
+          $('body').addClass('sidebar-mini');
+          sidebar_mini_active = true;
+          blackDashboard.showSidebarMessage('Sidebar mini activated...');
+        }
 
-          localStorage.setItem("theme", new_color)
-        });
+        // we simulate the window Resize so the charts will get updated in realtime.
+        var simulateWindowResize = setInterval(function () {
+          window.dispatchEvent(new Event('resize'));
+        }, 180);
 
-        $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
-          var $btn = $(this);
+        // we stop the simulation of Window Resize after the animations are completed
+        setTimeout(function () {
+          clearInterval(simulateWindowResize);
+        }, 1000);
+      });
 
-          if (sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            sidebar_mini_active = false;
-            blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
-          } else {
-            $('body').addClass('sidebar-mini');
-            sidebar_mini_active = true;
-            blackDashboard.showSidebarMessage('Sidebar mini activated...');
-          }
+      $('.switch-change-color input').on("switchChange.bootstrapSwitch", function () {
+        var $btn = $(this);
+        if (white_color == true) {
 
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
+          $('body').addClass('change-background');
+          setTimeout(function () {
+            $('body').removeClass('change-background');
+            $('body').removeClass('white-content');
+            $('.dropdown-menu').removeClass('white-content')
+            $('.list-group').removeClass('white-text')
+            $('ol.breadcrumb').removeClass('white-content')
+            $('.navbar').removeClass('white-content')
+          }, 900);
+          white_color = false;
+        } else {
 
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-        });
+          $('body').addClass('change-background');
+          setTimeout(function () {
+            $('body').removeClass('change-background');
+            $('body').addClass('white-content');
+            $('.dropdown-menu').addClass('white-content')
+            $('.list-group').addClass('white-text')
+            $('ol.breadcrumb').addClass('white-content')
+            $('.navbar').addClass('white-content')
+          }, 900);
 
-        $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
-          var $btn = $(this);
-          if (white_color == true) {
+          white_color = true;
+        }
+      });
 
-            $('body').addClass('change-background');
-            setTimeout(function() {
-              $('body').removeClass('change-background');
-              $('body').removeClass('white-content');
-              $('.dropdown-menu').removeClass('white-content')
-              $('.list-group').removeClass('white-text')
-              $('ol.breadcrumb').removeClass('white-content')
-              $('.navbar').removeClass('white-content')
-            }, 900);
-            white_color = false;
-          } else {
+      $('.light-badge').click(function () {
+        $('body').addClass('white-content');
+        $('.dropdown-menu').addClass('white-content')
+        $('.list-group').addClass('white-text')
+        $('ol.breadcrumb').addClass('white-content')
+        $('.navbar').addClass('white-content')
 
-            $('body').addClass('change-background');
-            setTimeout(function() {
-              $('body').removeClass('change-background');
-              $('body').addClass('white-content');
-              $('.dropdown-menu').addClass('white-content')
-              $('.list-group').addClass('white-text')
-              $('ol.breadcrumb').addClass('white-content')
-              $('.navbar').addClass('white-content')
-            }, 900);
+        localStorage.setItem("color", "white")
+      });
 
-            white_color = true;
-          }
-        });
+      $('.dark-badge').click(function () {
+        $('body').removeClass('white-content');
+        $('.dropdown-menu').removeClass('white-content')
+        $('.list-group').removeClass('white-text')
+        $('ol.breadcrumb').removeClass('white-content')
+        $('.navbar').removeClass('white-content')
 
-        $('.light-badge').click(function() {
-          $('body').addClass('white-content');
-          $('.dropdown-menu').addClass('white-content')
-          $('.list-group').addClass('white-text')
-          $('ol.breadcrumb').addClass('white-content')
-          $('.navbar').addClass('white-content')
-
-          localStorage.setItem("color", "white")
-        });
-
-        $('.dark-badge').click(function() {
-          $('body').removeClass('white-content');
-          $('.dropdown-menu').removeClass('white-content')
-          $('.list-group').removeClass('white-text')
-          $('ol.breadcrumb').removeClass('white-content')
-          $('.navbar').removeClass('white-content')
-
-          localStorage.setItem("color", "black")
-        });
+        localStorage.setItem("color", "black")
       });
     });
-  </script>
-  
+  });
+</script>

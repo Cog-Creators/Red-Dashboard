@@ -1,0 +1,9 @@
+api_key_env: CROWDIN_API_KEY
+project_identifier_env: CROWDIN_PROJECT_ID
+base_path: ./reddash/app/
+preserve_hierarchy: true
+files:
+  - source: messages.pot
+    translation: translations/%locale%/LC_MESSAGES/messages.po
+    translation_replace:
+        "-": _
