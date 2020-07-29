@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-07-20 18:17-0400\n"
-"PO-Revision-Date: 2020-07-22 12:14\n"
+"PO-Revision-Date: 2020-07-29 12:15\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:115
 #: reddash/app/base/templates/login/login.html:153
 msgid "Login with Discord"
-msgstr ""
+msgstr "Inicia sesión con Discord"
 
 #: reddash/app/base/templates/login/login.html:39
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
@@ -267,7 +267,7 @@ msgstr "Este panel fue creado para <a href=\"https://github.com/Cog-Creators/Red
 
 #: reddash/app/home/templates/credits.html:29
 msgid "Dashboard Version {version}"
-msgstr ""
+msgstr "Versión del Panel {version}"
 
 #: reddash/app/home/templates/dashboard.html:18
 msgid "Welcome to the interactive dashboard, where you can control your bot via this easy-to-use interface. Choose a server that you have elevated permissions in below. If you don't see your server below, check to make sure that your server's owner has set roles with <code>{command}</code>"
@@ -391,11 +391,11 @@ msgstr "Actualizar roles de administrador"
 
 #: reddash/app/home/templates/guild.html:238
 msgid "Add Admin Role"
-msgstr ""
+msgstr "Añadir rol de Admin"
 
 #: reddash/app/home/templates/guild.html:270
 msgid "Set mod roles"
-msgstr ""
+msgstr "Establecer roles de mod"
 
 #: reddash/app/home/templates/guild.html:271
 msgid "Sets {botname}'s mod roles in {guild}"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:329
 msgid "Add Mod Role"
-msgstr ""
+msgstr "Añadir rol de mod"
 
 #: reddash/app/home/templates/guild.html:366
 msgid "Guild-specific command permissions"
@@ -415,27 +415,27 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:374
 msgid "View rules"
-msgstr ""
+msgstr "Ver reglas"
 
 #: reddash/app/home/templates/guild.html:377
 msgid "Add default rule"
-msgstr ""
+msgstr "Añadir regla por defecto"
 
 #: reddash/app/home/templates/guild.html:379
 msgid "Add rule"
-msgstr ""
+msgstr "Añadir regla"
 
 #: reddash/app/home/templates/guild.html:382
 msgid "Remove default rule"
-msgstr ""
+msgstr "Eliminar regla por defecto"
 
 #: reddash/app/home/templates/guild.html:384
 msgid "Remove rule"
-msgstr ""
+msgstr "Eliminar regla"
 
 #: reddash/app/home/templates/guild.html:397
 msgid "Permission rules"
-msgstr ""
+msgstr "Reglas de Permiso"
 
 #: reddash/app/home/templates/guild.html:423
 msgid "Permission rules have not been loaded. Please re-click View Rules on the left"
@@ -444,7 +444,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:444
 #: reddash/app/home/templates/guild.html:494
 msgid "Add Default Rule"
-msgstr ""
+msgstr "Añadir Regla por Defecto"
 
 #: reddash/app/home/templates/guild.html:470
 #: reddash/app/home/templates/guild.html:538
@@ -454,12 +454,12 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:476
 #: reddash/app/home/templates/guild.html:544
 msgid "Allow"
-msgstr ""
+msgstr "Permitir"
 
 #: reddash/app/home/templates/guild.html:479
 #: reddash/app/home/templates/guild.html:547
 msgid "Deny"
-msgstr ""
+msgstr "Rechazar"
 
 #: reddash/app/home/templates/guild.html:484
 #: reddash/app/home/templates/guild.html:677
@@ -484,12 +484,12 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1446
 #: reddash/app/home/templates/guild.html:1502
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: reddash/app/home/templates/guild.html:512
 #: reddash/app/home/templates/guild.html:569
 msgid "Add Rule"
-msgstr ""
+msgstr "Añadir Regla"
 
 #: reddash/app/home/templates/guild.html:552
 msgid "Step #2: Select target"
@@ -502,7 +502,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:588
 #: reddash/app/home/templates/guild.html:624
 msgid "Remove Default Rule"
-msgstr ""
+msgstr "Eliminar Regla por Defecto"
 
 #: reddash/app/home/templates/guild.html:614
 msgid "Select the cog/command"
@@ -511,7 +511,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:642
 #: reddash/app/home/templates/guild.html:687
 msgid "Remove Rule"
-msgstr ""
+msgstr "Eliminar Regla"
 
 #: reddash/app/home/templates/guild.html:668
 msgid "Step #1: Select target"
@@ -606,7 +606,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1132
 #: reddash/app/home/templates/guild.html:1134
 msgid "Failed to remove rule"
-msgstr ""
+msgstr "Error al eliminar la regla"
 
 #: reddash/app/home/templates/guild.html:1102
 #: reddash/app/home/templates/guild.html:1136
@@ -649,7 +649,7 @@ msgstr "Reglas de Cog"
 #: reddash/app/home/templates/guild.html:1291
 #: reddash/app/home/templates/guild.html:1316
 msgid "By default, users are"
-msgstr ""
+msgstr "Por defecto, los usuarios son"
 
 #: reddash/app/home/templates/guild.html:1291
 #: reddash/app/home/templates/guild.html:1293
@@ -712,7 +712,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:1310
 msgid "Command rules"
-msgstr ""
+msgstr "Reglas de comando"
 
 #: reddash/app/home/templates/guild.html:1316
 #: reddash/app/home/templates/guild.html:1318
@@ -727,7 +727,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:1335
 msgid "Refreshed rules"
-msgstr ""
+msgstr "Reglas actualizadas"
 
 #: reddash/app/home/templates/guild.html:1399
 #: reddash/app/home/templates/guild.html:1401
@@ -741,7 +741,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1463
 #: reddash/app/home/templates/guild.html:1465
 msgid "Failed to update mod roles"
-msgstr ""
+msgstr "Error al actualizar los mod"
 
 #: reddash/app/home/templates/guild.html:1467
 msgid "Mod roles successfully updated."
@@ -750,7 +750,7 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1522
 #: reddash/app/home/templates/guild.html:1524
 msgid "Failed to update prefixes"
-msgstr ""
+msgstr "Error al actualizar los prefijos"
 
 #: reddash/app/home/templates/guild.html:1526
 msgid "Prefixes successfully updated"
