@@ -79,6 +79,7 @@ def create_app(host, port, rpcport, interval, debug, dev):
     # Initialize core variables
     app.task_manager = TaskManager(app, console, progress_bar)
     app.dashlog = dashlog
+    app.progress = progress_bar
     app.running = True
     app.variables = {}
     app.commanddata = {}

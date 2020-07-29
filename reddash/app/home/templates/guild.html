@@ -1313,7 +1313,7 @@
                     var cmdlines = []
                     for (let rule of rules) {
                         if (rule.type === "Default") {
-                            cmdlines.unshift(`{{ _('By default, users are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
+                            cmdlines.unshift(`<li>{{ _('By default, users are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
                         } else if (rule.type === "Role") {
                             cmdlines.push(`<li>{{ _('Users with the') }} <code>${rule.name}</code> {{ _('role') }} (${rule.id}) {{ _('are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
                         } else if (rule.type === "Channel") {

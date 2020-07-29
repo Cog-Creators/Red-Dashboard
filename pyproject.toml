@@ -1,8 +1,5 @@
 [tool.black]
-    line-length = 99
-    target-version = ['py38']
-    include = '\.py$'
-    exclude = '''
+exclude = '''
     /(
           \.eggs
         | \.git
@@ -16,3 +13,11 @@
         | dist
     )/
     '''
+include = '\.py$'
+line-length = 99
+target-version = ['py38']
+
+[tool.isort]
+combine_as_imports = true
+line-length = 99
+profile = "black"
