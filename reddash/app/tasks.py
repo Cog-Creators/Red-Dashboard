@@ -103,7 +103,7 @@ class TaskManager:
                             )
                             self.app.ws.close()
                             self.app.ws = websocket.WebSocket()
-                            self.app.ws.connect(url)
+                            self.app.ws.connect(self.app.ws_url)
                         self.app.rpcversion = result["result"]["v"]
         except Exception as e:
             self.progress.update(task, status="[bold red]Stopped[/bold red]")
