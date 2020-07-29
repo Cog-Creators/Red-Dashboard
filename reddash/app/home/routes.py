@@ -561,6 +561,7 @@ def fetchaliases(guild):
 
 
 @blueprint.route("/index")
+@blueprint.route("/")
 def index():
     return render_template("index.html")
 

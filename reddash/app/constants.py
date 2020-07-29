@@ -44,7 +44,6 @@ ALLOWED_LOCALES = [
     "el_GR",
     "es_ES",
     "fi_FI",
-    "fr",
     "fr_FR",
     "he_IL",
     "hu_HU",

@@ -26,10 +26,12 @@ setup(
         "websocket_client==0.57.0",
         "waitress==1.4.3",
         "rich==1.3.1",
+        "fuzzywuzzy==0.18.0",
+        "python-Levenshtein==0.12.0",
     ],
     extras_require={
         "style": ["black==19.10b0"],
-        "docs": ["Sphinx==2.4.4", "sphinx-rtd-theme==0.4.3"]
+        "docs": ["Sphinx==2.4.4", "sphinx-rtd-theme==0.4.3"],
     },
     entry_points={"console_scripts": ["reddash=reddash.__main__:main"]},
 )

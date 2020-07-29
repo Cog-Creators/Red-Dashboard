@@ -41,7 +41,7 @@ class TaskManager:
                     if not result:
                         continue
 
-                    connected = check_for_disconnect(self.app, result)
+                    connected = check_for_disconnect(self.app, method, result)
                     if not connected:
                         continue
 

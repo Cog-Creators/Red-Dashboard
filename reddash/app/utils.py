@@ -7,6 +7,7 @@ import websocket
 
 from flask import render_template, redirect, request, url_for, session
 from rich import rule, columns, table as rtable, panel
+from fuzzywuzzy import process
 
 from reddash.app.constants import DEFAULTS, WS_EXCEPTIONS, __version__
 
@@ -19,17 +20,6 @@ def register_blueprints(app):
     @app.errorhandler(404)
     def page_not_found(e):
         return render_template("page-404.html"), 404
-
-    # This is so Babel automatically redirects to a proper locale
-    @app.route("/")
-    def home():
-        session["lang_code"] = request.accept_languages.best_match(app.config["LANGUAGES"])
-        return redirect(url_for("home_blueprint.index"))
-
-    # This is so /callback automatically redirects to /<locale>/callback so it's not as confusing for owner to set the redirect
-    @app.route("/callback")
-    def redirect_callback():
-        return redirect(url_for("base_blueprint.callback", **request.args))
 
 
 def apply_themes(app):
@@ -77,6 +67,43 @@ def add_constants(app):
 
 
 def initialize_babel(app, babel):
+    @app.before_request
+    def pull_locale():
+        # Locale is determined in the following priority:
+        #  lang_code argument
+        #  lang_code session value
+        #  default from browser
+        args = request.args
+        try:
+            lang = args.get("lang_code", None)
+        except AttributeError:
+            lang = None
+
+        if lang:
+            # User had lang_code argument in request, lets check if its valid
+            processed = process.extractOne(lang, app.config["LANGUAGES"])
+            if processed[1] < 80:
+                # Too low of a match, abort lang_code argument and go to session value
+                lang = None
+            else:
+                # User had lang_code argument, and it closely matched a registered locale.  This will be used
+                locale = processed[0]
+
+        if not lang:
+            # User either did not have lang_code argument or it wasnt able to match a registered locale.
+            # Let's check if theres something in the session
+            lang = session.get("lang_code")
+            if lang:
+                # User has a locale in session, that is already confirmed (otherwise would not be registered)
+                locale = lang
+            else:
+                # User does not have lang_code argument, and does not have a locale stored in sesion.
+                # Let's get the best one according to Flask
+                locale = request.accept_languages.best_match(app.config["LANGUAGES"])
+
+        # Locale variable is now the determined locale.  Let's save that so it will be used on next request as well
+        session["lang_code"] = locale
+
     @babel.localeselector
     def get_locale():
         if not session.get("lang_code", None):
@@ -140,7 +167,7 @@ def secure_send(app, request):
         return result
 
 
-def check_for_disconnect(app, result):
+def check_for_disconnect(app, method, result):
     if "error" in result:
         if result["error"]["message"] == "Method not found":
             if method == "DASHBOARDRPC__GET_VARIABLES":
