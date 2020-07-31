@@ -14,7 +14,8 @@ Still looking to install?  Check out the [documentation](https://red-dashboard.r
 ## Legal
 - This project is protected under [GNU GPL v3 License](https://github.com/NeuroAssassin/Red-Dashboard/blob/master/LICENSE).
 - The template for this project is protected under [MIT license](https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md), but is sublicensed by the GNU GPL v3 License mentioned previously.
-- This project has a Privacy Policy, which can be found [here]()
+- This project has a Privacy Policy, which can be found [here](https://github.com/NeuroAssassin/Red-Dashboard/blob/master/legal/Privacy%20Policy.md)
+- This project has a Cookie Policy, which can be found [here](https://github.com/NeuroAssassin/Red-Dashboard/blob/master/legal/Cookie%20Policy.md)
 
 
 ## Credits
