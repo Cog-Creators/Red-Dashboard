@@ -33,3 +33,6 @@ We don't believe in storing data backend that doesn't have to be, where we could
 ## 3. How you can remove these cookies
 
 You may not like your data being stored in cookies.  We fully understand this.  In order to remove this data from your browser so we can no longer store the current data, you may go to your browser settings and Clear All Cookies/LocalStorage data.  This will reset your data and will forget everything we know about you.  Additionally, due to security reasons, your authorization data will be invalidated everytime the website/service restarts.
+
+## 4. Changes to Cookie Policy
+It is possible that this Cookie Policy may be updated as situations change and to satisfy legal requirements.  If this happens at any time, we will attempt to notify owners through a third-party app, Discord, 30 days before such changes to privacy policies are put into effect, so that the owner may communicate to users the changes that the Cookie Policy will be experiencing.
