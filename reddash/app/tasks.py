@@ -47,6 +47,7 @@ class TaskManager:
 
                 if method == "DASHBOARDRPC__GET_VARIABLES":
                     self.app.variables = result["result"]
+                    self.app.blacklisted = result["result"]["blacklisted"]
                 else:
                     self.app.commanddata = result["result"]
                 self.app.variables["disconnected"] = False

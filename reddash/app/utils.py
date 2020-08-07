@@ -4,8 +4,10 @@ from os import path
 import time
 import json
 import websocket
+import jwt
+import threading
 
-from flask import render_template, redirect, request, url_for, session
+from flask import render_template, redirect, request, url_for, session, g
 from rich import rule, columns, table as rtable, panel
 from fuzzywuzzy import process
 
@@ -20,6 +22,16 @@ def register_blueprints(app):
     @app.errorhandler(404)
     def page_not_found(e):
         return render_template("page-404.html"), 404
+
+    @app.before_request
+    def blockip():
+        ip = request.environ.get("HTTP_X_FORWARDED_FOR") or request.remote_addr
+        if request.path.startswith(("/static", "/api/stream", "/blacklisted")):
+            return
+        if not ip in app.blacklisted:
+            g.id = get_user_id(app, request, session)
+        if ip in app.blacklisted:
+            return redirect(url_for("base_blueprint.blacklisted"))
 
 
 def apply_themes(app):
@@ -111,6 +123,20 @@ def initialize_babel(app, babel):
         return session["lang_code"]
 
 
+def get_user_id(app, req, ses):
+    try:
+        payload = jwt.decode(ses["id"], app.jwt_secret_key, algorithms=["HS256"])
+    except (jwt.InvalidSignatureError, jwt.InvalidTokenError):
+        ip = req.environ.get("HTTP_X_FORWARDED_FOR") or req.remote_addr
+        app.blacklisted.append(ip)
+        thread = threading.Thread(target=notify_owner_of_blacklist, args=[app, ip])
+        thread.start()
+        return None
+    except (jwt.ExpiredSignatureError, KeyError):
+        return False
+    return payload["userid"]
+
+
 def startup_message(app, progress, kwargs):
     table = rtable.Table(title="Settings")
     table.add_column("Setting", style="red", no_wrap=True)
@@ -185,3 +211,27 @@ def check_for_disconnect(app, method, result):
         app.ws = None
         return False
     return True
+
+
+def notify_owner_of_blacklist(app, ip):
+    while True:
+        if app.ws and app.ws.connected:
+            request = {
+                "jsonrpc": "2.0",
+                "id": 0,
+                "method": "DASHBOARDRPC__NOTIFY_OWNERS_OF_BLACKLIST",
+                "params": [ip],
+            }
+            with app.lock:
+                if not app.ws:
+                    initialized = initialize_websocket(app)
+                    if not initialized:
+                        time.sleep(1)
+                        continue
+
+                result = secure_send(app, request)
+                if not result or "error" in result:
+                    time.sleep(1)
+                    continue
+                break
+        time.sleep(1)

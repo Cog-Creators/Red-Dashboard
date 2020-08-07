@@ -1,0 +1,26 @@
+{% extends "base-site.html" %}
+
+{% block title %} {{ _('Blacklisted') }} {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h6 class="card-category text-gray">{{ _("You've been blacklisted.") }}</h6>
+                <p>{{ _("We've noticed some suspicious activity from you.  Please contact bot owner.") }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

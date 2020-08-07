@@ -706,21 +706,22 @@
 {% endif %}
 {% if 'aliascc' in data['data']['permslist'] %}
 <div class="modal fade" id="aliasModal" tabindex="-1" role="dialog" aria-labelledby="aliasModalLabel"
-    aria-hidden="true">
+    data-backdrop="static" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="aliasModalLabel">{{ _('Edit command alias') }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 id="aliasModalLabel">{{ _('Edit alias') }}</h5>
+                <span class="clickable" aria-hidden="true" data-dismiss="modal" aria-label="Close">&times;</span>
             </div>
             <div class="modal-body">
-                ...
+                <div class="form-group">
+                    <textarea id="aliasModalCommand" class="form-control" cols="70"
+                        placeholder="{{ _('The command the alias executes') }}"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Close') }}</button>
-                <button type="button" class="btn btn-primary">{{ _('Save changes') }}</button>
+                <button type="button" class="btn" data-dismiss="modal">{{ _('Close') }}</button>
+                <button type="button" class="btn">{{ _('Save changes') }}</button>
             </div>
         </div>
     </div>
@@ -938,6 +939,20 @@
     /* ---------------------------------------------------------------------------------------------------------------------
                                                         Aliases group
        --------------------------------------------------------------------------------------------------------------------- */
+
+    function safe(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Alias modal
+    $(document).on('click', '.editaliasbutton', function () {
+        var command = $(this).parent().parent().data("command")
+        var textarea = $("#aliasModalCommand")
+        textarea.text(command)
+        textarea.height(textarea.prop('scrollHeight'))
+        $("#aliasModal").modal('toggle')
+    })
+
     // Fetch aliases
     $("#aliases-tab").click(function () {
         $("#fetchaliasesstatus").html("{{ _('Loading...') }}")
@@ -961,11 +976,11 @@
                 var inside = ""
                 for (let [command, aliases] of Object.entries(json.data)) {
                     inside += `
-                        <tr data-command="${command}" data-command="${aliases.raw.join(" ")}">
-                            <th><code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>${command}</code></th>
+                        <tr data-command="${safe(command)}" data-command-aliases="${safe(aliases.raw.join(" "))}">
+                            <th><code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>${safe(aliases.shortened)}</code></th>
                             <th>${aliases.humanized}</th>
                             <td>
-                                <span class="clickable">
+                                <span class="clickable editaliasbutton">
                                     <i class="tim-icons icon-pencil"></i>
                                 </span>
                             </td>

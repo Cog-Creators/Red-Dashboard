@@ -65,8 +65,13 @@ babel = Babel()
 def create_app(host, port, rpcport, interval, debug, dev):
     url = f"{WS_URL}{rpcport}"
 
+    # Session encoding
     fernet_key = fernet.Fernet.generate_key()
     secret_key = base64.urlsafe_b64decode(fernet_key)
+
+    # JWT encoding
+    jwt_fernet_key = fernet.Fernet.generate_key()
+    jwt_secret_key = base64.urlsafe_b64decode(jwt_fernet_key)
 
     # Initialize websocket variables
     app.ws_url = url
@@ -96,6 +101,7 @@ def create_app(host, port, rpcport, interval, debug, dev):
         "removedefaultrule": {},
         "fetchaliases": {},
     }
+    app.blacklisted = []
 
     # Initialize config
     app.config.from_object(__name__)
@@ -113,6 +119,7 @@ def create_app(host, port, rpcport, interval, debug, dev):
     app.config["LANGUAGES"] = ALLOWED_LOCALES
     app.config["LOCALE_DICT"] = locale_dict
     app.secret_key = secret_key
+    app.jwt_secret_key = jwt_secret_key
 
     babel = Babel(app)
 

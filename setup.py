@@ -28,6 +28,8 @@ setup(
         "rich==1.3.1",
         "fuzzywuzzy==0.18.0",
         "python-Levenshtein==0.12.0",
+        "pyjwt==1.7.1",
+        "flask-babel==1.0.0",
     ],
     extras_require={
         "style": ["black==19.10b0"],

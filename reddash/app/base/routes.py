@@ -5,6 +5,7 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from flask import jsonify, render_template, redirect, request, url_for, session, g
+from datetime import datetime, timedelta
 from flask_babel import _, refresh
 
 from reddash.app.base import blueprint
@@ -14,6 +15,7 @@ import requests
 import websocket
 import json
 import logging
+import jwt
 
 dashlog = logging.getLogger("reddash")
 
@@ -83,7 +85,13 @@ def callback():
     )
     new_data = new.json()
     if "id" in new_data:
-        session["id"] = new_data["id"]
+        payload = {
+            "userid": new_data["id"],
+            "iat": datetime.utcnow(),
+            "exp": datetime.utcnow() + timedelta(minutes=30),
+        }
+        token = jwt.encode(payload, app.jwt_secret_key, algorithm="HS256")
+        session["id"] = token
         session[
             "avatar"
         ] = f"https://cdn.discordapp.com/avatars/{new_data['id']}/{new_data['avatar']}.png"
@@ -104,6 +112,11 @@ def login():
 def logout():
     del session["id"]
     return redirect(url_for("base_blueprint.login"))
+
+
+@blueprint.route("/blacklisted")
+def blacklisted():
+    return render_template("errors/blacklisted.html")
 
 
 ## Errors

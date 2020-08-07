@@ -57,7 +57,7 @@ def getservers():
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC__GET_USERS_SERVERS",
-            "params": [str(session["id"])],
+            "params": [str(g.id)],
         }
         with app.lock:
             return get_result(app, requeststr)
@@ -88,7 +88,7 @@ def serverprefix(guild):
     ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
     data = request.json
-    userid = session.get("id")
+    userid = g.id
     method = "set"
     prefixes = data.get("prefixes")
 
@@ -136,7 +136,7 @@ def adminroles(guild):
     )
 
     data = request.json
-    userid = session.get("id")
+    userid = g.id
     method = "set"
     roles = data.get("roles")
 
@@ -181,7 +181,7 @@ def modroles(guild):
     )
 
     data = request.json
-    userid = session.get("id")
+    userid = g.id
     method = "set"
     roles = data.get("roles")
 
@@ -225,7 +225,7 @@ def fetchrules(guild):
         seconds=5
     )
 
-    userid = session.get("id")
+    userid = g.id
 
     try:
         int(guild)
@@ -267,7 +267,7 @@ def fetchtargets(guild):
         session.get("id")
     ] = datetime.datetime.now() + datetime.timedelta(seconds=10)
 
-    userid = session.get("id")
+    userid = g.id
 
     try:
         int(guild)
@@ -309,7 +309,7 @@ def fetchcogcommands(guild):
         session.get("id")
     ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
-    userid = session.get("id")
+    userid = g.id
 
     try:
         int(guild)
@@ -353,7 +353,7 @@ def addrule(guild):
 
     data = request.json
 
-    userid = session.get("id")
+    userid = g.id
     allow_or_deny = data.get("ad")
     who_or_what = data.get("ww")
     cog_or_command = data.get("cc")
@@ -400,7 +400,7 @@ def adddefaultrule(guild):
 
     data = request.json
 
-    userid = session.get("id")
+    userid = g.id
     allow_or_deny = data.get("ad")
     cog_or_command = data.get("cc")
 
@@ -446,7 +446,7 @@ def removerule(guild):
 
     data = request.json
 
-    userid = session.get("id")
+    userid = g.id
     who_or_what = data.get("ww")
     cog_or_command = data.get("cc")
 
@@ -492,7 +492,7 @@ def removedefaultrule(guild):
 
     data = request.json
 
-    userid = session.get("id")
+    userid = g.id
     cog_or_command = data.get("cc")
 
     try:
@@ -535,7 +535,7 @@ def fetchaliases(guild):
         session.get("id")
     ] = datetime.datetime.now() + datetime.timedelta(seconds=5)
 
-    userid = session.get("id")
+    userid = g.id
 
     try:
         int(guild)
@@ -604,7 +604,7 @@ def guild(guild):
             "jsonrpc": "2.0",
             "id": random.randint(1, 1000),
             "method": "DASHBOARDRPC__GET_SERVER",
-            "params": [int(session["id"]), int(guild)],
+            "params": [int(g.id), int(guild)],
         }
         with app.lock:
             app.ws.send(json.dumps(request))
