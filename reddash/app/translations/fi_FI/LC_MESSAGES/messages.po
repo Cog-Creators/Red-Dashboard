@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-20 18:17-0400\n"
-"PO-Revision-Date: 2020-07-29 12:14\n"
+"POT-Creation-Date: 2020-08-12 12:15+0000\n"
+"PO-Revision-Date: 2020-08-12 12:15\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -83,6 +83,18 @@ msgstr ""
 msgid "Looks like the server ran into an issue... Strange..."
 msgstr ""
 
+#: reddash/app/base/templates/errors/blacklisted.html:3
+msgid "Blacklisted"
+msgstr ""
+
+#: reddash/app/base/templates/errors/blacklisted.html:14
+msgid "You've been blacklisted."
+msgstr ""
+
+#: reddash/app/base/templates/errors/blacklisted.html:15
+msgid "We've noticed some suspicious activity from you.  Please contact bot owner."
+msgstr ""
+
 #: reddash/app/base/templates/login/login.html:3
 #: reddash/app/base/templates/login/login.html:15
 #: reddash/app/base/templates/site_template/sidebar.html:70
@@ -158,12 +170,12 @@ msgid "Choose Locale"
 msgstr ""
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:18
-#: reddash/app/home/templates/guild.html:722
+#: reddash/app/home/templates/guild.html:723
 msgid "Close"
 msgstr ""
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:19
-#: reddash/app/home/templates/guild.html:723
+#: reddash/app/home/templates/guild.html:724
 msgid "Save changes"
 msgstr ""
 
@@ -208,7 +220,7 @@ msgstr ""
 #: reddash/app/base/templates/site_template/sidebar.html:57
 #: reddash/app/home/templates/commands.html:3
 #: reddash/app/home/templates/commands.html:14
-#: reddash/app/home/templates/guild.html:1244
+#: reddash/app/home/templates/guild.html:1259
 msgid "Commands"
 msgstr ""
 
@@ -231,13 +243,13 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:522
 #: reddash/app/home/templates/guild.html:598
 #: reddash/app/home/templates/guild.html:652
-#: reddash/app/home/templates/guild.html:770
-#: reddash/app/home/templates/guild.html:825
+#: reddash/app/home/templates/guild.html:771
+#: reddash/app/home/templates/guild.html:826
 msgid "Prefix"
 msgstr ""
 
 #: reddash/app/home/templates/commands.html:67
-#: reddash/app/home/templates/guild.html:981
+#: reddash/app/home/templates/guild.html:996
 msgid "Command"
 msgstr ""
 
@@ -354,8 +366,8 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:513
 #: reddash/app/home/templates/guild.html:589
 #: reddash/app/home/templates/guild.html:643
-#: reddash/app/home/templates/guild.html:759
-#: reddash/app/home/templates/guild.html:814
+#: reddash/app/home/templates/guild.html:760
+#: reddash/app/home/templates/guild.html:815
 msgid "Syntax"
 msgstr ""
 
@@ -381,7 +393,7 @@ msgstr ""
 
 #: reddash/app/home/templates/guild.html:212
 #: reddash/app/home/templates/guild.html:303
-#: reddash/app/home/templates/guild.html:1183
+#: reddash/app/home/templates/guild.html:1198
 msgid "Roles"
 msgstr ""
 
@@ -472,17 +484,17 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:618
 #: reddash/app/home/templates/guild.html:672
 #: reddash/app/home/templates/guild.html:681
-#: reddash/app/home/templates/guild.html:943
-#: reddash/app/home/templates/guild.html:1012
-#: reddash/app/home/templates/guild.html:1047
-#: reddash/app/home/templates/guild.html:1084
-#: reddash/app/home/templates/guild.html:1117
-#: reddash/app/home/templates/guild.html:1153
-#: reddash/app/home/templates/guild.html:1214
-#: reddash/app/home/templates/guild.html:1267
-#: reddash/app/home/templates/guild.html:1382
-#: reddash/app/home/templates/guild.html:1446
-#: reddash/app/home/templates/guild.html:1502
+#: reddash/app/home/templates/guild.html:958
+#: reddash/app/home/templates/guild.html:1027
+#: reddash/app/home/templates/guild.html:1062
+#: reddash/app/home/templates/guild.html:1099
+#: reddash/app/home/templates/guild.html:1132
+#: reddash/app/home/templates/guild.html:1168
+#: reddash/app/home/templates/guild.html:1229
+#: reddash/app/home/templates/guild.html:1282
+#: reddash/app/home/templates/guild.html:1397
+#: reddash/app/home/templates/guild.html:1461
+#: reddash/app/home/templates/guild.html:1517
 msgid "Loading..."
 msgstr ""
 
@@ -518,241 +530,245 @@ msgid "Step #1: Select target"
 msgstr ""
 
 #: reddash/app/home/templates/guild.html:713
-msgid "Edit command alias"
+msgid "Edit alias"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:732
+#: reddash/app/home/templates/guild.html:719
+msgid "The command the alias executes"
+msgstr ""
+
+#: reddash/app/home/templates/guild.html:733
 msgid "Guild-specific custom commands and aliases"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:740
-#: reddash/app/home/templates/guild.html:982
+#: reddash/app/home/templates/guild.html:741
+#: reddash/app/home/templates/guild.html:997
 msgid "Aliases"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:743
+#: reddash/app/home/templates/guild.html:744
 msgid "Custom Commands"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:756
+#: reddash/app/home/templates/guild.html:757
 msgid "View server aliases"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:757
+#: reddash/app/home/templates/guild.html:758
 msgid "See {botname}'s registered server aliases"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:789
+#: reddash/app/home/templates/guild.html:790
 msgid "Aliases have not been loaded. Please re-click Aliases on the left"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:810
+#: reddash/app/home/templates/guild.html:811
 msgid "View server customcommands"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:812
+#: reddash/app/home/templates/guild.html:813
 msgid "See {botname}'s registered server custom commands"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:844
+#: reddash/app/home/templates/guild.html:845
 msgid "This tab is not available yet."
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:869
+#: reddash/app/home/templates/guild.html:870
 msgid "Guild not found"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:873
+#: reddash/app/home/templates/guild.html:874
 msgid "The specified guild wasn't found. Did you enter the URL correctly?"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:878
+#: reddash/app/home/templates/guild.html:879
 msgid "Click <a href=\"{dashboard}\">here</a> to go to the dashboard, or <a href=\"{home}\">here</a> to go home."
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:890
+#: reddash/app/home/templates/guild.html:891
 msgid "Error"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:956
-#: reddash/app/home/templates/guild.html:958
-#: reddash/app/home/templates/guild.html:1280
-#: reddash/app/home/templates/guild.html:1282
+#: reddash/app/home/templates/guild.html:971
+#: reddash/app/home/templates/guild.html:973
+#: reddash/app/home/templates/guild.html:1295
+#: reddash/app/home/templates/guild.html:1297
 msgid "Failed to fetch rules"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:975
+#: reddash/app/home/templates/guild.html:990
 msgid "No aliases are registered on this server"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:992
+#: reddash/app/home/templates/guild.html:1007
 msgid "Refreshed aliases."
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1027
-#: reddash/app/home/templates/guild.html:1029
-#: reddash/app/home/templates/guild.html:1063
-#: reddash/app/home/templates/guild.html:1065
+#: reddash/app/home/templates/guild.html:1042
+#: reddash/app/home/templates/guild.html:1044
+#: reddash/app/home/templates/guild.html:1078
+#: reddash/app/home/templates/guild.html:1080
 msgid "Failed to add rule"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1031
-#: reddash/app/home/templates/guild.html:1067
+#: reddash/app/home/templates/guild.html:1046
+#: reddash/app/home/templates/guild.html:1082
 msgid "Rule successfully added"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1098
-#: reddash/app/home/templates/guild.html:1100
-#: reddash/app/home/templates/guild.html:1132
-#: reddash/app/home/templates/guild.html:1134
+#: reddash/app/home/templates/guild.html:1113
+#: reddash/app/home/templates/guild.html:1115
+#: reddash/app/home/templates/guild.html:1147
+#: reddash/app/home/templates/guild.html:1149
 msgid "Failed to remove rule"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1102
-#: reddash/app/home/templates/guild.html:1136
+#: reddash/app/home/templates/guild.html:1117
+#: reddash/app/home/templates/guild.html:1151
 msgid "Rule successfully removed"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1170
-#: reddash/app/home/templates/guild.html:1172
+#: reddash/app/home/templates/guild.html:1185
+#: reddash/app/home/templates/guild.html:1187
 msgid "Failed to fetch targets"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1176
+#: reddash/app/home/templates/guild.html:1191
 msgid "Channels"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1190
+#: reddash/app/home/templates/guild.html:1205
 msgid "Users"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1197
-#: reddash/app/home/templates/guild.html:1205
-#: reddash/app/home/templates/guild.html:1251
-#: reddash/app/home/templates/guild.html:1259
+#: reddash/app/home/templates/guild.html:1212
+#: reddash/app/home/templates/guild.html:1220
+#: reddash/app/home/templates/guild.html:1266
+#: reddash/app/home/templates/guild.html:1274
 msgid "Choose target"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1231
-#: reddash/app/home/templates/guild.html:1233
+#: reddash/app/home/templates/guild.html:1246
+#: reddash/app/home/templates/guild.html:1248
 msgid "Failed to fetch commands"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1237
+#: reddash/app/home/templates/guild.html:1252
 msgid "Cogs"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1285
+#: reddash/app/home/templates/guild.html:1300
 msgid "Cog rules"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1291
-#: reddash/app/home/templates/guild.html:1316
+#: reddash/app/home/templates/guild.html:1306
+#: reddash/app/home/templates/guild.html:1331
 msgid "By default, users are"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1291
-#: reddash/app/home/templates/guild.html:1293
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1297
-#: reddash/app/home/templates/guild.html:1316
-#: reddash/app/home/templates/guild.html:1318
-#: reddash/app/home/templates/guild.html:1320
-#: reddash/app/home/templates/guild.html:1322
+#: reddash/app/home/templates/guild.html:1306
+#: reddash/app/home/templates/guild.html:1308
+#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1312
+#: reddash/app/home/templates/guild.html:1331
+#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1337
 msgid "permission to use the"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1291
-#: reddash/app/home/templates/guild.html:1293
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1306
+#: reddash/app/home/templates/guild.html:1308
+#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1312
 msgid "cog"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1293
-#: reddash/app/home/templates/guild.html:1318
+#: reddash/app/home/templates/guild.html:1308
+#: reddash/app/home/templates/guild.html:1333
 msgid "Users with the"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1293
-#: reddash/app/home/templates/guild.html:1318
+#: reddash/app/home/templates/guild.html:1308
+#: reddash/app/home/templates/guild.html:1333
 msgid "role"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1293
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1318
-#: reddash/app/home/templates/guild.html:1320
+#: reddash/app/home/templates/guild.html:1308
+#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1335
 msgid "are"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1320
+#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1335
 msgid "Users in the"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1320
+#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1335
 msgid "channel"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1297
-#: reddash/app/home/templates/guild.html:1322
+#: reddash/app/home/templates/guild.html:1312
+#: reddash/app/home/templates/guild.html:1337
 msgid "User"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1297
-#: reddash/app/home/templates/guild.html:1322
+#: reddash/app/home/templates/guild.html:1312
+#: reddash/app/home/templates/guild.html:1337
 msgid "is"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1306
+#: reddash/app/home/templates/guild.html:1321
 msgid "No cog rules have been created"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1310
+#: reddash/app/home/templates/guild.html:1325
 msgid "Command rules"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1316
-#: reddash/app/home/templates/guild.html:1318
-#: reddash/app/home/templates/guild.html:1320
-#: reddash/app/home/templates/guild.html:1322
+#: reddash/app/home/templates/guild.html:1331
+#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1337
 msgid "command"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1331
+#: reddash/app/home/templates/guild.html:1346
 msgid "No command rules have been created"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1350
 msgid "Refreshed rules"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1399
-#: reddash/app/home/templates/guild.html:1401
+#: reddash/app/home/templates/guild.html:1414
+#: reddash/app/home/templates/guild.html:1416
 msgid "Failed to update admin roles"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1403
+#: reddash/app/home/templates/guild.html:1418
 msgid "Admin roles successfully updated"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1463
-#: reddash/app/home/templates/guild.html:1465
+#: reddash/app/home/templates/guild.html:1478
+#: reddash/app/home/templates/guild.html:1480
 msgid "Failed to update mod roles"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1467
+#: reddash/app/home/templates/guild.html:1482
 msgid "Mod roles successfully updated."
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1522
-#: reddash/app/home/templates/guild.html:1524
+#: reddash/app/home/templates/guild.html:1537
+#: reddash/app/home/templates/guild.html:1539
 msgid "Failed to update prefixes"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1526
+#: reddash/app/home/templates/guild.html:1541
 msgid "Prefixes successfully updated"
 msgstr ""
 
