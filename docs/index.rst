@@ -34,6 +34,7 @@ Welcome to Red Dashboard's documentation!
    :caption: Reverse proxy:
 
    reverse_proxy_apache
+   reverse_proxy_apache_ssl
 
 .. toctree::
    :maxdepth: 1
