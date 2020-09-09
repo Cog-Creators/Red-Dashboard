@@ -22,20 +22,27 @@ Let's Encrypt CA and apply it for the domain to encrypt traffic.
 Apache and Certbot Installation
 -------------------------------
 
-If you do not have Apache and/or Certbot, run the following command.
+If you do not have Apache installed already, use the following commands in your
+linux terminal:
 
 .. code-block::
 
-    sudo apt-get install apache2 certbot
+    sudo apt-get update
+    sudo apt-get install apache2
 
-Once it's finished, navigate to your server's IP address and you should
-see the Apache default page. Let's go ahead and turn it off as we don't
-need anyone coming in while we set things up.
+The EFF has a great resource for installing *certbot* on your specific OS.
 
-.. code-block::
+To begin, go to `EFF Certbot Website <https://certbot.eff.org/instructions>`__,
+select your webserver software and what OS you are running. Afterwards, follow 
+the instructions given to get certbot installed.
 
-    sudo systemctl stop apache2
+The SSL certificates generated are self-signed, and for our purposes, will
+be just fine. If you want to use a certificate from a Certificate Authority,
+the process will be slightly different.
 
-Generating SSL Certificate
---------------------------
+Setting Up Apache For SSL
+-------------------------
 
+
+Apache Reverse Proxy
+--------------------
