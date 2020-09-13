@@ -30,6 +30,8 @@ def register_blueprints(app):
             return
         if not ip in app.blacklisted:
             g.id = get_user_id(app, request, session)
+            if g.id is False and "id" in session:
+                del session["id"]
         if ip in app.blacklisted:
             return redirect(url_for("base_blueprint.blacklisted"))
 
@@ -126,14 +128,14 @@ def initialize_babel(app, babel):
 def get_user_id(app, req, ses):
     try:
         payload = jwt.decode(ses["id"], app.jwt_secret_key, algorithms=["HS256"])
-    except (jwt.InvalidSignatureError, jwt.InvalidTokenError):
+    except (jwt.ExpiredSignatureError, KeyError) as error:
+        return False
+    except (jwt.InvalidSignatureError, jwt.InvalidTokenError) as error:
         ip = req.environ.get("HTTP_X_FORWARDED_FOR") or req.remote_addr
         app.blacklisted.append(ip)
         thread = threading.Thread(target=notify_owner_of_blacklist, args=[app, ip])
         thread.start()
         return None
-    except (jwt.ExpiredSignatureError, KeyError):
-        return False
     return payload["userid"]
 
 

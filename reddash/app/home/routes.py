@@ -31,21 +31,7 @@ def get_result(app, requeststr):
     return jsonify({"status": 1, "data": result["result"]})
 
 
-def update_core():
-    while True:
-        time.sleep(0.5)
-        try:
-            yield f"data: {app.variables['servers']}, {app.variables['users']}, {app.variables['onlineusers']}\n\n"
-        except KeyError:
-            yield ""
-
-
 # --------------------------------------- API ---------------------------------------
-
-
-@blueprint.route("/api/stream")
-def stream():
-    return Response(update_core(), mimetype="text/event-stream")
 
 
 @blueprint.route("/api/getservers")

@@ -64,15 +64,7 @@
           $sidebar_responsive.attr('data', new_color);
         }
 
-        $buttons.each(function () {
-          if (!$(this).attr("data-id")) {
-            $(this).attr("data", new_color)
-          }
-        })
-        $as.attr('data', new_color)
-        $bcitems.attr('data', new_color)
-        $inputs.attr('data', new_color)
-        $textareas.attr('data', new_color)
+        $("body").attr("data", new_color)
 
         localStorage.setItem("theme", new_color)
       });

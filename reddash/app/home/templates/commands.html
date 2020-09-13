@@ -37,9 +37,12 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <div class="row">
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-8">
                                                             <h4 class="card-title">{{ cog['name'] }}</h4>
                                                             <p>{{ cog['desc'] }}</p>
+                                                            <p>{{ (_('Author: {author}')).format(author=cog['author']) }}
+                                                            </p>
+                                                            <p>{{ (_('Repo: {repo}')).format(repo=cog['repo']) }}</p>
                                                         </div>
                                                         <div class="col-sm-6 text-left">
                                                             <div class="dropdown float-right">
