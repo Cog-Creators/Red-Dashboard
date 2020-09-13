@@ -65,7 +65,7 @@ clipboard.
 
 .. warning:: 
 
-   **Warning! It is recommended to use a reverse proxy when setting up the dashboard. Check out** `Reverse proxying with Apache <reverse_proxy_apache>` **to get started, if you are on Linux.**
+   **Warning! It is recommended to use a reverse proxy when setting up the dashboard. Check out** `Reverse proxying with Apache <reverse_proxy_apache>` or `Reverse proxying with Nginx <reverse_proxy_nginx>` **to get started, if you are on Linux.**
 
 Option #2: Local/Private IP address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
