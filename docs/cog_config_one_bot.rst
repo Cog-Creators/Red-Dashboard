@@ -25,7 +25,7 @@ maliciously, nor is user's data.
 
 .. code-block:: none
 
-    [p]dashboard settings oauth secret <secret>
+    [p]dashboard webserver secret <secret>
 
 .. tip:: 
 
@@ -105,7 +105,7 @@ Registering the redirect
 
 .. code-block:: none
 
-   [p]dashboard settings oauth redirect <redirect>
+   [p]dashboard webserver redirect <redirect>
 
 2. Switch back to the page for your application on the Discord Developer
    Console (the same page as earlier), click on the OAuth2 page on the
