@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-12 12:15+0000\n"
-"PO-Revision-Date: 2020-08-26 12:20\n"
+"POT-Creation-Date: 2020-09-16 12:19+0000\n"
+"PO-Revision-Date: 2020-09-23 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -201,7 +201,7 @@ msgstr "Адаптированно для Red Discord Bot"
 
 #: reddash/app/base/templates/site_template/footer.html:16
 msgid "Coded in Flask by AppSeed"
-msgstr "Написано в Flask от AppSeed"
+msgstr "Написано на Flask от AppSeed"
 
 #: reddash/app/base/templates/site_template/navigation.html:31
 #: reddash/app/base/templates/site_template/navigation.html:38
@@ -234,7 +234,15 @@ msgstr "Об авторах"
 msgid "Logout"
 msgstr "Выход"
 
-#: reddash/app/home/templates/commands.html:49
+#: reddash/app/home/templates/commands.html:43
+msgid "Author: {author}"
+msgstr "Автор: {author}"
+
+#: reddash/app/home/templates/commands.html:45
+msgid "Repo: {repo}"
+msgstr "Репозиторий: {repo}"
+
+#: reddash/app/home/templates/commands.html:52
 #: reddash/app/home/templates/guild.html:120
 #: reddash/app/home/templates/guild.html:194
 #: reddash/app/home/templates/guild.html:285
@@ -248,16 +256,16 @@ msgstr "Выход"
 msgid "Prefix"
 msgstr "Префикс"
 
-#: reddash/app/home/templates/commands.html:67
+#: reddash/app/home/templates/commands.html:70
 #: reddash/app/home/templates/guild.html:996
 msgid "Command"
 msgstr "Команда"
 
-#: reddash/app/home/templates/commands.html:68
+#: reddash/app/home/templates/commands.html:71
 msgid "Description"
 msgstr "Описание"
 
-#: reddash/app/home/templates/commands.html:95
+#: reddash/app/home/templates/commands.html:98
 msgid "Loading data... Please wait a few seconds then reload"
 msgstr "Загрузка данных... Пожалуйста, подождите несколько секунд, а затем перезагрузите страницу"
 
@@ -431,7 +439,7 @@ msgstr "Посмотреть права"
 
 #: reddash/app/home/templates/guild.html:377
 msgid "Add default rule"
-msgstr "Добавит стандартное правило"
+msgstr "Добавить стандартное правило"
 
 #: reddash/app/home/templates/guild.html:379
 msgid "Add rule"
@@ -782,17 +790,17 @@ msgstr "О панели управления"
 
 #: reddash/app/home/templates/index.html:35
 msgid "Join support server"
-msgstr "Войдите на сервер поддержки"
+msgstr "Присоединиться к серверу поддержки"
 
 #: reddash/app/home/templates/index.html:49
 msgid "Total Servers"
 msgstr "Всего серверов"
 
 #: reddash/app/home/templates/index.html:58
-msgid "Total Members"
-msgstr "Всего участников"
+msgid "Total Users"
+msgstr "Всего пользователей"
 
 #: reddash/app/home/templates/index.html:67
-msgid "Online members"
-msgstr "Участников в сети"
+msgid "Been up for"
+msgstr "Работает"
 

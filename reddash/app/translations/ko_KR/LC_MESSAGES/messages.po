@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-12 12:15+0000\n"
-"PO-Revision-Date: 2020-08-26 12:20\n"
+"POT-Creation-Date: 2020-09-16 12:19+0000\n"
+"PO-Revision-Date: 2020-09-23 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: reddash/app/base/templates/base-site.html:34
 #: reddash/app/base/templates/site_template/navigation.html:12
 msgid "{name} Dashboard"
-msgstr ""
+msgstr "{name} 대시보드"
 
 #: reddash/app/base/templates/base-site.html:35
 msgid "Interactive dashboard to control and interact with {name}"
@@ -30,25 +30,26 @@ msgstr ""
 
 #: reddash/app/base/templates/base-site.html:37
 msgid "Red Dashboard"
-msgstr ""
+msgstr "레드 대시보드"
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
-msgstr ""
+msgstr "페이지 403"
 
 #: reddash/app/base/templates/errors/403.html:14
 #: reddash/app/base/templates/errors/404.html:14
 #: reddash/app/base/templates/errors/500.html:14
 msgid "Uh oh!"
-msgstr ""
+msgstr "오 이런!"
 
 #: reddash/app/base/templates/errors/403.html:16
 msgid "Error 403"
-msgstr ""
+msgstr "에러 403"
 
 #: reddash/app/base/templates/errors/403.html:18
 msgid "Looks like you're not allowed to access that page... Strange..."
-msgstr ""
+msgstr "이 페이지에 접근할 권한이 없는것같네요...\n"
+"이상하네요..."
 
 #: reddash/app/base/templates/errors/403.html:19
 #: reddash/app/base/templates/errors/404.html:19
@@ -57,39 +58,41 @@ msgstr ""
 #: reddash/app/base/templates/site_template/sidebar.html:50
 #: reddash/app/home/templates/index.html:3
 msgid "Home"
-msgstr ""
+msgstr "홈"
 
 #: reddash/app/base/templates/errors/404.html:3
 msgid "Page 404"
-msgstr ""
+msgstr "페이지 404"
 
 #: reddash/app/base/templates/errors/404.html:16
 msgid "Error 404"
-msgstr ""
+msgstr "에러 404"
 
 #: reddash/app/base/templates/errors/404.html:18
 msgid "Looks like that pages doesn't exist... Strange..."
-msgstr ""
+msgstr "페이지가 존재하지 않는것같군요...\n"
+"이상하네요..."
 
 #: reddash/app/base/templates/errors/500.html:3
 msgid "Page 500"
-msgstr ""
+msgstr "페이지 500"
 
 #: reddash/app/base/templates/errors/500.html:16
 msgid "Error 500"
-msgstr ""
+msgstr "에러 500"
 
 #: reddash/app/base/templates/errors/500.html:18
 msgid "Looks like the server ran into an issue... Strange..."
-msgstr ""
+msgstr "서버에 문제가 생긴것같군요...\n"
+"이상하네요..."
 
 #: reddash/app/base/templates/errors/blacklisted.html:3
 msgid "Blacklisted"
-msgstr ""
+msgstr "블랙리스트 처리됨"
 
 #: reddash/app/base/templates/errors/blacklisted.html:14
 msgid "You've been blacklisted."
-msgstr ""
+msgstr "당신은 차단되었습니다."
 
 #: reddash/app/base/templates/errors/blacklisted.html:15
 msgid "We've noticed some suspicious activity from you.  Please contact bot owner."
@@ -99,7 +102,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:15
 #: reddash/app/base/templates/site_template/sidebar.html:70
 msgid "Login"
-msgstr ""
+msgstr "로그인"
 
 #: reddash/app/base/templates/login/login.html:23
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!"
@@ -111,7 +114,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:115
 #: reddash/app/base/templates/login/login.html:153
 msgid "Login with Discord"
-msgstr ""
+msgstr "디스코드로 로그인하기"
 
 #: reddash/app/base/templates/login/login.html:39
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
@@ -123,11 +126,11 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:129
 #: reddash/app/base/templates/login/login.html:139
 msgid "Login Failed"
-msgstr ""
+msgstr "로그인 실패"
 
 #: reddash/app/base/templates/login/login.html:53
 msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
-msgstr ""
+msgstr "인증을 거절한것겉네요. 실수하셨나요? 버튼을 눌러 재시도 하세요."
 
 #: reddash/app/base/templates/login/login.html:66
 msgid "Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
@@ -163,37 +166,37 @@ msgstr ""
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:6
 msgid "Choose locale"
-msgstr ""
+msgstr "언어를 선택하세요"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:10
 msgid "Choose Locale"
-msgstr ""
+msgstr "언어 선택"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:18
 #: reddash/app/home/templates/guild.html:723
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:19
 #: reddash/app/home/templates/guild.html:724
 msgid "Save changes"
-msgstr ""
+msgstr "변경사항 저장"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:31
 msgid "Sidebar Background"
-msgstr ""
+msgstr "사이드바 배경"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:46
 msgid "LIGHT MODE"
-msgstr ""
+msgstr "라이트 모드"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:49
 msgid "DARK MODE"
-msgstr ""
+msgstr "다크 모드"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:52
 msgid "Open locale picker"
-msgstr ""
+msgstr "언어 선택기 열기"
 
 #: reddash/app/base/templates/site_template/footer.html:11
 msgid "Adapted for Red Discord Bot"
@@ -201,12 +204,12 @@ msgstr ""
 
 #: reddash/app/base/templates/site_template/footer.html:16
 msgid "Coded in Flask by AppSeed"
-msgstr ""
+msgstr "AppSpeed가 Flask 로 코딩함"
 
 #: reddash/app/base/templates/site_template/navigation.html:31
 #: reddash/app/base/templates/site_template/navigation.html:38
 msgid "Log out"
-msgstr ""
+msgstr "로그아웃"
 
 #: reddash/app/base/templates/site_template/sidebar.html:8
 #: reddash/app/base/templates/site_template/sidebar.html:29
@@ -214,7 +217,7 @@ msgstr ""
 #: reddash/app/home/templates/dashboard.html:14
 #: reddash/app/home/templates/guild.html:3
 msgid "Dashboard"
-msgstr ""
+msgstr "대시보드"
 
 #: reddash/app/base/templates/site_template/sidebar.html:23
 #: reddash/app/base/templates/site_template/sidebar.html:57
@@ -222,19 +225,27 @@ msgstr ""
 #: reddash/app/home/templates/commands.html:14
 #: reddash/app/home/templates/guild.html:1259
 msgid "Commands"
-msgstr ""
+msgstr "명령어들"
 
 #: reddash/app/base/templates/site_template/sidebar.html:35
 #: reddash/app/base/templates/site_template/sidebar.html:64
 #: reddash/app/home/templates/credits.html:3
 msgid "Credits"
-msgstr ""
+msgstr "크레딧"
 
 #: reddash/app/base/templates/site_template/sidebar.html:41
 msgid "Logout"
+msgstr "로그아웃"
+
+#: reddash/app/home/templates/commands.html:43
+msgid "Author: {author}"
 msgstr ""
 
-#: reddash/app/home/templates/commands.html:49
+#: reddash/app/home/templates/commands.html:45
+msgid "Repo: {repo}"
+msgstr ""
+
+#: reddash/app/home/templates/commands.html:52
 #: reddash/app/home/templates/guild.html:120
 #: reddash/app/home/templates/guild.html:194
 #: reddash/app/home/templates/guild.html:285
@@ -248,16 +259,16 @@ msgstr ""
 msgid "Prefix"
 msgstr ""
 
-#: reddash/app/home/templates/commands.html:67
+#: reddash/app/home/templates/commands.html:70
 #: reddash/app/home/templates/guild.html:996
 msgid "Command"
 msgstr ""
 
-#: reddash/app/home/templates/commands.html:68
+#: reddash/app/home/templates/commands.html:71
 msgid "Description"
 msgstr ""
 
-#: reddash/app/home/templates/commands.html:95
+#: reddash/app/home/templates/commands.html:98
 msgid "Loading data... Please wait a few seconds then reload"
 msgstr ""
 
@@ -789,10 +800,10 @@ msgid "Total Servers"
 msgstr ""
 
 #: reddash/app/home/templates/index.html:58
-msgid "Total Members"
+msgid "Total Users"
 msgstr ""
 
 #: reddash/app/home/templates/index.html:67
-msgid "Online members"
+msgid "Been up for"
 msgstr ""
 

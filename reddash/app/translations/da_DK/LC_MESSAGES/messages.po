@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-08-12 12:15+0000\n"
-"PO-Revision-Date: 2020-08-26 12:20\n"
+"POT-Creation-Date: 2020-09-16 12:19+0000\n"
+"PO-Revision-Date: 2020-09-23 12:20\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -234,7 +234,15 @@ msgstr "Kreditter"
 msgid "Logout"
 msgstr "Log ud"
 
-#: reddash/app/home/templates/commands.html:49
+#: reddash/app/home/templates/commands.html:43
+msgid "Author: {author}"
+msgstr ""
+
+#: reddash/app/home/templates/commands.html:45
+msgid "Repo: {repo}"
+msgstr ""
+
+#: reddash/app/home/templates/commands.html:52
 #: reddash/app/home/templates/guild.html:120
 #: reddash/app/home/templates/guild.html:194
 #: reddash/app/home/templates/guild.html:285
@@ -248,16 +256,16 @@ msgstr "Log ud"
 msgid "Prefix"
 msgstr "Præfiks"
 
-#: reddash/app/home/templates/commands.html:67
+#: reddash/app/home/templates/commands.html:70
 #: reddash/app/home/templates/guild.html:996
 msgid "Command"
 msgstr "Kommando"
 
-#: reddash/app/home/templates/commands.html:68
+#: reddash/app/home/templates/commands.html:71
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: reddash/app/home/templates/commands.html:95
+#: reddash/app/home/templates/commands.html:98
 msgid "Loading data... Please wait a few seconds then reload"
 msgstr "Indlæser data... Vent et par sekunder, og lad det derefter ind igen"
 
@@ -789,10 +797,10 @@ msgid "Total Servers"
 msgstr "Samlede servere"
 
 #: reddash/app/home/templates/index.html:58
-msgid "Total Members"
-msgstr "Samlede medlemmer"
+msgid "Total Users"
+msgstr ""
 
 #: reddash/app/home/templates/index.html:67
-msgid "Online members"
-msgstr "Online medlemmer"
+msgid "Been up for"
+msgstr ""
 
