@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-09-16 12:19+0000\n"
-"PO-Revision-Date: 2020-09-23 12:20\n"
+"POT-Creation-Date: 2020-10-04 01:55+0000\n"
+"PO-Revision-Date: 2020-10-04 01:56\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -18,18 +18,17 @@ msgstr ""
 "X-Crowdin-File-ID: 6\n"
 "Language: ja_JP\n"
 
-#: reddash/app/base/templates/base-site.html:31
-#: reddash/app/base/templates/base-site.html:34
 #: reddash/app/base/templates/site_template/navigation.html:12
+#: reddash/app/utils.py:149
 msgid "{name} Dashboard"
 msgstr ""
 
-#: reddash/app/base/templates/base-site.html:35
+#: reddash/app/utils.py:159
 msgid "Interactive dashboard to control and interact with {name}"
 msgstr ""
 
-#: reddash/app/base/templates/base-site.html:37
-msgid "Red Dashboard"
+#: reddash/app/base/templates/base-site.html:36
+msgid "Red Discord Bot Dashboard"
 msgstr ""
 
 #: reddash/app/base/templates/errors/403.html:3
@@ -232,6 +231,32 @@ msgstr ""
 
 #: reddash/app/base/templates/site_template/sidebar.html:41
 msgid "Logout"
+msgstr ""
+
+#: reddash/app/home/routes.py:27 reddash/app/home/routes.py:31
+#: reddash/app/home/routes.py:52
+msgid "Not connected to bot"
+msgstr ""
+
+#: reddash/app/home/routes.py:29
+msgid "Something went wrong"
+msgstr ""
+
+#: reddash/app/home/routes.py:41 reddash/app/home/routes.py:58
+msgid "Not logged in"
+msgstr ""
+
+#: reddash/app/home/routes.py:68 reddash/app/home/routes.py:116
+#: reddash/app/home/routes.py:161 reddash/app/home/routes.py:206
+#: reddash/app/home/routes.py:248 reddash/app/home/routes.py:290
+#: reddash/app/home/routes.py:332 reddash/app/home/routes.py:379
+#: reddash/app/home/routes.py:425 reddash/app/home/routes.py:471
+#: reddash/app/home/routes.py:516
+msgid "You are doing that too much.  Try again in {wait} seconds"
+msgstr ""
+
+#: reddash/app/home/routes.py:83
+msgid "Prefixes must be specified"
 msgstr ""
 
 #: reddash/app/home/templates/commands.html:43
@@ -802,5 +827,29 @@ msgstr ""
 
 #: reddash/app/home/templates/index.html:67
 msgid "Been up for"
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:3
+msgid "Third Party Spotify"
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:14
+msgid "Spotify OAuth Redirect"
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:19
+msgid "Successfully connected yout Spotify account.  You may now close this tab."
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:23
+msgid "We had trouble contacting the bot to authenticate: {message}"
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:26
+msgid "We failed to authenticate you: {message}"
+msgstr ""
+
+#: reddash/app/home/templates/third_party/spotify.html:35
+msgid "This is a Third Party integration.  Use at your own risk.  Please report to Neuro Assassin if any malicious use is detected."
 msgstr ""
 
