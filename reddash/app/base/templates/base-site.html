@@ -28,15 +28,14 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ botavatar }}">
   <link rel="icon" type="image/png" href="{{ botavatar }}">
   <title>
-    {{ _("{name} Dashboard").format(name=botname) }} - {% block title %}{% endblock %}
+    {{ meta['title'] }} -{% block title %}{% endblock %}
   </title>
   <!-- Meta tags -->
-  <meta content="{{ _('{name} Dashboard').format(name=botname) }} Dashboard - {{ self.title() }}" property="og:title">
-  <meta content="{{ _('Interactive dashboard to control and interact with {name}').format(name=botname) }}"
-    property="og:description">
-  <meta content="{{ _('Red Dashboard') }}" property="og:site_name">
-  <meta content="{{ botavatar }}" property="og:image">
-  <meta content="#ff7575" name="theme-color">
+  <meta content="{{ meta['title'] }} -{{ self.title() }}" property="og:title">
+  <meta content="{{ meta['description'] }}" property="og:description">
+  <meta content="{{ _('Red Discord Bot Dashboard') }}" property="og:site_name">
+  <meta content="{{ meta['icon'] }}" property="og:image">
+  <meta content="{{ meta['color'] }}" name="theme-color">
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">

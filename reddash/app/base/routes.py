@@ -64,7 +64,7 @@ def callback():
         return render_template("login/login.html", status="4")
     redirectstr = app.variables["redirect"]
     data = {
-        "client_id": int(app.variables["botid"]),
+        "client_id": int(app.variables["clientid"]),
         "client_secret": secret,
         "grant_type": "authorization_code",
         "code": code,
@@ -96,7 +96,15 @@ def callback():
             "avatar"
         ] = f"https://cdn.discordapp.com/avatars/{new_data['id']}/{new_data['avatar']}.png"
         session["username"] = new_data["username"]
-        return redirect(url_for("home_blueprint.index"))
+
+        redirecting_to = "home_blueprint.index"
+        arguments = {}
+        if session.get("login_redirect"):
+            redirecting_to = session["login_redirect"]["route"]
+            arguments = session["login_redirect"]["kwargs"]
+            del session["login_redirect"]
+            
+        return redirect(url_for(redirecting_to, **arguments))
     dashlog.error(f"Failed to obtain a user's profile.\n{new.json()}")
     return render_template("login/login.html", status="3")
 
