@@ -8,6 +8,7 @@ import jwt
 import threading
 
 from flask import render_template, redirect, request, url_for, session, g
+from flask_babel import _
 from rich import rule, columns, table as rtable, panel
 from fuzzywuzzy import process
 
@@ -77,6 +78,7 @@ def add_constants(app):
         variables["locales"] = app.config["LOCALE_DICT"]
         variables["safelocales"] = json.dumps(app.config["LOCALE_DICT"])
         variables["selectedlocale"] = session.get("lang_code")
+        variables = process_meta_tags(variables)
         return dict(version=__version__, **variables)
 
 
@@ -137,6 +139,35 @@ def get_user_id(app, req, ses):
         thread.start()
         return None
     return payload["userid"]
+
+
+def process_meta_tags(variables):
+    if "meta" not in variables:
+        variables["meta"] = {"title": "", "icon": "", "description": "", "color": ""}
+
+    if variables["meta"]["title"] == "":
+        variables["meta"]["title"] = _("{name} Dashboard").format(name=variables["botname"])
+    else:
+        variables["meta"]["title"] = variables["meta"]["title"].replace(
+            "{name}", variables["botname"]
+        )
+
+    if variables["meta"]["icon"] == "":
+        variables["meta"]["icon"] = variables["botavatar"]
+
+    if variables["meta"]["description"] == "":
+        variables["meta"]["description"] = _(
+            "Interactive dashboard to control and interact with {name}"
+        ).format(name=variables["botname"])
+    else:
+        variables["meta"]["description"] = variables["meta"]["description"].replace(
+            "{name}", variables["botname"]
+        )
+
+    if variables["meta"]["color"] == "":
+        variables["meta"]["color"] = "#ff7575"
+
+    return variables
 
 
 def startup_message(app, progress, kwargs):
