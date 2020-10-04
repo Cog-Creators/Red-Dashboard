@@ -37,7 +37,7 @@ We collect information to provide a better experience for you as a user, and as 
 
 **Information provided to us about you from third-party program**: The Red Discord Bot – Dashboard website/service uses a connected instance of Red Discord Bot (from here on known as Redbot) to collect data about Discord Servers that are shared between you and the Redbot.  This allows to get the necessary data to perform actions through the Redbot.  This data is never stored anywhere by the Red – Discord Bot website/service and is instead loaded when you visit the appropriate page.
 
-Your information is stored on your device, through cookies.  Your data is never stored in a database or on the host machine of this instance of Red Discord Bot – Dashboard, excluding any special-cases listed above.  If you at any time wish to remove your data from the website/service, you can choose to Clear Your Cookies in your browser, but for security reasons.
+Your information is stored on your device, through cookies.  Your data is never stored in a database or on the host machine of this instance of Red Discord Bot – Dashboard, excluding any special-cases listed above.  If you at any time wish to remove your data from the website/service, you can choose to Clear Your Cookies in your browser, but for security reasons, certain data may be kept for the safety of other users and bot owner.  These are also special-cased above.
 
 Your information is never distributed to other websites/services and is instead only known to the scope of the Red Discord Bot – Dashboard website/service.
 
