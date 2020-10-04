@@ -546,18 +546,26 @@ def fetchaliases(guild):
 
 # ----------------------------------- Third Party -----------------------------------
 
+
 @blueprint.route("/third_party/spotify/callback")
 def third_party_spotify_callback():
     # Spotify cog is owned by TrustyJAID
-    
+
     try:
         code = request.args["code"]
         state = request.args["state"]
     except KeyError:
-        return render_template("third_party/spotify.html", context='3', msg="You must authenticate using a link given by bot.")
+        return render_template(
+            "third_party/spotify.html",
+            context="3",
+            msg="You must authenticate using a link given by bot.",
+        )
 
     if not session.get("id"):
-        session["login_redirect"] = {"route": f"home_blueprint.third_party_spotify_callback", "kwargs": {"code": code, "state": state}}
+        session["login_redirect"] = {
+            "route": f"home_blueprint.third_party_spotify_callback",
+            "kwargs": {"code": code, "state": state},
+        }
         return redirect(url_for("base_blueprint.login"))
 
     try:
@@ -565,18 +573,21 @@ def third_party_spotify_callback():
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC_SPOTIFY__AUTHENTICATE_USER",
-            "params": [str(g.id), code, state]
+            "params": [str(g.id), code, state],
         }
         with app.lock:
             result = get_result(app, requeststr).json
         if result["status"] == 0:
-            return render_template("third_party/spotify.html", context='2', msg=result["message"])
+            return render_template("third_party/spotify.html", context="2", msg=result["message"])
         if result["data"]["status"] == 0:
-            return render_template("third_party/spotify.html", context='3', msg=result["data"]["message"])
-        return render_template("third_party/spotify.html", context='1', msg="")
+            return render_template(
+                "third_party/spotify.html", context="3", msg=result["data"]["message"]
+            )
+        return render_template("third_party/spotify.html", context="1", msg="")
     except Exception as e:
         app.progress.print("".join(traceback.format_exception(type(e), e, e.__traceback__)))
-        return render_template("third_party/spotify.html", context='2', msg=str(e))
+        return render_template("third_party/spotify.html", context="2", msg=str(e))
+
 
 # ----------------------------------- Third Party -----------------------------------
 

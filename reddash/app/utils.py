@@ -140,22 +140,29 @@ def get_user_id(app, req, ses):
         return None
     return payload["userid"]
 
+
 def process_meta_tags(variables):
     if "meta" not in variables:
         variables["meta"] = {"title": "", "icon": "", "description": "", "color": ""}
 
     if variables["meta"]["title"] == "":
-        variables["meta"]["title"] = _('{name} Dashboard').format(name=variables['botname'])
+        variables["meta"]["title"] = _("{name} Dashboard").format(name=variables["botname"])
     else:
-        variables["meta"]["title"] = variables["meta"]["title"].replace("{name}", variables['botname'])
+        variables["meta"]["title"] = variables["meta"]["title"].replace(
+            "{name}", variables["botname"]
+        )
 
     if variables["meta"]["icon"] == "":
         variables["meta"]["icon"] = variables["botavatar"]
 
     if variables["meta"]["description"] == "":
-        variables["meta"]["description"] = _('Interactive dashboard to control and interact with {name}').format(name=variables['botname'])
+        variables["meta"]["description"] = _(
+            "Interactive dashboard to control and interact with {name}"
+        ).format(name=variables["botname"])
     else:
-        variables["meta"]["description"] = variables["meta"]["description"].replace("{name}", variables['botname'])
+        variables["meta"]["description"] = variables["meta"]["description"].replace(
+            "{name}", variables["botname"]
+        )
 
     if variables["meta"]["color"] == "":
         variables["meta"]["color"] = "#ff7575"

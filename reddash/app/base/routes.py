@@ -81,7 +81,8 @@ def callback():
         dashlog.error(f"Failed to log someone in.\n{response.json()}")
         return render_template("login/login.html", status="2")
     new = requests.get(
-        "https://discordapp.com/api/v6/users/@me", headers={"Authorization": f"Bearer {token}"},
+        "https://discordapp.com/api/v6/users/@me",
+        headers={"Authorization": f"Bearer {token}"},
     )
     new_data = new.json()
     if "id" in new_data:
@@ -103,7 +104,7 @@ def callback():
             redirecting_to = session["login_redirect"]["route"]
             arguments = session["login_redirect"]["kwargs"]
             del session["login_redirect"]
-            
+
         return redirect(url_for(redirecting_to, **arguments))
     dashlog.error(f"Failed to obtain a user's profile.\n{new.json()}")
     return render_template("login/login.html", status="3")

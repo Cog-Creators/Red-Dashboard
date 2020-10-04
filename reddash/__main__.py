@@ -61,12 +61,18 @@ def main():
             )
         else:
             console.print(
-                'User did not type "I agree".  Launching production server...', style="bold red",
+                'User did not type "I agree".  Launching production server...',
+                style="bold red",
             )
             args["dev"] = False
 
     create_app(
-        args["host"], args["port"], args["rpcport"], args["interval"], args["debug"], args["dev"],
+        args["host"],
+        args["port"],
+        args["rpcport"],
+        args["interval"],
+        args["debug"],
+        args["dev"],
     )
 
 
