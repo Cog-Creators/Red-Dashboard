@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-04 01:55+0000\n"
-"PO-Revision-Date: 2020-10-04 01:56\n"
+"POT-Creation-Date: 2020-10-05 16:01+0000\n"
+"PO-Revision-Date: 2020-10-05 16:01\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -105,58 +105,66 @@ msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidd
 msgstr "Wilkommen auf der Verwaltungswebseite für Red Discord Bot. Ein großteil der Magie ist hinter einer Sicherheitstür versteckt. Willst du etwas davon sehen? Melde dich mit deinem Discord-Profil an!"
 
 #: reddash/app/base/templates/login/login.html:31
-#: reddash/app/base/templates/login/login.html:59
-#: reddash/app/base/templates/login/login.html:87
-#: reddash/app/base/templates/login/login.html:115
-#: reddash/app/base/templates/login/login.html:153
+#: reddash/app/base/templates/login/login.html:60
+#: reddash/app/base/templates/login/login.html:89
+#: reddash/app/base/templates/login/login.html:118
+#: reddash/app/base/templates/login/login.html:157
 msgid "Login with Discord"
 msgstr "Mit Discord einloggen"
 
-#: reddash/app/base/templates/login/login.html:39
+#: reddash/app/base/templates/login/login.html:32
+#: reddash/app/base/templates/login/login.html:61
+#: reddash/app/base/templates/login/login.html:90
+#: reddash/app/base/templates/login/login.html:119
+#: reddash/app/base/templates/login/login.html:158
+msgid "By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href=\"{link}\" target=\"_blank\">here</a>."
+msgstr ""
+
+#: reddash/app/base/templates/login/login.html:40
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
 msgstr "Wilkommen auf der Verwaltungswebseite für Red Discord Bot. Ein großteil der Magie ist hinter einer Sicherheitstür versteckt. Der Schlüssel zu dieser Tür scheint aktuell verloren zu sein. Vielleicht taucht er wieder auf wenn ein Bot verbunden wird. (Der Bot ist aktuell nicht mit der Webseite verbunden)"
 
-#: reddash/app/base/templates/login/login.html:47
-#: reddash/app/base/templates/login/login.html:73
-#: reddash/app/base/templates/login/login.html:101
-#: reddash/app/base/templates/login/login.html:129
-#: reddash/app/base/templates/login/login.html:139
+#: reddash/app/base/templates/login/login.html:48
+#: reddash/app/base/templates/login/login.html:75
+#: reddash/app/base/templates/login/login.html:104
+#: reddash/app/base/templates/login/login.html:133
+#: reddash/app/base/templates/login/login.html:143
 msgid "Login Failed"
 msgstr "Anmeldung fehlgeschlagen"
 
-#: reddash/app/base/templates/login/login.html:53
+#: reddash/app/base/templates/login/login.html:54
 msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
 msgstr "Du hast die Autorisierung verweigert. Versuch es nochmal."
 
-#: reddash/app/base/templates/login/login.html:66
+#: reddash/app/base/templates/login/login.html:68
 msgid "Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
 msgstr "Du hast die Autorisierung verweigert. Leider ist gerade die Verbindung mit dem Bot abgebrochen. Versuch es später erneut."
 
-#: reddash/app/base/templates/login/login.html:80
+#: reddash/app/base/templates/login/login.html:82
 msgid "Looks like the bot owner may have not configured the dashboard properly. You can try again below if you believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know."
 msgstr "Der Bot-Eigentümer hat das Dashboard eventuell nicht korrekt konfiguriert. Wenn du glaubst, dass das ein Fehler war kannst du es erneut versuchen. Sollte dieses Problem weiterhin bestehen informiere bitte den Bot-Besitzerr oder denn Serverbesitzer."
 
-#: reddash/app/base/templates/login/login.html:94
+#: reddash/app/base/templates/login/login.html:97
 msgid "Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
 msgstr "Der Bot-Eigentümer hat das Dashboard eventuell nicht korrekt konfiguriert. Die Verbindung zum Bot ist abgebrochen. Versuche es später erneut."
 
-#: reddash/app/base/templates/login/login.html:108
+#: reddash/app/base/templates/login/login.html:111
 msgid "Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is having API issues."
 msgstr "Da ist wohl etwas schief gelaufen. Discord ist schuld. Versuche dich erneut anzumelden oder überprüfe ob Discord API Probleme hat."
 
-#: reddash/app/base/templates/login/login.html:122
+#: reddash/app/base/templates/login/login.html:126
 msgid "Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
 msgstr "Da ist wohl etwas schief gelaufen. Discord ist schuld. Die Verbindung zum Bot ist abgebrochen. Versuche es später erneut."
 
-#: reddash/app/base/templates/login/login.html:134
+#: reddash/app/base/templates/login/login.html:138
 msgid "Looks like the bot owner just terminated the connection to the bot. Check back later."
 msgstr "Der Bot-Eigentümer hat soeben die Verbindung abgebrochen. Versuche es später erneut."
 
-#: reddash/app/base/templates/login/login.html:146
+#: reddash/app/base/templates/login/login.html:150
 msgid "Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot owner or server owner."
 msgstr "Etwas ist schiefgelaufen. Versuche dich noch einmal anzumelden. Sollte dieser Fehler weiterhin bestehen, informiere bitte den Bot-Besitzer oder den Serverbesitzer."
 
-#: reddash/app/base/templates/login/login.html:160
+#: reddash/app/base/templates/login/login.html:165
 msgid "Looks like something went wrong. Unfortunately, the dashboard's connection to the bot has terminated. Try again later. If it continues to occur, please report to bot owner or server owner."
 msgstr "Es sieht so aus, als ob etwas schief gelaufen ist. Leider ist die Verbindung zum Bot abgebrochen. Versuche es später erneut. Wenn dieser Fehler weiterhin geschieht, informiere bitte den Bot-Eigentümer oder Serverbesitzer."
 
@@ -303,14 +311,26 @@ msgid "The base template for this dashboard was created by <a href=\"https://app
 msgstr "Die Basisvorlage für das Dashboard wurde von <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a> erstellt und ist unter der <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT Lizenz</a> geschützt."
 
 #: reddash/app/home/templates/credits.html:22
-msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT License</a>."
-msgstr "Das Dashboard wurde von <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>bearbeitet und für Red Discord Bot umgestaltett.Es ist geschützt unter der <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">MIT License</a>."
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">Affero General Public License v3.0</a>."
+msgstr ""
 
 #: reddash/app/home/templates/credits.html:24
 msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
 msgstr "Dieses Dashboard wurde für <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a> gemacht, einen multifunktionalen, voll modularen Discord Bot, erstellt von Twentysix, perfektioniert von vielen. Red Discord Bot ist geschützt unter der <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
 
-#: reddash/app/home/templates/credits.html:29
+#: reddash/app/home/templates/credits.html:31
+msgid "Privacy Policy:"
+msgstr ""
+
+#: reddash/app/home/templates/credits.html:32
+msgid "Cookie Policy:"
+msgstr ""
+
+#: reddash/app/home/templates/credits.html:33
+msgid "Third Party Disclaimer:"
+msgstr ""
+
+#: reddash/app/home/templates/credits.html:37
 msgid "Dashboard Version {version}"
 msgstr "Dashboard Version {version}"
 
@@ -850,6 +870,6 @@ msgid "We failed to authenticate you: {message}"
 msgstr ""
 
 #: reddash/app/home/templates/third_party/spotify.html:35
-msgid "This is a Third Party integration.  Use at your own risk.  Please report to Neuro Assassin if any malicious use is detected."
+msgid "This is a Third Party integration.  By using this application, you acknowledge that you have read the Third Party disclaimer found <a href=\"{link}\">here</a>"
 msgstr ""
 
