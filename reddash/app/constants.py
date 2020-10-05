@@ -1,7 +1,7 @@
 import threading
 import websocket
 
-__version__ = "0.1.6a.dev"
+__version__ = "0.1.6a"
 __author__ = "Neuro Assassin#4779"
 
 
