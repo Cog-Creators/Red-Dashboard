@@ -20,13 +20,13 @@ There are various ways we collect information about you as a user.  The followin
 ### Information you provide using the website/service:
 1. Red Discord Bot - Dashboard theme, such as in what way you would like the UI to look to you.
 2. Preferred Language Locale, or what language you would like the information to be presented to you.
-3. Your IP addressed (in situations described below)
+3. Your IP addressed (in situations described below).
 
 ### Information from third-party services:
 1. Your unique Discord ID.
 2. Your Discord Profile Picture.
-3. Your Discord Username
-4. Your Discord Servers that you share with the bot
+3. Your Discord Username.
+4. Your Discord Servers that you share with the bot.
 
 ## 2. How this information is collected
 We collect information to provide a better experience for you as a user, and as a better authenticated process for other users.
@@ -36,6 +36,8 @@ We collect information to provide a better experience for you as a user, and as 
 **Information provided to us about you from a third-party service**: The Red Discord Bot – Dashboard website/service uses a third-party service’s, Discord (discord.com), Open Authentication (from here on known as “OAuth”) to collect data about your identity and to authenticate you.  This is to ensure your actions are limited to only those you can access.  When choosing to login through the dashboard and are redirected to Discord’s OAuth Authorization page, Discord details what information will be exposed to our website/service.  If you choose to cancel the operation, no Discord data will be collected about you.  If you choose to Authorize, then we will request Discord for the data detailed above in Section 1.
 
 **Information provided to us about you from third-party program**: The Red Discord Bot – Dashboard website/service uses a connected instance of Red Discord Bot (from here on known as Redbot) to collect data about Discord Servers that are shared between you and the Redbot.  This allows to get the necessary data to perform actions through the Redbot.  This data is never stored anywhere by the Red – Discord Bot website/service and is instead loaded when you visit the appropriate page.
+
+**Information that your device provides to us when visiting the website/service**: The Red Discord Bot - Dashboard website/service uses a variety of security measures to ensure the safety of the website/service and the safety of other users.  In order to identify suspicious activity, the program may track your IP if it finds this, and is stored on a Redbot.  Due to the importance of security, we are unable to automatically delete your IP address from the backend server.  You must contact the Bot Owner if you wish to discuss the deletion of your device's data, and is outside the scope of us as the creators.
 
 Your information is stored on your device, through cookies.  Your data is never stored in a database or on the host machine of this instance of Red Discord Bot – Dashboard, excluding any special-cases listed above.  If you at any time wish to remove your data from the website/service, you can choose to Clear Your Cookies in your browser, but for security reasons, certain data may be kept for the safety of other users and bot owner.  These are also special-cased above.
 
