@@ -1,7 +1,7 @@
 # Cookie Policy
 
 ## Introduction
-The Red Discord Bot - Dashboard website uses cookies for many reasons, as outlined below.  This document will expand on Sections 1 and 2 outlined in the [Privacy Policy](https://github.com/NeuroAssassin/Red-Dashboard/blob/legal-documents/legal/Privacy%20Policy.md).  "Creators," "we" or "us" refers to Repository Owners of the source code or any user that has contributed to the Red Discord Bot - Dashboard code.  "You" refers to the person reading this Cookie Policy or accessing this website.  "Owner" or "bot owner" refers to any person(s) who has access to the website/service files or to the Red Discord Bot program/service files.
+The Red Discord Bot - Dashboard website uses cookies for many reasons, as outlined below.  This document will expand on Sections 1 and 2 outlined in the [Privacy Policy](https://github.com/Cog-Creators/Red-Dashboard/blob/legal-documents/legal/Privacy%20Policy.md).  "Creators," "we" or "us" refers to Repository Owners of the source code or any user that has contributed to the Red Discord Bot - Dashboard code.  "You" refers to the person reading this Cookie Policy or accessing this website.  "Owner" or "bot owner" refers to any person(s) who has access to the website/service files or to the Red Discord Bot program/service files.
 
 This Cookie Policy applies to you whenever you access this Red - Discord Bot Dashboard website/service or any other Red - Discord Bot Dashboard website/services.  This Cookie Policy will detail to you:
 
@@ -11,7 +11,7 @@ This Cookie Policy applies to you whenever you access this Red - Discord Bot Das
 
 If you wish for this website to not store your data in cookies, then you may not use this website/service.
 
-This Cookie Policy applies to any unmodified distribution of the source code found here (https://github.com/NeuroAssassin/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Cookie Policy does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
+This Cookie Policy applies to any unmodified distribution of the source code found here (https://github.com/Cog-Creators/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Cookie Policy does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
 
 ## 1. What kinds of data do we store in cookies
 

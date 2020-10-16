@@ -10,7 +10,7 @@ This Third Party document applies whenever you access this Red - Discord Bot Das
 
 If you do not wish to interact with Third Party integrations, then do not use any components of the Red Discord Bot - Dashboard that are included with a disclaimer stating that they are a Third Party Integration.
 
-This Third Party document applies to any unmodified distribution of the source code found here (https://github.com/NeuroAssassin/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Third Party document does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
+This Third Party document applies to any unmodified distribution of the source code found here (https://github.com/Cog-Creators/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Third Party document does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
 
 ## 1. How Third Party integrations are structured
 When you navigate to a URL that includes `/third_party/` or using a widget that has a Third Party integration disclaimer, you are using a part of dashboard that connects with a connected cog that is not the supported dashboard companion cog.  Whatever data you input there or whatever actions you take there will be sent to the respective Third Party cog, NOT the dashboard companion cog.
