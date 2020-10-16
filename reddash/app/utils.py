@@ -184,7 +184,7 @@ def startup_message(app, progress, kwargs):
     table.add_row("Logging level", "Debug" if kwargs["debug"] else "Warning")
 
     progress.print(rule.Rule("Red Discord Bot Dashboard - Webserver"))
-    disclaimer = "This is an instance of Red Discord Bot Dashboard,\ncreated by Neuro Assassin. This package is\nprotected under the MIT License. Any action\nthat will breach this license (including but not\nlimited to, removal of credits) may result in a\nDMCA takedown request, or other legal\nconsequences.\n\n\nYou can view the license at\nhttps://github.com/NeuroAssassin/\nRed-Dashboard/blob/master/LICENSE."
+    disclaimer = "This is an instance of Red Discord Bot Dashboard,\ncreated by Neuro Assassin. This package is\nprotected under the MIT License. Any action\nthat will breach this license (including but not\nlimited to, removal of credits) may result in a\nDMCA takedown request, or other legal\nconsequences.\n\n\nYou can view the license at\nhttps://github.com/Cog-Creators/\nRed-Dashboard/blob/master/LICENSE."
 
     vartask = progress.add_task("Update variable task:", status="[bold blue]Starting[/bold blue]")
     cmdtask = progress.add_task("Update command task:", status="[bold blue]Starting[/bold blue]")

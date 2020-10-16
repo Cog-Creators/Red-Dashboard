@@ -10,7 +10,7 @@ setup(
     description="An easy-to-use interactive web dashboard to control your Redbot.",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/NeuroAssassin/Red-Dashboard",
+    url="https://github.com/Cog-Creators/Red-Dashboard",
     author="Neuro Assassin",
     license="MIT",
     classifiers=[

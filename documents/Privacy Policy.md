@@ -12,7 +12,7 @@ This Privacy Policy applies to you whenever you access this Red - Discord Bot Da
 
 If you wish for this website to not collect, store or use your information in any way, shape, form or fashion as described in this Privacy Policy, you may not use this website/service.
 
-This Privacy Policy applies to any unmodified distribution of the source code found here (https://github.com/NeuroAssassin/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Privacy Policy does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
+This Privacy Policy applies to any unmodified distribution of the source code found here (https://github.com/Cog-Creators/Red-Dashboard).  If this instance of Red Discord Bot - Dashboard is modified in any way from the code found in the above link, then this Privacy Policy does not apply, and instead "creators," "we" or "us" refers to the same person(s) as "owner" or "bot owner" does.
 
 ## 1. What information we collect
 There are various ways we collect information about you as a user.  The following detail how we access this information:
