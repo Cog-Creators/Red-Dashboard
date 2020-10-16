@@ -54,5 +54,5 @@ jobs:
         body: |
           This is an automated PR.
           Please ensure that there are no errors or invalid files are in the PR.
-        labels: "Automated PR, Category: i18n, Changelog Entry: Skipped"
+        labels: "1-area-i18n, 2-type-other, 3-changelog-skipped, 4-automated-pr"
         branch: "automated/i18n"
