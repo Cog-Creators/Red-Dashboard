@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-05 16:01+0000\n"
-"PO-Revision-Date: 2020-10-05 16:02\n"
+"POT-Creation-Date: 2020-10-16 22:32+0000\n"
+"PO-Revision-Date: 2020-10-16 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Интерактивная панель для управления и �
 
 #: reddash/app/base/templates/base-site.html:36
 msgid "Red Discord Bot Dashboard"
-msgstr ""
+msgstr "Панель управления Red Discord Bot"
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
@@ -118,7 +118,7 @@ msgstr "Войти через Discord"
 #: reddash/app/base/templates/login/login.html:119
 #: reddash/app/base/templates/login/login.html:158
 msgid "By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href=\"{link}\" target=\"_blank\">here</a>."
-msgstr ""
+msgstr "Нажимая кнопку выше, вы признаёте, что прочитали и согласились с нашей политикой конфиденциальности находящейся <a href=\"{link}\" target=\"_blank\">здесь</a>."
 
 #: reddash/app/base/templates/login/login.html:40
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
@@ -244,15 +244,15 @@ msgstr "Выход"
 #: reddash/app/home/routes.py:27 reddash/app/home/routes.py:31
 #: reddash/app/home/routes.py:52
 msgid "Not connected to bot"
-msgstr ""
+msgstr "Нет подключения к боту"
 
 #: reddash/app/home/routes.py:29
 msgid "Something went wrong"
-msgstr ""
+msgstr "Что-то пошло не так"
 
 #: reddash/app/home/routes.py:41 reddash/app/home/routes.py:58
 msgid "Not logged in"
-msgstr ""
+msgstr "Не авторизован"
 
 #: reddash/app/home/routes.py:68 reddash/app/home/routes.py:116
 #: reddash/app/home/routes.py:161 reddash/app/home/routes.py:206
@@ -261,11 +261,11 @@ msgstr ""
 #: reddash/app/home/routes.py:425 reddash/app/home/routes.py:471
 #: reddash/app/home/routes.py:516
 msgid "You are doing that too much.  Try again in {wait} seconds"
-msgstr ""
+msgstr "Вы делаете это слишком часто. Попробуйте еще раз через {wait} секунд"
 
 #: reddash/app/home/routes.py:83
 msgid "Prefixes must be specified"
-msgstr ""
+msgstr "Необходимо указать префиксы"
 
 #: reddash/app/home/templates/commands.html:43
 msgid "Author: {author}"
@@ -311,7 +311,7 @@ msgid "The base template for this dashboard was created by <a href=\"https://app
 msgstr "Основной шаблон для этой панели управления был создан <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, доступной под <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">лицензией MIT</a>."
 
 #: reddash/app/home/templates/credits.html:22
-msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">Affero General Public License v3.0</a>."
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
 msgstr ""
 
 #: reddash/app/home/templates/credits.html:24
@@ -320,17 +320,17 @@ msgstr "Эта панель управления создана для <a href=\
 
 #: reddash/app/home/templates/credits.html:31
 msgid "Privacy Policy:"
-msgstr ""
+msgstr "Политика конфиденциальности:"
 
-#: reddash/app/home/templates/credits.html:32
+#: reddash/app/home/templates/credits.html:34
 msgid "Cookie Policy:"
-msgstr ""
-
-#: reddash/app/home/templates/credits.html:33
-msgid "Third Party Disclaimer:"
-msgstr ""
+msgstr "Политика использования файлов Cookie:"
 
 #: reddash/app/home/templates/credits.html:37
+msgid "Third Party Disclaimer:"
+msgstr "Отказ от ответственности за третьи стороны:"
+
+#: reddash/app/home/templates/credits.html:43
 msgid "Dashboard Version {version}"
 msgstr "Панель управления версии {version}"
 
@@ -851,25 +851,25 @@ msgstr "Работает"
 
 #: reddash/app/home/templates/third_party/spotify.html:3
 msgid "Third Party Spotify"
-msgstr ""
+msgstr "Сторонняя интеграция: Spotify"
 
 #: reddash/app/home/templates/third_party/spotify.html:14
 msgid "Spotify OAuth Redirect"
-msgstr ""
+msgstr "Перенаправление на OAuth Spotify"
 
 #: reddash/app/home/templates/third_party/spotify.html:19
-msgid "Successfully connected yout Spotify account.  You may now close this tab."
-msgstr ""
+msgid "Successfully connected your Spotify account.  You may now close this tab."
+msgstr "Подключение вашего аккаунта Spotify завершено успешно. Теперь Вы можете закрыть эту вкладку."
 
 #: reddash/app/home/templates/third_party/spotify.html:23
 msgid "We had trouble contacting the bot to authenticate: {message}"
-msgstr ""
+msgstr "Произошла проблема при попытке связаться с ботом для подтверждения: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:26
 msgid "We failed to authenticate you: {message}"
-msgstr ""
+msgstr "Мы не смогли подтвердить Ваши данные: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:35
 msgid "This is a Third Party integration.  By using this application, you acknowledge that you have read the Third Party disclaimer found <a href=\"{link}\">here</a>"
-msgstr ""
+msgstr "Это сторонняя интеграция. Используя данное приложение, Вы подтверждаете, что прочитали и согласились с отказом от ответственности за третьи стороны, находящимся <a href=\"{link}\">здесь</a>"
 

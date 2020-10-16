@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-10-05 16:01+0000\n"
-"PO-Revision-Date: 2020-10-05 16:02\n"
+"POT-Creation-Date: 2020-10-16 22:32+0000\n"
+"PO-Revision-Date: 2020-10-16 22:33\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -311,7 +311,7 @@ msgid "The base template for this dashboard was created by <a href=\"https://app
 msgstr ""
 
 #: reddash/app/home/templates/credits.html:22
-msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/NeuroAssassin/Toxic-Cogs/blob/master/LICENSE\">Affero General Public License v3.0</a>."
+msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
 msgstr ""
 
 #: reddash/app/home/templates/credits.html:24
@@ -322,15 +322,15 @@ msgstr ""
 msgid "Privacy Policy:"
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:32
+#: reddash/app/home/templates/credits.html:34
 msgid "Cookie Policy:"
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:33
+#: reddash/app/home/templates/credits.html:37
 msgid "Third Party Disclaimer:"
 msgstr ""
 
-#: reddash/app/home/templates/credits.html:37
+#: reddash/app/home/templates/credits.html:43
 msgid "Dashboard Version {version}"
 msgstr ""
 
@@ -858,7 +858,7 @@ msgid "Spotify OAuth Redirect"
 msgstr ""
 
 #: reddash/app/home/templates/third_party/spotify.html:19
-msgid "Successfully connected yout Spotify account.  You may now close this tab."
+msgid "Successfully connected your Spotify account.  You may now close this tab."
 msgstr ""
 
 #: reddash/app/home/templates/third_party/spotify.html:23
