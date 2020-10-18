@@ -2,7 +2,7 @@
 name: Bug report
 about: Report an issue you have with the Dashboard
 title: ''
-labels: ''
+labels: '2-type-bug/fix'
 assignees: ''
 
 ---
