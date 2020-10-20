@@ -5,7 +5,7 @@
 This webserver is in alpha stages, and is not yet encouraged for use.  Repository owners nor any contributors are responsible for any possible data corruptions or data loss that may occur while using this program.  Proceed at your own risk.
 
 ## Installation
-The Red Discord Bot - Dashboard is supported on Windows, Mac OS X and Linux distributions.  To install, please take a look at docuemtentation that be found [here](https://red-dashboard.readthedocs.io/en/latest/).
+The Red Discord Bot - Dashboard is supported on Windows, Mac OS X and Linux distributions.  To install, please take a look at documentation that be found [here](https://red-dashboard.readthedocs.io/en/latest/).
 
 ## Help
 If you wish to use this program and receive support for it, you must also give feedback and report any bugs you encounter.  You can join my support server [here](https://discord.gg/vQZTdB9).
