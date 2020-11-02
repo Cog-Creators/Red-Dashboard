@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-10-16 22:32+0000\n"
-"PO-Revision-Date: 2020-10-16 22:33\n"
+"PO-Revision-Date: 2020-10-28 12:26\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -312,7 +312,7 @@ msgstr "Основной шаблон для этой панели управл�
 
 #: reddash/app/home/templates/credits.html:22
 msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
-msgstr ""
+msgstr "Эту панель управления изменил и переписал для работы с Red Discord Bot <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>. Она доступна под <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">лицензией Affero General Public License v3.0</a>."
 
 #: reddash/app/home/templates/credits.html:24
 msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."

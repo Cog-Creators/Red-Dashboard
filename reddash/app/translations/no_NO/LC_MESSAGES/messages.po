@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-10-16 22:32+0000\n"
-"PO-Revision-Date: 2020-10-16 22:33\n"
+"PO-Revision-Date: 2020-10-28 12:26\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Interaktivt instrumentbord for å kontrollere og samhandle med {name}"
 
 #: reddash/app/base/templates/base-site.html:36
 msgid "Red Discord Bot Dashboard"
-msgstr ""
+msgstr "Rødt Discord Bot dashbord"
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
@@ -84,15 +84,15 @@ msgstr "Ser ut som serveren kjørte på en problem... Merkelig..."
 
 #: reddash/app/base/templates/errors/blacklisted.html:3
 msgid "Blacklisted"
-msgstr ""
+msgstr "Svarteliste"
 
 #: reddash/app/base/templates/errors/blacklisted.html:14
 msgid "You've been blacklisted."
-msgstr ""
+msgstr "Du har blitt svartelistet."
 
 #: reddash/app/base/templates/errors/blacklisted.html:15
 msgid "We've noticed some suspicious activity from you.  Please contact bot owner."
-msgstr ""
+msgstr "Vi har lagt merke til en mistenkelig aktivitet fra deg. Kontakt bot eieren."
 
 #: reddash/app/base/templates/login/login.html:3
 #: reddash/app/base/templates/login/login.html:15
@@ -118,7 +118,7 @@ msgstr "Logg inn med Discord"
 #: reddash/app/base/templates/login/login.html:119
 #: reddash/app/base/templates/login/login.html:158
 msgid "By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href=\"{link}\" target=\"_blank\">here</a>."
-msgstr ""
+msgstr "Ved å klikke på knappen ovenfor bekrefter du at du har lest og godtatt våre retningslinjer for personvern. <a href=\"{link}\" target=\"_blank\">her</a>."
 
 #: reddash/app/base/templates/login/login.html:40
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
@@ -244,15 +244,15 @@ msgstr "Logg ut"
 #: reddash/app/home/routes.py:27 reddash/app/home/routes.py:31
 #: reddash/app/home/routes.py:52
 msgid "Not connected to bot"
-msgstr ""
+msgstr "Ikke koblet til bot"
 
 #: reddash/app/home/routes.py:29
 msgid "Something went wrong"
-msgstr ""
+msgstr "Noe gikk galt"
 
 #: reddash/app/home/routes.py:41 reddash/app/home/routes.py:58
 msgid "Not logged in"
-msgstr ""
+msgstr "Ikke logget inn"
 
 #: reddash/app/home/routes.py:68 reddash/app/home/routes.py:116
 #: reddash/app/home/routes.py:161 reddash/app/home/routes.py:206
@@ -261,19 +261,19 @@ msgstr ""
 #: reddash/app/home/routes.py:425 reddash/app/home/routes.py:471
 #: reddash/app/home/routes.py:516
 msgid "You are doing that too much.  Try again in {wait} seconds"
-msgstr ""
+msgstr "Du gjør det for mye. Prøv igjen om {wait} sekunder"
 
 #: reddash/app/home/routes.py:83
 msgid "Prefixes must be specified"
-msgstr ""
+msgstr "Prefikser må angis"
 
 #: reddash/app/home/templates/commands.html:43
 msgid "Author: {author}"
-msgstr ""
+msgstr "Forfatter: {author}"
 
 #: reddash/app/home/templates/commands.html:45
 msgid "Repo: {repo}"
-msgstr ""
+msgstr "Repo: {repo}"
 
 #: reddash/app/home/templates/commands.html:52
 #: reddash/app/home/templates/guild.html:120
@@ -312,7 +312,7 @@ msgstr "Grunnmalen for dette dashbordet ble opprettet av <a href=\"https://appse
 
 #: reddash/app/home/templates/credits.html:22
 msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
-msgstr ""
+msgstr "Dashbordet ble redigert og rekodet for å arbeide med Rød Discord Bot av <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, beskyttet under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">MIT {}</a>."
 
 #: reddash/app/home/templates/credits.html:24
 msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
@@ -320,15 +320,15 @@ msgstr "Dette dashbordet ble laget for <a href=\"https://github.com/Cog-Creators
 
 #: reddash/app/home/templates/credits.html:31
 msgid "Privacy Policy:"
-msgstr ""
+msgstr "Personvern:"
 
 #: reddash/app/home/templates/credits.html:34
 msgid "Cookie Policy:"
-msgstr ""
+msgstr "Retningslinjer for cookies:"
 
 #: reddash/app/home/templates/credits.html:37
 msgid "Third Party Disclaimer:"
-msgstr ""
+msgstr "Tredje part Ansvarlighet:"
 
 #: reddash/app/home/templates/credits.html:43
 msgid "Dashboard Version {version}"
@@ -584,11 +584,11 @@ msgstr "Steg #1: Velg mål"
 
 #: reddash/app/home/templates/guild.html:713
 msgid "Edit alias"
-msgstr ""
+msgstr "Endre alias"
 
 #: reddash/app/home/templates/guild.html:719
 msgid "The command the alias executes"
-msgstr ""
+msgstr "Vis hvilken kommando aliaset kjører"
 
 #: reddash/app/home/templates/guild.html:733
 msgid "Guild-specific custom commands and aliases"
@@ -843,33 +843,33 @@ msgstr "Totalt Servere"
 
 #: reddash/app/home/templates/index.html:58
 msgid "Total Users"
-msgstr ""
+msgstr "Totalt antall brukere"
 
 #: reddash/app/home/templates/index.html:67
 msgid "Been up for"
-msgstr ""
+msgstr "Vært opp for"
 
 #: reddash/app/home/templates/third_party/spotify.html:3
 msgid "Third Party Spotify"
-msgstr ""
+msgstr "Tredje part Spotify"
 
 #: reddash/app/home/templates/third_party/spotify.html:14
 msgid "Spotify OAuth Redirect"
-msgstr ""
+msgstr "Spotify OAuth omdirigeringer"
 
 #: reddash/app/home/templates/third_party/spotify.html:19
 msgid "Successfully connected your Spotify account.  You may now close this tab."
-msgstr ""
+msgstr "Tilknyttet din Spotify-konto. Du kan nå lukke denne fanen."
 
 #: reddash/app/home/templates/third_party/spotify.html:23
 msgid "We had trouble contacting the bot to authenticate: {message}"
-msgstr ""
+msgstr "Vi hadde problemer med å kontakte boten til å autentisere: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:26
 msgid "We failed to authenticate you: {message}"
-msgstr ""
+msgstr "Vi klarte ikke å godkjenne: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:35
 msgid "This is a Third Party integration.  By using this application, you acknowledge that you have read the Third Party disclaimer found <a href=\"{link}\">here</a>"
-msgstr ""
+msgstr "Dette er en tredjepartsintegrering. Ved å bruke dette programmet erkjenner du at du har lest den tredjepartsansvarsfraskrivelse funnet <a href=\"{link}\">her</a>"
 
