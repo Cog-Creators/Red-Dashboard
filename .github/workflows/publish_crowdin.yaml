@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: '3.8'
     - name: Install dependencies
@@ -46,7 +46,7 @@ jobs:
         git add -f reddash/app/translations
         git commit -m "Automated Crowdin downstream"
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v2
+      uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Automated Crowdin downstream
@@ -56,3 +56,4 @@ jobs:
           Please ensure that there are no errors or invalid files are in the PR.
         labels: "1-area-i18n, 2-type-other, 3-changelog-skipped, 4-automated-pr"
         branch: "automated/i18n"
+        author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
