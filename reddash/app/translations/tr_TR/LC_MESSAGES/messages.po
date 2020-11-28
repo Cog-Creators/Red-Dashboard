@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2020-11-18 12:17+0000\n"
-"PO-Revision-Date: 2020-11-18 12:18\n"
+"PO-Revision-Date: 2020-11-25 12:19\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -21,33 +21,33 @@ msgstr ""
 #: reddash/app/base/templates/site_template/navigation.html:12
 #: reddash/app/utils.py:149
 msgid "{name} Dashboard"
-msgstr ""
+msgstr "{name} Paneli"
 
 #: reddash/app/utils.py:159
 msgid "Interactive dashboard to control and interact with {name}"
-msgstr ""
+msgstr "{name} ile etkileşim ve kontrol için panel"
 
 #: reddash/app/base/templates/base-site.html:36
 msgid "Red Discord Bot Dashboard"
-msgstr ""
+msgstr "Red Discord Bot Paneli"
 
 #: reddash/app/base/templates/errors/403.html:3
 msgid "Page 403"
-msgstr ""
+msgstr "Sayfa 403"
 
 #: reddash/app/base/templates/errors/403.html:14
 #: reddash/app/base/templates/errors/404.html:14
 #: reddash/app/base/templates/errors/500.html:14
 msgid "Uh oh!"
-msgstr ""
+msgstr "Tüh!"
 
 #: reddash/app/base/templates/errors/403.html:16
 msgid "Error 403"
-msgstr ""
+msgstr "Hata 403"
 
 #: reddash/app/base/templates/errors/403.html:18
 msgid "Looks like you're not allowed to access that page... Strange..."
-msgstr ""
+msgstr "Görünüşe bakılırsa o sayfaya girme iznin yok... Tuhaf..."
 
 #: reddash/app/base/templates/errors/403.html:19
 #: reddash/app/base/templates/errors/404.html:19
@@ -56,53 +56,53 @@ msgstr ""
 #: reddash/app/base/templates/site_template/sidebar.html:50
 #: reddash/app/home/templates/index.html:3
 msgid "Home"
-msgstr ""
+msgstr "Ana Sayfa"
 
 #: reddash/app/base/templates/errors/404.html:3
 msgid "Page 404"
-msgstr ""
+msgstr "Sayfa 404"
 
 #: reddash/app/base/templates/errors/404.html:16
 msgid "Error 404"
-msgstr ""
+msgstr "Hata 404"
 
 #: reddash/app/base/templates/errors/404.html:18
 msgid "Looks like that pages doesn't exist... Strange..."
-msgstr ""
+msgstr "Görünüşe bakılırsa o sayfalar yok... Tuhaf..."
 
 #: reddash/app/base/templates/errors/500.html:3
 msgid "Page 500"
-msgstr ""
+msgstr "Sayfa 500"
 
 #: reddash/app/base/templates/errors/500.html:16
 msgid "Error 500"
-msgstr ""
+msgstr "Hata 500"
 
 #: reddash/app/base/templates/errors/500.html:18
 msgid "Looks like the server ran into an issue... Strange..."
-msgstr ""
+msgstr "Görünüşe bakılırsa sunucu bir hata ile karşılaştı... Tuhaf..."
 
 #: reddash/app/base/templates/errors/blacklisted.html:3
 msgid "Blacklisted"
-msgstr ""
+msgstr "Kara listeye alındı"
 
 #: reddash/app/base/templates/errors/blacklisted.html:14
 msgid "You've been blacklisted."
-msgstr ""
+msgstr "Kara listeye alındınız."
 
 #: reddash/app/base/templates/errors/blacklisted.html:15
 msgid "We've noticed some suspicious activity from you.  Please contact bot owner."
-msgstr ""
+msgstr "Şüpheli davranışlarda bulunduğunuzu fark ettik. Lütfen bot sahibi ile görüşün."
 
 #: reddash/app/base/templates/login/login.html:3
 #: reddash/app/base/templates/login/login.html:15
 #: reddash/app/base/templates/site_template/sidebar.html:70
 msgid "Login"
-msgstr ""
+msgstr "Oturum Aç"
 
 #: reddash/app/base/templates/login/login.html:23
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!"
-msgstr ""
+msgstr "Red Discord Bot paneline hoş geldiniz! Buradaki sihirli şeylerin çoğu yetkilendirme ile korunuyor. Göz atmak ister misin? Aşağıdan Discord ile oturum aç!"
 
 #: reddash/app/base/templates/login/login.html:31
 #: reddash/app/base/templates/login/login.html:60
@@ -110,7 +110,7 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:118
 #: reddash/app/base/templates/login/login.html:157
 msgid "Login with Discord"
-msgstr ""
+msgstr "Discord ile oturum aç"
 
 #: reddash/app/base/templates/login/login.html:32
 #: reddash/app/base/templates/login/login.html:61
@@ -118,11 +118,11 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:119
 #: reddash/app/base/templates/login/login.html:158
 msgid "By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href=\"{link}\" target=\"_blank\">here</a>."
-msgstr ""
+msgstr "Yukarıdaki düğmeye basarak bu sayfada bulunan gizlilik politikamızı okumuş ve kabul etmiş bulunmaktasınız: <a href=\"{link}\" target=\"_blank\">here</a>."
 
 #: reddash/app/base/templates/login/login.html:40
 msgid "Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot."
-msgstr ""
+msgstr "Red Discord Bot paneline hoş geldiniz! Buradaki sihirli şeylerin çoğu yetkilendirme ile korunuyor, fakat ne yazık ki panel hiçbir bota bağlanmadığından şu anda oturum açılamaz."
 
 #: reddash/app/base/templates/login/login.html:48
 #: reddash/app/base/templates/login/login.html:75
@@ -130,90 +130,90 @@ msgstr ""
 #: reddash/app/base/templates/login/login.html:133
 #: reddash/app/base/templates/login/login.html:143
 msgid "Login Failed"
-msgstr ""
+msgstr "Oturum Açma Başarısız"
 
 #: reddash/app/base/templates/login/login.html:54
 msgid "Looks like you denied authorization. Made a mistake? Click the button below to try again."
-msgstr ""
+msgstr "Görünüşe bakılırsa yetkilendirmeyi reddettiniz. Bu kazara mı oldu? Tekrar denemek için aşağıdaki düğmeye basın."
 
 #: reddash/app/base/templates/login/login.html:68
 msgid "Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Görünüşe bakılırsa yetkilendirmeyi reddettiniz. Ne yazık ki, panelin bot ile bağlantısı kesildi. Daha sonra tekrar deneyin."
 
 #: reddash/app/base/templates/login/login.html:82
 msgid "Looks like the bot owner may have not configured the dashboard properly. You can try again below if you believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know."
-msgstr ""
+msgstr "Görünüşe bakılırsa bot sahibi paneli düzgün yapılandırmamış. Bunun şans eseri olduğunu düşünüyorsanız aşağıdan tekrar deneyebilirsiniz. Bu birden çok kez gerçekleşirse, lütfen bot veya sunucu sahibine haber verin."
 
 #: reddash/app/base/templates/login/login.html:97
 msgid "Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Görünüşe bakılırsa bot sahibi paneli düzgün yapılandırmamış. Ne yazık ki, panelin bot ile bağlantısı kesildi. Daha sonra tekrar deneyin."
 
 #: reddash/app/base/templates/login/login.html:111
 msgid "Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is having API issues."
-msgstr ""
+msgstr "Görünüşe bakılırsa Discord tarafında bir şeyler ters gitti. Aşağıdan giriş yapmayı tekrar deneyebilir veya Discord API sorunları mı yaşıyor kontrol edebilirsiniz."
 
 #: reddash/app/base/templates/login/login.html:126
 msgid "Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has terminated. Check back later."
-msgstr ""
+msgstr "Görünüşe bakılırsa Discord tarafında bir şeyler ters gitti. Ne yazık ki, panelin bot ile bağlantısı kesildi. Daha sonra tekrar deneyin."
 
 #: reddash/app/base/templates/login/login.html:138
 msgid "Looks like the bot owner just terminated the connection to the bot. Check back later."
-msgstr ""
+msgstr "Görünüşe bakılırsa bot sahibi bot ile olan bağlantıyı kopardı. Daha sonra tekrar deneyin."
 
 #: reddash/app/base/templates/login/login.html:150
 msgid "Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot owner or server owner."
-msgstr ""
+msgstr "Görünüşe bakılırsa bir şey ters gitti. Aşağıdan giriş yapmayı tekrar deneyebilirsiniz. Bu durum tekrar ederse, lütfen bot veya sunucu sahibine haber verin."
 
 #: reddash/app/base/templates/login/login.html:165
 msgid "Looks like something went wrong. Unfortunately, the dashboard's connection to the bot has terminated. Try again later. If it continues to occur, please report to bot owner or server owner."
-msgstr ""
+msgstr "Görünüşe bakılırsa bir şey ters gitti. Ne yazık ki, panelin bot ile bağlantısı kesildi. Daha sonra tekrar deneyin. Bu durum tekrar ederse, lütfen bot veya sunucu sahibine haber verin."
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:6
 msgid "Choose locale"
-msgstr ""
+msgstr "Bölge seçin"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:10
 msgid "Choose Locale"
-msgstr ""
+msgstr "Bölge seçin"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:18
 #: reddash/app/home/templates/guild.html:723
 msgid "Close"
-msgstr ""
+msgstr "Kapat"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:19
 #: reddash/app/home/templates/guild.html:724
 msgid "Save changes"
-msgstr ""
+msgstr "Değişiklikleri kaydet"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:31
 msgid "Sidebar Background"
-msgstr ""
+msgstr "Kenar Çubuğu Arka Planı"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:46
 msgid "LIGHT MODE"
-msgstr ""
+msgstr "AÇIK MOD"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:49
 msgid "DARK MODE"
-msgstr ""
+msgstr "KAPALI MOD"
 
 #: reddash/app/base/templates/site_template/fixed-plugin.html:52
 msgid "Open locale picker"
-msgstr ""
+msgstr "Bölge seçiciyi aç"
 
 #: reddash/app/base/templates/site_template/footer.html:11
 msgid "Adapted for Red Discord Bot"
-msgstr ""
+msgstr "Red Discord Bot için Uyarlandı"
 
 #: reddash/app/base/templates/site_template/footer.html:16
 msgid "Coded in Flask by AppSeed"
-msgstr ""
+msgstr "AppSeed tarafından Flask ile Kodlandı"
 
 #: reddash/app/base/templates/site_template/navigation.html:31
 #: reddash/app/base/templates/site_template/navigation.html:38
 msgid "Log out"
-msgstr ""
+msgstr "Oturumu Kapat"
 
 #: reddash/app/base/templates/site_template/sidebar.html:8
 #: reddash/app/base/templates/site_template/sidebar.html:29
@@ -221,7 +221,7 @@ msgstr ""
 #: reddash/app/home/templates/dashboard.html:14
 #: reddash/app/home/templates/guild.html:3
 msgid "Dashboard"
-msgstr ""
+msgstr "Panel"
 
 #: reddash/app/base/templates/site_template/sidebar.html:23
 #: reddash/app/base/templates/site_template/sidebar.html:57
@@ -229,30 +229,30 @@ msgstr ""
 #: reddash/app/home/templates/commands.html:14
 #: reddash/app/home/templates/guild.html:1259
 msgid "Commands"
-msgstr ""
+msgstr "Komutlar"
 
 #: reddash/app/base/templates/site_template/sidebar.html:35
 #: reddash/app/base/templates/site_template/sidebar.html:64
 #: reddash/app/home/templates/credits.html:3
 msgid "Credits"
-msgstr ""
+msgstr "Hazırlayanlar"
 
 #: reddash/app/base/templates/site_template/sidebar.html:41
 msgid "Logout"
-msgstr ""
+msgstr "Oturumu kapat"
 
 #: reddash/app/home/routes.py:27 reddash/app/home/routes.py:31
 #: reddash/app/home/routes.py:52
 msgid "Not connected to bot"
-msgstr ""
+msgstr "Bota bağlı değil"
 
 #: reddash/app/home/routes.py:29
 msgid "Something went wrong"
-msgstr ""
+msgstr "Bir şey ters gitti"
 
 #: reddash/app/home/routes.py:41 reddash/app/home/routes.py:58
 msgid "Not logged in"
-msgstr ""
+msgstr "Oturum açık değil"
 
 #: reddash/app/home/routes.py:68 reddash/app/home/routes.py:116
 #: reddash/app/home/routes.py:161 reddash/app/home/routes.py:206
@@ -261,19 +261,19 @@ msgstr ""
 #: reddash/app/home/routes.py:425 reddash/app/home/routes.py:471
 #: reddash/app/home/routes.py:516
 msgid "You are doing that too much.  Try again in {wait} seconds"
-msgstr ""
+msgstr "Onu çok fazla yapmaktasın.  {wait} saniye sonra tekrar dene"
 
 #: reddash/app/home/routes.py:83
 msgid "Prefixes must be specified"
-msgstr ""
+msgstr "Önekler belirtilmelidir"
 
 #: reddash/app/home/templates/commands.html:43
 msgid "Author: {author}"
-msgstr ""
+msgstr "Yapımcı: {author}"
 
 #: reddash/app/home/templates/commands.html:45
 msgid "Repo: {repo}"
-msgstr ""
+msgstr "Depo: {repo}"
 
 #: reddash/app/home/templates/commands.html:52
 #: reddash/app/home/templates/guild.html:120
@@ -287,128 +287,128 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:771
 #: reddash/app/home/templates/guild.html:826
 msgid "Prefix"
-msgstr ""
+msgstr "Önek"
 
 #: reddash/app/home/templates/commands.html:70
 #: reddash/app/home/templates/guild.html:996
 msgid "Command"
-msgstr ""
+msgstr "Komut"
 
 #: reddash/app/home/templates/commands.html:71
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 #: reddash/app/home/templates/commands.html:98
 msgid "Loading data... Please wait a few seconds then reload"
-msgstr ""
+msgstr "Veri yükleniyor... Lütfen birkaç saniye bekleyip yenileyin"
 
 #: reddash/app/home/templates/credits.html:17
 msgid "This instance of Red Discord Bot is owned by {owner}."
-msgstr ""
+msgstr "Bu Red Discord Bot misali {owner} kullanıcısına ait."
 
 #: reddash/app/home/templates/credits.html:19
 msgid "The base template for this dashboard was created by <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator</a>, protected under <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT License</a>."
-msgstr ""
+msgstr "Bu panel için kullanılan temel şablon <a href=\"https://appseed.us/app-generator\">AppSeed Web App Generator ile oluşturulmuştur. Bu aracın</a>, korunduğu lisans <a href=\"https://github.com/app-generator/flask-black-dashboard/blob/master/LICENSE.md\">MIT Lisansıdır</a>."
 
 #: reddash/app/home/templates/credits.html:22
 msgid "The dashboard was edited and recoded to work with Red Discord Bot by <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, protected under <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
-msgstr ""
+msgstr "Bu panel Red Discord Bot ile çalışabilmesi için <a href=\"https://github.com/NeuroAssassin\">Neuro Assassin#4779</a>, tarafından yeniden düzenlenip kodlanmıştır. Ve şu şekilde lisanslanmıştır: <a href=\"https://github.com/Cog-Creators/Red-Dashboard/blob/master/LICENSE\">Affero General Public License v3.0</a>."
 
 #: reddash/app/home/templates/credits.html:24
 msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
-msgstr ""
+msgstr "Bu panel <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot için oluşturulmuştur</a>, Red Twentysix tarafından oluşturulmuş ve çok sayıda kişi tarafından geliştirilmiş çok amaçlı, tamamen modüler bir Discord botudur.  Red Discord Bot şu lisans altında korunmaktadır: <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
 
 #: reddash/app/home/templates/credits.html:31
 msgid "Privacy Policy:"
-msgstr ""
+msgstr "Gizlilik Politikası:"
 
 #: reddash/app/home/templates/credits.html:34
 msgid "Cookie Policy:"
-msgstr ""
+msgstr "Çerez Politikası:"
 
 #: reddash/app/home/templates/credits.html:37
 msgid "Third Party Disclaimer:"
-msgstr ""
+msgstr "Üçüncü Parti Hatırlatma:"
 
 #: reddash/app/home/templates/credits.html:43
 msgid "Dashboard Version {version}"
-msgstr ""
+msgstr "Panel Sürümü {version}"
 
 #: reddash/app/home/templates/dashboard.html:18
 msgid "Welcome to the interactive dashboard, where you can control your bot via this easy-to-use interface. Choose a server that you have elevated permissions in below. If you don't see your server below, check to make sure that your server's owner has set roles with <code>{command}</code>"
-msgstr ""
+msgstr "Botunuzu bu kullanımı kolay arayüzle yönetebileceğiniz etkileşimli panele hoş geldiniz. Aşağıdan yönetme yetkisine sahip olduğunuz bir sunucuyu seçin. Aşağıda sunucunuzu göremiyorsanız, sunucu sahibinin şununla rolleri ayarladığından emin olun: <code>{command}</code>"
 
 #: reddash/app/home/templates/dashboard.html:37
 msgid "Search"
-msgstr ""
+msgstr "Arama"
 
 #: reddash/app/home/templates/dashboard.html:48
 msgid "Loading servers..."
-msgstr ""
+msgstr "Sunucular yükleniyor..."
 
 #: reddash/app/home/templates/dashboard.html:71
 msgid "You're not in any servers with elevated permissions!"
-msgstr ""
+msgstr "Yönetme yetkiniz olan bir sunucu bulunmamakta!"
 
 #: reddash/app/home/templates/guild.html:34
 msgid "Created on {date}"
-msgstr ""
+msgstr "{date} tarihinde oluşturuldu"
 
 #: reddash/app/home/templates/guild.html:36
 msgid "Joined on {date}"
-msgstr ""
+msgstr "{date} tarihinde eklendi"
 
 #: reddash/app/home/templates/guild.html:42
 msgid "{members} Members | {humans} Humans | {bots} Bots"
-msgstr ""
+msgstr "{members} Üye | {humans} İnsan | {bots} Bot"
 
 #: reddash/app/home/templates/guild.html:55
 msgid "Owner"
-msgstr ""
+msgstr "Sahip"
 
 #: reddash/app/home/templates/guild.html:56
 msgid "Verification Level"
-msgstr ""
+msgstr "Doğrulama Seviyesi"
 
 #: reddash/app/home/templates/guild.html:57
 msgid "Region"
-msgstr ""
+msgstr "Bölge"
 
 #: reddash/app/home/templates/guild.html:58
 msgid "Server ID"
-msgstr ""
+msgstr "Sunucu IDsi"
 
 #: reddash/app/home/templates/guild.html:62
 msgid "Your permissions"
-msgstr ""
+msgstr "İzinleriniz"
 
 #: reddash/app/home/templates/guild.html:65
 msgid "<b>Warning - </b> You haven't registered any roles with the dashboard. Please use <code>{command}</code> to allow other people to use it."
-msgstr ""
+msgstr "<b>Uyarı - </b> Panel ile her hangi bir rolü kayıt etmediniz. Lütfen diğerlerinin kullanımına açmak için <code>{command}</code> komutunu kullanın."
 
 #: reddash/app/home/templates/guild.html:81
 msgid "Guild-specific bot settings"
-msgstr ""
+msgstr "Sunucuya özgü bot ayarları"
 
 #: reddash/app/home/templates/guild.html:90
 msgid "Server prefix"
-msgstr ""
+msgstr "Sunucu öneki"
 
 #: reddash/app/home/templates/guild.html:92
 msgid "Admin roles"
-msgstr ""
+msgstr "Yönetici rolleri"
 
 #: reddash/app/home/templates/guild.html:94
 msgid "Mod roles"
-msgstr ""
+msgstr "Moderatör rolleri"
 
 #: reddash/app/home/templates/guild.html:108
 msgid "Set server prefix"
-msgstr ""
+msgstr "Sunucu önekini ayarla"
 
 #: reddash/app/home/templates/guild.html:109
 msgid "Sets {botname}'s server prefix(es)"
-msgstr ""
+msgstr "{botname} botunun sunucu öneklerini ayarla"
 
 #: reddash/app/home/templates/guild.html:111
 #: reddash/app/home/templates/guild.html:182
@@ -422,114 +422,114 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:760
 #: reddash/app/home/templates/guild.html:815
 msgid "Syntax"
-msgstr ""
+msgstr "Sözdizimi"
 
 #: reddash/app/home/templates/guild.html:138
 msgid "Prefixes"
-msgstr ""
+msgstr "Ön Ekler"
 
 #: reddash/app/home/templates/guild.html:157
 msgid "Update Prefixes"
-msgstr ""
+msgstr "Ön ekleri güncelle"
 
 #: reddash/app/home/templates/guild.html:159
 msgid "Add Prefix"
-msgstr ""
+msgstr "Ön Ek Ekle"
 
 #: reddash/app/home/templates/guild.html:179
 msgid "Set admin roles"
-msgstr ""
+msgstr "Yönetici rollerini ayarla"
 
 #: reddash/app/home/templates/guild.html:180
 msgid "Sets {botname}'s admin roles in {guild}"
-msgstr ""
+msgstr "{botname} botunun {guild} sunucusundaki yönetici rollerini ayarlar"
 
 #: reddash/app/home/templates/guild.html:212
 #: reddash/app/home/templates/guild.html:303
 #: reddash/app/home/templates/guild.html:1198
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
 #: reddash/app/home/templates/guild.html:233
 msgid "Update Admin Roles"
-msgstr ""
+msgstr "Yönetici Rollerini Güncelle"
 
 #: reddash/app/home/templates/guild.html:238
 msgid "Add Admin Role"
-msgstr ""
+msgstr "Yönetici Rolü Ekle"
 
 #: reddash/app/home/templates/guild.html:270
 msgid "Set mod roles"
-msgstr ""
+msgstr "Moderatör rollerini ayarla"
 
 #: reddash/app/home/templates/guild.html:271
 msgid "Sets {botname}'s mod roles in {guild}"
-msgstr ""
+msgstr "{botname} botunun {guild} sunucusundaki moderatör rollerini ayarlar"
 
 #: reddash/app/home/templates/guild.html:324
 msgid "Update Mod Roles"
-msgstr ""
+msgstr "Moderatör Rollerini Güncelle"
 
 #: reddash/app/home/templates/guild.html:329
 msgid "Add Mod Role"
-msgstr ""
+msgstr "Moderatör Rolü Ekle"
 
 #: reddash/app/home/templates/guild.html:366
 msgid "Guild-specific command permissions"
-msgstr ""
+msgstr "Sunucuya özgü komut izinleri"
 
 #: reddash/app/home/templates/guild.html:374
 msgid "View rules"
-msgstr ""
+msgstr "Kuralları göster"
 
 #: reddash/app/home/templates/guild.html:377
 msgid "Add default rule"
-msgstr ""
+msgstr "Varsayılan kural ekle"
 
 #: reddash/app/home/templates/guild.html:379
 msgid "Add rule"
-msgstr ""
+msgstr "Kural ekle"
 
 #: reddash/app/home/templates/guild.html:382
 msgid "Remove default rule"
-msgstr ""
+msgstr "Varsayılan kural kaldır"
 
 #: reddash/app/home/templates/guild.html:384
 msgid "Remove rule"
-msgstr ""
+msgstr "Kural kaldır"
 
 #: reddash/app/home/templates/guild.html:397
 msgid "Permission rules"
-msgstr ""
+msgstr "İzin kuralları"
 
 #: reddash/app/home/templates/guild.html:423
 msgid "Permission rules have not been loaded. Please re-click View Rules on the left"
-msgstr ""
+msgstr "İzin kuralları yüklenmedi. Lütfen soldaki Kuralları Göster düğmesine tekrar tıklayın"
 
 #: reddash/app/home/templates/guild.html:444
 #: reddash/app/home/templates/guild.html:494
 msgid "Add Default Rule"
-msgstr ""
+msgstr "Varsayılan Kural Ekle"
 
 #: reddash/app/home/templates/guild.html:470
 #: reddash/app/home/templates/guild.html:538
 msgid "Step #1: Set permission action"
-msgstr ""
+msgstr "Aşama #1: Varsayılan izin eylemini ayarla"
 
 #: reddash/app/home/templates/guild.html:476
 #: reddash/app/home/templates/guild.html:544
 msgid "Allow"
-msgstr ""
+msgstr "İzin ver"
 
 #: reddash/app/home/templates/guild.html:479
 #: reddash/app/home/templates/guild.html:547
 msgid "Deny"
-msgstr ""
+msgstr "Reddet"
 
 #: reddash/app/home/templates/guild.html:484
 #: reddash/app/home/templates/guild.html:677
 msgid "Step #2: Select cog/command"
-msgstr ""
+msgstr "Aşama #2: cog/komut seçin"
 
 #: reddash/app/home/templates/guild.html:488
 #: reddash/app/home/templates/guild.html:556
@@ -549,176 +549,176 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1461
 #: reddash/app/home/templates/guild.html:1517
 msgid "Loading..."
-msgstr ""
+msgstr "Yükleniyor..."
 
 #: reddash/app/home/templates/guild.html:512
 #: reddash/app/home/templates/guild.html:569
 msgid "Add Rule"
-msgstr ""
+msgstr "Kural Ekle"
 
 #: reddash/app/home/templates/guild.html:552
 msgid "Step #2: Select target"
-msgstr ""
+msgstr "Aşama #2: Hedef seç"
 
 #: reddash/app/home/templates/guild.html:561
 msgid "Step #3: Select cog/command"
-msgstr ""
+msgstr "Aşama #3: cog/komut seçin"
 
 #: reddash/app/home/templates/guild.html:588
 #: reddash/app/home/templates/guild.html:624
 msgid "Remove Default Rule"
-msgstr ""
+msgstr "Varsayılan Kural Kaldır"
 
 #: reddash/app/home/templates/guild.html:614
 msgid "Select the cog/command"
-msgstr ""
+msgstr "Cog/komutu seçin"
 
 #: reddash/app/home/templates/guild.html:642
 #: reddash/app/home/templates/guild.html:687
 msgid "Remove Rule"
-msgstr ""
+msgstr "Kural Kaldır"
 
 #: reddash/app/home/templates/guild.html:668
 msgid "Step #1: Select target"
-msgstr ""
+msgstr "Aşama #1: Hedef seç"
 
 #: reddash/app/home/templates/guild.html:713
 msgid "Edit alias"
-msgstr ""
+msgstr "Diğer adı düzenle"
 
 #: reddash/app/home/templates/guild.html:719
 msgid "The command the alias executes"
-msgstr ""
+msgstr "Diğer adın hangi komutu çalıştırdığını gösterir"
 
 #: reddash/app/home/templates/guild.html:733
 msgid "Guild-specific custom commands and aliases"
-msgstr ""
+msgstr "Sunucuya özgü özel komutlar ve diğer adlar"
 
 #: reddash/app/home/templates/guild.html:741
 #: reddash/app/home/templates/guild.html:997
 msgid "Aliases"
-msgstr ""
+msgstr "Diğer adlar"
 
 #: reddash/app/home/templates/guild.html:744
 msgid "Custom Commands"
-msgstr ""
+msgstr "Özel Komutlar"
 
 #: reddash/app/home/templates/guild.html:757
 msgid "View server aliases"
-msgstr ""
+msgstr "Sunucudaki diğer adları göster"
 
 #: reddash/app/home/templates/guild.html:758
 msgid "See {botname}'s registered server aliases"
-msgstr ""
+msgstr "{botname} botunun kayıtlı sunucu diğer adlarını gör"
 
 #: reddash/app/home/templates/guild.html:790
 msgid "Aliases have not been loaded. Please re-click Aliases on the left"
-msgstr ""
+msgstr "Diğer adlar yüklenmedi. Lütfen soldaki Diğer Adlar düğmesine tekrar tıklayın"
 
 #: reddash/app/home/templates/guild.html:811
 msgid "View server customcommands"
-msgstr ""
+msgstr "Sunucu özel komutlarını gör"
 
 #: reddash/app/home/templates/guild.html:813
 msgid "See {botname}'s registered server custom commands"
-msgstr ""
+msgstr "{botname} botunun kayıtlı sunucu özel komutlarını gör"
 
 #: reddash/app/home/templates/guild.html:845
 msgid "This tab is not available yet."
-msgstr ""
+msgstr "Bu sekme henüz kullanılabilir değil."
 
 #: reddash/app/home/templates/guild.html:870
 msgid "Guild not found"
-msgstr ""
+msgstr "Sunucu bulunamadı"
 
 #: reddash/app/home/templates/guild.html:874
 msgid "The specified guild wasn't found. Did you enter the URL correctly?"
-msgstr ""
+msgstr "Belirtilen sunucu bulunamadı. URL yi doğru girdiniz mi?"
 
 #: reddash/app/home/templates/guild.html:879
 msgid "Click <a href=\"{dashboard}\">here</a> to go to the dashboard, or <a href=\"{home}\">here</a> to go home."
-msgstr ""
+msgstr "Panele girmek için <a href=\"{dashboard}\">buraya</a> veya ana sayfaya gitmek için <a href=\"{home}\">buraya</a> tıklayın."
 
 #: reddash/app/home/templates/guild.html:891
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: reddash/app/home/templates/guild.html:971
 #: reddash/app/home/templates/guild.html:973
 #: reddash/app/home/templates/guild.html:1295
 #: reddash/app/home/templates/guild.html:1297
 msgid "Failed to fetch rules"
-msgstr ""
+msgstr "Kurallar alınamadı"
 
 #: reddash/app/home/templates/guild.html:990
 msgid "No aliases are registered on this server"
-msgstr ""
+msgstr "Bu sunucuda kayıtlı diğer ad bulunmamakta"
 
 #: reddash/app/home/templates/guild.html:1007
 msgid "Refreshed aliases."
-msgstr ""
+msgstr "Diğer adlar yenilendi."
 
 #: reddash/app/home/templates/guild.html:1042
 #: reddash/app/home/templates/guild.html:1044
 #: reddash/app/home/templates/guild.html:1078
 #: reddash/app/home/templates/guild.html:1080
 msgid "Failed to add rule"
-msgstr ""
+msgstr "Kural eklenemedi"
 
 #: reddash/app/home/templates/guild.html:1046
 #: reddash/app/home/templates/guild.html:1082
 msgid "Rule successfully added"
-msgstr ""
+msgstr "Kural başarıyla eklendi"
 
 #: reddash/app/home/templates/guild.html:1113
 #: reddash/app/home/templates/guild.html:1115
 #: reddash/app/home/templates/guild.html:1147
 #: reddash/app/home/templates/guild.html:1149
 msgid "Failed to remove rule"
-msgstr ""
+msgstr "Kural kaldırılamadı"
 
 #: reddash/app/home/templates/guild.html:1117
 #: reddash/app/home/templates/guild.html:1151
 msgid "Rule successfully removed"
-msgstr ""
+msgstr "Kural başarıyla kaldırıldı"
 
 #: reddash/app/home/templates/guild.html:1185
 #: reddash/app/home/templates/guild.html:1187
 msgid "Failed to fetch targets"
-msgstr ""
+msgstr "Hedefler alınırken hata"
 
 #: reddash/app/home/templates/guild.html:1191
 msgid "Channels"
-msgstr ""
+msgstr "Kanallar"
 
 #: reddash/app/home/templates/guild.html:1205
 msgid "Users"
-msgstr ""
+msgstr "Kullanıcılar"
 
 #: reddash/app/home/templates/guild.html:1212
 #: reddash/app/home/templates/guild.html:1220
 #: reddash/app/home/templates/guild.html:1266
 #: reddash/app/home/templates/guild.html:1274
 msgid "Choose target"
-msgstr ""
+msgstr "Hedefi seç"
 
 #: reddash/app/home/templates/guild.html:1246
 #: reddash/app/home/templates/guild.html:1248
 msgid "Failed to fetch commands"
-msgstr ""
+msgstr "Komutlar alınırken sorun yaşandı"
 
 #: reddash/app/home/templates/guild.html:1252
 msgid "Cogs"
-msgstr ""
+msgstr "Coglar"
 
 #: reddash/app/home/templates/guild.html:1300
 msgid "Cog rules"
-msgstr ""
+msgstr "Cog kuralları"
 
 #: reddash/app/home/templates/guild.html:1306
 #: reddash/app/home/templates/guild.html:1331
 msgid "By default, users are"
-msgstr ""
+msgstr "Varsayılan olarak, kullanıcılar"
 
 #: reddash/app/home/templates/guild.html:1306
 #: reddash/app/home/templates/guild.html:1308
@@ -729,147 +729,147 @@ msgstr ""
 #: reddash/app/home/templates/guild.html:1335
 #: reddash/app/home/templates/guild.html:1337
 msgid "permission to use the"
-msgstr ""
+msgstr "kullanma izni"
 
 #: reddash/app/home/templates/guild.html:1306
 #: reddash/app/home/templates/guild.html:1308
 #: reddash/app/home/templates/guild.html:1310
 #: reddash/app/home/templates/guild.html:1312
 msgid "cog"
-msgstr ""
+msgstr "cog"
 
 #: reddash/app/home/templates/guild.html:1308
 #: reddash/app/home/templates/guild.html:1333
 msgid "Users with the"
-msgstr ""
+msgstr "Sahip kullanıcılar"
 
 #: reddash/app/home/templates/guild.html:1308
 #: reddash/app/home/templates/guild.html:1333
 msgid "role"
-msgstr ""
+msgstr "rol"
 
 #: reddash/app/home/templates/guild.html:1308
 #: reddash/app/home/templates/guild.html:1310
 #: reddash/app/home/templates/guild.html:1333
 #: reddash/app/home/templates/guild.html:1335
 msgid "are"
-msgstr ""
+msgstr "dır"
 
 #: reddash/app/home/templates/guild.html:1310
 #: reddash/app/home/templates/guild.html:1335
 msgid "Users in the"
-msgstr ""
+msgstr "İçindeki kullanıcılar"
 
 #: reddash/app/home/templates/guild.html:1310
 #: reddash/app/home/templates/guild.html:1335
 msgid "channel"
-msgstr ""
+msgstr "kanal"
 
 #: reddash/app/home/templates/guild.html:1312
 #: reddash/app/home/templates/guild.html:1337
 msgid "User"
-msgstr ""
+msgstr "Kullanıcı"
 
 #: reddash/app/home/templates/guild.html:1312
 #: reddash/app/home/templates/guild.html:1337
 msgid "is"
-msgstr ""
+msgstr "dır"
 
 #: reddash/app/home/templates/guild.html:1321
 msgid "No cog rules have been created"
-msgstr ""
+msgstr "Hiç cog kuralı oluşturulmadı"
 
 #: reddash/app/home/templates/guild.html:1325
 msgid "Command rules"
-msgstr ""
+msgstr "Komut kuralları"
 
 #: reddash/app/home/templates/guild.html:1331
 #: reddash/app/home/templates/guild.html:1333
 #: reddash/app/home/templates/guild.html:1335
 #: reddash/app/home/templates/guild.html:1337
 msgid "command"
-msgstr ""
+msgstr "komut"
 
 #: reddash/app/home/templates/guild.html:1346
 msgid "No command rules have been created"
-msgstr ""
+msgstr "Hiç komut kuralı oluşturulmadı"
 
 #: reddash/app/home/templates/guild.html:1350
 msgid "Refreshed rules"
-msgstr ""
+msgstr "Kurallar yenilendi"
 
 #: reddash/app/home/templates/guild.html:1414
 #: reddash/app/home/templates/guild.html:1416
 msgid "Failed to update admin roles"
-msgstr ""
+msgstr "Yönetici rolleri güncellenemedi"
 
 #: reddash/app/home/templates/guild.html:1418
 msgid "Admin roles successfully updated"
-msgstr ""
+msgstr "Yönetici rolleri başarıyla güncellendi"
 
 #: reddash/app/home/templates/guild.html:1478
 #: reddash/app/home/templates/guild.html:1480
 msgid "Failed to update mod roles"
-msgstr ""
+msgstr "Moderatör rolleri güncellenemedi"
 
 #: reddash/app/home/templates/guild.html:1482
 msgid "Mod roles successfully updated."
-msgstr ""
+msgstr "Moderatör rolleri başarıyla güncellendi."
 
 #: reddash/app/home/templates/guild.html:1537
 #: reddash/app/home/templates/guild.html:1539
 msgid "Failed to update prefixes"
-msgstr ""
+msgstr "Ön ekler güncellenemedi"
 
 #: reddash/app/home/templates/guild.html:1541
 msgid "Prefixes successfully updated"
-msgstr ""
+msgstr "Ön ekler başarıyla güncellendi"
 
 #: reddash/app/home/templates/index.html:17
 msgid "{botname} • Owned by {owner}"
-msgstr ""
+msgstr "{botname} • Sahibi {owner}"
 
 #: reddash/app/home/templates/index.html:18
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: reddash/app/home/templates/index.html:35
 msgid "Join support server"
-msgstr ""
+msgstr "Destek sunucusuna katıl"
 
 #: reddash/app/home/templates/index.html:49
 msgid "Total Servers"
-msgstr ""
+msgstr "Toplam Sunucu"
 
 #: reddash/app/home/templates/index.html:58
 msgid "Total Users"
-msgstr ""
+msgstr "Toplam Kullanıcı"
 
 #: reddash/app/home/templates/index.html:67
 msgid "Been up for"
-msgstr ""
+msgstr "Açık kalma süresi"
 
 #: reddash/app/home/templates/third_party/spotify.html:3
 msgid "Third Party Spotify"
-msgstr ""
+msgstr "Üçüncü Parti Spotify"
 
 #: reddash/app/home/templates/third_party/spotify.html:14
 msgid "Spotify OAuth Redirect"
-msgstr ""
+msgstr "Spotify OAuth Yönlendirmesi"
 
 #: reddash/app/home/templates/third_party/spotify.html:19
 msgid "Successfully connected your Spotify account.  You may now close this tab."
-msgstr ""
+msgstr "Spotify hesabınız başarıyla bağlandı. Artık bu sekmeyi kapatabilirsiniz."
 
 #: reddash/app/home/templates/third_party/spotify.html:23
 msgid "We had trouble contacting the bot to authenticate: {message}"
-msgstr ""
+msgstr "Kimlik doğrulama için bot ile iletişim kurarken sorun yaşandı: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:26
 msgid "We failed to authenticate you: {message}"
-msgstr ""
+msgstr "Kimliğiniz doğrulanamadı: {message}"
 
 #: reddash/app/home/templates/third_party/spotify.html:35
 msgid "This is a Third Party integration.  By using this application, you acknowledge that you have read the Third Party disclaimer found <a href=\"{link}\">here</a>"
-msgstr ""
+msgstr "Bu bir Üçüncü Parti entegrasyondur.  Bu uygulamayı kullanarak, şu linkteki Üçüncü Parti hatırlatmayı okuduğunuzu kabul etmiş olursunuz<a href=\"{link}\">here</a>"
 
