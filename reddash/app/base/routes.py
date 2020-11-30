@@ -4,7 +4,7 @@ License: MIT
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from flask import jsonify, render_template, redirect, request, url_for, session, g
+from flask import jsonify, render_template, redirect, request, url_for, session, g, make_response
 from datetime import datetime, timedelta
 from flask_babel import _, refresh
 
@@ -126,6 +126,11 @@ def logout():
 def blacklisted():
     return render_template("errors/blacklisted.html")
 
+@blueprint.route("/setcolor", methods=["POST"])
+def set_color():
+    resp = make_response(jsonify({"status": 1}))
+    resp.set_cookie("color", request.json.get("color"))
+    return resp
 
 ## Errors
 

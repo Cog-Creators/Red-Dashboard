@@ -50,19 +50,8 @@
 
 </head>
 
-<body>
-  <!-- This has to be run before everything, so it reduces the flash of default CSS -->
+<body data="{{ color }}">
   {% include 'site_template/scripts.html' %}
-  <script>
-    function pre_load_interval() {
-      c = localStorage.getItem("theme")
-      $('body').attr("data", c || "{{ color }}")
-    }
-    var plid = setInterval(pre_load_interval, 10)
-    $(document).ready(function () {
-      clearInterval(plid)
-    })
-  </script>
   <div class="wrapper">
 
     {% include 'site_template/sidebar.html' %}
@@ -113,8 +102,7 @@
       $('.prefixdiv').addClass("white-content")
     }
     // Add white border to seleted color
-    $('span[data-color]').removeClass("active")
-    $(`span[data-color=${c}`).addClass("active")
+    $("span[data-color={{ color }}").addClass("active")
   </script>
   <script src="/static/assets/js/bootstrap-select.min.js"></script>
 </body>

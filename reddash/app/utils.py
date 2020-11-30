@@ -78,6 +78,7 @@ def add_constants(app):
         variables["locales"] = app.config["LOCALE_DICT"]
         variables["safelocales"] = json.dumps(app.config["LOCALE_DICT"])
         variables["selectedlocale"] = session.get("lang_code")
+        variables["color"] = request.cookies.get("color", variables["color"])
         variables = process_meta_tags(variables)
         return dict(version=__version__, **variables)
 

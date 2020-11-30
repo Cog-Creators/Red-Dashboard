@@ -66,7 +66,21 @@
 
         $("body").attr("data", new_color)
 
-        localStorage.setItem("theme", new_color)
+        var xhr = new XMLHttpRequest();
+        var url = "{{ url_for('base_blueprint.set_color') }}"
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+
+        data = {
+          "color": new_color
+        }
+
+        try {
+          xhr.send(JSON.stringify(data))
+        } catch (error) {
+          console.log(error)
+        }
+
       });
 
       $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function () {
