@@ -72,6 +72,7 @@
                 } else {
                     var base_guild_url = "{{ url_for('home_blueprint.guild', guild='123456789123456789') }}"
                     $("#serverrow").html("")
+                    let counter = 0
                     for (let g of json.data) {
                         var current_guild_url = base_guild_url.replace("123456789123456789", g.id)
                         $("#serverrow").append(`
@@ -80,13 +81,16 @@
                                     <div class="card h-100" onmouseover="playGif(this)" onmouseout="stopGif(this)">
                                         <img class="card-img-top" src="${g.icon}png" alt="Card image cap" data-src-url="${g.icon}" data-is-animated=${g.animated}>
                                         <div class="card-body">
-                                            <h5 class="card-title">${g.name}</h5>
-                                            <p class="card-text">Owner: ${g.owner}</p>
+                                            <h5 class="card-title" id="guild-counter-${counter}">Loading...</h5>
+                                            <p class="card-text" id="owner-counter-${counter}">Owner: Loading...</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         `)
+                        $(`#guild-counter-${counter}`).text(g.name)
+                        $(`#owner-counter-${counter}`).text(g.owner)
+                        counter += 1
                     }
                 }
             }
