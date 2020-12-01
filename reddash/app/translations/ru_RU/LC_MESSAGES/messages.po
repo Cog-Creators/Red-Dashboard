@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-18 12:17+0000\n"
-"PO-Revision-Date: 2020-11-25 12:19\n"
+"POT-Creation-Date: 2020-12-01 14:39+0000\n"
+"PO-Revision-Date: 2020-12-01 14:40\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: ru_RU\n"
 
 #: reddash/app/base/templates/site_template/navigation.html:12
-#: reddash/app/utils.py:149
+#: reddash/app/utils.py:150
 msgid "{name} Dashboard"
 msgstr "Панель управления {name}"
 
-#: reddash/app/utils.py:159
+#: reddash/app/utils.py:160
 msgid "Interactive dashboard to control and interact with {name}"
 msgstr "Интерактивная панель для управления и взаимодействия с {name}"
 
@@ -227,7 +227,7 @@ msgstr "Панель управления"
 #: reddash/app/base/templates/site_template/sidebar.html:57
 #: reddash/app/home/templates/commands.html:3
 #: reddash/app/home/templates/commands.html:14
-#: reddash/app/home/templates/guild.html:1259
+#: reddash/app/home/templates/guild.html:1266
 msgid "Commands"
 msgstr "Команды"
 
@@ -446,7 +446,7 @@ msgstr "Устанавливает роли администраторов дл�
 
 #: reddash/app/home/templates/guild.html:212
 #: reddash/app/home/templates/guild.html:303
-#: reddash/app/home/templates/guild.html:1198
+#: reddash/app/home/templates/guild.html:1200
 msgid "Roles"
 msgstr "Роли"
 
@@ -543,11 +543,11 @@ msgstr "Шаг №2: Выбрать модуль/команду"
 #: reddash/app/home/templates/guild.html:1099
 #: reddash/app/home/templates/guild.html:1132
 #: reddash/app/home/templates/guild.html:1168
-#: reddash/app/home/templates/guild.html:1229
-#: reddash/app/home/templates/guild.html:1282
-#: reddash/app/home/templates/guild.html:1397
-#: reddash/app/home/templates/guild.html:1461
-#: reddash/app/home/templates/guild.html:1517
+#: reddash/app/home/templates/guild.html:1236
+#: reddash/app/home/templates/guild.html:1289
+#: reddash/app/home/templates/guild.html:1420
+#: reddash/app/home/templates/guild.html:1486
+#: reddash/app/home/templates/guild.html:1542
 msgid "Loading..."
 msgstr "Загрузка..."
 
@@ -645,8 +645,8 @@ msgstr "Ошибка"
 
 #: reddash/app/home/templates/guild.html:971
 #: reddash/app/home/templates/guild.html:973
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1302
+#: reddash/app/home/templates/guild.html:1304
 msgid "Failed to fetch rules"
 msgstr "Ошибка при получении правил"
 
@@ -687,141 +687,141 @@ msgstr "Правило успешно удалено"
 msgid "Failed to fetch targets"
 msgstr "Ошибка при получнии целей"
 
-#: reddash/app/home/templates/guild.html:1191
+#: reddash/app/home/templates/guild.html:1192
 msgid "Channels"
 msgstr "Каналы"
 
-#: reddash/app/home/templates/guild.html:1205
+#: reddash/app/home/templates/guild.html:1208
 msgid "Users"
 msgstr "Пользователи"
 
-#: reddash/app/home/templates/guild.html:1212
-#: reddash/app/home/templates/guild.html:1220
-#: reddash/app/home/templates/guild.html:1266
-#: reddash/app/home/templates/guild.html:1274
+#: reddash/app/home/templates/guild.html:1219
+#: reddash/app/home/templates/guild.html:1227
+#: reddash/app/home/templates/guild.html:1273
+#: reddash/app/home/templates/guild.html:1281
 msgid "Choose target"
 msgstr "Выберите цель"
 
-#: reddash/app/home/templates/guild.html:1246
-#: reddash/app/home/templates/guild.html:1248
+#: reddash/app/home/templates/guild.html:1253
+#: reddash/app/home/templates/guild.html:1255
 msgid "Failed to fetch commands"
 msgstr "Ошибка при получении команд"
 
-#: reddash/app/home/templates/guild.html:1252
+#: reddash/app/home/templates/guild.html:1259
 msgid "Cogs"
 msgstr "Модули"
 
-#: reddash/app/home/templates/guild.html:1300
+#: reddash/app/home/templates/guild.html:1307
 msgid "Cog rules"
 msgstr "Правила модулей"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1331
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1347
 msgid "By default, users are"
 msgstr "По умолчанию, пользователи"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1331
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1347
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
+#: reddash/app/home/templates/guild.html:1353
 msgid "permission to use the"
 msgstr "права на использование"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1312
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1323
 msgid "cog"
 msgstr "модуля"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1349
 msgid "Users with the"
 msgstr "Пользователи с"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1349
 msgid "role"
 msgstr "ролью"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
 msgid "are"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1351
 msgid "Users in the"
 msgstr "Пользователи в"
 
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1351
 msgid "channel"
 msgstr "канале"
 
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1353
 msgid "User"
 msgstr "Пользователь"
 
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1353
 msgid "is"
 msgstr ""
 
-#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1334
 msgid "No cog rules have been created"
 msgstr "Правил модулей не было создано"
 
-#: reddash/app/home/templates/guild.html:1325
+#: reddash/app/home/templates/guild.html:1338
 msgid "Command rules"
 msgstr "Правила команд"
 
-#: reddash/app/home/templates/guild.html:1331
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1347
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
+#: reddash/app/home/templates/guild.html:1353
 msgid "command"
 msgstr "команда"
 
-#: reddash/app/home/templates/guild.html:1346
+#: reddash/app/home/templates/guild.html:1364
 msgid "No command rules have been created"
 msgstr "Правил команд не было создано"
 
-#: reddash/app/home/templates/guild.html:1350
+#: reddash/app/home/templates/guild.html:1371
 msgid "Refreshed rules"
 msgstr "Правила обновлены"
 
-#: reddash/app/home/templates/guild.html:1414
-#: reddash/app/home/templates/guild.html:1416
+#: reddash/app/home/templates/guild.html:1437
+#: reddash/app/home/templates/guild.html:1439
 msgid "Failed to update admin roles"
 msgstr "Ошибка при изменении ролей администраторов"
 
-#: reddash/app/home/templates/guild.html:1418
+#: reddash/app/home/templates/guild.html:1441
 msgid "Admin roles successfully updated"
 msgstr "Роли администраторов успешно обновлены"
 
-#: reddash/app/home/templates/guild.html:1478
-#: reddash/app/home/templates/guild.html:1480
+#: reddash/app/home/templates/guild.html:1503
+#: reddash/app/home/templates/guild.html:1505
 msgid "Failed to update mod roles"
 msgstr "Ошибка при изменении ролей модераторов"
 
-#: reddash/app/home/templates/guild.html:1482
+#: reddash/app/home/templates/guild.html:1507
 msgid "Mod roles successfully updated."
 msgstr "Роли модераторов успешно обновлены."
 
-#: reddash/app/home/templates/guild.html:1537
-#: reddash/app/home/templates/guild.html:1539
+#: reddash/app/home/templates/guild.html:1562
+#: reddash/app/home/templates/guild.html:1564
 msgid "Failed to update prefixes"
 msgstr "Ошибка при обновлении префиксов"
 
-#: reddash/app/home/templates/guild.html:1541
+#: reddash/app/home/templates/guild.html:1566
 msgid "Prefixes successfully updated"
 msgstr "Префиксы успешно обновлены"
 
