@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-18 12:17+0000\n"
-"PO-Revision-Date: 2020-11-25 12:18\n"
+"POT-Creation-Date: 2020-12-01 14:39+0000\n"
+"PO-Revision-Date: 2020-12-01 14:39\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: de_DE\n"
 
 #: reddash/app/base/templates/site_template/navigation.html:12
-#: reddash/app/utils.py:149
+#: reddash/app/utils.py:150
 msgid "{name} Dashboard"
 msgstr "{name} Verwaltung"
 
-#: reddash/app/utils.py:159
+#: reddash/app/utils.py:160
 msgid "Interactive dashboard to control and interact with {name}"
 msgstr "Interaktive Webseite um {name} zu kontrollieren"
 
@@ -227,7 +227,7 @@ msgstr "Kontrollzentrum"
 #: reddash/app/base/templates/site_template/sidebar.html:57
 #: reddash/app/home/templates/commands.html:3
 #: reddash/app/home/templates/commands.html:14
-#: reddash/app/home/templates/guild.html:1259
+#: reddash/app/home/templates/guild.html:1266
 msgid "Commands"
 msgstr "Befehle"
 
@@ -446,7 +446,7 @@ msgstr "Setze {botname}'s Administratorrollen in {guild}"
 
 #: reddash/app/home/templates/guild.html:212
 #: reddash/app/home/templates/guild.html:303
-#: reddash/app/home/templates/guild.html:1198
+#: reddash/app/home/templates/guild.html:1200
 msgid "Roles"
 msgstr "Rollen"
 
@@ -543,11 +543,11 @@ msgstr "Schritt #2: Cog oder Befehl auswählen"
 #: reddash/app/home/templates/guild.html:1099
 #: reddash/app/home/templates/guild.html:1132
 #: reddash/app/home/templates/guild.html:1168
-#: reddash/app/home/templates/guild.html:1229
-#: reddash/app/home/templates/guild.html:1282
-#: reddash/app/home/templates/guild.html:1397
-#: reddash/app/home/templates/guild.html:1461
-#: reddash/app/home/templates/guild.html:1517
+#: reddash/app/home/templates/guild.html:1236
+#: reddash/app/home/templates/guild.html:1289
+#: reddash/app/home/templates/guild.html:1420
+#: reddash/app/home/templates/guild.html:1486
+#: reddash/app/home/templates/guild.html:1542
 msgid "Loading..."
 msgstr "Lade..."
 
@@ -645,8 +645,8 @@ msgstr "Fehler"
 
 #: reddash/app/home/templates/guild.html:971
 #: reddash/app/home/templates/guild.html:973
-#: reddash/app/home/templates/guild.html:1295
-#: reddash/app/home/templates/guild.html:1297
+#: reddash/app/home/templates/guild.html:1302
+#: reddash/app/home/templates/guild.html:1304
 msgid "Failed to fetch rules"
 msgstr "Laden der Regeln fehlgeschlagen"
 
@@ -687,141 +687,141 @@ msgstr "Regel wurde erfolgreich entfernt"
 msgid "Failed to fetch targets"
 msgstr "Laden der Zielgruppen fehlgeschlagen"
 
-#: reddash/app/home/templates/guild.html:1191
+#: reddash/app/home/templates/guild.html:1192
 msgid "Channels"
 msgstr "Kanäle"
 
-#: reddash/app/home/templates/guild.html:1205
+#: reddash/app/home/templates/guild.html:1208
 msgid "Users"
 msgstr "Benutzer"
 
-#: reddash/app/home/templates/guild.html:1212
-#: reddash/app/home/templates/guild.html:1220
-#: reddash/app/home/templates/guild.html:1266
-#: reddash/app/home/templates/guild.html:1274
+#: reddash/app/home/templates/guild.html:1219
+#: reddash/app/home/templates/guild.html:1227
+#: reddash/app/home/templates/guild.html:1273
+#: reddash/app/home/templates/guild.html:1281
 msgid "Choose target"
 msgstr "Zielgruppe wählen"
 
-#: reddash/app/home/templates/guild.html:1246
-#: reddash/app/home/templates/guild.html:1248
+#: reddash/app/home/templates/guild.html:1253
+#: reddash/app/home/templates/guild.html:1255
 msgid "Failed to fetch commands"
 msgstr "Laden der Befehle fehlgeschlagen"
 
-#: reddash/app/home/templates/guild.html:1252
+#: reddash/app/home/templates/guild.html:1259
 msgid "Cogs"
 msgstr "Cogs"
 
-#: reddash/app/home/templates/guild.html:1300
+#: reddash/app/home/templates/guild.html:1307
 msgid "Cog rules"
 msgstr "Cog Regeln"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1331
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1347
 msgid "By default, users are"
 msgstr "Standardmäßig sind Benutzer"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1331
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1347
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
+#: reddash/app/home/templates/guild.html:1353
 msgid "permission to use the"
 msgstr "Berechtigung dies zu verwenden"
 
-#: reddash/app/home/templates/guild.html:1306
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1312
+#: reddash/app/home/templates/guild.html:1317
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1323
 msgid "cog"
 msgstr "Cog"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1349
 msgid "Users with the"
 msgstr "Benutzer mit der"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1333
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1349
 msgid "role"
 msgstr "Rolle"
 
-#: reddash/app/home/templates/guild.html:1308
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1319
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
 msgid "are"
 msgstr "sind"
 
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1351
 msgid "Users in the"
 msgstr "Benutzer in der"
 
-#: reddash/app/home/templates/guild.html:1310
-#: reddash/app/home/templates/guild.html:1335
+#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1351
 msgid "channel"
 msgstr "Kanal"
 
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1353
 msgid "User"
 msgstr "Benutzer"
 
-#: reddash/app/home/templates/guild.html:1312
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1323
+#: reddash/app/home/templates/guild.html:1353
 msgid "is"
 msgstr "ist"
 
-#: reddash/app/home/templates/guild.html:1321
+#: reddash/app/home/templates/guild.html:1334
 msgid "No cog rules have been created"
 msgstr "Keine Cogregeln wurden erstellt"
 
-#: reddash/app/home/templates/guild.html:1325
+#: reddash/app/home/templates/guild.html:1338
 msgid "Command rules"
 msgstr "Befehlsregeln"
 
-#: reddash/app/home/templates/guild.html:1331
-#: reddash/app/home/templates/guild.html:1333
-#: reddash/app/home/templates/guild.html:1335
-#: reddash/app/home/templates/guild.html:1337
+#: reddash/app/home/templates/guild.html:1347
+#: reddash/app/home/templates/guild.html:1349
+#: reddash/app/home/templates/guild.html:1351
+#: reddash/app/home/templates/guild.html:1353
 msgid "command"
 msgstr "Befehl"
 
-#: reddash/app/home/templates/guild.html:1346
+#: reddash/app/home/templates/guild.html:1364
 msgid "No command rules have been created"
 msgstr "Keine Befehlsregeln wurden erstellt"
 
-#: reddash/app/home/templates/guild.html:1350
+#: reddash/app/home/templates/guild.html:1371
 msgid "Refreshed rules"
 msgstr "Regeln aktualisiert"
 
-#: reddash/app/home/templates/guild.html:1414
-#: reddash/app/home/templates/guild.html:1416
+#: reddash/app/home/templates/guild.html:1437
+#: reddash/app/home/templates/guild.html:1439
 msgid "Failed to update admin roles"
 msgstr "Aktualisierung der Administratorrollen fehlgeschlagen"
 
-#: reddash/app/home/templates/guild.html:1418
+#: reddash/app/home/templates/guild.html:1441
 msgid "Admin roles successfully updated"
 msgstr "Administratorrollen erfolgreich aktualisiert"
 
-#: reddash/app/home/templates/guild.html:1478
-#: reddash/app/home/templates/guild.html:1480
+#: reddash/app/home/templates/guild.html:1503
+#: reddash/app/home/templates/guild.html:1505
 msgid "Failed to update mod roles"
 msgstr "Aktualisierung der Moderatorrollen fehlgeschlagen"
 
-#: reddash/app/home/templates/guild.html:1482
+#: reddash/app/home/templates/guild.html:1507
 msgid "Mod roles successfully updated."
 msgstr "Moderatorrollen erfolgreich aktualisiert."
 
-#: reddash/app/home/templates/guild.html:1537
-#: reddash/app/home/templates/guild.html:1539
+#: reddash/app/home/templates/guild.html:1562
+#: reddash/app/home/templates/guild.html:1564
 msgid "Failed to update prefixes"
 msgstr "Aktualisierung der Präfixe fehlgeschlagen"
 
-#: reddash/app/home/templates/guild.html:1541
+#: reddash/app/home/templates/guild.html:1566
 msgid "Prefixes successfully updated"
 msgstr "Präfixe erfolgreich aktualisiert"
 
