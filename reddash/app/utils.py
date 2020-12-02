@@ -12,7 +12,8 @@ from flask_babel import _
 from rich import rule, columns, table as rtable, panel
 from fuzzywuzzy import process
 
-from reddash.app.constants import DEFAULTS, WS_EXCEPTIONS, __version__
+from reddash import __version__
+from reddash.app.constants import DEFAULTS, WS_EXCEPTIONS
 
 
 def register_blueprints(app):

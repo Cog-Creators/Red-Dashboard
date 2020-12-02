@@ -1,9 +1,6 @@
 import threading
 import websocket
 
-__version__ = "0.1.6a"
-__author__ = "Neuro Assassin#4779"
-
 
 class Lock:
     def __init__(self):
