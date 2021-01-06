@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-12-09 12:22+0000\n"
-"PO-Revision-Date: 2020-12-30 12:29\n"
+"POT-Creation-Date: 2021-01-06 12:30+0000\n"
+"PO-Revision-Date: 2021-01-06 12:31\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -430,7 +430,7 @@ msgstr "Префиксы"
 
 #: reddash/app/home/templates/guild.html:157
 msgid "Update Prefixes"
-msgstr "Изменит префиксы"
+msgstr "Изменить префиксы"
 
 #: reddash/app/home/templates/guild.html:159
 msgid "Add Prefix"
