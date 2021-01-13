@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-01-06 12:30+0000\n"
-"PO-Revision-Date: 2021-01-06 12:31\n"
+"PO-Revision-Date: 2021-01-13 12:46\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -316,7 +316,7 @@ msgstr "Эту панель управления изменил и перепи�
 
 #: reddash/app/home/templates/credits.html:24
 msgid "This dashboard was made for <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, a multifunctional, fully modular Discord bot, created by Twentysix, made great by many.  Red Discord Bot is protected under <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
-msgstr "Эта панель управления создана для <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, мультифункционального, полностью модульного бота Discord, созданного Twentysix, улучшенный многими. Red Discord Bot доступен под лицензией <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
+msgstr "Эта панель управления создана для <a href=\"https://github.com/Cog-Creators/Red-DiscordBot\">Red Discord Bot</a>, мультифункционального, полностью модульного бота Discord, созданного Twentysix, улучшенного многими. Red Discord Bot доступен под лицензией <a href=\"https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/LICENSE\">GNU General Public License v3.0</a>."
 
 #: reddash/app/home/templates/credits.html:31
 msgid "Privacy Policy:"
