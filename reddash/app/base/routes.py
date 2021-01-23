@@ -133,6 +133,7 @@ def set_color():
     resp.set_cookie("color", request.json.get("color"))
     return resp
 
+
 @blueprint.route("/index")
 @blueprint.route("/")
 def index():

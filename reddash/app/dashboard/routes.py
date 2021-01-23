@@ -13,6 +13,7 @@ import datetime
 
 dashlog = logging.getLogger("reddash")
 
+
 @blueprint.route("/dashboard")
 def dashboard():
     if not session.get("id"):
