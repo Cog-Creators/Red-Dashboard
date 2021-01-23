@@ -12,25 +12,25 @@
     {% if session.get("id") %}
     <ul class="nav">
       <li id="navindex">
-        <a href="{{ url_for('home_blueprint.index') }}">
+        <a href="{{ url_for('base_blueprint.index') }}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <p>{{ _('Home') }}</p>
         </a>
       </li>
       <li id="navcommands">
-        <a href="{{ url_for('home_blueprint.commands') }}">
+        <a href="{{ url_for('base_blueprint.commands') }}">
           <i class="tim-icons icon-molecule-40"></i>
           <p>{{ _('Commands') }}</p>
         </a>
       </li>
       <li id="navdashboard">
-        <a href="{{ url_for('home_blueprint.dashboard') }}">
+        <a href="{{ url_for('dashboard_blueprint.dashboard') }}">
           <i class="tim-icons icon-controller"></i>
           <p>{{ _('Dashboard') }}</p>
         </a>
       </li>
       <li id="navcredits">
-        <a href="{{ url_for('home_blueprint.credits') }}">
+        <a href="{{ url_for('base_blueprint.credits') }}">
           <i class="tim-icons icon-book-bookmark"></i>
           <p>{{ _('Credits') }}</p>
         </a>
@@ -45,21 +45,21 @@
     {% else %}
     <ul class="nav">
       <li id="navindex">
-        <a href="{{ url_for('home_blueprint.index') }}">
+        <a href="{{ url_for('base_blueprint.index') }}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <p>{{ _('Home') }}</p>
         </a>
       </li>
       {% if redirect %}
       <li id="navcommands">
-        <a href="{{ url_for('home_blueprint.commands') }}">
+        <a href="{{ url_for('base_blueprint.commands') }}">
           <i class="tim-icons icon-molecule-40"></i>
           <p>{{ _('Commands') }}</p>
         </a>
       </li>
       {% endif %}
       <li id="navcredits">
-        <a href="{{ url_for('home_blueprint.credits') }}">
+        <a href="{{ url_for('base_blueprint.credits') }}">
           <i class="tim-icons icon-book-bookmark"></i>
           <p>{{ _('Credits') }}</p>
         </a>

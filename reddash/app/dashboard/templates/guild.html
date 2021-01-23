@@ -876,7 +876,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <h5>{{ _('Click <a href="{dashboard}">here</a> to go to the dashboard, or <a href="{home}">here</a> to go home.').format(dashboard=url_for('home_blueprint.dashboard'), home=url_for('home_blueprint.index')) }}
+                    <h5>{{ _('Click <a href="{dashboard}">here</a> to go to the dashboard, or <a href="{home}">here</a> to go home.').format(dashboard=url_for('dashboard_blueprint.dashboard'), home=url_for('dashboard_blueprint.index')) }}
                     </h5>
                 </div>
             </div>
@@ -960,7 +960,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.fetchaliases', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.fetchaliases', guild='00000') }}`.replace("00000", id)
 
         xhr.open("GET", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1031,7 +1031,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.adddefaultrule', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.adddefaultrule', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1067,7 +1067,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.addrule', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.addrule', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1102,7 +1102,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.removedefaultrule', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.removedefaultrule', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1136,7 +1136,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.removerule', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.removerule', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1172,7 +1172,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.fetchtargets', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.fetchtargets', guild='00000') }}`.replace("00000", id)
 
         xhr.open("GET", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1191,7 +1191,7 @@
 
                 var chopt = [`<optgroup label="{{ _('Channels') }}">`]
                 for (let [id, name] of json.data.CHANNELS) {
-                    chopt.push(`<option value=${id} class="selectpicker-element-${id}">Loading...</option>`)
+                    chopt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
                     big_ol_dict[id] = name
                 }
                 chopt.push("</optgroup>")
@@ -1199,7 +1199,7 @@
 
                 var ropt = [`<optgroup label="{{ _('Roles') }}">`]
                 for (let [id, name] of json.data.ROLES) {
-                    ropt.push(`<option value=${id} class="selectpicker-element-${id}">Loading...</option>`)
+                    ropt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
                     big_ol_dict[id] = name
                 }
                 ropt.push("</optgroup>")
@@ -1207,14 +1207,16 @@
 
                 var uopt = [`<optgroup label="{{ _('Users') }}">`]
                 for (let [id, name] of json.data.USERS) {
-                    uopt.push(`<option value=${id} class="selectpicker-element-${id}">Loading...</option>`)
+                    uopt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
                     big_ol_dict[id] = name
                 }
                 uopt.push("</optgroup>")
                 select.append(uopt.join(""))
+                /*
                 for (let [id, name] of Object.entries(big_ol_dict)) {
                     $(`.selectpicker-element-${id}`).text(name)
                 }
+                */
             }
             select.selectpicker({ title: "{{ _('Choose target') }}" })
             select.removeAttr("disabled")
@@ -1240,7 +1242,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.fetchcogcommands', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.fetchcogcommands', guild='00000') }}`.replace("00000", id)
 
         xhr.open("GET", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1291,7 +1293,7 @@
 
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.fetchrules', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.fetchrules', guild='00000') }}`.replace("00000", id)
 
         xhr.open("GET", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1426,7 +1428,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.adminroles', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.adminroles', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1492,7 +1494,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.modroles', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.modroles', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")
@@ -1551,7 +1553,7 @@
         var parts = window.location.pathname.split("/")
         var id = parts[parts.length - 1]
         var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('home_blueprint.serverprefix', guild='00000') }}`.replace("00000", id)
+        var url = `{{ url_for('api_blueprint.serverprefix', guild='00000') }}`.replace("00000", id)
 
         xhr.open("POST", url, true)
         xhr.setRequestHeader("Content-Type", "application/json")

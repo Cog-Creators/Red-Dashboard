@@ -97,7 +97,7 @@ def callback():
         ] = f"https://cdn.discordapp.com/avatars/{new_data['id']}/{new_data['avatar']}.png"
         session["username"] = new_data["username"]
 
-        redirecting_to = "home_blueprint.index"
+        redirecting_to = "base_blueprint.index"
         arguments = {}
         if session.get("login_redirect"):
             redirecting_to = session["login_redirect"]["route"]
@@ -113,7 +113,7 @@ def callback():
 def login():
     if not session.get("id"):
         return render_template("login/login.html", status="0")
-    return redirect(url_for("home_blueprint.index"))
+    return redirect(url_for("base_blueprint.index"))
 
 
 @blueprint.route("/logout")
@@ -132,6 +132,26 @@ def set_color():
     resp = make_response(jsonify({"status": 1}))
     resp.set_cookie("color", request.json.get("color"))
     return resp
+
+@blueprint.route("/index")
+@blueprint.route("/")
+def index():
+    return render_template("index.html")
+
+
+@blueprint.route("/commands")
+def commands():
+    data = app.commanddata
+    prefix = app.variables.get("prefix", ["[p]"])
+
+    return render_template(
+        "pages/commands.html", cogs=[k["name"] for k in data], data=data, prefixes=prefix
+    )
+
+
+@blueprint.route("/credits")
+def credits():
+    return render_template("pages/credits.html")
 
 
 ## Errors
