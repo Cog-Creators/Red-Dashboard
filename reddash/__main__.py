@@ -56,7 +56,7 @@ def main():
         print("")
         if confirm == "I agree":
             console.print(
-                "User has read the wranings and has typed I agree.  Launching developmental server...",
+                "User has read the warnings and has typed I agree.  Launching developmental server...",
                 style="bold red",
             )
         else:

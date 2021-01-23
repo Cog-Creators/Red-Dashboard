@@ -29,7 +29,7 @@
       $("#changelocale").click(function (event) {
         var locale = $("#localepicker").val()
         var real_locale = reversed_locales[locale]
-        var redirect = "{{ url_for('home_blueprint.index') }}".replace("{{ session.get('lang_code') }}", real_locale)
+        var redirect = "{{ url_for('base_blueprint.index') }}".replace("{{ session.get('lang_code') }}", real_locale)
         window.location.replace(redirect)
       })
       $('.fixed-plugin a').click(function (event) {
