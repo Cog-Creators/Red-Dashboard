@@ -11,9 +11,6 @@ import random
 import logging
 import datetime
 
-from nacl.signing import VerifyKey
-from nacl.encoding import HexEncoder
-
 dashlog = logging.getLogger("reddash")
 
 
