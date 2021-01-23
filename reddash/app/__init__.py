@@ -38,6 +38,7 @@ from reddash.app.utils import (
     add_constants,
     initialize_babel,
     startup_message,
+    ReverseProxied,
 )
 
 
@@ -80,6 +81,9 @@ def create_app(host, port, rpcport, interval, debug, dev):
     app.rpcport = str(rpcport)
     app.rpcversion = 0
     app.interval = interval
+
+    # Reverse proxy path support
+    app.wsgi_app = ReverseProxied(app.wsgi_app)
 
     # Initialize core variables
     app.task_manager = TaskManager(app, console, progress_bar)
