@@ -541,6 +541,7 @@ def fetchaliases(guild):
 
 # ----------------------------------- Third Party -----------------------------------
 
+
 @blueprint.route("/api/webhook", methods=("POST",))
 def webhook_route():
     # Webhook received
