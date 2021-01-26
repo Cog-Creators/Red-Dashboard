@@ -542,6 +542,35 @@ def fetchaliases(guild):
 # ----------------------------------- Third Party -----------------------------------
 
 
+@blueprint.route("/api/webhook", methods=("POST",))
+def webhook_route():
+    # Webhook received
+    if not request.is_json:
+        # reject any requests that aren't json for now
+        return jsonify(
+            {"status": 0, "message": "Invalid formatting. This endpoint receives JSON only."}
+        )
+    payload = request.get_json()
+    payload["origin"] = request.origin
+    payload["headers"] = str(request.headers)
+    # Pass header data here incase there was something
+    # else the user needs for filtering
+    payload["user_agent"] = str(request.user_agent)
+    # User agent seems adequate enough for filtering
+    try:
+        requeststr = {
+            "jsonrpc": "2.0",
+            "id": 0,
+            "method": "DASHBOARDRPC_WEBHOOKS__WEBHOOK_RECEIVE",
+            "params": [payload],
+        }
+        with app.lock:
+            return get_result(app, requeststr)
+    except Exception:
+        dashlog.warning("Error sending webhook info", exc_info=True)
+        return jsonify({"status": 0, "message": "Not connected to bot"})
+
+
 @blueprint.route("/third_party/spotify/callback")
 def third_party_spotify_callback():
     # Spotify cog is owned by TrustyJAID
