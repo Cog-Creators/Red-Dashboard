@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reddashboard\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-01-23 21:40+0000\n"
-"PO-Revision-Date: 2021-01-23 21:41\n"
+"POT-Creation-Date: 2021-05-05 12:26+0000\n"
+"PO-Revision-Date: 2021-05-26 12:36\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.0\n"
+"Generated-By: Babel 2.9.1\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Crowdin-Project: reddashboard\n"
 "X-Crowdin-Project-ID: 412602\n"
@@ -27,29 +27,29 @@ msgstr "Панель управления {name}"
 msgid "Interactive dashboard to control and interact with {name}"
 msgstr "Интерактивная панель для управления и взаимодействия с {name}"
 
-#: reddash/app/api/routes.py:25 reddash/app/api/routes.py:29
-#: reddash/app/api/routes.py:50
+#: reddash/app/api/routes.py:22 reddash/app/api/routes.py:26
+#: reddash/app/api/routes.py:47
 msgid "Not connected to bot"
 msgstr "Нет подключения к боту"
 
-#: reddash/app/api/routes.py:27
+#: reddash/app/api/routes.py:24
 msgid "Something went wrong"
 msgstr "Что-то пошло не так"
 
-#: reddash/app/api/routes.py:39 reddash/app/api/routes.py:56
+#: reddash/app/api/routes.py:36 reddash/app/api/routes.py:53
 msgid "Not logged in"
 msgstr "Не авторизован"
 
-#: reddash/app/api/routes.py:66 reddash/app/api/routes.py:114
-#: reddash/app/api/routes.py:159 reddash/app/api/routes.py:204
-#: reddash/app/api/routes.py:246 reddash/app/api/routes.py:288
-#: reddash/app/api/routes.py:330 reddash/app/api/routes.py:377
-#: reddash/app/api/routes.py:423 reddash/app/api/routes.py:469
-#: reddash/app/api/routes.py:514
+#: reddash/app/api/routes.py:63 reddash/app/api/routes.py:111
+#: reddash/app/api/routes.py:156 reddash/app/api/routes.py:201
+#: reddash/app/api/routes.py:243 reddash/app/api/routes.py:285
+#: reddash/app/api/routes.py:327 reddash/app/api/routes.py:374
+#: reddash/app/api/routes.py:420 reddash/app/api/routes.py:466
+#: reddash/app/api/routes.py:511
 msgid "You are doing that too much.  Try again in {wait} seconds"
 msgstr "Вы делаете это слишком часто. Попробуйте еще раз через {wait} секунд"
 
-#: reddash/app/api/routes.py:81
+#: reddash/app/api/routes.py:78
 msgid "Prefixes must be specified"
 msgstr "Необходимо указать префиксы"
 
