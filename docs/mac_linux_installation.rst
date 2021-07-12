@@ -38,7 +38,7 @@ Using pyenv virtualenv
 1. Open a terminal.
 2. Type ``pyenv virtualenv redashenv`` to create a virtual environment.
 3. Enter your environment with ``pyenv shell redashenv``.
-4. Type ``python -m pip install -u setuptools wheel``.
+4. Type ``python -m pip install -U setuptools wheel``.
 5. Type ``python -m pip install Red-Dashboard`` and let it install.
 
 *You can continue to* `Installing the cog <cog_installation>` *or* `Automatic Startup <systemctl_startup>`.
@@ -52,7 +52,7 @@ Using venv
 2. Type ``python3.8 -m venv ~/redashenv``\ to create a virtual
    environment.
 3. Enter your environment with ``source ~/redashenv/bin/activate``.
-4. Type ``python -m pip install -u setuptools wheel``.
+4. Type ``python -m pip install -U setuptools wheel``.
 5. Type ``python -m pip install Red-Dashboard`` and let it install.
 
 *You can continue to* `Installing the cog <cog_installation>` *or* `Automatic Startup <systemctl_startup>`.
