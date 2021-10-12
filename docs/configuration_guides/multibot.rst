@@ -1,13 +1,41 @@
-Cog configuration with one bot
-==============================
+Configuration Companion Cog - Multibot
+======================================
 
 Welcome to the Dashboard Cog Configuration Guide. While running the
 below directions, it is assumed that you have installed the dashboard
 cog from the Toxic Cogs repository, and have loaded it, according to the
-`Installing the cog <cog_installation>` guide.
+`Installing Companion Cog <../installing_companion_cog>` guide.
 
-Set the client secret
----------------------
+Create a list of ports
+----------------------
+
+Because you are choosing to host multiple webservers, you must create a
+manual list of ports yourself. For each bot you are planning on running
+a webserver for, think up of two ports, one for the bot's RPC (from now
+on referred to as ``<rpcport>``) and one for the webserver (from now on
+referred to as ``<webport>``). Each port must be between 1 and 65535.
+When you are done, it should look something like this:
+
++-------------+------------+------------------+
+| Bot         | RPC port   | Webserver port   |
++=============+============+==================+
+| Redbot #1   | 6133       | 42356            |
++-------------+------------+------------------+
+| Redbot #2   | 6134       | 42357            |
++-------------+------------+------------------+
+| Redbot #3   | 6135       | 42358            |
++-------------+------------+------------------+
+
+.. warning::
+
+   If you already created a list of ports for your bots because you started the webserver first, **use those instead**.
+
+.. attention::
+
+   It is recommended to choose ports with higher numbers, as other applications typically use lower ports.
+
+Set the client secrets
+----------------------
 
 The client secret is used so that the bot can obtain a user's profile
 when logging in, and restricts what the user can do on the dashboard
@@ -25,9 +53,14 @@ maliciously, nor is user's data.
 
 .. code-block:: none
 
-    [p]dashboard webserver secret <secret>
+   [p]dashboard webserver secret <secret>
 
-.. tip:: 
+4. Repeat these steps for each bot that you are setting the dashboard up
+   for. Note that you must assign each secret to the proper bot. For
+   example, you cannot give the secret for Redbot #1 to the dashboard
+   cog on Redbot #3.
+
+.. tip::
 
    Keep the Discord Developer Console page open for later.
 
@@ -48,24 +81,25 @@ available under certain circumstances.
 Option #1: Domain (Recommended)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. attention:: 
+.. attention::
 
    This option is only available of the following is true:
 
    1. You have a domain bought and set up, and are ready to connect it to
       the dashboard.
-   2. You acknowledge that direct support will not be given for connecting
-      the dashboard to the domain.
+   2. You acknowledge that direct support will not be given for running the
+      dashboard on the domain.
 
 When running on a domain, the redirect should be something like
 ``https://domain.com/callback``. For example, if my domain was
 ``reddashboard.io``, my redirect would be
 ``https://reddashboard.io/callback``. Save this redirect to your
-clipboard.
+clipboard. Note that when you are running with multiple bots, each bot
+must have its own domain or subdomain.
 
-.. warning:: 
+.. warning::
 
-   **Warning! It is recommended to use a reverse proxy when setting up the dashboard. Check out** `Reverse proxying with Apache <reverse_proxy_apache>` or `Reverse proxying with Nginx <reverse_proxy_nginx>` **to get started, if you are on Linux.**
+   **Warning! It is recommended to use a reverse proxy when setting up the dashboard. Check out** `Reverse proxying with Apache <../reverse_proxy_apache>` or `Reverse proxying with Nginx <../reverse_proxy_nginx>` **to get started, if you are on Linux.**
 
 Option #2: Local/Private IP address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,13 +118,13 @@ depending on which one you prefer:
 
 -  Accessing the dashboard from the same device the bot is running on
    (Local):
--  Your redirect URL will be ``http://127.0.0.1:42356/callback``.
+-  Your redirect URL will be ``http://127.0.0.1:<webport>/callback``.
 -  Accessing the dashboard from a different device the bot is running
    on, but on the same network (Private):
--  Your redirect URL will be ``http://ipaddress:42356/callback``.
+-  Your redirect URL will be ``http://ipaddress:<webport>/callback``.
    Replace ``ipaddress`` with your private IP address. For example, if
    my private IP address was ``192.168.1.2``, my redirect would be
-   ``http://192.168.1.2:42356/callback``.
+   ``http://192.168.1.2:<webport>/callback``.
 
 .. tip::
 
@@ -111,6 +145,8 @@ Registering the redirect
    Console (the same page as earlier), click on the OAuth2 page on the
    left, then under the redirects, paste the redirect URL into one of
    the inputs.
+3. Repeat the above steps for each bot you are setting the webserver up
+   for.
 
 .. important::
 
@@ -124,8 +160,8 @@ help with the dashboard. To do this, grab an invite link for your
 server, and paste it into the command below, replacing ``<invite>`` with
 the link to your server:
 
-.. code-block:: none
+.. code:: none
 
     [p]dashboard settings support <invite>
 
-*If you have not yet installed the webserver, head over to* `Mac/Linux Installation <mac_linux_installation>` *or* `*Windows Installation <windows_installation>` *, depending on your OS, to install it. If you already have, head over to* `Running the Webserver <running_webserver_one_bot>` *to finish up the process.*
+*You can now proceed to `Running the Webserver with Multple bots <../running_webserver_multi_bot>` *to finish up the process.*

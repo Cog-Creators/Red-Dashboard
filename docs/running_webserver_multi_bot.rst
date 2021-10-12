@@ -1,7 +1,7 @@
 Running the Webserver with multiple bots
 ========================================
 
-Take the list of ports you created in `Cog configuration with multiple bots <cog_config_multi_bot>`.
+Take the list of ports you created in `Configuration Companion Cog - Multibot <configuration_guides/multibot>`.
 It should look something like the below:
 
 +-------------+------------+------------------+
@@ -24,7 +24,7 @@ Now, for each bot follow these instructions:
    ``--rpc --rpc-port <rpcport>``. For example, if I was starting Redbot
    #3, I would run ``redbot redbot3 --rpc --rpc-port 6135``.
 3. After you do that, the webserver should be launched, and should be
-   viewable at the domain/IP address specified in `Cog configuration with multiple bots <cog_config_multi_bot>`.
+   viewable at the domain/IP address specified in `Configuration Companion Cog - Multibot <configuration_guides/multibot>`.
 
 .. tip::
 

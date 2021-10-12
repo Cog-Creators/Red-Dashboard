@@ -18,9 +18,8 @@ Welcome to Red Dashboard's documentation!
    :maxdepth: 1
    :caption: Cog installation:
 
-   cog_installation
-   cog_config_one_bot
-   cog_config_multi_bot
+   installing_companion_cog
+   configuration_guides/index
 
 .. toctree::
    :maxdepth: 1
