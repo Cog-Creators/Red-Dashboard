@@ -11,8 +11,7 @@ Support Server
     **feedback**. If you cannot understand the (relatively simple) instructions,
     then now is not a good time to install, and its better to wait until it
     is officially released. I would recommend searching google for the answers
-    to your questions. If for some reason, you cannot understand how to install
-    it at all, and I warn, ONLY if it is that, then you can DM Draper.
+    to your questions.
 
     `Link to the support server <https://discord.gg/vQZTdB9>`__
 
@@ -24,7 +23,7 @@ bot's info**
 
 -  Did you start the bot with the RPC flag?
 -  If you started the bot with the ``--rpc-port`` flag, did you provide
-   the same port to ``reddash``\ command when starting the webserver?
+   the same port to ``reddash``\ command when starting the webserver?  Vice versa?
 -  Have you set the redirect and secret in the cog's settings?
 -  Have you tried reloading the dashboard cog/restarting the webserver?
 -  Have you tried updating the dashboard cog and dashboard itself?
