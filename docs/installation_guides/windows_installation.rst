@@ -56,4 +56,4 @@ Once you are inside your virtual environment, update setup packages then install
    python -m pip install -U pip setuptools wheel
    python -m pip install -U Red-Dashboard
 
-*You can continue to* `Installing Companion Cog <installing_companion_cog>`.
+*You can continue to* `Installing Companion Cog <../configuration_guides/installing_companion_cog>`.

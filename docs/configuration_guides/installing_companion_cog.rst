@@ -47,4 +47,4 @@ Installing the cog is extremely easy, and can be accomplished through Red's plug
 
     [p]load dashboard
 
-*You can now proceed to configuration the companion dashboard cog.  Start `here <configuration_guides/index>` to decide which guide to follow.*
+*You can now proceed to configuration the companion dashboard cog.  Start* `here <index>` *to decide which guide to follow.*

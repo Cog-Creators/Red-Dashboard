@@ -4,7 +4,7 @@ Configuration Companion Cog - Single Bot
 Welcome to the Dashboard Cog Configuration Guide. While running the
 below directions, it is assumed that you have installed the dashboard
 cog from the Toxic Cogs repository, and have loaded it, according to the
-`Installing Companion Cog <../installing_companion_cog>` guide.
+`Installing Companion Cog <installing_companion_cog>` guide.
 
 Set the client secret
 ---------------------
@@ -134,4 +134,4 @@ the link to your server:
 
     [p]dashboard settings support <invite>
 
-*You can now proceed to `Running the Webserver with Single bots <../running_webserver_one_bot>` *to finish up the process.*
+*You can now proceed to `Running the Webserver with Single bots <../launching_guides/running_webserver_one_bot>` *to finish up the process.*

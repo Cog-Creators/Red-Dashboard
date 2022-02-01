@@ -8,29 +8,29 @@ Welcome to Red Dashboard's documentation!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Webserver installation:
+   :caption: Webserver installation
 
-   mac_linux_installation
-   windows_installation
-   systemctl_startup
+   installation_guides/mac_linux_installation
+   installation_guides/windows_installation
+   installation_guides/systemctl_startup
 
 .. toctree::
    :maxdepth: 1
-   :caption: Cog installation:
+   :caption: Cog installation
 
-   installing_companion_cog
+   configuration_guides/installing_companion_cog
    configuration_guides/index
 
 .. toctree::
    :maxdepth: 1
-   :caption: Launching dashboard:
+   :caption: Launching dashboard
 
-   running_webserver_one_bot
-   running_webserver_multi_bot
+   launching_guides/running_webserver_one_bot
+   launching_guides/running_webserver_multi_bot
 
 .. toctree::
    :maxdepth: 1
-   :caption: Reverse proxy:
+   :caption: Reverse proxy
 
    reverse_proxy_apache
    reverse_proxy_nginx

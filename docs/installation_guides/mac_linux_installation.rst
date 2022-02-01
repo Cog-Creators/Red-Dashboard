@@ -7,7 +7,7 @@ Mac/Linux Installation
 
 .. warning::
 
-   For safety reasons, DO NOT install Red Dashboard with a root user. If you are unsure how to create a new user on Linux, see `DigitalOcean’s tutorial: How To Create a New Sudo-enabled User <https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-20-04-quickstart>`__.
+   For safety reasons, do not install Red Dashboard with a root user. If you are unsure how to create a new user on Linux, see `DigitalOcean’s tutorial: How To Create a New Sudo-enabled User <https://www.digitalocean.com/community/tutorials/how-to-create-a-new-sudo-enabled-user-on-ubuntu-20-04-quickstart>`__.
 
 Welcome to the Mac/Linux Installation Guide for the Red Discord Bot
 Dashboard Webserver. While running the below directions, the following
@@ -111,4 +111,4 @@ Once you are inside your virtual environment, update setup packages then install
    python -m pip install -U pip setuptools wheel
    python -m pip install -U Red-Dashboard
 
-*You can continue to* `Installing Companion Cog <installing_companion_cog>` *or* `Automatic Startup <systemctl_startup>`.
+*You can continue to* `Installing Companion Cog <../configuration_guides/installing_companion_cog>` *or* `Automatic Startup <systemctl_startup>`.
