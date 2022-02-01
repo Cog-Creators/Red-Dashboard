@@ -39,7 +39,9 @@
                             <div class="row">
                                 <div class="col-6">
                                     <h4>
-                                        {{ _('{members} Members | {humans} Humans | {bots} Bots').format(members=data['data']['members'], humans=data['data']['humans'], bots=data['data']['bots']) }}<br>
+                                        {{ _('{members} Members | {humans} Humans | {bots}
+                                        Bots').format(members=data['data']['members'], humans=data['data']['humans'],
+                                        bots=data['data']['bots']) }}<br>
                                         <img src="static/assets/img/online.png" class="status">
                                         {{ data['data']['online'] }}<br>
                                         <img src="static/assets/img/idle.png" class="status">
@@ -62,7 +64,9 @@
                             <h4>{{ _('Your permissions') }}: {{ data['data']['perms'] }}</h4>
                             {% if data['data']['roleswarn'] %}
                             <div class="alert alert-dark">
-                                <span>{{ _("<b>Warning - </b> You haven't registered any roles with the dashboard. Please use <code>{command}</code> to allow other people to use it.").format(command="[p]dashboard roles create") }}</span>
+                                <span>{{ _("<b>Warning - </b> You haven't registered any roles with the dashboard.
+                                    Please use <code>{command}</code> to allow other people to use
+                                    it.").format(command="[p]dashboard roles create") }}</span>
                             </div>
                             {% endif %}
                         </div>
@@ -86,8 +90,8 @@
                         <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
                             aria-orientation="vertical">
                             <a class="nav-link taboption" id="serverprefix-tab" data-toggle="pill" href="#serverprefix"
-                                role="tab" aria-controls="serverprefix"
-                                aria-selected="false">{{ _('Server prefix') }}</a>
+                                role="tab" aria-controls="serverprefix" aria-selected="false">{{ _('Server prefix')
+                                }}</a>
                             <a class="nav-link taboption" id="adminroles-tab" data-toggle="pill" href="#adminroles"
                                 role="tab" aria-controls="adminroles" aria-selected="false">{{ _('Admin roles') }}</a>
                             <a class="nav-link taboption" id="modroles-tab" data-toggle="pill" href="#modroles"
@@ -106,7 +110,8 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">{{ _('Set server prefix') }}</h4>
-                                                        <p>{{ _("Sets {botname}'s server prefix(es)").format(botname=botname) }}
+                                                        <p>{{ _("Sets {botname}'s server
+                                                            prefix(es)").format(botname=botname) }}
                                                         </p>
                                                         <p>{{ _('Syntax') }}:
                                                             <code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>set serverprefix</code>
@@ -124,7 +129,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -153,10 +159,10 @@
                                                                 </li>
                                                                 {% endfor %}
                                                             </ul>
-                                                            <button class="btn"
-                                                                id="prefixupdate">{{ _('Update Prefixes') }}</button>
-                                                            <button class="btn"
-                                                                id="addprefix">{{ _('Add Prefix') }}</button>
+                                                            <button class="btn" id="prefixupdate">{{ _('Update
+                                                                Prefixes') }}</button>
+                                                            <button class="btn" id="addprefix">{{ _('Add Prefix')
+                                                                }}</button>
                                                             <br>
                                                             <span id="prefixstatus"></span>
                                                         </div>
@@ -177,7 +183,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">{{ _('Set admin roles') }}</h4>
-                                                        <p>{{ _("Sets {botname}'s admin roles in {guild}").format(botname=botname, guild=data['data']['name']) }}
+                                                        <p>{{ _("Sets {botname}'s admin roles in
+                                                            {guild}").format(botname=botname,
+                                                            guild=data['data']['name']) }}
                                                         </p>
                                                         <p>{{ _('Syntax') }}:
                                                             <code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>set addadminrole &ltrole&gt</code>
@@ -198,7 +206,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -229,13 +238,14 @@
                                                                 {% endfor %}
                                                             </ul>
                                                             <div class="buttondiv dropup">
-                                                                <button class="btn"
-                                                                    id="adminroleupdate">{{ _('Update Admin Roles') }}</button>
+                                                                <button class="btn" id="adminroleupdate">{{ _('Update
+                                                                    Admin Roles') }}</button>
                                                                 <button class="btn dropdown-toggle" href="#"
                                                                     role="button" id="roledrop" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false"
                                                                     id="addadminrole"
-                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add Admin Role') }}</button>
+                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add
+                                                                    Admin Role') }}</button>
                                                                 <div class="dropdown-menu dropdown-menu-right"
                                                                     aria-labelledby="roledrop">
                                                                     <div class="scrollable-menu">
@@ -268,7 +278,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">{{ _('Set mod roles') }}</h4>
-                                                        <p>{{ _("Sets {botname}'s mod roles in {guild}").format(botname=botname, guild=data['data']['name']) }}
+                                                        <p>{{ _("Sets {botname}'s mod roles in
+                                                            {guild}").format(botname=botname,
+                                                            guild=data['data']['name']) }}
                                                         </p>
                                                         <p>{{ _('Syntax') }}:
                                                             <code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>set addmodrole &ltrole&gt</code>
@@ -289,7 +301,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -320,13 +333,14 @@
                                                                 {% endfor %}
                                                             </ul>
                                                             <div class="buttondiv dropup">
-                                                                <button class="btn"
-                                                                    id="modroleupdate">{{ _('Update Mod Roles') }}</button>
+                                                                <button class="btn" id="modroleupdate">{{ _('Update Mod
+                                                                    Roles') }}</button>
                                                                 <button class="btn dropdown-toggle" href="#"
                                                                     role="button" id="roledrop" data-toggle="dropdown"
                                                                     aria-haspopup="true" aria-expanded="false"
                                                                     id="addmodrole"
-                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add Mod Role') }}</button>
+                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add Mod
+                                                                    Role') }}</button>
                                                                 <div class="dropdown-menu dropdown-menu-right"
                                                                     aria-labelledby="roledrop">
                                                                     <div class="scrollable-menu">
@@ -408,7 +422,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -420,7 +435,8 @@
                                                     <div id="rulesdiv">
                                                         <p class="card-category text-gray"
                                                             style="text-transform: none;">
-                                                            {{ _('Permission rules have not been loaded. Please re-click View Rules on the left') }}
+                                                            {{ _('Permission rules have not been loaded. Please re-click
+                                                            View Rules on the left') }}
                                                         </p>
                                                     </div>
                                                     <br>
@@ -458,7 +474,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -490,8 +507,8 @@
                                                                 data-size="5"></select>
                                                         </div>
                                                     </div>
-                                                    <button class="btn"
-                                                        id="adddefaultrulesubmit">{{ _('Add Default Rule') }}</button>
+                                                    <button class="btn" id="adddefaultrulesubmit">{{ _('Add Default
+                                                        Rule') }}</button>
                                                     <br>
                                                     <span id="adddefaultrulestatus"></span>
                                                 </div>
@@ -526,7 +543,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -602,7 +620,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -620,8 +639,8 @@
                                                                 data-size="5"></select>
                                                         </div>
                                                     </div>
-                                                    <button class="btn"
-                                                        id="removedefaultrulesubmit">{{ _('Remove Default Rule') }}</button>
+                                                    <button class="btn" id="removedefaultrulesubmit">{{ _('Remove
+                                                        Default Rule') }}</button>
                                                     <br>
                                                     <span id="removedefaultrulestatus"></span>
                                                 </div>
@@ -656,7 +675,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -683,8 +703,8 @@
                                                                 data-size="5"></select>
                                                         </div>
                                                     </div>
-                                                    <button class="btn"
-                                                        id="removerulesubmit">{{ _('Remove Rule') }}</button>
+                                                    <button class="btn" id="removerulesubmit">{{ _('Remove Rule')
+                                                        }}</button>
                                                     <br>
                                                     <span id="removerulestatus"></span>
                                                 </div>
@@ -755,7 +775,8 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">{{ _('View server aliases') }}</h4>
-                                                        <p>{{ _("See {botname}'s registered server aliases").format(botname=botname) }}
+                                                        <p>{{ _("See {botname}'s registered server
+                                                            aliases").format(botname=botname) }}
                                                         </p>
                                                         <p>{{ _('Syntax') }}: <br />
                                                             <code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>alias list</code><br />
@@ -775,7 +796,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -787,7 +809,8 @@
                                                     <div id="aliasdiv">
                                                         <p class="card-category text-gray"
                                                             style="text-transform: none;">
-                                                            {{ _('Aliases have not been loaded. Please re-click Aliases on the left') }}
+                                                            {{ _('Aliases have not been loaded. Please re-click Aliases
+                                                            on the left') }}
                                                         </p>
                                                     </div>
                                                     <br>
@@ -810,7 +833,8 @@
                                                     <div class="col-md-6">
                                                         <h4 class="card-title">{{ _('View server customcommands') }}
                                                         </h4>
-                                                        <p>{{ _("See {botname}'s registered server custom commands").format(botname=botname) }}
+                                                        <p>{{ _("See {botname}'s registered server custom
+                                                            commands").format(botname=botname) }}
                                                         </p>
                                                         <p>{{ _('Syntax') }}: <br />
                                                             <code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>customcom list</code><br />
@@ -830,7 +854,8 @@
                                                                 aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
                                                                 <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                    p }}</a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -876,7 +901,9 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <h5>{{ _('Click <a href="{dashboard}">here</a> to go to the dashboard, or <a href="{home}">here</a> to go home.').format(dashboard=url_for('dashboard_blueprint.dashboard'), home=url_for('dashboard_blueprint.index')) }}
+                    <h5>{{ _('Click <a href="{dashboard}">here</a> to go to the dashboard, or <a href="{home}">here</a>
+                        to go home.').format(dashboard=url_for('dashboard_blueprint.dashboard'),
+                        home=url_for('dashboard_blueprint.index')) }}
                     </h5>
                 </div>
             </div>
@@ -1050,6 +1077,10 @@
             ad: allow_or_deny,
             cc: cog_or_command
         }
+        if (data.id == undefined || data.cc == undefined) {
+            $("#adddefaultrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
+            return
+        }
         try {
             xhr.send(JSON.stringify(data))
         } catch (error) {
@@ -1087,6 +1118,10 @@
             ww: who_or_what,
             cc: cog_or_command
         }
+        if (data.id == undefined || data.cc == undefined || data.ww == undefined) {
+            $("#addrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
+            return
+        }
         try {
             xhr.send(JSON.stringify(data))
         } catch (error) {
@@ -1119,6 +1154,10 @@
         }
         var data = {
             cc: cog_or_command
+        }
+        if (data.cc == undefined) {
+            $("#removedefaultrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
+            return
         }
         try {
             xhr.send(JSON.stringify(data))
@@ -1154,6 +1193,10 @@
         var data = {
             ww: who_or_what,
             cc: cog_or_command
+        }
+        if (data.cc == undefined || data.ww == undefined) {
+            $("#removerulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
+            return
         }
         try {
             xhr.send(JSON.stringify(data))
