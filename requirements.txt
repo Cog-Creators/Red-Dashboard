@@ -10,3 +10,6 @@ python-Levenshtein==0.12.0
 flask-babel==1.0.0
 pyjwt==1.7.1
 appdirs==1.4.4
+# 1.1.2 flask compatibility
+jinja2==2.11.3
+markupsafe<2.1.0
