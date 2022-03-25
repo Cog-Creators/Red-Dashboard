@@ -1,4 +1,5 @@
 flask==1.1.2
+itsdangerous==2.0.1
 requests==2.23.0
 cryptography==3.3.2
 websocket_client==0.57.0
@@ -8,3 +9,4 @@ fuzzywuzzy==0.18.0
 python-Levenshtein==0.12.0
 flask-babel==1.0.0
 pyjwt==1.7.1
+appdirs==1.4.4
