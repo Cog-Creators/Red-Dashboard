@@ -16,7 +16,7 @@ msgstr ""
 "X-Crowdin-Language: no\n"
 "X-Crowdin-File: messages.pot\n"
 "X-Crowdin-File-ID: 6\n"
-"Language: no_NO\n"
+"Language: nb_NO\n"
 
 #: reddash/app/base/templates/site_template/navigation.html:12
 #: reddash/app/utils.py:151
