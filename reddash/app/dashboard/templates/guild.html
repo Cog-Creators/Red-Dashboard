@@ -1299,8 +1299,7 @@
             } else if (json.status === 1 && json.data.status === 0) {
                 $("#cogcommandstatus").html(`{{ _('Failed to fetch commands') }}: ${json.data.message}`)
             } else {
-                select.html("")
-
+                select.html('<select data-live-search="true" id="adddefaultrulecogcommands" tabindex="null">')
                 var copt = [`<optgroup label="{{ _('Cogs') }}">`]
                 for (let name of json.data.COGS) {
                     copt.push(`<option value="${name}">${name}</option>`)
@@ -1314,6 +1313,7 @@
                 }
                 cmopt.push("</optgroup>")
                 select.append(cmopt.join(""))
+                select.append("</select>")
             }
             select.selectpicker({ title: "{{ _('Choose target') }}" })
             select.removeAttr("disabled")
