@@ -1209,7 +1209,7 @@
     $(document).ready(function () {
         var select = $(".ruletargets")
         select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
+        select.attr("disabled", false)
         select.selectpicker("refresh")
 
         var parts = window.location.pathname.split("/")
@@ -1279,7 +1279,7 @@
     $(document).ready(function () {
         var select = $(".cogcommands")
         select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
+        select.attr("disabled", false)
         select.selectpicker("refresh")
 
         var parts = window.location.pathname.split("/")
