@@ -503,7 +503,7 @@
                                                         <div class="col-xl-4 col-md-6">
                                                             <select class="selectpicker cogcommands"
                                                                 data-live-search="true" title="{{ _('Loading...') }}"
-                                                                true id="adddefaultrulecogcommands"
+                                                                disabled id="adddefaultrulecogcommands"
                                                                 data-size="5"></select>
                                                         </div>
                                                     </div>
@@ -1209,7 +1209,7 @@
     $(document).ready(function () {
         var select = $(".ruletargets")
         select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
+        select.attr("disabled", false)
         select.selectpicker("refresh")
 
         var parts = window.location.pathname.split("/")
@@ -1279,7 +1279,7 @@
     $(document).ready(function () {
         var select = $(".cogcommands")
         select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
+        select.attr("disabled", false)
         select.selectpicker("refresh")
 
         var parts = window.location.pathname.split("/")
