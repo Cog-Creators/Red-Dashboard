@@ -1,0 +1,45 @@
+{% extends "base-site.html" %}
+
+{% block title %} {{ _('Third Party OAuth') }} {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h6 class="card-category text-gray">{{ _('OAuth Redirect') }}</h6>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-11">
+                            {% if context == '1' %}
+                            <h5>{{ _("Successfully connected your account.  You may now close this tab.") }}
+                            </h5>
+                            {% else %}
+                            {% if context == '2' %}
+                            <h5>{{ _("We had trouble contacting the bot to authenticate: {message}").format(message=msg) }}
+                            </h5>
+                            {% else %}
+                            <h5>{{ _("We failed to authenticate you: {message}").format(message=msg) }}
+                            </h5>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                {{ _('This is a Third Party integration.  By using this application, you acknowledge that you have read the Third Party disclaimer found <a href="{link}">here</a>').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Third%20Party%20Disclaimer.md") }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}
