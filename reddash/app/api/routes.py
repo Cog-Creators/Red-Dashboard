@@ -617,6 +617,7 @@ def third_party_spotify_callback():
 def third_party_oauth_callback(provider):
     args = request.args.copy()
     args["provider"] = provider
+    args["url"] = request.url
     if not session.get("id"):
         session["login_redirect"] = {
             "route": f"api_blueprint.third_party_oauth_callback",
