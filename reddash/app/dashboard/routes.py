@@ -1,15 +1,9 @@
 from reddash.app import app
 from reddash.app.dashboard import blueprint
-from flask import render_template, redirect, url_for, session, request, jsonify, Response, g
-from flask_babel import _, refresh
-from jinja2 import TemplateNotFound
-import traceback
-import websocket
+from flask import render_template, redirect, url_for, session, g
 import json
-import time
 import random
 import logging
-import datetime
 
 dashlog = logging.getLogger("reddash")
 
@@ -31,7 +25,6 @@ def guild(guild):
     except ValueError:
         raise ValueError("Guild ID must be integer")
 
-    # We won't disconnect the websocket here, even if it fails, so that the main updating thread doesnt run into issues
     try:
         request = {
             "jsonrpc": "2.0",

@@ -14,7 +14,8 @@
       <div class="card-header ">
         <div class="row">
           <div class="col-sm-12 text-left">
-            <h5 class="card-category">{{ _('{botname} • Owned by {owner}').format(botname=botname, owner=owner) }}</h5>
+            <h5 class="card-category">{{ _('{botname} • Owned by {owner}').format(botname=variables['bot']['name'],
+              owner=variables['bot']['owner']) }}</h5>
             <h2 class="card-title">{{ _('About') }}</h2>
           </div>
         </div>
@@ -22,17 +23,16 @@
       <div class="card-body">
         <div class="row">
           <div class="col-lg-3">
-            <img src="{{ botavatar }}"
-              style="height: 200px; width: 200px; border-radius: 50%; margin: auto; display: block;">
+            <img src="{{ variables['bot']['avatar'] }}" style="height: 200px; width: 200px; border-radius: 50%; margin: auto; display: block;">
           </div>
           <div class="col-lg-8">
-            <h4>{{ botinfo|safe }}</h4>
+            <h4>{{ variables['bot']['info']|safe }}</h4>
             <br />
             {% if redirect %}
-            <a href="{{ invite }}" target="_blank">Invite</a>
+            <a href="{{ variables['ui']['invite'] }}" target="_blank">Invite</a>
             {% endif %}
             {% if support %}
-            • <a href="{{ support }}" target="_blank">{{ _('Join support server') }}</a>
+            • <a href="{{ variables['ui']['support'] }}" target="_blank">{{ _('Join support server') }}</a>
             {% endif %}
           </div>
         </div>
@@ -41,13 +41,12 @@
   </div>
 
 </div>
-{% if redirect %}
 <div class="row">
   <div class="col-lg-4">
     <div class="card card-chart">
       <div class="card-header">
         <h5 class="card-category">{{ _('Total Servers') }}</h5>
-        <h3 class="card-title"><i class="tim-icons icon-bank text-primary"></i><span id="servers">{{ servers }}</span>
+        <h3 class="card-title"><i class="tim-icons icon-bank text-primary"></i><span id="servers">{{ variables['ui']['stats']['servers'] }}</span>
         </h3>
       </div>
     </div>
@@ -56,7 +55,7 @@
     <div class="card card-chart">
       <div class="card-header">
         <h5 class="card-category">{{ _('Total Users') }}</h5>
-        <h3 class="card-title"><i class="tim-icons icon-single-02 text-info"></i><span id="users">{{ users }}</span>
+        <h3 class="card-title"><i class="tim-icons icon-single-02 text-info"></i><span id="users">{{ variables['ui']['stats']['users'] }}</span>
         </h3>
       </div>
     </div>
@@ -65,13 +64,11 @@
     <div class="card card-chart">
       <div class="card-header">
         <h5 class="card-category">{{ _('Been up for') }}</h5>
-        <h3 class="card-title"><i class="tim-icons icon-badge text-success"></i><span
-            id="onlineusers">{{ uptime }}</span></h3>
+        <h3 class="card-title"><i class="tim-icons icon-badge text-success"></i><span id="onlineusers">{{ variables['ui']['stats']['uptime'] }}</span></h3>
       </div>
     </div>
   </div>
 </div>
-{% endif %}
 
 {% endblock content %}
 

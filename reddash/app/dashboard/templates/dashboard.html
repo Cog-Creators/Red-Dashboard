@@ -7,24 +7,7 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-profile">
-            <div class="card-body">
-                <h6 class="card-category text-gray">{{ _('Dashboard') }}</h6>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h5>{{ (_("Welcome to the interactive dashboard, where you can control your bot via this easy-to-use interface. Choose a server that you have elevated permissions in below. If you don't see your server below, check to make sure that your server's owner has set roles with <code>{command}</code>").format(command="[p]dashboard roles create"))|safe }}
-                            </h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+{% if variables['connected'] %}
 <div class="row">
     <div class="col-md-12">
         <div class="card card-profile">
@@ -33,8 +16,7 @@
                     <div class="col-md-3">
                         <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
                             <i class="fas fa-search" aria-hidden="true"></i>
-                            <input class="form-control form-control-sm ml-3 w-75" id="guildsearch" type="text"
-                                placeholder="{{ _('Search') }}" aria-label="Search">
+                            <input class="form-control form-control-sm ml-3 w-75" id="guildsearch" type="text" placeholder="{{ _('Search') }}" aria-label="Search">
                         </form>
                     </div>
                 </div>
@@ -45,9 +27,39 @@
 
 <div class="row" id="serverrow">
     <div class="col-md-12">
-        <h1>{{ _('Loading servers...') }}</h1>
+        <div class="card card-profile">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 id="loading-status">{{ _('Loading servers...') }}</h5>
+                        <p id="expanded-feedback"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class="row" style="display: none" id="dashboard-nav">
+    <div class="col-md-12">
+        <a class="btn btn-secondary" href="#" role="button" id="previous" onclick="previous_page()">
+            < {{ _('Previous') }} </a>
+                <a class="btn btn-secondary" href="#" role="button" id="next" style="float: right;" onclick="next_page()">
+                    {{ _('Next') }} > </a>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-body">
+                <h5>{{ _('Unable to load user guilds.') }}</h5>
+                <p>The dashboard is currently unable to connect to Redbot. Please try again later, or contact the developer for assistance.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {% endblock content %}
 
@@ -55,48 +67,66 @@
 {% block javascripts %}
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.0.4"></script>
 <script>
+    var disconnected = "{{ variables['connected'] }}" === "False";
+    let query = window.location.search.substring(1)
+    let qs = parse_query_string(query)
+    let page = qs.page || 0
+
+    let destination = window.location.href
+
+    if (destination.indexOf("?") === -1) {
+        destination += `?page=${page}`
+    } else if (destination.indexOf("page=" === -1)) {
+        destination += `page=${page}`
+    }
+
     // Since the serer loading could take who knows how long, we'll load in JS so it says "Loading..."" in the page
-    $(document).ready(function () {
-        var xhr = new XMLHttpRequest();
-        var url = "{{ url_for('api_blueprint.getservers') }}"
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#serverrow").html(`<div class="col-md-12"><h1>${json["message"]}</h1></div>`)
-            } else {
-                if (json.data.length === 0) {
-                    $("#serverrow").html(`<div class="col-md-12"><h1>{{ _("You're not in any servers with elevated permissions!") }}</h1></div>`)
+    if (!disconnected) {
+        $(document).ready(function () {
+            var xhr = new XMLHttpRequest();
+            var url = `{{ url_for('api_blueprint.getservers') }}&page=${page}`
+            xhr.open("GET", url, true)
+            xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== 4) { return }
+                var json = JSON.parse(xhr.responseText)
+                if (json.status === 0) {
+                    $("#loading-status").text("{{ _('Guild loading failed.') }}")
+                    $("#expanded-feedback").text("{{ _('Something went wrong while we were loading your guilds from the connected Redbot. If this continues to occur, please contact the developer for assistance.') }}")
                 } else {
-                    var base_guild_url = "{{ url_for('dashboard_blueprint.guild', guild='123456789123456789') }}"
-                    $("#serverrow").html("")
-                    for (let g of json.data) {
-                        var current_guild_url = base_guild_url.replace("123456789123456789", g.id)
-                        $("#serverrow").append(`
-                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 guildcard" style="margin-bottom: 50px">
-                                <a href="${current_guild_url}">
-                                    <div class="card h-100" onmouseover="playGif(this)" onmouseout="stopGif(this)">
-                                        <img class="card-img-top" src="${g.icon}png" alt="Card image cap" data-src-url="${g.icon}" data-is-animated=${g.animated}>
-                                        <div class="card-body">
-                                            <h5 class="card-title">${g.name}</h5>
-                                            <p class="card-text">Owner: ${g.owner}</p>
+                    if (json.data.length === 0) {
+                        $("#loading-status").text("{{ _('Guild loading failed.') }}")
+                        $("#expanded-feedback").text("{{ _('You\'re not in any servers with elevated permissions!') }}")
+                    } else {
+                        var base_guild_url = "{{ url_for('dashboard_blueprint.guild', guild='123456789123456789') }}"
+                        $("#serverrow").html("")
+                        for (let g of json.data) {
+                            var current_guild_url = base_guild_url.replace("123456789123456789", g.id)
+                            $("#serverrow").append(`
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 guildcard" style="margin-bottom: 50px">
+                                    <a href="${current_guild_url}">
+                                        <div class="card h-100" onmouseover="playGif(this)" onmouseout="stopGif(this)">
+                                            <img class="card-img-top" src="${g.icon}png" alt="Card image cap" data-src-url="${g.icon}" data-is-animated=${g.animated}>
+                                            <div class="card-body">
+                                                <h5 class="card-title">${g.name}</h5>
+                                                <p class="card-text">Owner: ${g.owner}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
-                        `)
+                                    </a>
+                                </div>
+                            `)
+                        }
+                        // $("#dashboard-nav").css("display", "flex")
                     }
                 }
             }
-        }
-        try {
-            xhr.send()
-        } catch (error) {
-            console.log(error)
-        }
-    })
+            try {
+                xhr.send()
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    }
 
     function playGif(elm) {
         var img = $(elm).find("img")
@@ -104,12 +134,15 @@
             img.attr("src", `${img.attr("data-src-url")}gif`)
         }
     }
+
     function stopGif(elm) {
         var img = $(elm).find("img")
         if (img.attr('data-is-animated') === "true") {
             img.attr("src", `${img.attr("data-src-url")}png`)
         }
     }
+
+    // https://stackoverflow.com/a/979995
     $(document).ready(function () {
         $("#guildsearch").on("keyup", function () {
             var value = $(this).val().toLowerCase();
@@ -124,5 +157,51 @@
             });
         });
     });
+
+    function parse_query_string(query) {
+        var vars = query.split("&");
+        var query_string = {};
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            var key = decodeURIComponent(pair[0]);
+            var value = decodeURIComponent(pair[1]);
+            // If first entry with this name
+            if (typeof query_string[key] === "undefined") {
+                query_string[key] = decodeURIComponent(value);
+                // If second entry with this name
+            } else if (typeof query_string[key] === "string") {
+                var arr = [query_string[key], decodeURIComponent(value)];
+                query_string[key] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[key].push(decodeURIComponent(value));
+            }
+        }
+        return query_string;
+    }
+
+    function previous_page() {
+        let new_path = destination.replace("page=", `page=${page - 1}`)
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", new_path, true)
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            let new_html = xhr.responseText
+            document.getElementsByTagName("html")[0].innerHTML = new_html
+            window.history.pushState({ "html": new_html, "pageTitle": window.pageTitle }, "", new_path)
+        }
+    }
+
+    function next_page() {
+        let new_path = destination.replace("page=", `page=${page + 1}`)
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", new_path, true)
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            let new_html = xhr.responseText
+            document.getElementsByTagName("html")[0].innerHTML = new_html
+            window.history.pushState({ "html": new_html, "pageTitle": window.pageTitle }, "", new_path)
+        }
+    }
 </script>
 {% endblock javascripts %}

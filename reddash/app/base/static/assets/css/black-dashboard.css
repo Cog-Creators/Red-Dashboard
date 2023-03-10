@@ -3970,7 +3970,7 @@ body[data="yellow"] .active:not(div) {
   background-color: #ffff00;
 }
 
-body[data="greener"] .active:not(div) {
+body[data="darkgreen"] .active:not(div) {
   background-color: #008000;
 }
 
@@ -4865,12 +4865,38 @@ body[data="greener"] .active:not(div) {
 }
 
 .navbar {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 0.625rem 0.9375rem;
+  position: fixed;
+  border-top: 2px solid #e14eca;
+  background-color: #1e1e2f !important;
+}
+
+.navbar[data="blue"] {
+  border-top: 2px solid #1d8cf8;
+}
+
+.navbar[data="green"] {
+  border-top: 2px solid #00f2c3;
+}
+
+.navbar[data="primary"] {
+  border-top: 2px solid #e14eca;
+}
+
+.navbar[data="red"] {
+  border-top: 2px solid #ff0000;
+}
+
+.navbar[data="yellow"] {
+  border-top: 2px solid #ffff00;
+}
+
+.navbar[data="darkgreen"] {
+  border-top: 2px solid #008000;
 }
 
 .navbar>.container,
@@ -5771,19 +5797,19 @@ a.badge-yellow.focus {
   box-shadow: 0 0 0 0 rgba(255, 255, 0, 0.5);
 }
 
-.badge-greener {
+.badge-darkgreen {
   color: #ffffff;
   background-color: #008000;
 }
 
-a.badge-greener:hover,
-a.badge-greener:focus {
+a.badge-darkgreen:hover,
+a.badge-darkgreen:focus {
   color: #ffffff;
   background-color: #008000;
 }
 
-a.badge-greener:focus,
-a.badge-greener.focus {
+a.badge-darkgreen:focus,
+a.badge-darkgreen.focus {
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.5);
 }
@@ -7539,6 +7565,10 @@ a.bg-darker:focus,
 button.bg-darker:hover,
 button.bg-darker:focus {
   background-color: black !important;
+}
+
+button.editable-sidebar-button {
+  width: 100%
 }
 
 .bg-white {
@@ -17864,6 +17894,10 @@ table.tablesorter thead tr .headerSortDown {
   background: rgba(255, 255, 255, 0.5);
 }
 
+.no-logo-line::after {
+  background: none !important;
+}
+
 .sidebar .logo p,
 .off-canvas-sidebar .logo p {
   float: left;
@@ -18045,33 +18079,12 @@ body[data="yellow"] a.simple-text.logo-normal.clickable.dontcolor {
   float: right;
   width: 100%;
   min-height: 100vh;
-  border-top: 2px solid #e14eca;
   background: linear-gradient(#1e1e2f, #1e1e24);
   -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-}
-
-body[data="blue"] .main-panel {
-  border-top: 2px solid #1d8cf8;
-}
-
-body[data="green"] .main-panel {
-  border-top: 2px solid #00f2c3;
-}
-
-body[data="primary"] .main-panel {
-  border-top: 2px solid #e14eca;
-}
-
-body[data="red"] .main-panel {
-  border-top: 2px solid #ff0000;
-}
-
-body[data="yellow"] .main-panel {
-  border-top: 2px solid #ffff00;
 }
 
 .main-panel>.content {
@@ -18087,7 +18100,6 @@ body[data="yellow"] .main-panel {
   margin-bottom: 50px;
 }
 
-.perfect-scrollbar-on .sidebar,
 .perfect-scrollbar-on .main-panel {
   height: 100%;
   max-height: 100%;
@@ -20033,7 +20045,7 @@ Copyright (c) 2015 Daniel Eden
 
 .white-content .card:not(.card-white) {
   background: #ffffff;
-  box-shadow: 0 1px 15px 0 rgba(, , , 0.05);
+  box-shadow: 0 1px 15px 0;
 }
 
 .white-content .card:not(.card-white) .card-header {
@@ -20686,42 +20698,38 @@ Copyright (c) 2015 Daniel Eden
 }
 
 /* Extra colors that I made automatically, cause im cool and all */
-body[data="greener"] a, body[data="greener"] a:hover:not(.dontcolor) {
+body[data="darkgreen"] a, body[data="darkgreen"] a:hover:not(.dontcolor) {
   color: #008000;
 }
 
-body[data="greener"] a.active:not(.list-group-item) {
+body[data="darkgreen"] a.active:not(.list-group-item) {
   color: #ffffff !important;
   background-color: #008000 !important;
 }
 
-body[data="greener"] button:not([data-id]), body[data="greener"] button:not([data-id]):hover, body[data="greener"] button:not([data-id]):active {
+body[data="darkgreen"] button:not([data-id]), body[data="darkgreen"] button:not([data-id]):hover, body[data="darkgreen"] button:not([data-id]):active {
   background: #008000 !important;
 }
 
-body[data="greener"] .breadcrumb-item+.breadcrumb-item::before {
+body[data="darkgreen"] .breadcrumb-item+.breadcrumb-item::before {
   color: #008000
 }
 
-body[data="greener"] a.list-group-item.active {
+body[data="darkgreen"] a.list-group-item.active {
   border-color: #008000
 }
 
-body[data="greener"] .form-control:focus {
+body[data="darkgreen"] .form-control:focus {
   border-color: #008000;
 }
 
-body[data="greener"] .sidebar,
-body[data="greener"] .off-canvas-sidebar {
+body[data="darkgreen"] .sidebar,
+body[data="darkgreen"] .off-canvas-sidebar {
   background: #008000;
   background: -webkit-linear-gradient(0deg, #008000 0%, #008050 100%);
   background: -o-linear-gradient(0deg, #008000 0%, #008050 100%);
   background: -moz-linear-gradient(0deg, #008000 0%, #008050 100%);
   background: linear-gradient(0deg, #008000 0%, #008050 100%);
-}
-
-body[data="greener"] .main-panel {
-  border-top: 2px solid #008000;
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */

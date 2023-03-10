@@ -9,68 +9,23 @@
       </a>
     </div>
 
-    {% if session.get("id") %}
     <ul class="nav">
-      <li id="navindex">
-        <a href="{{ url_for('base_blueprint.index') }}">
-          <i class="tim-icons icon-chart-pie-36"></i>
-          <p>{{ _('Home') }}</p>
+      {% for item in variables['sidebar'] %}
+      <li class="{{ 'active' if item['active'] else '' }}">
+        <a href="{{ item['route'] }}" {{ 'target="blank"' if item['is_http'] }}>
+          <i class="tim-icons {{ item['icon'] }}"></i>
+          <p>{{ item['name'] }}</p>
         </a>
       </li>
-      <li id="navcommands">
-        <a href="{{ url_for('base_blueprint.commands') }}">
-          <i class="tim-icons icon-molecule-40"></i>
-          <p>{{ _('Commands') }}</p>
-        </a>
-      </li>
-      <li id="navdashboard">
-        <a href="{{ url_for('dashboard_blueprint.dashboard') }}">
-          <i class="tim-icons icon-controller"></i>
-          <p>{{ _('Dashboard') }}</p>
-        </a>
-      </li>
-      <li id="navcredits">
-        <a href="{{ url_for('base_blueprint.credits') }}">
-          <i class="tim-icons icon-book-bookmark"></i>
-          <p>{{ _('Credits') }}</p>
-        </a>
-      </li>
-      <li>
-        <a href="{{ url_for('base_blueprint.logout') }}"">
-          <i class=" tim-icons icon-user-run"></i>
-          <p>{{ _('Logout') }}</p>
-        </a>
-      </li>
+      {% endfor %}
     </ul>
-    {% else %}
-    <ul class="nav">
-      <li id="navindex">
-        <a href="{{ url_for('base_blueprint.index') }}">
-          <i class="tim-icons icon-chart-pie-36"></i>
-          <p>{{ _('Home') }}</p>
-        </a>
-      </li>
-      {% if redirect %}
-      <li id="navcommands">
-        <a href="{{ url_for('base_blueprint.commands') }}">
-          <i class="tim-icons icon-molecule-40"></i>
-          <p>{{ _('Commands') }}</p>
-        </a>
-      </li>
-      {% endif %}
-      <li id="navcredits">
-        <a href="{{ url_for('base_blueprint.credits') }}">
-          <i class="tim-icons icon-book-bookmark"></i>
-          <p>{{ _('Credits') }}</p>
-        </a>
-      </li>
-      <li id="navlogin">
-        <a href="{{ url_for('base_blueprint.login') }}">
-          <i class="tim-icons icon-key-25"></i>
-          <p>{{ _('Login') }}</p>
-        </a>
-      </li>
-    </ul>
-    {% endif %}
+    <div class="logo no-logo-line" style="position: absolute; bottom: 0">
+      <a class="simple-text logo-mini clickable dontcolor" target="_blank">
+        <i class="tim-icons icon-button-power"></i>
+      </a>
+      <a class="simple-text logo-normal clickable dontcolor" target="_blank">
+        {{ _("{connection}").format(connection="Connected" if variables["connected"] else "Disconnected") }}
+      </a>
+    </div>
   </div>
 </div>

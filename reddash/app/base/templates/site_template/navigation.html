@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+<nav class="navbar navbar-expand-lg" data="{{ variables['color'] }}">
   <div class="container-fluid">
     <div class="navbar-wrapper">
       <div class="navbar-toggle d-inline">
@@ -9,11 +9,10 @@
           <span class="navbar-toggler-bar bar3"></span>
         </button>
       </div>
-      <a class="navbar-brand" href="javascript:void(0)">{{ _('{name} Dashboard').format(name=botname)}}</a>
+      <a class="navbar-brand" href="javascript:void(0)">{{ _('{name}
+        Dashboard').format(name=variables['bot']['name'])}}</a>
     </div>
-    {% if session.get("id") %}
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false"
-      aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-bar navbar-kebab"></span>
       <span class="navbar-toggler-bar navbar-kebab"></span>
       <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -24,28 +23,30 @@
         <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
             <div class="photo">
-              <img src="{{ session.get('avatar') }}" alt="Profile Photo">
+              <img src="{{ session.get('avatar') or variables['bot']['avatar'] }}" alt="Profile Photo">
             </div>
+            {% if session.get("id") %}
             <b class="caret d-none d-lg-block d-xl-block"></b>
             <p class="d-lg-none">
-              {{ _('Log out') }}
+              {{ _('Profile') }}
             </p>
+            {% endif %}
           </a>
+          {% if session.get("id") %}
           <ul class="dropdown-menu dropdown-navbar">
             <li class="nav-link"><span class="nav-item dropdown-item">{{ session.get("username") }}</span></li>
             <li class="dropdown-divider"></li>
-            <li class="nav-link"><a href="{{ url_for('base_blueprint.logout') }}"
-                class="nav-item dropdown-item">{{ _('Log out') }}</a></li>
+            <li class="nav-link"><a href="{{ url_for('base_blueprint.logout') }}" class="nav-item dropdown-item">{{
+                _('Log out') }}</a></li>
           </ul>
+          {% endif %}
         </li>
         <li class="separator d-lg-none"></li>
       </ul>
     </div>
-    {% endif %}
   </div>
 </nav>
-<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal"
-  aria-hidden="true">
+<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

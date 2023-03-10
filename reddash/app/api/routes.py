@@ -1,13 +1,9 @@
 from reddash.app import app
 from reddash.app.api import blueprint
-from flask import render_template, redirect, url_for, session, request, jsonify, Response, g
-from flask_babel import _, refresh
-from jinja2 import TemplateNotFound
+from flask import render_template, redirect, url_for, session, request, jsonify, g
+from flask_babel import _
 import traceback
-import websocket
 import json
-import time
-import random
 import logging
 import datetime
 
@@ -34,12 +30,15 @@ def get_result(app, requeststr):
 def getservers():
     if not session.get("id"):
         return jsonify({"status": 0, "message": _("Not logged in")})
+
+    page = request.args.get("page", 0)
+
     try:
         requeststr = {
             "jsonrpc": "2.0",
             "id": 0,
             "method": "DASHBOARDRPC__GET_USERS_SERVERS",
-            "params": [str(g.id)],
+            "params": [str(g.id), str(page)],
         }
         with app.lock:
             return get_result(app, requeststr)
