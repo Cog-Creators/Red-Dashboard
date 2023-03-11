@@ -1,0 +1,248 @@
+{% extends "base-site.html" %}
+
+{% block title %} {{ _('Admin Panel') }} {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<!-- Basic Admin Information -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">{{ _('Admin Panel') }}</h6>
+            </div>
+            <div class="card-body">
+                <p>Webserver has been up for: <code>{{ ws_uptime }}</code>.</p>
+                {% if variables["connected"] %}
+                <p>Connected to RPC websocket for: <code>{{ connection_uptime }}</code>.</p>
+                {% else %}
+                <p>Disconnected from RPC websocket for: <code>{{ connection_uptime }}</code>.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Security and Authorization Card -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">{{ _('Security and Authorization') }}</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Modify available options regarding authorization to keep the dashboard protected.</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="nav nav-pills flex-column" id="security-tabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="lock-dashboard-tab" data-toggle="pill" href="#lock-dashboard" role="tab" aria-controls="lock-dashboard" aria-selected="false">{{ _('Lock dashboard') }}</a>
+                            <a class="nav-link taboption" id="modify-sesions-tab" data-toggle="pill" href="#modify-sessions" role="tab" aria-controls="modifysessions" aria-selected="false">{{ _('Modify sessions') }}</a>
+                            <a class="nav-link taboption" id="refresh-sesions-tab" data-toggle="pill" href="#refresh-sessions" role="tab" aria-controls="refreshsessions" aria-selected="false">{{ _('Refresh sessions') }}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="securityTabContent">
+                            <div class="tab-pane fade" id="lock-dashboard" role="tabpanel" aria-labelledby="lock-dashboard-tab">
+                                <h4 class="card-title">{{ _('Are you sure you want to lock the dashboard panel?') }}</h4>
+                                <p class="card-description">
+                                    {{ _('This will lock the dashboard and prevent anyone from accessing control panels. Website administrators will still have access, and users will still be able to login through Discord Open Authentication.') }}
+                                </p>
+                                <button class="btn btn-primary" id="lock-dashboard-btn">{{ _('Lock Dashboard') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="modify-sessions" role="tabpanel" aria-labelledby="modify-sessions-tab">
+                                <h4 class="card-title">{{ _('Update session expiration times.') }}</h4>
+                                <p class="card-description">
+                                    {{ _("Modifying this value will change how long it takes before a user's session expires and they are required to authenticate again.") }}
+                                </p>
+                                <button class="btn btn-primary" id="update-session-btn">{{ _('Submit Modifications') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="refresh-sessions" role="tabpanel" aria-labelledby="refresh-sessions-tab">
+                                <h4 class="card-title">{{ _('Are you sure you want to refresh all active sessions?') }}</h4>
+                                <p class="card-description">
+                                    {{ _("This will log out all active users and require them to re-authenticate, including website administrators.") }}
+                                </p>
+                                <button class="btn btn-primary" id="update-session-btn">{{ _('Refresh Sessions') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Meta Tag Card -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">{{ _('Modify Meta Tags') }}</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Meta tags specify how browsers and other applications create interactive embeds showcasing a part of your website.</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="nav nav-pills flex-column" id="meta-tabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="meta-title-tab" data-toggle="pill" href="#meta-title" role="tab" aria-controls="meta-title" aria-selected="false">{{ _('Meta Title') }}</a>
+                            <a class="nav-link taboption" id="meta-icon-tab" data-toggle="pill" href="#meta-icon" role="tab" aria-controls="meta-icon" aria-selected="false">{{ _('Meta Icon') }}</a>
+                            <a class="nav-link taboption" id="meta-description-tab" data-toggle="pill" href="#meta-description" role="tab" aria-controls="meta-description" aria-selected="false">{{ _('Meta Description') }}</a>
+                            <a class="nav-link taboption" id="meta-color-tab" data-toggle="pill" href="#meta-color" role="tab" aria-controls="meta-color" aria-selected="false">{{ _('Meta Color') }}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="metaTabContent">
+                            <div class="tab-pane fade" id="meta-title" role="tabpanel" aria-labelledby="meta-title-tab">
+                                <h4 class="card-title">{{ _('Update Meta Title') }}</h4>
+                                <input class="form-control" value="{{ variables['meta']['title'] }}">
+                                <button class="btn btn-primary" id="update-title-btn">{{ _('Update') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="meta-icon" role="tabpanel" aria-labelledby="meta-icon-tab">
+                                <h4 class="card-title">{{ _('Update Meta Icon') }}</h4>
+                                <input class="form-control" value="{{ variables['meta']['icon'] }}">
+                                <button class="btn btn-primary" id="update-icon-btn">{{ _('Update') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="meta-description" role="tabpanel" aria-labelledby="meta-description-tab">
+                                <h4 class="card-title">{{ _('Update Meta Description') }}</h4>
+                                <input class="form-control" value="{{ variables['meta']['description'] }}">
+                                <button class="btn btn-primary" id="update-description-btn">{{ _('Update') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="meta-color" role="tabpanel" aria-labelledby="meta-color-tab">
+                                <h4 class="card-title">{{ _('Update Meta Color') }}</h4>
+                                <input class="form-control" value="{{ variables['meta']['color'] }}">
+                                <button class="btn btn-primary" id="update-color-btn">{{ _('Update') }}</button>
+
+                                <!-- Note for future me: ^(?:(?:0x|#|)((?:[a-fA-F0-9]{3}){1,2}$))$ -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Interface Card -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-profile">
+            <div class="card-header">
+                <h6 class="card-category text-gray">{{ _('User Interface') }}</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Modify how Red - Dashboard is presented to end users.</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="nav nav-pills flex-column" id="ui-tabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="default-color-tab" data-toggle="pill" href="#default-color" role="tab" aria-controls="default-color" aria-selected="false">{{ _('Default Color') }}</a>
+                            <a class="nav-link taboption" id="support-server-tab" data-toggle="pill" href="#support-server" role="tab" aria-controls="support-server" aria-selected="false">{{ _('Support Server') }}</a>
+                            <!-- 
+                            This is a complex addition and will require more time to work on
+                            <a class="nav-link taboption" id="sidebar-tab" data-toggle="pill" href="#sidebar" role="tab" aria-controls="sidebar" aria-selected="false">{{ _('Organize Sidebar') }}</a>
+                            -->
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="tab-content" id="UITabContent">
+                            <div class="tab-pane fade" id="default-color" role="tabpanel" aria-labelledby="default-color-tab">
+                                <h4 class="card-title">{{ _('Choose the default UI color theme for a new user.') }}</h4>
+                                <select title="{{ default_color.capitalize() }}" class="selectpicker" id="default-color-select" size=false val="badge-{{ variables['color'].lower() }}">
+                                    {% for color in variables['available_colors'] %}
+                                    <option value="{{ color['class'] }}" class="selectoption">
+                                        {{ color['name'].capitalize() }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                                <p class="text-muted">Changes are saved automatically.</p>
+                            </div>
+                            <div class="tab-pane fade" id="support-server" role="tabpanel" aria-labelledby="support-server-tab">
+                                <h4 class="card-title">{{ _('Update Support Server') }}</h4>
+                                <input class="form-control" value="{{ variables['ui']['support'] }}">
+                                <button class="btn btn-primary" id="update-support-btn">{{ _('Update') }}</button>
+                            </div>
+                            <div class="tab-pane fade" id="sidebar" role="tabpanel" aria-labelledby="sidebar-tab">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        {% for entry in editable_sidebar %}
+                                        <button class="btn editable-sidebar-button" data-id data-pos={{ entry['pos'] }} data-name={{ entry['name'] }} data-icon={{ entry['icon'] }} data-route={{ entry['route'] }} data-is-http={{ entry['is_http'] }} data-session={{ entry['session'] }} data-admin={{ entry['admin'] }} data-locked={{ entry['locked'] }} data-builtin={{ entry['name'].startswith('builtin-') }} data-hidden={{ entry['hidden'] }}>{{ entry['name'].replace("builtin-", "").capitalize() }}</button><br />
+                                        {% endfor %}
+                                    </div>
+                                    <div id="sidebar-entry-info" class="col-lg-9" hidden>
+                                        <div class="card card-profile">
+                                            <div class="card-header">
+                                                <h3 class="text-gray">{{ _('Sidebar Entry') }}</h3>
+                                            </div>
+                                            <div class="card-body">
+                                                <p>Element position: </p><input class="form-control" value="" id="sidebar-pos">
+                                                <p>Element name: </p><input class="form-control" value="" id="sidebar-name">
+                                                <p>Element icon: </p><input class="form-control" value="" id="sidebar-icon">
+                                                <p>Element route: </p><input class="form-control" value="" id="sidebar-route">
+                                                <p>Element availability: </p>
+                                                <select class="selectpicker" id="sidebar-permission" size=false>
+                                                    <option value="None">{{ _('Always available') }}</option>
+                                                    <option value="True">{{ _('Login required') }}</option>
+                                                    <option value="False">{{ _('Logout required') }}</option>
+                                                </select>
+                                                <p>Element admin-only: </p>
+                                                <select class="selectpicker" id="sidebar-admin" size=false>
+                                                    <option value="False">{{ _('No') }}</option>
+                                                    <option value="True">{{ _('Yes') }}</option>
+                                                </select>
+                                                <p>Element hidden: </p>
+                                                <select class="selectpicker" id="sidebar-hidden" size=false>
+                                                    <option value="False">{{ _('No') }}</option>
+                                                    <option value="True">{{ _('Yes') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(".editable-sidebar-button").click(function () {
+        if ($(this).data("builtin") == "True") {
+            $("#sidebar-name").attr("disabled", true);
+            $("#sidebar-route").attr("disabled", true);
+        } else {
+            $("#sidebar-name").attr("disabled", false);
+            $("#sidebar-route").attr("disabled", false);
+        }
+
+        if ($(this).data("locked") == "True") {
+            $("button[data-id=sidebar-permission]").addClass("disabled");
+            $("button[data-id=sidebar-admin]").addClass("disabled");
+            $("button[data-id=sidebar-hidden]").addClass("disabled");
+        } else {
+            $("button[data-id=sidebar-permission]").removeClass("disabled");
+            $("button[data-id=sidebar-admin]").removeClass("disabled");
+            $("button[data-id=sidebar-hidden]").removeClass("disabled");
+        }
+
+        $("#sidebar-pos").val($(this).data("pos"));
+        $("#sidebar-name").val($(this).data("name"));
+        $("#sidebar-icon").val($(this).data("icon"));
+        $("#sidebar-route").val($(this).data("route"));
+        $("#sidebar-permission").selectpicker('val', $(this).data("session"));
+        $("#sidebar-admin").selectpicker('val', $(this).data("admin"));
+        $("#sidebar-hidden").selectpicker('val', $(this).data("hidden"));
+        $("#sidebar-entry-info").attr("hidden", false);
+    });
+</script>
+
+{% endblock javascripts %}

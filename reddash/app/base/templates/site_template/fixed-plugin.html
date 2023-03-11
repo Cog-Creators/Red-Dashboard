@@ -1,5 +1,4 @@
-<div class="modal fade" id="localeModal" tabindex="-1" role="dialog" aria-labelledby="localeModalLabel"
-  data-backdrop="static" aria-hidden="true">
+<div class="modal fade" id="localeModal" tabindex="-1" role="dialog" aria-labelledby="localeModalLabel" data-backdrop="static" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,8 +7,8 @@
       </div>
       <div class="modal-body">
         <select class="selectpicker" title="{{ _('Choose Locale') }}" data-live-search="true" id="localepicker">
-          {% for locale, humanized in locales.items() %}
-          <option data-locale="{{ locale }}" {% if locale == selectedlocale %} selected {% endif %}>
+          {% for locale, humanized in variables['locales'].items() %}
+          <option data-locale="{{ locale }}" {% if locale==variables['selectedlocale'] %} selected {% endif %}>
             {{ humanized }}</option>
           {% endfor %}
         </select>
@@ -32,12 +31,9 @@
       <li class="adjustments-line">
         <a href="javascript:void(0)" class="switch-trigger background-color">
           <div class="badge-colors text-center">
-            <span class="badge filter badge-red" data-color="red"></span>
-            <span class="badge filter badge-primary" data-color="primary"></span>
-            <span class="badge filter badge-info" data-color="blue"></span>
-            <span class="badge filter badge-success" data-color="green"></span>
-            <span class="badge filter badge-greener" data-color="greener"></span>
-            <span class="badge filter badge-yellow" data-color="yellow"></span>
+            {% for color in variables['available_colors'] %}
+            <span class="badge filter {{ color['class'] }}" data-color="{{ color['name'] }}"></span>
+            {% endfor %}
           </div>
           <div class="clearfix"></div>
         </a>

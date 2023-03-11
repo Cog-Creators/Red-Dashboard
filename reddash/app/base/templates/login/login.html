@@ -3,7 +3,8 @@
 {% block title %} {{ _('Login') }} {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+{% endblock stylesheets %}
 
 {% block content %}
 
@@ -12,161 +13,111 @@
     <div class="card">
       {% if status == '0' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login') }}</h1>
+        <h4 class="title">{{ _('Authorization') }}</h1>
       </div>
-      {% if redirect %}
+      {% if variables["oauth"]["secret"] %}
       <div class="card-body">
-        <div class="row">
-          <div class="col-1 px-md-1"></div>
-          <div class="col-md-11 px-md-1">
-            <h5>
-              {{ _('Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization. Want to see some of it? Login with Discord below!') }}
-            </h5>
-          </div>
-        </div>
+        <h5>
+          {{ _('Accessing Red-Dashboard controls requires authorization for security. Authorization for Red-Dashboard uses Discord Open Authentication to identify and verify users. Please click the Login button below to proceed to the dashboard.') }}
+        </h5>
+        <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
       </div>
       <div class="card-footer">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id={{ clientid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
-            class="btn">{{ _('Login with Discord') }}</button></a><br>
         {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
       {% else %}
       <div class="card-body">
-        <div class="row">
-          <div class="col-md-1 px-md-1"></div>
-          <div class="col-md-11 px-md-1">
-            <h5>
-              {{ _('Welcome to the Red Discord Bot dashboard! A lot of the magic here is hidden behind authorization, but unfortunately, login is currently not available because the dashboard is not connected to any bot.') }}
-            </h5>
-          </div>
-        </div>
+        <h5>
+          {{ _('Authorization is unavailable for Red-Dashboard until initial connection is made with a Redbot. If you believe this message is delivered in error, please contact the developer for assistance.') }}
+        </h5>
       </div>
       {% endif %}
       {% elif status == '1' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login Failed') }}</h1>
+        <h4 class="title">{{ _('Authorization Failed') }}</h1>
       </div>
-      {% if redirect %}
+      {% if variables["oauth"]["secret"] %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>{{ _('Looks like you denied authorization. Made a mistake? Click the button below to try again.') }}</h5>
-        </div>
+        <h5>{{ _('Authorization failed due to cancellation. Click again below if you wish to re-attempt authorizing.') }} </h5>
+        <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
       </div>
       <div class="card-footer">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id={{ clientid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
-            class="btn">{{ _('Login with Discord') }}</button></a><br>
         {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
       {% else %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _("Looks like you denied authorization. Unfortunately, the dashboard's connection to the bot has terminated. Check back later.") }}
-          </h5>
-        </div>
+        <h5>
+          {{ _("Authorization failed due to cancellation, but is unavailable at the current time. Please attempt re-authorizaing at a later time.") }}
+        </h5>
       </div>
       {% endif %}
       {% elif status == '2' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login Failed') }}</h1>
+        <h4 class="title">{{ _('Authorization Failed') }}</h1>
       </div>
-      {% if redirect %}
+      {% if variables["oauth"]["secret"] %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _('Looks like the bot owner may have not configured the dashboard properly. You can try again below if you believe this was a fluke. If this happens multiple times, please let the bot owner or server owner know.') }}
-          </h5>
-        </div>
+        <h5>
+          {{ _('Authorization failed due to misconfigured settings. If you believe this message is delivered in error, please contact the developer for assistance.') }}
+        </h5>
+        <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
       </div>
       <div class="card-footer">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id={{ clientid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
-            class="btn">{{ _('Login with Discord') }}</button></a><br>
         {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
       {% else %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _("Looks like the bot owner may have not configured the dashboard properly. Unfortunately, the dashboard's connection to the bot has terminated. Check back later.") }}
-          </h5>
-        </div>
+        <h5>
+          {{ _("Authorization failed due to misconfigured settings, but is unavailable at the current time. Please attempt re-authorizing at a later time.") }}
+        </h5>
       </div>
       {% endif %}
       {% elif status == '3' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login Failed') }}</h1>
+        <h4 class="title">{{ _('Authorization Failed') }}</h1>
       </div>
-      {% if redirect %}
+      {% if variables["oauth"]["secret"] %}
       <div class="card-body">
         <div class="col-md-1 px-md-1"></div>
         <div class="col-md-11 px-md-1">
           <h5>
-            {{ _("Looks like something went wrong on Discord's end. Try to login again below, or check to see if Discord is having API issues.") }}
+            {{ _("Authorization failed due to issues on the Discord API. Please re-attempt to authorize below, or contact the developer for assistance if this issue persists.") }}
           </h5>
+          <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
         </div>
       </div>
       <div class="card-footer">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id={{ clientid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
-            class="btn">{{ _('Login with Discord') }}</button></a><br>
         {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
       {% else %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _("Looks like something went wrong on Discord's end. Unfortunately, the dashboard's connection to the bot has terminated. Check back later.") }}
-          </h5>
-        </div>
+        <h5>
+          {{ _("Authorization failed due to issues on the Discord API, but is unavailable at the current time. Please attempt re-authorizing at a later time.") }}
+        </h5>
       </div>
       {% endif %}
       {% elif status == '4' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login Failed') }}</h1>
+        <h4 class="title">{{ _('Authorization Failed') }}</h1>
       </div>
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>{{ _('Looks like the bot owner just terminated the connection to the bot. Check back later.') }}</h5>
-        </div>
+        <h5>{{ _('Authorization must be directed through this login page to ensure protection against CSRF. Please re-authenticate.') }}</h5>
+        <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
+      </div>
+      <div class="card-footer">
+        {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
       {% elif status == '5' %}
       <div class="card-header">
-        <h1 class="title">{{ _('Login Failed') }}</h1>
+        <h4 class="title">{{ _('Authorization Failed') }}</h1>
       </div>
-      {% if redirect %}
       <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _('Looks like something went wrong. Try to login again below. If this keeps happening, please report to bot owner or server owner.') }}
-          </h5>
-        </div>
+        <h5>{{ _('Your authentication request contained a different state than when your authorization process was initiated. Please re-attempt, and if this continues, you may be susceptible to a <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF attack</a>.') }}</h5>
+        <a href="{{ url_for('base_blueprint.discord_oauth') }}"><button class="btn">{{ _('Login with Discord') }}</button></a>
       </div>
       <div class="card-footer">
-        <a
-          href="https://discord.com/api/oauth2/authorize?client_id={{ clientid }}&redirect_uri={{ redirect }}&response_type=code&scope=identify"><button
-            class="btn">{{ _('Login with Discord') }}</button></a><br>
         {{ _('By clicking the button above, you acknowledge that you have read and agree to our Privacy Policy found <a href="{link}" target="_blank">here</a>.').format(link="https://github.com/Cog-Creators/Red-Dashboard/blob/master/documents/Privacy%20Policy.md") }}
       </div>
-      {% else %}
-      <div class="card-body">
-        <div class="col-md-1 px-md-1"></div>
-        <div class="col-md-11 px-md-1">
-          <h5>
-            {{ _("Looks like something went wrong. Unfortunately, the dashboard's connection to the bot has terminated. Try again later. If it continues to occur, please report to bot owner or server owner.") }}
-          </h5>
-        </div>
-      </div>
-      {% endif %}
       {% endif %}
     </div>
   </div>

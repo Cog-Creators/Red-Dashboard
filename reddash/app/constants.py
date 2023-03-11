@@ -49,7 +49,7 @@ ALLOWED_LOCALES = [
     "ja_JP",
     "ko_KR",
     "nl_NL",
-    "no_NO",
+    "nb_NO",
     "pl_PL",
     "pt_BR",
     "pt_PT",

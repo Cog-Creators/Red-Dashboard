@@ -1,33 +1,33 @@
+from datetime import datetime
 import time
-import websocket
+import logging
 import threading
 
 from reddash.app.utils import initialize_websocket, secure_send, check_for_disconnect
 
 
 class TaskManager:
-    def __init__(self, app, console, progress):
+    def __init__(self, app, console):
+        self.logger = logging.getLogger("reddash")
         self.threads = []
         self.app = app
         self.console = console
-        self.progress = progress
+        self.ignore_disconnect = False
 
-    def update_variables(self, method, task):
-        self.progress.update(task, status="[bold green]Running[/bold green]")
-        self.progress.refresh()
-
+    def update_variables(self, method):
         try:
             while True:
-                # Different wait times based on method, commands should be called less due to how much data it is
+                # Different wait times, commands should be called less due to processing
                 if method == "DASHBOARDRPC__GET_VARIABLES":
-                    time.sleep(self.app.interval)
+                    for _ in range(self.app.config["WEBSOCKET_INTERVAL"]):
+                        time.sleep(1)
+                        if not self.app.running:
+                            return
                 else:
-                    time.sleep(self.app.interval * 2)
-
-                if not self.app.running:
-                    self.progress.update(task, status="[bold red]Killed[/bold red]")
-                    self.progress.refresh()
-                    return
+                    for _ in range(self.app.config["WEBSOCKET_INTERVAL"] * 2):
+                        time.sleep(1)
+                        if not self.app.running:
+                            return
 
                 request = {"jsonrpc": "2.0", "id": 0, "method": method, "params": []}
                 with self.app.lock:
@@ -46,31 +46,21 @@ class TaskManager:
                         continue
 
                 if method == "DASHBOARDRPC__GET_VARIABLES":
-                    self.app.variables = result["result"]
-                    self.app.blacklisted = result["result"]["blacklisted"]
+                    if not self.app.data.core["variables"]["bot"]["id"]:
+                        self.logger.info("Initial connection made with Redbot.  Syncing data.")
+                    self.app.data.core.update(variables=result["result"])
                 else:
-                    self.app.commanddata = result["result"]
-                self.app.variables["disconnected"] = False
-        except Exception as e:
-            self.progress.update(task, status="[bold red]Stopped[/bold red]")
-            self.progress.refresh()
-            with self.console:
-                if self.console.is_terminal:
-                    self.console.print(self.progress._live_render.position_cursor())
-                self.console.print_exception()
-                if self.console.is_terminal:
-                    self.console.print(self.progress._live_render)
+                    self.app.data.core.update(commands=result["result"])
+                self.app.config["RPC_CONNECTED"] = True
+        except Exception:
+            self.logger.exception(f"Background task {method} died unexpectedly.")
 
-    def update_version(self, task):
-        self.progress.update(task, status="[bold green]Running[/bold green]")
-        self.progress.refresh()
-
+    def update_version(self):
+        version = 0
         try:
             while True:
                 time.sleep(1)
                 if not self.app.running:
-                    self.progress.update(task, status="[bold red]Killed[/bold red]")
-                    self.progress.refresh()
                     return
                 if self.app.ws and self.app.ws.connected:
                     request = {
@@ -95,64 +85,57 @@ class TaskManager:
                         if "disconnected" in result["result"]:
                             continue
 
-                        if (
-                            result["result"]["v"] != self.app.rpcversion
-                            and self.app.rpcversion != 0
-                        ):
-                            self.app.dashlog.warning(
-                                "RPC websocket behind.  Closing and restarting..."
-                            )
+                        if result["result"]["v"] != version and version != 0:
+                            self.ignore_disconnect = True
+                            self.logger.info("RPC websocket behind.  Closing and restarting...")
                             self.app.ws.close()
-                            self.app.ws = websocket.WebSocket()
-                            self.app.ws.connect(self.app.ws_url)
-                        self.app.rpcversion = result["result"]["v"]
-        except Exception as e:
-            self.progress.update(task, status="[bold red]Stopped[/bold red]")
-            self.progress.refresh()
-            with self.console:
-                if self.console.is_terminal:
-                    self.console.print(self.progress._live_render.position_cursor())
-                self.console.print_exception()
-                if self.console.is_terminal:
-                    self.console.print(self.progress._live_render)
+                            initialize_websocket(self.app)
+                            self.ignore_disconnect = False
+                        version = result["result"]["v"]
+        except Exception:
+            self.logger.exception("Background task DASHBOARDRPC__CHECK_VERSION died unexpectedly.")
 
-    def check_if_connected(self, task):
+    def check_if_connected(self):
+        last_state_disconnected = True
         while True:
             if not self.app.running:
-                self.app.ws.close()
-                del self.app.ws
-                self.progress.update(task, status="[bold red]Websocket Killed[/bold red]")
-                self.progress.refresh()
+                try:
+                    self.app.ws.close()
+                    del self.app.ws
+                except AttributeError:
+                    pass
+                self.logger.info("RPC Websocket closed")
                 return
-            time.sleep(0.1)
-            if not (self.app.ws and self.app.ws.connected):
-                self.progress.update(task, status="[bold red]Disconnected[/bold red]")
-                self.progress.refresh()
-            else:
-                self.progress.update(task, status="[bold green]Connected[/bold green]")
-                self.progress.refresh()
 
-    def start_tasks(self, tasks):
+            time.sleep(0.1)
+
+            if self.ignore_disconnect:
+                continue
+
+            if not (self.app.ws and self.app.ws.connected):
+                if not last_state_disconnected:
+                    self.logger.warning("Disconnected from RPC Websocket")
+                    self.app.config["LAST_RPC_EVENT"] = datetime.utcnow()
+                    last_state_disconnected = True
+            else:
+                if last_state_disconnected:
+                    self.logger.info("Reconnected to RPC Websocket")
+                    self.app.config["LAST_RPC_EVENT"] = datetime.utcnow()
+                    last_state_disconnected = False
+
+    def start_tasks(self):
         self.threads.append(
             threading.Thread(
-                target=self.update_variables,
-                args=["DASHBOARDRPC__GET_VARIABLES", tasks["var"]],
-                daemon=True,
+                target=self.update_variables, args=["DASHBOARDRPC__GET_VARIABLES"], daemon=True,
             )
         )
         self.threads.append(
             threading.Thread(
-                target=self.update_variables,
-                args=["DASHBOARDRPC__GET_COMMANDS", tasks["cmd"]],
-                daemon=True,
+                target=self.update_variables, args=["DASHBOARDRPC__GET_COMMANDS"], daemon=True,
             )
         )
-        self.threads.append(
-            threading.Thread(target=self.update_version, args=[tasks["ver"]], daemon=True)
-        )
-        self.threads.append(
-            threading.Thread(target=self.check_if_connected, args=[tasks["con"]], daemon=True)
-        )
+        self.threads.append(threading.Thread(target=self.update_version, daemon=True))
+        self.threads.append(threading.Thread(target=self.check_if_connected, daemon=True))
 
         for t in self.threads:
             t.start()

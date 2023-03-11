@@ -25,17 +25,17 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ botavatar }}">
-  <link rel="icon" type="image/png" href="{{ botavatar }}">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ variables['bot']['avatar'] }}">
+  <link rel="icon" type="image/png" href="{{ variables['bot']['avatar'] }}">
   <title>
-    {{ meta['title'] }} -{% block title %}{% endblock %}
+    {{ variables['meta']['title'] }} -{% block title %}{% endblock %}
   </title>
   <!-- Meta tags -->
-  <meta content="{{ meta['title'] }} -{{ self.title() }}" property="og:title">
-  <meta content="{{ meta['description'] }}" property="og:description">
+  <meta content="{{  variables['meta']['title'] }} -{{ self.title() }}" property="og:title">
+  <meta content="{{  variables['meta']['description'] }}" property="og:description">
   <meta content="{{ _('Red Discord Bot Dashboard') }}" property="og:site_name">
-  <meta content="{{ meta['icon'] }}" property="og:image">
-  <meta content="{{ meta['color'] }}" name="theme-color">
+  <meta content="{{  variables['meta']['icon'] }}" property="og:image">
+  <meta content="{{  variables['meta']['color'] }}" name="theme-color">
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -50,7 +50,7 @@
 
 </head>
 
-<body data="{{ color }}">
+<body data="{{ variables['color'] }}">
   {% include 'site_template/scripts.html' %}
   <div class="wrapper">
 
@@ -102,7 +102,7 @@
       $('.prefixdiv').addClass("white-content")
     }
     // Add white border to seleted color
-    $("span[data-color={{ color }}").addClass("active")
+    $("span[data-color={{ variables['color'] }}").addClass("active")
   </script>
   <script src="/static/assets/js/bootstrap-select.min.js"></script>
 </body>

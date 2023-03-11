@@ -17,12 +17,9 @@
                     {% if data %}
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
-                                aria-orientation="vertical">
+                            <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
                                 {% for cog in cogs %}
-                                <a class="nav-link taboption {% if loop.index == 1 %} active {% endif %}"
-                                    id="{{ cog }}-tab" data-toggle="pill" href="#{{ cog }}" role="tab"
-                                    aria-controls="{{ cog }}" aria-selected="false">{{ cog }}</a>
+                                <a class="nav-link taboption {% if loop.index == 1 %} active {% endif %}" id="{{ cog }}-tab" data-toggle="pill" href="#{{ cog }}" role="tab" aria-controls="{{ cog }}" aria-selected="false">{{ cog }}</a>
                                 {% endfor %}
                             </div>
                         </div>
@@ -30,33 +27,34 @@
                             <span id="topOfTabContent"></span>
                             <div class="tab-content" id="myTabContent">
                                 {% for cog in data %}
-                                <div class="tab-pane fade {% if loop.index == 1 %} show active {% endif %}"
-                                    id="{{ cog['name'] }}" role="tabpanel" aria-labelledby="{{ cog['name'] }}-tab">
+                                <div class="tab-pane fade {% if loop.index == 1 %} show active {% endif %}" id="{{ cog['name'] }}" role="tabpanel" aria-labelledby="{{ cog['name'] }}-tab">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="card-title">{{ cog['name']|safe }}</h4>
+                                                            <p>{{ cog['desc']|safe }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col-sm-8">
-                                                            <h4 class="card-title">{{ cog['name'] }}</h4>
-                                                            <p>{{ cog['desc'] }}</p>
-                                                            <p>{{ (_('Author: {author}')).format(author=cog['author']) }}
+                                                            <p>{{ (_('Author: {author}')).format(author=cog['author'])
+                                                                }}
                                                             </p>
                                                             <p>{{ (_('Repo: {repo}')).format(repo=cog['repo']) }}</p>
                                                         </div>
-                                                        <div class="col-sm-6 text-left">
+                                                        <div class="col-sm-4 text-left">
                                                             <div class="dropdown float-right">
-                                                                <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                    role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                    aria-haspopup="true" aria-expanded="false">
+                                                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                     {{ _('Prefix') }}
                                                                 </a>
 
-                                                                <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                    aria-labelledby="prefixdrop">
+                                                                <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                     {% for p in prefixes %}
-                                                                    <a
-                                                                        class="dropdown-item prefix-option {% if loop.index == 1 %} active {% endif %}">{{ p }}</a>
+                                                                    <a class="dropdown-item prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                        p }}</a>
                                                                     {% endfor %}
                                                                 </div>
                                                             </div>
@@ -95,7 +93,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <h4 class="card-title">{{ _('Loading data... Please wait a few seconds then reload') }}</h4>
+                    <h4 class="card-title">{{ _('This page is currently unavailable until initial connection is made with a Redbot.') }}</h4>
                     {% endif %}
                 </div>
             </div>

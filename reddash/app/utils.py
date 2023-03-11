@@ -1,19 +1,28 @@
+from typing import Optional, SupportsInt
 from importlib import import_module
-from copy import copy
+from copy import deepcopy
 from os import path
+import datetime
 import time
 import json
 import websocket
 import jwt
 import threading
+import logging
 
 from flask import render_template, redirect, request, url_for, session, g
 from flask_babel import _
-from rich import rule, columns, table as rtable, panel
+from rich import rule, columns, table as rtable, panel, text
 from fuzzywuzzy import process
 
 from reddash import __version__
-from reddash.app.constants import DEFAULTS, WS_EXCEPTIONS
+
+WS_EXCEPTIONS = (
+    ConnectionRefusedError,
+    websocket._exceptions.WebSocketConnectionClosedException,
+    ConnectionResetError,
+    ConnectionAbortedError,
+)
 
 
 def register_blueprints(app):
@@ -30,11 +39,13 @@ def register_blueprints(app):
         ip = request.environ.get("HTTP_X_FORWARDED_FOR") or request.remote_addr
         if request.path.startswith(("/static", "/api/stream", "/blacklisted")):
             return
-        if not ip in app.blacklisted:
+        if ip not in app.data.core["variables"]["oauth"]["blacklisted"]:
             g.id = get_user_id(app, request, session)
             if g.id is False and "id" in session:
                 del session["id"]
-        if ip in app.blacklisted:
+                del session["avatar"]
+                del session["username"]
+        if ip in app.data.core["variables"]["oauth"]["blacklisted"]:
             return redirect(url_for("base_blueprint.blacklisted"))
 
 
@@ -73,15 +84,24 @@ def apply_themes(app):
 def add_constants(app):
     @app.context_processor
     def inject_variables():
-        variables = app.variables
-        if not app.variables:
-            variables = copy(DEFAULTS)
+        variables = deepcopy(app.data.core["variables"])
         variables["locales"] = app.config["LOCALE_DICT"]
         variables["safelocales"] = json.dumps(app.config["LOCALE_DICT"])
         variables["selectedlocale"] = session.get("lang_code")
-        variables["color"] = request.cookies.get("color", variables["color"])
-        variables = process_meta_tags(variables)
-        return dict(version=__version__, **variables)
+        variables["color"] = request.cookies.get("color", app.data.ui["default_color"])
+        variables["sidebar"] = process_sidebar(app)
+        variables["connected"] = app.config["RPC_CONNECTED"]
+        variables["available_colors"] = [
+            {"name": "red", "class": "badge-red"},
+            {"name": "primary", "class": "badge-primary"},
+            {"name": "blue", "class": "badge-info"},
+            {"name": "green", "class": "badge-success"},
+            {"name": "darkgreen", "class": "badge-darkgreen"},
+            {"name": "yellow", "class": "badge-yellow"},
+        ]
+        variables = process_meta_tags(app, variables)
+
+        return dict(version=__version__, variables=variables)
 
 
 def initialize_babel(app, babel):
@@ -104,22 +124,22 @@ def initialize_babel(app, babel):
                 # Too low of a match, abort lang_code argument and go to session value
                 lang = None
             else:
-                # User had lang_code argument, and it closely matched a registered locale.  This will be used
+                # User had lang_code argument, and it closely matched a registered locale
                 locale = processed[0]
 
         if not lang:
-            # User either did not have lang_code argument or it wasnt able to match a registered locale.
+            # User either didn't have lang_code argument or wasnt able to match a locale
             # Let's check if theres something in the session
             lang = session.get("lang_code")
             if lang:
-                # User has a locale in session, that is already confirmed (otherwise would not be registered)
+                # User has a locale in session
                 locale = lang
             else:
-                # User does not have lang_code argument, and does not have a locale stored in sesion.
+                # User doesn't have lang_code, and doesn't have a locale stored in session.
                 # Let's get the best one according to Flask
                 locale = request.accept_languages.best_match(app.config["LANGUAGES"])
 
-        # Locale variable is now the determined locale.  Let's save that so it will be used on next request as well
+        # Let's save that so it will be used on next request as well
         session["lang_code"] = locale
 
     @babel.localeselector
@@ -132,9 +152,9 @@ def initialize_babel(app, babel):
 def get_user_id(app, req, ses):
     try:
         payload = jwt.decode(ses["id"], app.jwt_secret_key, algorithms=["HS256"])
-    except (jwt.ExpiredSignatureError, KeyError) as error:
+    except (jwt.ExpiredSignatureError, KeyError):
         return False
-    except (jwt.InvalidSignatureError, jwt.InvalidTokenError) as error:
+    except (jwt.InvalidSignatureError, jwt.InvalidTokenError):
         ip = req.environ.get("HTTP_X_FORWARDED_FOR") or req.remote_addr
         app.blacklisted.append(ip)
         thread = threading.Thread(target=notify_owner_of_blacklist, args=[app, ip])
@@ -143,27 +163,26 @@ def get_user_id(app, req, ses):
     return payload["userid"]
 
 
-def process_meta_tags(variables):
-    if "meta" not in variables:
-        variables["meta"] = {"title": "", "icon": "", "description": "", "color": ""}
+def process_meta_tags(app, variables):
+    variables["meta"] = app.data.ui["meta"]
 
     if variables["meta"]["title"] == "":
-        variables["meta"]["title"] = _("{name} Dashboard").format(name=variables["botname"])
+        variables["meta"]["title"] = _("{name} Dashboard").format(name=variables["bot"]["name"])
     else:
         variables["meta"]["title"] = variables["meta"]["title"].replace(
-            "{name}", variables["botname"]
+            "{name}", variables["bot"]["name"]
         )
 
     if variables["meta"]["icon"] == "":
-        variables["meta"]["icon"] = variables["botavatar"]
+        variables["meta"]["icon"] = variables["bot"]["avatar"]
 
     if variables["meta"]["description"] == "":
         variables["meta"]["description"] = _(
             "Interactive dashboard to control and interact with {name}"
-        ).format(name=variables["botname"])
+        ).format(name=variables["bot"]["name"])
     else:
         variables["meta"]["description"] = variables["meta"]["description"].replace(
-            "{name}", variables["botname"]
+            "{name}", variables["bot"]["name"]
         )
 
     if variables["meta"]["color"] == "":
@@ -172,7 +191,60 @@ def process_meta_tags(variables):
     return variables
 
 
-def startup_message(app, progress, kwargs):
+def process_sidebar(app):
+    logged_in = "id" in session
+    sidebar = sorted(app.data.ui["sidebar"], key=lambda x: x["pos"])
+    final = []
+
+    initial_route = "/" + request.path.split("/")[1]
+
+    for item in sidebar:
+        item = {k: v for k, v in item.items()}
+        if item["session"] is True and not logged_in:
+            continue
+        if item["session"] is False and logged_in:
+            continue
+
+        try:
+            if item["admin"] and not (
+                logged_in and str(g.id) in app.data.core["variables"]["bot"]["owners"]
+            ):
+                continue
+        except AttributeError:
+            # Not sure how this happens. Meh
+            continue
+
+        # I have to localize here opposed to storing it because... well... then it's not localized
+        if item["name"] == "builtin-home":
+            item["name"] = _("Home")
+        elif item["name"] == "builtin-commands":
+            item["name"] = _("Commands")
+        elif item["name"] == "builtin-dashboard":
+            item["name"] = _("Dashboard")
+        elif item["name"] == "builtin-credits":
+            item["name"] = _("Credits")
+        elif item["name"] == "builtin-login":
+            item["name"] = _("Login")
+        elif item["name"] == "builtin-logout":
+            item["name"] = _("Logout")
+        elif item["name"] == "builtin-admin":
+            item["name"] = _("Admin")
+
+        if not item["is_http"]:
+            item["route"] = url_for(item["route"])
+
+        item["active"] = False
+        if initial_route == item["route"] or (
+            initial_route == "/guild" and item["route"] == "/dashboard"
+        ):
+            item["active"] = True
+
+        final.append(item)
+
+    return final
+
+
+def startup_message(app, kwargs):
     table = rtable.Table(title="Settings")
     table.add_column("Setting", style="red", no_wrap=True)
     table.add_column("Value", style="blue", no_wrap=True)
@@ -180,27 +252,29 @@ def startup_message(app, progress, kwargs):
     table.add_row("Version", __version__)
     table.add_row("Host", kwargs["host"])
     table.add_row("Webserver port", str(kwargs["port"]))
-    table.add_row("RPC Port", str(app.rpcport))
-    table.add_row("Update interval", str(app.interval))
+    table.add_row("RPC Port", str(app.config["WEBSOCKET_PORT"]))
+    table.add_row("Update interval", str(app.config["WEBSOCKET_INTERVAL"]))
     table.add_row("Environment", "Development" if kwargs["dev"] else "Production")
     table.add_row("Logging level", "Debug" if kwargs["debug"] else "Warning")
 
-    progress.print(rule.Rule("Red Discord Bot Dashboard - Webserver"))
-    disclaimer = "This is an instance of Red Discord Bot Dashboard,\ncreated by Neuro Assassin. This package is\nprotected under the AGPL License. Any action\nthat will breach this license (including but not\nlimited to, removal of credits) may result in a\nDMCA takedown request, or other legal\nconsequences.\n\n\nYou can view the license at\nhttps://github.com/Cog-Creators/\nRed-Dashboard/blob/master/LICENSE."
+    app.console.print(rule.Rule("Red Discord Bot Dashboard - Webserver"))
 
-    vartask = progress.add_task("Update variable task:", status="[bold blue]Starting[/bold blue]")
-    cmdtask = progress.add_task("Update command task:", status="[bold blue]Starting[/bold blue]")
-    vertask = progress.add_task("Update version task:", status="[bold blue]Starting[/bold blue]")
-    contask = progress.add_task("RPC Connected", status="[bold blue]Starting[/bold blue]")
+    disclaimer = text.Text(
+        "The Red-Dashboard is in alpha development and not encouraged for public/official use. "
+        "By running this program, you understand that potential harm may come to your data and "
+        "corrupt your Redbot.",
+        no_wrap=False,
+    )
 
-    progress.print(columns.Columns([panel.Panel(table), panel.Panel(disclaimer)], equal=True))
-    return {"var": vartask, "cmd": cmdtask, "ver": vertask, "con": contask}
+    app.console.print(
+        columns.Columns([panel.Panel(table, expand=False), panel.Panel(disclaimer)], expand=True)
+    )
 
 
 def initialize_websocket(app):
     app.ws = websocket.WebSocket()
     try:
-        app.ws.connect(app.ws_url)
+        app.ws.connect(f"ws://{app.config['WEBSOCKET_HOST']}:{app.config['WEBSOCKET_PORT']}")
     except WS_EXCEPTIONS:
         app.ws.close()
         app.ws = None
@@ -209,10 +283,11 @@ def initialize_websocket(app):
 
 
 def secure_send(app, request):
+    dashlog = logging.getLogger("reddash")
     try:
         app.ws.send(json.dumps(request))
     except WS_EXCEPTIONS:
-        app.dashlog.warning("Connection reset")
+        dashlog.warning("Connection reset")
         app.ws.close()
         app.ws = None
         return False
@@ -220,7 +295,7 @@ def secure_send(app, request):
     try:
         result = json.loads(app.ws.recv())
     except WS_EXCEPTIONS:
-        app.dashlog.warning("Connection reset")
+        dashlog.warning("Connection reset")
         app.ws.close()
         app.ws = None
         return False
@@ -232,16 +307,16 @@ def check_for_disconnect(app, method, result):
     if "error" in result:
         if result["error"]["message"] == "Method not found":
             if method == "DASHBOARDRPC__GET_VARIABLES":
-                app.variables = {}
+                app.config["RPC_CONNECTED"] = False
         else:
-            app.dashlog.error(result["error"])
+            dashlog = logging.getLogger("reddash")
+            dashlog.error(result["error"])
         app.ws.close()
         app.ws = None
         return False
     if isinstance(result["result"], dict) and result["result"].get("disconnected", False):
         # Dashboard cog unloaded, disconnect
-        if method == "DASHBOARDRPC__GET_VARIABLES":
-            app.variables = {}
+        app.config["RPC_CONNECTED"] = False
         app.ws.close()
         app.ws = None
         return False
@@ -270,3 +345,55 @@ def notify_owner_of_blacklist(app, ip):
                     continue
                 break
         time.sleep(1)
+
+
+# This is taken from Red Discord Bot's chat_formatting.py
+def humanize_timedelta(
+    *, timedelta: Optional[datetime.timedelta] = None, seconds: Optional[SupportsInt] = None
+) -> str:
+    """
+    Get a locale aware human timedelta representation.
+    This works with either a timedelta object or a number of seconds.
+    Fractional values will be omitted, and values less than 1 second
+    an empty string.
+    Parameters
+    ----------
+    timedelta: Optional[datetime.timedelta]
+        A timedelta object
+    seconds: Optional[SupportsInt]
+        A number of seconds
+    Returns
+    -------
+    str
+        A locale aware representation of the timedelta or seconds.
+    Raises
+    ------
+    ValueError
+        The function was called with neither a number of seconds nor a timedelta object
+    """
+
+    try:
+        obj = seconds if seconds is not None else timedelta.total_seconds()
+    except AttributeError:
+        raise ValueError("You must provide either a timedelta or a number of seconds")
+
+    seconds = int(obj)
+    periods = [
+        (_("year"), _("years"), 60 * 60 * 24 * 365),
+        (_("month"), _("months"), 60 * 60 * 24 * 30),
+        (_("day"), _("days"), 60 * 60 * 24),
+        (_("hour"), _("hours"), 60 * 60),
+        (_("minute"), _("minutes"), 60),
+        (_("second"), _("seconds"), 1),
+    ]
+
+    strings = []
+    for period_name, plural_period_name, period_seconds in periods:
+        if seconds >= period_seconds:
+            period_value, seconds = divmod(seconds, period_seconds)
+            if period_value == 0:
+                continue
+            unit = plural_period_name if period_value > 1 else period_name
+            strings.append(f"{period_value} {unit}")
+
+    return ", ".join(strings)

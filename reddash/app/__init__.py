@@ -5,32 +5,24 @@ Copyright (c) 2019 - present AppSeed.us
 Copyright (c) 2020 - NeuroAssassin
 """
 # Flask related libraries
-from flask import Flask, url_for, session, render_template
+from flask import Flask
 from flask_babel import Babel
 from waitress import serve
 
 # Terminal related libraries
-from rich import console, traceback as rtb, progress, logging as richlogging
+from rich import console, traceback as rtb, logging as richlogging
 import logging
 
 # Secret key libraries
-from cryptography import fernet
 import base64
 
-# Background thread libraries
-import threading
-import time
-import websocket
-import traceback
-
 # Base libraries
+from datetime import datetime
 from babel import Locale
-import json
-import sys
-import os
+import threading
 
 # Relative imports
-from reddash.app.constants import Lock, DEFAULTS, WS_URL, ALLOWED_LOCALES
+from reddash.app.data_manager import LoadManager
 from reddash.app.tasks import TaskManager
 from reddash.app.utils import (
     register_blueprints,
@@ -49,45 +41,31 @@ queuelog = logging.getLogger("waitress.queue")
 
 console = console.Console()
 oldexcepthook = rtb.install()
-progress_bar = progress.Progress(
-    "{task.description}", progress.TextColumn("{task.fields[status]}\n")
-)
 
-logging.basicConfig(format="%(message)s", handlers=[richlogging.RichHandler(console=progress_bar)])
+logging.basicConfig(
+    format="%(message)s", handlers=[richlogging.RichHandler(console=console, rich_tracebacks=True)]
+)
 queuelog.setLevel(logging.ERROR)
 
 # Base variable setup
 app = Flask("reddash", static_folder="app/base/static")
-lock = Lock()
+lock = threading.Lock()
 babel = Babel()
 
 
-def create_app(host, port, rpcport, interval, debug, dev):
-    url = f"{WS_URL}{rpcport}"
-
-    # Session encoding
-    fernet_key = fernet.Fernet.generate_key()
-    secret_key = base64.urlsafe_b64decode(fernet_key)
-
-    # JWT encoding
-    jwt_fernet_key = fernet.Fernet.generate_key()
-    jwt_secret_key = base64.urlsafe_b64decode(jwt_fernet_key)
+def create_app(host, port, rpcport, interval, debug, dev, instance):
+    if debug:
+        log.setLevel(logging.DEBUG)
+        dashlog.setLevel(logging.DEBUG)
 
     # Initialize websocket variables
-    app.ws_url = url
     app.ws = None
     app.lock = lock
-    app.rpcport = str(rpcport)
-    app.rpcversion = 0
-    app.interval = interval
 
     # Initialize core variables
-    app.task_manager = TaskManager(app, console, progress_bar)
-    app.dashlog = dashlog
-    app.progress = progress_bar
+    app.console = console
+    app.task_manager = TaskManager(app, console)
     app.running = True
-    app.variables = {}
-    app.commanddata = {}
     app.cooldowns = {
         "serverprefix": {},
         "adminroles": {},
@@ -101,25 +79,65 @@ def create_app(host, port, rpcport, interval, debug, dev):
         "removedefaultrule": {},
         "fetchaliases": {},
     }
-    app.blacklisted = []
 
     # Initialize config
+    app.data = LoadManager(instance=instance)
+    app.data.initialize()
+
     app.config.from_object(__name__)
     app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config["BABEL_TRANSLATION_DIRECTORIES"] = "app/translations"
+    app.config["WEBSOCKET_HOST"] = "localhost"
+    app.config["WEBSOCKET_PORT"] = rpcport
+    app.config["WEBSOCKET_INTERVAL"] = interval
+    app.config["RPC_CONNECTED"] = False
+    app.config["LAST_RPC_EVENT"] = datetime.utcnow()
+    app.config["LAUNCH"] = datetime.utcnow()
 
+    app.config["LANGUAGES"] = [
+        "en",
+        "af_ZA",
+        "ar_SA",
+        "bg_BG",
+        "ca_ES",
+        "cs_CZ",
+        "da_DK",
+        "de_DE",
+        "el_GR",
+        "es_ES",
+        "fi_FI",
+        "fr_FR",
+        "he_IL",
+        "hu_HU",
+        "id_ID",
+        "it_IT",
+        "ja_JP",
+        "ko_KR",
+        "nl_NL",
+        "nb_NO",
+        "pl_PL",
+        "pt_BR",
+        "pt_PT",
+        "ro_RO",
+        "ru_RU",
+        "sk_SK",
+        "sv_SE",
+        "tr_TR",
+        "uk_UA",
+        "vi_VN",
+        "zh_CN",
+        "zh_HK",
+        "zh_TW",
+    ]
     locale_dict = {}
-    for locale in ALLOWED_LOCALES:
-        l = Locale.parse(locale)
-        lang = l.get_language_name(locale)
-        if territory := l.get_territory_name(locale):
-            lang = f"{l.get_language_name(locale)} - {l.get_territory_name(locale)}"
-        locale_dict[locale] = lang
 
-    app.config["LANGUAGES"] = ALLOWED_LOCALES
+    for locale in app.config["LANGUAGES"]:
+        loc = Locale.parse(locale)
+        lang = loc.get_language_name(locale)
+        if territory := loc.get_territory_name(locale):
+            lang = f"{lang} - {territory}"
+        locale_dict[locale] = lang
     app.config["LOCALE_DICT"] = locale_dict
-    app.secret_key = secret_key
-    app.jwt_secret_key = jwt_secret_key
 
     babel = Babel(app)
 
@@ -129,22 +147,32 @@ def create_app(host, port, rpcport, interval, debug, dev):
     add_constants(app)
     initialize_babel(app, babel)
 
-    if debug:
-        log.setLevel(logging.DEBUG)
-        dashlog.setLevel(logging.DEBUG)
+    # Initialize security
+    # Session encoding
+    fernet_key = app.data.core["secret_key"]
+    secret_key = base64.urlsafe_b64decode(fernet_key)
+
+    # JWT encoding
+    jwt_fernet_key = app.data.core["jwt_secret_key"]
+    jwt_secret_key = base64.urlsafe_b64decode(jwt_fernet_key)
+
+    app.secret_key = secret_key
+    app.jwt_secret_key = jwt_secret_key
 
     kwargs = {"host": host, "port": port, "dev": dev, "debug": debug}
-    progress_tasks = startup_message(app, progress_bar, kwargs)
+    startup_message(app, kwargs)
 
-    app.task_manager.start_tasks(progress_tasks)
+    app.task_manager.start_tasks()
 
     if dev:
         app.run(host=host, port=port, debug=debug)
     else:
         serve(app, host=host, port=port, _quiet=True)
 
-    app.dashlog.fatal("Shutting down...")
+    dashlog.fatal("Shutting down...")
     app.running = False
     app.task_manager.stop_tasks()
 
-    app.dashlog.fatal("Webserver terminated")
+    dashlog.fatal("Webserver terminated")
+    # For some reason, this exits on the same line sometimes.  Let's print an extra line
+    print("")

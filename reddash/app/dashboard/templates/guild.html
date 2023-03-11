@@ -22,14 +22,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xl-3 col-lg-4 col-md-5">
-                            <img src="{{ data['data']['icon'] }}png"
-                                style="height: auto; width: 300px; margin: auto; display: block; border-radius: 50%;"
-                                onmouseover="playGif(this)" onmouseout="stopGif(this)"
-                                data-is-animated="{{ data['data']['animated'] }}"
-                                data-src-url="{{ data['data']['icon'] }}">
+                            <img src="{{ data['data']['icon'] }}png" style="height: auto; width: 300px; margin: auto; display: block; border-radius: 50%;" onmouseover="playGif(this)" onmouseout="stopGif(this)" data-is-animated="{{ data['data']['animated'] }}" data-src-url="{{ data['data']['icon'] }}">
                         </div>
                         <div class="col-xl-8 col-lg-8 col-md-7">
-                            <h2 class="card-title">{{ data['data']['name'] }}</h2>
+                            <h2 class="card-title">{{ data['data']['name']|safe }}</h2>
                             <h5 class="card-category text-gray">
                                 {{ _('Created on {date}').format(date=data['data']['created']) }}
                                 {% if data['data']['joined'] %}
@@ -56,7 +52,6 @@
                                     <h4>
                                         <b>{{ _('Owner') }}</b>: {{ data['data']['owner'] }}<br>
                                         <b>{{ _('Verification Level') }}</b>: {{ data['data']['vl'] }}<br>
-                                        <b>{{ _('Region') }}</b>: {{ data['data']['region'] }}<br>
                                         <b>{{ _('Server ID') }}</b>: {{ data['data']['id'] }}
                                     </h4>
                                 </div>
@@ -87,22 +82,17 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
-                            aria-orientation="vertical">
-                            <a class="nav-link taboption" id="serverprefix-tab" data-toggle="pill" href="#serverprefix"
-                                role="tab" aria-controls="serverprefix" aria-selected="false">{{ _('Server prefix')
+                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="serverprefix-tab" data-toggle="pill" href="#serverprefix" role="tab" aria-controls="serverprefix" aria-selected="false">{{ _('Server prefix')
                                 }}</a>
-                            <a class="nav-link taboption" id="adminroles-tab" data-toggle="pill" href="#adminroles"
-                                role="tab" aria-controls="adminroles" aria-selected="false">{{ _('Admin roles') }}</a>
-                            <a class="nav-link taboption" id="modroles-tab" data-toggle="pill" href="#modroles"
-                                role="tab" aria-controls="modroles" aria-selected="false">{{ _('Mod roles') }}</a>
+                            <a class="nav-link taboption" id="adminroles-tab" data-toggle="pill" href="#adminroles" role="tab" aria-controls="adminroles" aria-selected="false">{{ _('Admin roles') }}</a>
+                            <a class="nav-link taboption" id="modroles-tab" data-toggle="pill" href="#modroles" role="tab" aria-controls="modroles" aria-selected="false">{{ _('Mod roles') }}</a>
                         </div>
                     </div>
                     <div class="col-md-10">
                         <div class="tab-content" id="botsettingTabContent">
                             <!-- Start server prefix -->
-                            <div class="tab-pane fade" id="serverprefix" role="tabpanel"
-                                aria-labelledby="serverprefix-tab">
+                            <div class="tab-pane fade" id="serverprefix" role="tabpanel" aria-labelledby="serverprefix-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -119,17 +109,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -147,13 +133,10 @@
                                                                 <li>
                                                                     <div class="row">
                                                                         <div class="col-md-10 col-8">
-                                                                            <input class="form-control prefixinput"
-                                                                                value="{{ prefix }}">
+                                                                            <input class="form-control prefixinput" value="{{ prefix }}">
                                                                         </div>
                                                                         <div class="col-md-1 col-1">
-                                                                            <span class="prefix-x clickable"><i
-                                                                                    class="tim-icons icon-simple-remove"
-                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                            <span class="prefix-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -196,17 +179,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -224,14 +203,10 @@
                                                                 <li>
                                                                     <div class="row">
                                                                         <div class="col-md-10 col-8">
-                                                                            <input class="form-control adminroleinput"
-                                                                                value="{{ role[1] }}" disabled=True
-                                                                                data-id="{{ role[0] }}">
+                                                                            <input class="form-control adminroleinput" value="{{ role[1] }}" disabled=True data-id="{{ role[0] }}">
                                                                         </div>
                                                                         <div class="col-md-1 col-1">
-                                                                            <span class="admin-role-x clickable"><i
-                                                                                    class="tim-icons icon-simple-remove"
-                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                            <span class="admin-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -240,19 +215,13 @@
                                                             <div class="buttondiv dropup">
                                                                 <button class="btn" id="adminroleupdate">{{ _('Update
                                                                     Admin Roles') }}</button>
-                                                                <button class="btn dropdown-toggle" href="#"
-                                                                    role="button" id="roledrop" data-toggle="dropdown"
-                                                                    aria-haspopup="true" aria-expanded="false"
-                                                                    id="addadminrole"
-                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add
+                                                                <button class="btn dropdown-toggle" href="#" role="button" id="roledrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="addadminrole" style="height: 40px; margin-top: 5px;">{{ _('Add
                                                                     Admin Role') }}</button>
-                                                                <div class="dropdown-menu dropdown-menu-right"
-                                                                    aria-labelledby="roledrop">
+                                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="roledrop">
                                                                     <div class="scrollable-menu">
                                                                         {% for role in data['data']['roles'] %}
                                                                         {% if role not in data['data']['adminroles'] %}
-                                                                        <a class="dropdown-item clickable adminroleoption"
-                                                                            data-id="{{ role[0] }}">{{ role[1] }}</a>
+                                                                        <a class="dropdown-item clickable adminroleoption" data-id="{{ role[0] }}">{{ role[1] }}</a>
                                                                         {% endif %}
                                                                         {% endfor %}
                                                                     </div>
@@ -291,17 +260,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -319,14 +284,10 @@
                                                                 <li>
                                                                     <div class="row">
                                                                         <div class="col-md-10 col-8">
-                                                                            <input class="form-control modroleinput"
-                                                                                value="{{ role[1] }}" disabled=True
-                                                                                data-id="{{ role[0] }}">
+                                                                            <input class="form-control modroleinput" value="{{ role[1] }}" disabled=True data-id="{{ role[0] }}">
                                                                         </div>
                                                                         <div class="col-md-1 col-1">
-                                                                            <span class="mod-role-x clickable"><i
-                                                                                    class="tim-icons icon-simple-remove"
-                                                                                    style="float: right; margin-top: 10px;"></i></span>
+                                                                            <span class="mod-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -335,19 +296,13 @@
                                                             <div class="buttondiv dropup">
                                                                 <button class="btn" id="modroleupdate">{{ _('Update Mod
                                                                     Roles') }}</button>
-                                                                <button class="btn dropdown-toggle" href="#"
-                                                                    role="button" id="roledrop" data-toggle="dropdown"
-                                                                    aria-haspopup="true" aria-expanded="false"
-                                                                    id="addmodrole"
-                                                                    style="height: 40px; margin-top: 5px;">{{ _('Add Mod
+                                                                <button class="btn dropdown-toggle" href="#" role="button" id="roledrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="addmodrole" style="height: 40px; margin-top: 5px;">{{ _('Add Mod
                                                                     Role') }}</button>
-                                                                <div class="dropdown-menu dropdown-menu-right"
-                                                                    aria-labelledby="roledrop">
+                                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="roledrop">
                                                                     <div class="scrollable-menu">
                                                                         {% for role in data['data']['roles'] %}
                                                                         {% if role not in data['data']['modroles'] %}
-                                                                        <a class="dropdown-item clickable modroleoption"
-                                                                            data-id="{{ role[0] }}">{{ role[1] }}</a>
+                                                                        <a class="dropdown-item clickable modroleoption" data-id="{{ role[0] }}">{{ role[1] }}</a>
                                                                         {% endif %}
                                                                         {% endfor %}
                                                                     </div>
@@ -382,20 +337,12 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
-                            aria-orientation="vertical">
-                            <a class="nav-link taboption" id="viewrules-tab" data-toggle="pill" href="#viewrules"
-                                role="tab" aria-controls="viewrules" aria-selected="false">{{ _('View rules') }}</a>
-                            <a class="nav-link taboption" id="adddefaultrule-tab" data-toggle="pill"
-                                href="#adddefaultrule" role="tab" aria-controls="adddefaultrule"
-                                aria-selected="false">{{ _('Add default rule') }}</a>
-                            <a class="nav-link taboption" id="addrule-tab" data-toggle="pill" href="#addrule" role="tab"
-                                aria-controls="addrule" aria-selected="false">{{ _('Add rule') }}</a>
-                            <a class="nav-link taboption" id="removedefaultrule-tab" data-toggle="pill"
-                                href="#removedefaultrule" role="tab" aria-controls="removedefaultrule"
-                                aria-selected="false">{{ _('Remove default rule') }}</a>
-                            <a class="nav-link taboption" id="removerule-tab" data-toggle="pill" href="#removerule"
-                                role="tab" aria-controls="removerule" aria-selected="false">{{ _('Remove rule') }}</a>
+                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="viewrules-tab" data-toggle="pill" href="#viewrules" role="tab" aria-controls="viewrules" aria-selected="false">{{ _('View rules') }}</a>
+                            <a class="nav-link taboption" id="adddefaultrule-tab" data-toggle="pill" href="#adddefaultrule" role="tab" aria-controls="adddefaultrule" aria-selected="false">{{ _('Add default rule') }}</a>
+                            <a class="nav-link taboption" id="addrule-tab" data-toggle="pill" href="#addrule" role="tab" aria-controls="addrule" aria-selected="false">{{ _('Add rule') }}</a>
+                            <a class="nav-link taboption" id="removedefaultrule-tab" data-toggle="pill" href="#removedefaultrule" role="tab" aria-controls="removedefaultrule" aria-selected="false">{{ _('Remove default rule') }}</a>
+                            <a class="nav-link taboption" id="removerule-tab" data-toggle="pill" href="#removerule" role="tab" aria-controls="removerule" aria-selected="false">{{ _('Remove rule') }}</a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -412,17 +359,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -433,8 +376,7 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <div id="rulesdiv">
-                                                        <p class="card-category text-gray"
-                                                            style="text-transform: none;">
+                                                        <p class="card-category text-gray" style="text-transform: none;">
                                                             {{ _('Permission rules have not been loaded. Please re-click
                                                             View Rules on the left') }}
                                                         </p>
@@ -449,8 +391,7 @@
                             </div>
                             <!-- End view rules -->
                             <!-- Start Add Default Rule -->
-                            <div class="tab-pane fade" id="adddefaultrule" role="tabpanel"
-                                aria-labelledby="adddefaultrule-tab">
+                            <div class="tab-pane fade" id="adddefaultrule" role="tabpanel" aria-labelledby="adddefaultrule-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -464,17 +405,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -487,8 +424,7 @@
                                                     <h3>{{ _('Step #1: Set permission action') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker" title="Allow/Deny"
-                                                                id="adddefaultruleallowdeny" size=false>
+                                                            <select class="selectpicker" title="Allow/Deny" id="adddefaultruleallowdeny" size=false>
                                                                 <option value="allow" class="selectoption">
                                                                     {{ _('Allow') }}
                                                                 </option>
@@ -501,10 +437,7 @@
                                                     <h3>{{ _('Step #2: Select cog/command') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker cogcommands"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                disabled id="adddefaultrulecogcommands"
-                                                                data-size="5"></select>
+                                                            <select class="selectpicker cogcommands" data-live-search="true" title="{{ _('Loading...') }}" disabled id="adddefaultrulecogcommands" data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <button class="btn" id="adddefaultrulesubmit">{{ _('Add Default
@@ -533,17 +466,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -556,8 +485,7 @@
                                                     <h3>{{ _('Step #1: Set permission action') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker" title="Allow/Deny"
-                                                                id="addruleallowdeny">
+                                                            <select class="selectpicker" title="Allow/Deny" id="addruleallowdeny">
                                                                 <option value="allow" class="selectoption">
                                                                     {{ _('Allow') }}
                                                                 </option>
@@ -570,18 +498,13 @@
                                                     <h3>{{ _('Step #2: Select target') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker ruletargets"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                class="permissiontargets" id="addruletargets" disabled
-                                                                data-size="5"></select>
+                                                            <select class="selectpicker ruletargets" data-live-search="true" title="{{ _('Loading...') }}" class="permissiontargets" id="addruletargets" disabled data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <h3>{{ _('Step #3: Select cog/command') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker cogcommands"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                disabled id="addrulecogcommands" data-size="5"></select>
+                                                            <select class="selectpicker cogcommands" data-live-search="true" title="{{ _('Loading...') }}" disabled id="addrulecogcommands" data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <button class="btn" id="addrulesubmit">{{ _('Add Rule') }}</button>
@@ -595,8 +518,7 @@
                             </div>
                             <!-- End add rule -->
                             <!-- Start Remove Default Rule -->
-                            <div class="tab-pane fade" id="removedefaultrule" role="tabpanel"
-                                aria-labelledby="removedefaultrule-tab">
+                            <div class="tab-pane fade" id="removedefaultrule" role="tabpanel" aria-labelledby="removedefaultrule-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -610,17 +532,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -633,10 +551,7 @@
                                                     <h3>{{ _('Select the cog/command') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker cogcommands"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                disabled id="removedefaultrulecogcommands"
-                                                                data-size="5"></select>
+                                                            <select class="selectpicker cogcommands" data-live-search="true" title="{{ _('Loading...') }}" disabled id="removedefaultrulecogcommands" data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <button class="btn" id="removedefaultrulesubmit">{{ _('Remove
@@ -665,17 +580,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -688,19 +599,13 @@
                                                     <h3>{{ _('Step #1: Select target') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker ruletargets"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                class="permissiontargets" id="removeruletargets"
-                                                                disabled data-size="5"></select>
+                                                            <select class="selectpicker ruletargets" data-live-search="true" title="{{ _('Loading...') }}" class="permissiontargets" id="removeruletargets" disabled data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <h3>{{ _('Step #2: Select cog/command') }}</h3>
                                                     <div class="row">
                                                         <div class="col-xl-4 col-md-6">
-                                                            <select class="selectpicker cogcommands"
-                                                                data-live-search="true" title="{{ _('Loading...') }}"
-                                                                disabled id="removerulecogcommands"
-                                                                data-size="5"></select>
+                                                            <select class="selectpicker cogcommands" data-live-search="true" title="{{ _('Loading...') }}" disabled id="removerulecogcommands" data-size="5"></select>
                                                         </div>
                                                     </div>
                                                     <button class="btn" id="removerulesubmit">{{ _('Remove Rule')
@@ -725,8 +630,7 @@
 </div>
 {% endif %}
 {% if 'aliascc' in data['data']['permslist'] and false %}
-<div class="modal fade" id="aliasModal" tabindex="-1" role="dialog" aria-labelledby="aliasModalLabel"
-    data-backdrop="static" aria-hidden="true">
+<div class="modal fade" id="aliasModal" tabindex="-1" role="dialog" aria-labelledby="aliasModalLabel" data-backdrop="static" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -735,8 +639,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <textarea id="aliasModalCommand" class="form-control" cols="70"
-                        placeholder="{{ _('The command the alias executes') }}"></textarea>
+                    <textarea id="aliasModalCommand" class="form-control" cols="70" placeholder="{{ _('The command the alias executes') }}"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -755,13 +658,9 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist"
-                            aria-orientation="vertical">
-                            <a class="nav-link taboption" id="aliases-tab" data-toggle="pill" href="#aliases" role="tab"
-                                aria-controls="aliases" aria-selected="false">{{ _('Aliases') }}</a>
-                            <a class="nav-link taboption" id="customcommands-tab" data-toggle="pill"
-                                href="#customcommands" role="tab" aria-controls="customcommands"
-                                aria-selected="false">{{ _('Custom Commands') }}</a>
+                        <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link taboption" id="aliases-tab" data-toggle="pill" href="#aliases" role="tab" aria-controls="aliases" aria-selected="false">{{ _('Aliases') }}</a>
+                            <a class="nav-link taboption" id="customcommands-tab" data-toggle="pill" href="#customcommands" role="tab" aria-controls="customcommands" aria-selected="false">{{ _('Custom Commands') }}</a>
                         </div>
                     </div>
                     <div class="col-md-10">
@@ -786,17 +685,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -807,8 +702,7 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <div id="aliasdiv">
-                                                        <p class="card-category text-gray"
-                                                            style="text-transform: none;">
+                                                        <p class="card-category text-gray" style="text-transform: none;">
                                                             {{ _('Aliases have not been loaded. Please re-click Aliases
                                                             on the left') }}
                                                         </p>
@@ -823,8 +717,7 @@
                             </div>
                             <!-- End aliases -->
                             <!-- Start aliases -->
-                            <div class="tab-pane fade" id="customcommands" role="tabpanel"
-                                aria-labelledby="customcommands-tab">
+                            <div class="tab-pane fade" id="customcommands" role="tabpanel" aria-labelledby="customcommands-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
@@ -844,17 +737,13 @@
                                                     </div>
                                                     <div class="col-sm-6 text-left">
                                                         <div class="dropdown float-right">
-                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                role="button" id="prefixdrop" data-toggle="dropdown"
-                                                                aria-haspopup="true" aria-expanded="false">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="prefixdrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                 {{ _('Prefix') }}
                                                             </a>
 
-                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv"
-                                                                aria-labelledby="prefixdrop">
+                                                            <div class="dropdown-menu dropdown-menu-right prefixdiv" aria-labelledby="prefixdrop">
                                                                 {% for p in data['data']['prefixes'] %}
-                                                                <a
-                                                                    class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
+                                                                <a class="dropdown-item clickable prefix-option {% if loop.index == 1 %} active {% endif %}">{{
                                                                     p }}</a>
                                                                 {% endfor %}
                                                             </div>
@@ -865,8 +754,7 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <div id="aliasdiv">
-                                                        <p class="card-category text-gray"
-                                                            style="text-transform: none;">
+                                                        <p class="card-category text-gray" style="text-transform: none;">
                                                             {{ _('This tab is not available yet.') }}
                                                         </p>
                                                     </div>
@@ -894,16 +782,10 @@
             <div class="card-body">
                 <h6 class="card-category text-gray">{{ _('Guild not found') }}</h6>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-11">
-                            <h5>{{ _("The specified guild wasn't found. Did you enter the URL correctly?") }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
+                    <h5>{{ _("The specified guild wasn't found. Did you enter the URL correctly?") }}</h5>
                     <h5>{{ _('Click <a href="{dashboard}">here</a> to go to the dashboard, or <a href="{home}">here</a>
                         to go home.').format(dashboard=url_for('dashboard_blueprint.dashboard'),
-                        home=url_for('dashboard_blueprint.index')) }}
+                        home=url_for('base_blueprint.index')) }}
                     </h5>
                 </div>
             </div>
@@ -933,6 +815,11 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+
+<script>
+    // {% include 'site_template/guild.js' %}
+</script>
+
 <script>
     $(".prefix-option").click(function () {
         var prefix = $(this).text()
@@ -962,666 +849,4 @@
         return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 </script>
-
-{% if data['status'] == 1 and data['data']['status'] == 1 %}
-
-{% if 'aliascc' in data['data']['permslist'] and false%}
-<script>
-    /* ---------------------------------------------------------------------------------------------------------------------
-                                                        Aliases group
-       --------------------------------------------------------------------------------------------------------------------- */
-
-    // Alias modal
-    $(document).on('click', '.editaliasbutton', function () {
-        var command = $(this).parent().parent().data("command")
-        var textarea = $("#aliasModalCommand")
-        textarea.text(command)
-        textarea.height(textarea.prop('scrollHeight'))
-        $("#aliasModal").modal('toggle')
-    })
-
-    // Fetch aliases
-    $("#aliases-tab").click(function () {
-        $("#fetchaliasesstatus").html("{{ _('Loading...') }}")
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.fetchaliases', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#fetchaliasesstatus").html(`{{ _('Failed to fetch rules') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#fetchaliasesstatus").html(`{{ _('Failed to fetch rules') }}: ${json.data.message}`)
-            } else {
-                $("#aliasdiv").html("")
-                var inside = ""
-                for (let [command, aliases] of Object.entries(json.data)) {
-                    inside += `
-                        <tr data-command="${safe(command)}" data-command-aliases="${safe(aliases.raw.join(" "))}">
-                            <th><code><span class="prefix">{{ data['data']['prefixes'][0] }}</span>${safe(aliases.shortened)}</code></th>
-                            <th>${aliases.humanized}</th>
-                            <td>
-                                <span class="clickable editaliasbutton">
-                                    <i class="tim-icons icon-pencil"></i>
-                                </span>
-                            </td>
-                        </tr>
-                    `
-                }
-                var complete = "{{ _('No aliases are registered on this server') }}"
-                if (inside) {
-                    complete = `
-                        <table class="table tablesorter">
-                            <thead class="text-primary">
-                                <tr>
-                                    <th>{{ _('Command') }}</th>
-                                    <th>{{ _('Aliases') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${inside}
-                            </tbody>
-                        </table>
-                    `
-                }
-                $("#aliasdiv").html(complete)
-                $("#fetchaliasesstatus").html("{{ _('Refreshed aliases.') }}")
-            }
-        }
-        try {
-            xhr.send()
-        } catch (error) {
-            console.log(error)
-        }
-    })
-</script>
-{% endif %}
-
-{% if 'permissions' in data['data']['permslist'] %}
-<script>
-    /* ---------------------------------------------------------------------------------------------------------------------
-                                                        Permissions group
-       --------------------------------------------------------------------------------------------------------------------- */
-
-    // Add Default Server Rule
-    $("#adddefaultrulesubmit").click(function () {
-        $("#adddefaultrulestatus").html("{{ _('Loading...') }}")
-        var allow_or_deny = $("#adddefaultruleallowdeny").val()
-        var cog_or_command = $("#adddefaultrulecogcommands").val()
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.adddefaultrule', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#adddefaultrulestatus").html(`{{ _('Failed to add rule') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#adddefaultrulestatus").html(`{{ _('Failed to add rule') }}: ${json.data.message}`)
-            } else {
-                $("#adddefaultrulestatus").html("{{ _('Rule successfully added') }}.")
-            }
-        }
-        var data = {
-            ad: allow_or_deny,
-            cc: cog_or_command
-        }
-        if (data.id == undefined || data.cc == undefined) {
-            $("#adddefaultrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
-            return
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Add Server Rule
-    $("#addrulesubmit").click(function () {
-        $("#addrulestatus").html("{{ _('Loading...') }}")
-        var allow_or_deny = $("#addruleallowdeny").val()
-        var who_or_what = $("#addruletargets").val()
-        var cog_or_command = $("#addrulecogcommands").val()
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.addrule', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#addrulestatus").html(`{{ _('Failed to add rule') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#addrulestatus").html(`{{ _('Failed to add rule') }}: ${json.data.message}`)
-            } else {
-                $("#addrulestatus").html("{{ _('Rule successfully added') }}.")
-            }
-        }
-        var data = {
-            ad: allow_or_deny,
-            ww: who_or_what,
-            cc: cog_or_command
-        }
-        if (data.id == undefined || data.cc == undefined || data.ww == undefined) {
-            $("#addrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
-            return
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Remove Default Server Rule
-    $("#removedefaultrulesubmit").click(function () {
-        $("#removedefaultrulestatus").html("{{ _('Loading...') }}")
-        var cog_or_command = $("#removedefaultrulecogcommands").val()
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.removedefaultrule', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#removedefaultrulestatus").html(`{{ _('Failed to remove rule') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#removedefaultrulestatus").html(`{{ _('Failed to remove rule') }}: ${json.data.message}`)
-            } else {
-                $("#removedefaultrulestatus").html("{{ _('Rule successfully removed') }}.")
-            }
-        }
-        var data = {
-            cc: cog_or_command
-        }
-        if (data.cc == undefined) {
-            $("#removedefaultrulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
-            return
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Remove Server Rule
-    $("#removerulesubmit").click(function () {
-        $("#removerulestatus").html("{{ _('Loading...') }}")
-        var who_or_what = $("#removeruletargets").val()
-        var cog_or_command = $("#removerulecogcommands").val()
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.removerule', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#removerulestatus").html(`{{ _('Failed to remove rule') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#removerulestatus").html(`{{ _('Failed to remove rule') }}: ${json.data.message}`)
-            } else {
-                $("#removerulestatus").html("{{ _('Rule successfully removed') }}.")
-            }
-        }
-        var data = {
-            ww: who_or_what,
-            cc: cog_or_command
-        }
-        if (data.cc == undefined || data.ww == undefined) {
-            $("#removerulestatus").html(`{{ _('Failed to change rule: You must fill out every field.') }}`);
-            return
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Fetch users/roles/channels
-    $(document).ready(function () {
-        var select = $(".ruletargets")
-        select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
-        select.selectpicker("refresh")
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.fetchtargets', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-
-            var json = JSON.parse(xhr.responseText)
-
-            if (json.status === 0) {
-                $("#targetstatus").html(`{{ _('Failed to fetch targets') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#targetstatus").html(`{{ _('Failed to fetch targets') }}: ${json.data.message}`)
-            } else {
-                let big_ol_dict = {}
-                select.html("")
-
-                var chopt = [`<optgroup label="{{ _('Channels') }}">`]
-                for (let [id, name] of json.data.CHANNELS) {
-                    chopt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
-                    big_ol_dict[id] = name
-                }
-                chopt.push("</optgroup>")
-                select.append(chopt.join(""))
-
-                var ropt = [`<optgroup label="{{ _('Roles') }}">`]
-                for (let [id, name] of json.data.ROLES) {
-                    ropt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
-                    big_ol_dict[id] = name
-                }
-                ropt.push("</optgroup>")
-                select.append(ropt.join(""))
-
-                var uopt = [`<optgroup label="{{ _('Users') }}">`]
-                for (let [id, name] of json.data.USERS) {
-                    uopt.push(`<option value=${id} class="selectpicker-element-${id}">${name}</option>`)
-                    big_ol_dict[id] = name
-                }
-                uopt.push("</optgroup>")
-                select.append(uopt.join(""))
-                /*
-                for (let [id, name] of Object.entries(big_ol_dict)) {
-                    $(`.selectpicker-element-${id}`).text(name)
-                }
-                */
-            }
-            select.selectpicker({ title: "{{ _('Choose target') }}" })
-            select.removeAttr("disabled")
-            select.selectpicker("refresh")
-        }
-        try {
-            xhr.send()
-        } catch (error) {
-            console.log(error)
-            select.selectpicker({ title: "{{ _('Choose target') }}" })
-            select.removeAttr("disabled")
-            select.selectpicker("refresh")
-        }
-    })
-
-    // Fetch cogs/commands
-    $(document).ready(function () {
-        var select = $(".cogcommands")
-        select.selectpicker({ title: "{{ _('Loading...') }}" })
-        select.attr("disabled", true)
-        select.selectpicker("refresh")
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.fetchcogcommands', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-
-            var json = JSON.parse(xhr.responseText)
-
-            if (json.status === 0) {
-                $("#cogcommandstatus").html(`{{ _('Failed to fetch commands') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#cogcommandstatus").html(`{{ _('Failed to fetch commands') }}: ${json.data.message}`)
-            } else {
-                select.html("")
-
-                var copt = [`<optgroup label="{{ _('Cogs') }}">`]
-                for (let name of json.data.COGS) {
-                    copt.push(`<option value="${name}">${name}</option>`)
-                }
-                copt.push("</optgroup>")
-                select.append(copt.join(""))
-
-                var cmopt = [`<optgroup label="{{ _('Commands') }}">`]
-                for (let name of json.data.COMMANDS) {
-                    cmopt.push(`<option value="${name}">${name}</option>`)
-                }
-                cmopt.push("</optgroup>")
-                select.append(cmopt.join(""))
-            }
-            select.selectpicker({ title: "{{ _('Choose target') }}" })
-            select.removeAttr("disabled")
-            select.selectpicker("refresh")
-        }
-        try {
-            xhr.send()
-        } catch (error) {
-            console.log(error)
-            select.selectpicker({ title: "{{ _('Choose target') }}" })
-            select.removeAttr("disabled")
-            select.selectpicker("refresh")
-        }
-    })
-
-    // Fetch rules
-    $("#viewrules-tab").click(function () {
-        $("#fetchrulesstatus").html("{{ _('Loading...') }}")
-        var parts = window.location.pathname.split("/")
-
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.fetchrules', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("GET", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#fetchrulesstatus").html(`{{ _('Failed to fetch rules') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#fetchrulesstatus").html(`{{ _('Failed to fetch rules') }}: ${json.data.message}`)
-            } else {
-                $("#rulesdiv").html("")
-                var overall = ['<h3 style="margin-bottom: 10px">{{ _("Cog rules") }}</h3>']
-                var allcoglines = ["<ul>"]
-
-                let big_ol_dict_two = {}
-                let cog_counter = 0
-
-                for (let [cog, rules] of Object.entries(json.data.COG)) {
-                    var coglines = []
-                    for (let rule of rules) {
-                        if (rule.type === "Default") {
-                            coglines.unshift(`<li>{{ _('By default, users are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cog}</code> {{ _('cog') }}.</li>`)
-                        } else if (rule.type === "Role") {
-                            coglines.push(`<li>{{ _('Users with the') }} <code id="cog-rules-${cog_counter}">Loading...</code> {{ _('role') }} (${rule.id}) {{ _('are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cog}</code> {{ _('cog') }}.</li>`)
-                        } else if (rule.type === "Channel") {
-                            coglines.push(`<li>{{ _('Users in the') }} <code id="cog-rules-${cog_counter}">Loading...</code> {{ _('channel') }} (${rule.id}) {{ _('are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cog}</code> {{ _('cog') }}.</li>`)
-                        } else {
-                            coglines.push(`<li>{{ _('User') }} <code id="cog-rules-${cog_counter}">Loading...</code> (${rule.id}) {{ _('is') }} ${rule.permission} {{ _('permission to use the') }} <code>${cog}</code> {{ _('cog') }}.</li>`)
-                        }
-                        big_ol_dict_two[`cog-rules-${cog_counter}`] = rule.name
-                        cog_counter += 1
-                    }
-                    if (coglines) {
-                        allcoglines = allcoglines.concat(coglines)
-                    }
-                }
-                allcoglines.push("</ul>")
-                if (allcoglines.length == 2) {
-                    allcoglines = ["<p>{{ _('No cog rules have been created') }}.</p>"]
-                }
-                overall = overall.concat(allcoglines)
-
-                overall.push('<h3 style="margin-bottom: 10px">{{ _("Command rules") }}</h3>')
-                var allcmdlines = ["<ul>"]
-
-                let cmd_counter = 0
-
-                for (let [cmd, rules] of Object.entries(json.data.COMMAND)) {
-                    var cmdlines = []
-                    for (let rule of rules) {
-                        if (rule.type === "Default") {
-                            cmdlines.unshift(`<li>{{ _('By default, users are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
-                        } else if (rule.type === "Role") {
-                            cmdlines.push(`<li>{{ _('Users with the') }} <code id="cmd-rules-${cmd_counter}">Loading...</code> {{ _('role') }} (${rule.id}) {{ _('are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
-                        } else if (rule.type === "Channel") {
-                            cmdlines.push(`<li>{{ _('Users in the') }} <code id="cmd-rules-${cmd_counter}">Loading...</code> {{ _('channel') }} (${rule.id}) {{ _('are') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
-                        } else {
-                            cmdlines.push(`<li>{{ _('User') }} <code id="cmd-rules-${cmd_counter}">Loading...</code> (${rule.id}) {{ _('is') }} ${rule.permission} {{ _('permission to use the') }} <code>${cmd}</code> {{ _('command') }}.</li>`)
-                        }
-                        big_ol_dict_two[`cmd-rules-${cmd_counter}`] = rule.name
-                        cmd_counter += 1
-                    }
-                    if (cmdlines) {
-                        allcmdlines = allcmdlines.concat(cmdlines)
-                    }
-                }
-                allcmdlines.push("</ul>")
-                if (allcmdlines.length === 2) {
-                    allcmdlines = ["<p>{{ _('No command rules have been created') }}.</p>"]
-                }
-                overall = overall.concat(allcmdlines)
-                $("#rulesdiv").html(overall.join(""))
-                for (let [id, name] of Object.entries(big_ol_dict_two)) {
-                    $(`#${id}`).text(name)
-                }
-                $("#fetchrulesstatus").html("{{ _('Refreshed rules') }}.")
-            }
-        }
-        try {
-            xhr.send()
-        } catch (error) {
-            console.log(error)
-        }
-    })
-</script>
-{% endif %}
-
-{% if 'botsettings' in data['data']['permslist'] %}
-<script>
-    /* ---------------------------------------------------------------------------------------------------------------------
-                                                        Bot settings group
-       --------------------------------------------------------------------------------------------------------------------- */
-    // Admin role controls
-    $(document).on('click', '.admin-role-x', function () {
-        var input = $(this).parent().siblings().first().children().first()
-        $(".adminroleoption").parent().append(`
-                <a class="dropdown-item clickable adminroleoption" data-id="${input.attr("data-id")}">${input.val()}</a>
-            `)
-        var li = $(this).parent().parent().parent()
-        li.fadeOut(complete = function () {
-            li.remove()
-        })
-    })
-
-    $(document).on('click', '.adminroleoption', function () {
-        var elm = $(this)
-        let random_number = Math.floor(Math.random() * Math.floor(100000))
-        $("#adminrolelist").append(`
-                <li>
-                    <div class="row">
-                        <div class="col-md-10 col-8">
-                            <input class="form-control adminroleinput" value="Loading..." disabled=True data-id="${elm.attr("data-id")}" id="admin-role-${random_number}">
-                        </div>
-                        <div class="col-md-1 col-1">
-                            <span class="admin-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
-                        </div>
-                    </div>
-                </li>
-            `)
-        $(`#admin-role-${random_number}`).val(elm.text())
-        elm.remove()
-    })
-
-    $("#adminroleupdate").click(function () {
-        $("#adminrolestatus").html("{{ _('Loading...') }}")
-        var roles = []
-        $(".adminroleinput").each(function (index, elm) {
-            roles.push($(elm).attr("data-id"))
-        })
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.adminroles', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#adminrolestatus").html(`{{ _('Failed to update admin roles') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#adminrolestatus").html(`{{ _('Failed to update admin roles') }}: ${json.data.message}`)
-            } else {
-                $("#adminrolestatus").html("{{ _('Admin roles successfully updated') }}.")
-            }
-        }
-        var data = {
-            "roles": roles
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Mod role controls
-    $(document).on('click', '.mod-role-x', function () {
-        var input = $(this).parent().siblings().first().children().first()
-        $(".modroleoption").parent().append(`
-                <a class="dropdown-item clickable modroleoption" data-id="${input.attr("data-id")}">${input.val()}</a>
-            `)
-        var li = $(this).parent().parent().parent()
-        li.fadeOut(complete = function () {
-            li.remove()
-        })
-    })
-
-    $(document).on('click', '.modroleoption', function () {
-        var elm = $(this)
-        let random_number = Math.floor(Math.random() * Math.floor(100000))
-        $("#modrolelist").append(`
-                <li>
-                    <div class="row">
-                        <div class="col-md-10 col-8">
-                            <input class="form-control modroleinput" value="Loading..." disabled=True data-id="${elm.attr("data-id")}" id="mod-role-${random_number}">
-                        </div>
-                        <div class="col-md-1 col-1">
-                            <span class="mod-role-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
-                        </div>
-                    </div>
-                </li>
-            `)
-        $(`#mod-role-${random_number}`).val(elm.text())
-        elm.remove()
-    })
-
-    $("#modroleupdate").click(function () {
-        $("#modrolestatus").html("{{ _('Loading...') }}")
-        var roles = []
-        $(".modroleinput").each(function (index, elm) {
-            roles.push($(elm).attr("data-id"))
-        })
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.modroles', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#modrolestatus").html(`{{ _('Failed to update mod roles') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#modrolestatus").html(`{{ _('Failed to update mod roles') }}: ${json.data.message}`)
-            } else {
-                $("#modrolestatus").html("{{ _('Mod roles successfully updated.') }}")
-            }
-        }
-        var data = {
-            "roles": roles
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-
-    // Prefix Controls
-    $(document).on('click', '.prefix-x', function () {
-        var li = $(this).parent().parent().parent()
-        li.fadeOut(complete = function () {
-            li.remove()
-        })
-    })
-    $("#addprefix").click(function () {
-        $("#prefixlist").append(`
-                <li>
-                    <div class="row">
-                        <div class="col-md-10 col-8">
-                            <input class="form-control prefixinput">
-                        </div>
-                        <div class="col-md-1 col-1">
-                            <span class="prefix-x clickable"><i class="tim-icons icon-simple-remove" style="float: right; margin-top: 10px;"></i></span>
-                        </div>
-                    </div>
-                </li>
-            `)
-    })
-    $("#prefixupdate").click(function () {
-        $("#prefixstatus").html("{{ _('Loading...') }}")
-        var prefixes = []
-        $(".prefixinput").each(function (index, elm) {
-            var text = $(elm).val()
-            if (text) {
-                prefixes.push(text)
-            }
-        })
-
-        var parts = window.location.pathname.split("/")
-        var id = parts[parts.length - 1]
-        var xhr = new XMLHttpRequest();
-        var url = `{{ url_for('api_blueprint.serverprefix', guild='00000') }}`.replace("00000", id)
-
-        xhr.open("POST", url, true)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState !== 4) { return }
-            var json = JSON.parse(xhr.responseText)
-            if (json.status === 0) {
-                $("#prefixstatus").html(`{{ _('Failed to update prefixes') }}: ${json.message}`)
-            } else if (json.status === 1 && json.data.status === 0) {
-                $("#prefixstatus").html(`{{ _('Failed to update prefixes') }}: ${json.data.message}`)
-            } else {
-                $("#prefixstatus").html("{{ _('Prefixes successfully updated') }}.")
-            }
-        }
-        var data = {
-            "prefixes": prefixes
-        }
-        try {
-            xhr.send(JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
-    })
-</script>
-{% endif %}
-
-{% endif %}
 {% endblock javascripts %}
