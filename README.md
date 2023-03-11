@@ -1,3 +1,4 @@
+![Red-Dashboard](https://repository-images.githubusercontent.com/268283173/ca43baea-0048-49f4-9f89-67c121369c3c "Red-Dashboard")
 # Red-Dashboard
 *An easy-to-use interactive web dashboard to control your Redbot.*
 
