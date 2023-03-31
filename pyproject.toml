@@ -15,6 +15,7 @@ exclude = '''
     '''
 include = '\.py$'
 line-length = 99
+required-version = '22.3.0'
 target-version = ['py38']
 
 [tool.isort]
