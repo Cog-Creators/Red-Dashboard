@@ -98,7 +98,11 @@
                         $("#loading-status").text("{{ _('Guild loading failed.') }}")
                         $("#expanded-feedback").text("{{ _('You\'re not in any servers with elevated permissions!') }}")
                     } else {
-                        var base_guild_url = "{{ url_for('dashboard_blueprint.guild', guild='123456789123456789') }}"
+                        if ("{{ base_guild_url }}" === "") {
+                            var base_guild_url = "{{ url_for('dashboard_blueprint.guild', guild='123456789123456789') }}"
+                        } else {
+                            var base_guild_url = "{{ base_guild_url }}"
+                        }
                         $("#serverrow").html("")
                         for (let g of json.data) {
                             var current_guild_url = base_guild_url.replace("123456789123456789", g.id)

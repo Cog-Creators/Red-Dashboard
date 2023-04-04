@@ -1,11 +1,17 @@
 from reddash.app import app
 from reddash.app.api import blueprint
-from flask import render_template, redirect, url_for, session, request, jsonify, g
+from flask import render_template, render_template_string, redirect, url_for, session, request, jsonify, g
 from flask_babel import _
 import traceback
 import json
 import logging
 import datetime
+
+from pygments import highlight
+from pygments.lexers import get_lexer_by_name, Python3TracebackLexer
+from pygments.formatters import HtmlFormatter
+
+from ..utils import get_user_id
 
 dashlog = logging.getLogger("reddash")
 
@@ -42,7 +48,7 @@ def getservers():
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": _("Not connected to bot")})
 
 
@@ -90,7 +96,7 @@ def serverprefix(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -135,7 +141,7 @@ def adminroles(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -180,7 +186,7 @@ def modroles(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -222,7 +228,7 @@ def fetchrules(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -264,7 +270,7 @@ def fetchtargets(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -306,7 +312,7 @@ def fetchcogcommands(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -353,7 +359,7 @@ def addrule(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -399,7 +405,7 @@ def adddefaultrule(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -445,7 +451,7 @@ def removerule(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -490,7 +496,7 @@ def removedefaultrule(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -532,7 +538,7 @@ def fetchaliases(guild):
         }
         with app.lock:
             return get_result(app, requeststr)
-    except:
+    except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
 
 
@@ -610,3 +616,87 @@ def third_party_spotify_callback():
     except Exception as e:
         app.progress.print("".join(traceback.format_exception(type(e), e, e.__traceback__)))
         return render_template("third_party/spotify.html", context="2", msg=str(e))
+
+
+@blueprint.route("/third_party/<cog_name>/<page>", methods=("HEAD", "GET", "OPTIONS", "POST", "PATCH", "DELETE",))
+@blueprint.route("/third_party/<cog_name>", methods=("HEAD", "GET", "OPTIONS", "POST", "PATCH", "DELETE",))
+def third_party(cog_name, page=None):
+    third_parties = app.data.core["variables"]["third_parties"]
+    cog_name = cog_name.lower()
+    if not cog_name or cog_name not in third_parties:
+        return render_template("errors/error_message.html", error_message="404: Looks like that third party doesn't exist... Strange...")
+    if page is not None:
+        page = _page = page.lower()
+    else:
+        _page = "null"
+    if _page not in third_parties[cog_name]:
+        return render_template("errors/error_message.html", error_message="404: Looks like that page doesn't exist... Strange...")
+    if request.method not in third_parties[cog_name][_page]["methods"]:
+        return {"status": 1, "message": f"Method {request.method} not allowed."}
+    context_ids = {}
+    if "user_id" in third_parties[cog_name][_page]["context_ids"]:
+        if not session.get("id"):
+            session["login_redirect"] = {
+                "route": "api_blueprint.third_party",
+                "kwargs": {"cog_name": cog_name, "page": page, **request.args},
+            }
+            return redirect(url_for("base_blueprint.login"))
+        else:
+            context_ids["user_id"] = int(get_user_id(app=app, req=request, ses=session))
+    if "guild_id" in third_parties[cog_name][_page]["context_ids"] and "guild_id" not in request.args:
+        return render_template(
+            "dashboard.html",
+            base_guild_url=f"{request.path}?guild_id=123456789123456789"
+            + (
+                f"&{request.url.split('?')[-1]}"
+                if len(request.url.split('?')) > 1
+                else ""
+            ),
+        )
+    kwargs = request.args.copy()
+    for key in third_parties[cog_name][_page]["context_ids"]:
+        if key == "user_id":
+            continue
+        try:
+            context_ids[key] = int(kwargs[key])
+        except KeyError:
+            return render_template("errors/error_message.html", error_message=f"Missing argument: `{key}`.")
+        except ValueError:
+            return render_template("errors/error_message.html", error_message=f"Invalid argument: `{key}`.")
+    for key in third_parties[cog_name][_page]["required_kwargs"]:
+        if key not in kwargs:
+            return render_template("errors/error_message.html", error_message=f"Missing argument: `{key}`.")
+    if request.method not in ["HEAD", "GET"] and request.json:
+        kwargs["data"] = request.json
+    try:
+        requeststr = {
+            "jsonrpc": "2.0",
+            "id": 0,
+            "method": "DASHBOARDRPC_THIRDPARTIES__DATA_RECEIVE",
+            "params": [request.method, cog_name, page, context_ids, kwargs, session.get("lang_code", None)],
+        }
+        with app.lock:
+            result = get_result(app, requeststr).json
+        if "data" in result:
+            result = result["data"]
+        if request.method not in ["HEAD", "GET"]:  # API request by JavaScript code or bot.
+            return result
+        if "web-content" in result:
+            return render_template_string(result["web-content"], **result)
+        elif "error_message" in result:
+            return render_template("errors/error_message.html", error_message=result["error_message"])
+        elif "redirect" in result:
+            return render_template(result["redirect"], **result)
+        return result
+    except Exception as e:
+        app.progress.print("".join(traceback.format_exception(type(e), e, e.__traceback__)))
+        return {"status": 1, "message": str(e)}
+
+@app.template_filter("highlight")
+def highlight_filter(code, language="python"):
+    if language == "traceback":
+        lexer = Python3TracebackLexer()
+    else:
+        lexer = get_lexer_by_name(language, stripall=True)
+    formatter = HtmlFormatter()
+    return highlight(code, lexer, formatter)

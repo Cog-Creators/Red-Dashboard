@@ -23,7 +23,7 @@ def guild(guild):
     try:
         int(guild)
     except ValueError:
-        raise ValueError("Guild ID must be integer")
+        return render_template("guild.html", data={"status": 1, "data": {"status": 1}})
 
     try:
         request = {
@@ -46,6 +46,6 @@ def guild(guild):
                 data = {"status": 0, "message": "Not connected to bot"}
         if not data:
             data = {"status": 1, "data": result["result"]}
-    except:
+    except Exception:
         data = {"status": 0, "message": "Not connected to bot"}
     return render_template("guild.html", data=data)

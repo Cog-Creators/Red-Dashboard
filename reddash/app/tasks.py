@@ -46,7 +46,7 @@ class TaskManager:
                         continue
 
                 if method == "DASHBOARDRPC__GET_VARIABLES":
-                    if not self.app.data.core["variables"]["bot"]["id"]:
+                    if not self.app.data.core["variables"].get("bot", {"id": None})["id"]:
                         self.logger.info("Initial connection made with Redbot.  Syncing data.")
                     self.app.data.core.update(variables=result["result"])
                 else:

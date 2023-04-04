@@ -71,6 +71,7 @@ class CoreManager:
                 },
             },
             "locked": False,
+            "third_parties": {},
         }
 
         file = open(self.file, "w")
