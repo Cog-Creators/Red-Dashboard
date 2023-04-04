@@ -70,7 +70,8 @@ def callback():
         dashlog.error(f"Failed to log someone in.\n{response.json()}")
         return redirect(url_for("base_blueprint.login_error_invalid_config"))
     new = requests.get(
-        "https://discordapp.com/api/v6/users/@me", headers={"Authorization": f"Bearer {token}"},
+        "https://discordapp.com/api/v6/users/@me",
+        headers={"Authorization": f"Bearer {token}"},
     )
     new_data = new.json()
     if "id" in new_data:

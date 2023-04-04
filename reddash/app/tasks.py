@@ -126,12 +126,16 @@ class TaskManager:
     def start_tasks(self):
         self.threads.append(
             threading.Thread(
-                target=self.update_variables, args=["DASHBOARDRPC__GET_VARIABLES"], daemon=True,
+                target=self.update_variables,
+                args=["DASHBOARDRPC__GET_VARIABLES"],
+                daemon=True,
             )
         )
         self.threads.append(
             threading.Thread(
-                target=self.update_variables, args=["DASHBOARDRPC__GET_COMMANDS"], daemon=True,
+                target=self.update_variables,
+                args=["DASHBOARDRPC__GET_COMMANDS"],
+                daemon=True,
             )
         )
         self.threads.append(threading.Thread(target=self.update_version, daemon=True))
