@@ -114,6 +114,12 @@ $.generateForm = function (element, fields, formID=null, resetForm=true, submitF
         select.appendChild(opt);
       }
       select.setAttribute("class", "form-control");
+      for (let prop of Object.keys(field)) {
+        if (["name", "type", "placeholder", "validate", "error"].includes(prop)) {
+          continue;
+        }
+        select.setAttribute(prop, field[prop]);
+      }
       form.appendChild(select);
 
       if (field.required) {
@@ -129,6 +135,12 @@ $.generateForm = function (element, fields, formID=null, resetForm=true, submitF
       input.setAttribute("type", field.type || "text");
       input.setAttribute("placeholder", field.placeholder || "");
       input.setAttribute("class", "form-control");
+      for (let prop of Object.keys(field)) {
+        if (["name", "type", "placeholder", "validate", "error"].includes(prop)) {
+          continue;
+        }
+        input.setAttribute(prop, field[prop]);
+      }
       form.appendChild(input);
 
       if (field.required) {
