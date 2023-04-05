@@ -182,15 +182,15 @@ $.generateForm = function (element, fields, formID=null, resetForm=true, submitF
       submitFunction({"form_id": formID, "form_data": formDataDict}).then(response => {
         if (response && "notifications" in response) {
             response.notifications.forEach(notification => {
-                $.errorFunction(notification.type, notification.message);
+                errorFunction(notification.type, notification.message);
             });
         }
         if (response && "errors" in response) {
           let errors = response["errors"];
           for (let fieldName in errors) {
-            let inputElement = form.querySelector(`[name="${fieldName}"]`);
-            if (inputElement) {
-              inputElement.setCustomValidity(errors[fieldName]);
+            let error = form.querySelector(`[name="${fieldName}"] + .error-message`);
+            if (error) {
+              error.innerText = errors[fieldName] + "\n\n";
             }
           }
         }
