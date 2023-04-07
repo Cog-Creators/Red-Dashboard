@@ -221,6 +221,8 @@ def process_sidebar(app):
             item["name"] = _("Commands")
         elif item["name"] == "builtin-dashboard":
             item["name"] = _("Dashboard")
+        elif item["name"] == "builtin-third_parties":
+            item["name"] = _("Third Parties")
         elif item["name"] == "builtin-credits":
             item["name"] = _("Credits")
         elif item["name"] == "builtin-login":

@@ -204,11 +204,40 @@ def index():
 
 @blueprint.route("/commands")
 def commands():
-    data = app.data.core["commands"]
+    data = [k for k in app.data.core["commands"].copy() if k["cmds"]]
     prefix = app.data.core["variables"]["bot"]["prefix"]
     return render_template(
         "pages/commands.html", cogs=[k["name"] for k in data], data=data, prefixes=prefix
     )
+
+
+@blueprint.route("/third_parties")
+def third_parties():
+    _data = {third_party: pages.copy() for third_party, pages in app.data.core["variables"]["third_parties"].items()}
+    commands_data = app.data.core["commands"]
+    cogs_data = {k["name"].lower(): k for k in commands_data}
+    infos = {third_party: {} for third_party in _data}
+    data = {}
+    for third_party, pages in _data.items():
+        if all(page["hidden"] for page in pages.values()):
+            continue
+        if third_party in cogs_data:
+            infos[third_party]["name"] = cogs_data[third_party]["name"]
+            infos[third_party]["desc"] = cogs_data[third_party]["desc"]
+            infos[third_party]["author"] = cogs_data[third_party]["author"]
+            infos[third_party]["repo"] = cogs_data[third_party]["repo"]
+        else:
+            infos[third_party]["name"] = third_party
+            infos[third_party]["desc"] = ""
+            infos[third_party]["author"] = "Unknown"
+            infos[third_party]["repo"] = "Unknown"
+        data[third_party] = {}
+        if "null" in _data[third_party] and not _data[third_party]["null"]["hidden"]:
+            data[third_party]["Main Page"] = _data[third_party].pop("null")
+        for page in sorted(pages):
+            if not pages[page]["hidden"]:
+                data[third_party][page] = pages[page]
+    return render_template("pages/third_parties.html", third_parties=data, infos=infos)
 
 
 @blueprint.route("/credits")
