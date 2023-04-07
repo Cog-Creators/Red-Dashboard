@@ -40,7 +40,12 @@ $.postData = function(data={"data": {}}, url=window.location.href) {
       if (xhr.status === 200) {
         try {
           var response = JSON.parse(xhr.responseText);
+          if (response && "notifications" in response) {
+            response.notifications.forEach(notification => {
+                $.sendNotification(notification.type, notification.message);
+            });
           resolve(response);
+        }
         } catch (error) {
           console.log(error)
           reject(error);
@@ -180,11 +185,6 @@ $.generateForm = function (element, fields, formID=null, resetForm=true, submitF
         return obj;
       }, {});
       submitFunction({"form_id": formID, "form_data": formDataDict}).then(response => {
-        if (response && "notifications" in response) {
-            response.notifications.forEach(notification => {
-                errorFunction(notification.type, notification.message);
-            });
-        }
         if (response && "errors" in response) {
           let errors = response["errors"];
           for (let fieldName in errors) {

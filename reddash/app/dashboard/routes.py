@@ -11,6 +11,7 @@ dashlog = logging.getLogger("reddash")
 @blueprint.route("/dashboard")
 def dashboard():
     if not session.get("id"):
+        session["login_redirect"] = {"route": "dashboard_blueprint.dashboard", "kwargs": {}}
         return redirect(url_for("base_blueprint.login"))
     return render_template("dashboard.html")
 
@@ -18,6 +19,7 @@ def dashboard():
 @blueprint.route("/guild/<guild>")
 def guild(guild):
     if not session.get("id"):
+        session["login_redirect"] = {"route": "dashboard_blueprint.dashboard", "kwargs": {}}
         return redirect(url_for("base_blueprint.login"))
 
     try:

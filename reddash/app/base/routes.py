@@ -102,7 +102,8 @@ def callback():
 @blueprint.route("/admin", methods=["GET"])
 def admin():
     if not session.get("id"):
-        return render_template("login/login.html", status="0")
+        session["login_redirect"] = {"route": "base_blueprint.admin", "kwargs": {}}
+        return redirect(url_for("base_blueprint.login"))
 
     if not str(g.id) in app.data.core["variables"]["bot"]["owners"]:
         abort(403)
@@ -213,12 +214,15 @@ def commands():
 
 @blueprint.route("/third_parties")
 def third_parties():
+    if not session.get("id"):
+        session["login_redirect"] = {"route": "base_blueprint.third_parties", "kwargs": {}}
+        return redirect(url_for("base_blueprint.login"))
     _data = {third_party: pages.copy() for third_party, pages in app.data.core["variables"]["third_parties"].items()}
     commands_data = app.data.core["commands"]
     cogs_data = {k["name"].lower(): k for k in commands_data}
     infos = {third_party: {} for third_party in _data}
     data = {}
-    for third_party, pages in _data.items():
+    for third_party, pages in sorted(_data.items()):
         if all(page["hidden"] for page in pages.values()):
             continue
         if third_party in cogs_data:
@@ -227,7 +231,7 @@ def third_parties():
             infos[third_party]["author"] = cogs_data[third_party]["author"]
             infos[third_party]["repo"] = cogs_data[third_party]["repo"]
         else:
-            infos[third_party]["name"] = third_party
+            infos[third_party]["name"] = third_party.capitalize()
             infos[third_party]["desc"] = ""
             infos[third_party]["author"] = "Unknown"
             infos[third_party]["repo"] = "Unknown"

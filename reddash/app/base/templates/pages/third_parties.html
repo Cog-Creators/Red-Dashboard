@@ -19,7 +19,7 @@
                         <div class="col-md-2">
                             <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
                                 {% for third_party in third_parties %}
-                                <a class="nav-link taboption {% if loop.index == 1 %} active {% endif %}" id="{{ third_party }}-tab" data-toggle="pill" href="#{{ third_party }}" role="tab" aria-controls="{{ third_party }}" aria-selected="false">{{ third_party }}</a>
+                                <a class="nav-link taboption {% if loop.index == 1 %} active {% endif %}" id="{{ third_party }}-tab" data-toggle="pill" href="#{{ third_party }}" role="tab" aria-controls="{{ third_party }}" aria-selected="false">{{ infos[third_party]['name'] }}</a>
                                 {% endfor %}
                             </div>
                         </div>
