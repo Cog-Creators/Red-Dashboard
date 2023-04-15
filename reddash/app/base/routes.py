@@ -222,17 +222,20 @@ def third_parties():
         for third_party, pages in app.data.core["variables"]["third_parties"].items()
     }
     commands_data = app.data.core["commands"]
-    cogs_data = {k["name"].lower(): k for k in commands_data}
+    cogs_data = {k["name"]: k for k in commands_data}
     infos = {third_party: {} for third_party in _data}
     data = {}
     for third_party, pages in sorted(_data.items()):
+        if not pages:
+            continue
         if all(page["hidden"] for page in pages.values()):
             continue
-        if third_party in cogs_data:
-            infos[third_party]["name"] = cogs_data[third_party]["name"]
-            infos[third_party]["desc"] = cogs_data[third_party]["desc"]
-            infos[third_party]["author"] = cogs_data[third_party]["author"]
-            infos[third_party]["repo"] = cogs_data[third_party]["repo"]
+        real_cog_name = _data[third_party][list(pages)[0]]["real_cog_name"]
+        if real_cog_name in cogs_data:
+            infos[third_party]["name"] = cogs_data[real_cog_name]["name"]
+            infos[third_party]["desc"] = cogs_data[real_cog_name]["desc"]
+            infos[third_party]["author"] = cogs_data[real_cog_name]["author"]
+            infos[third_party]["repo"] = cogs_data[real_cog_name]["repo"]
         else:
             infos[third_party]["name"] = third_party.capitalize()
             infos[third_party]["desc"] = ""
