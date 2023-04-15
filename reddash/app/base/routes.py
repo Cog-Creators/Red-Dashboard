@@ -217,7 +217,10 @@ def third_parties():
     if not session.get("id"):
         session["login_redirect"] = {"route": "base_blueprint.third_parties", "kwargs": {}}
         return redirect(url_for("base_blueprint.login"))
-    _data = {third_party: pages.copy() for third_party, pages in app.data.core["variables"]["third_parties"].items()}
+    _data = {
+        third_party: pages.copy()
+        for third_party, pages in app.data.core["variables"]["third_parties"].items()
+    }
     commands_data = app.data.core["commands"]
     cogs_data = {k["name"].lower(): k for k in commands_data}
     infos = {third_party: {} for third_party in _data}
