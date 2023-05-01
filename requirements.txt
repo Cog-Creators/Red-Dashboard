@@ -1,4 +1,4 @@
-flask==1.1.2
+flask==2.3.2
 itsdangerous==2.0.1
 requests==2.23.0
 cryptography==3.3.2
