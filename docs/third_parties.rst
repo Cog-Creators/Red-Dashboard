@@ -1,10 +1,10 @@
-.. Third parties
+.. Third Parties
 
 .. role:: python(code)
     :language: python
 
 =============
-Third parties
+Third Parties
 =============
 
 This guide will cover how Red-Dashboard works with third parties and how cog creators can add their own pages to the web dashboard.
