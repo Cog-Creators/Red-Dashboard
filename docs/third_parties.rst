@@ -45,9 +45,13 @@ Types of responses from third parties:
 The third parties must return to the local cog Dashboard a `dict` like a real RPC method would.
 
 Several keys are supported by the API endpoint:
+
 - `status`: Any request response should have it, but it is not used.
+
 - `web-content`: The Flask/Django/Jinja2 template will be displayed on the browser. It can contain HTML, CSS and JavaScript, and should start with `{% extends "base-site.html" %}` to display the base dashboard layout. The variables in the response will be passed in.
+
 - `error_message`: Using the html file `error_message.html`, the provided message will be displayed directly to the user, without having to code a different html content.
+
 - `redirect` : The existing template with its name will be displayed. The variables of the response will be passed on.
 
 If content fields are not passed on, or if the request methods are other than `HEAD` and `GET`, the data will be returned directly as JSON.
@@ -61,11 +65,17 @@ The `DashboardRPC_ThirdParties.add_third_party` method must be used to add a cog
 The decorator `dashboard.rpc.thirdparties.dashboard_page` allows to provide parameters for each page. All attributes of the cog class that have a `__dashboard_params__` attribute will be automatically added to the Dashboard when the add third party method is called. Context parameters (`user_id`/`user`, `guild_id`/`guild`, `member_id`/`member`, `role_id`/`role`, `channel_id`/`channel`) and required parameters are detected in the method parameters names.
 
 Here are its parameters:
+
 - `name` (`Optional[str]`): `None` so that the user does not have to specify the name to get this page. A name will have the same limitations as the Discord slash command names for ease of use.
+
 - `methods` (`List[Literal["HEAD", "GET", "OPTIONS", "POST", "PATCH", "DELETE"]]`): The web request methods allowed to call the third party page.
+
 - `context_ids` (`List[str]`): To manually specify required context ids.
+
 - `required_kwargs` (`List[str]`): To manually specify required parameters.
+
 - `permissions_required` (`List[Literal["view", "botsettings", "permissions"]]`): The user's required permissions on the server.
+
 - `hidden` (`bool`): A parameter not used at this time. Maybe the pages will be listed somewhere someday. Defaults is `False`, or `True` if there are required kwargs.
 
 The RPC method `DashboardRPC_ThirdParties.data_receive` receives the data from Red-Dashboard for the endpoint API I mentioned earlier. In case, the existence of the third party and the page is checked at new.
