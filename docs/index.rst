@@ -40,3 +40,9 @@ Welcome to Red Dashboard's documentation!
    :caption: Support
 
    help_and_support
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Third Parties
+
+   third_parties
