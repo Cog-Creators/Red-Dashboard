@@ -100,6 +100,7 @@ Let's imagine a MyCog cog with Python files `__init__.py`, `mycog.py` and `dashb
 In `__init__.py`:
 
 .. code-block:: python
+
     from redbot.core.bot import Red
 
     from .mycog import MyCog
@@ -111,6 +112,7 @@ In `__init__.py`:
 In `mycog.py`:
 
 .. code-block:: python
+
     from redbot.core import commands
     from redbot.core.bot import Red
 
@@ -125,6 +127,7 @@ In `mycog.py`:
 In `dashboard_integration.py`:
 
 .. code-block:: python
+
     from redbot.core import commands
     from redbot.core.bot import Red
     import discord
