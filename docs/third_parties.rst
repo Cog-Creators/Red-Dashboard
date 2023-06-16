@@ -168,11 +168,11 @@ In `dashboard_integration.py`:
         async def rpc_callback(self, user: discord.User, **kwargs) -> dict:  # The kwarg `user` means that Red-Dashboard will request a connection from a bot user with OAuth from Discord.
             if user.id not in self.bot.owner_ids:
                 return {"status": 1, "error_message": "You're not a bot owner!"}  # Return a error message who will be displayed by Red-Dashboard.
-            return {"status": 0, "web-content": web_content, title_content: "You're a bot owner!"}  # Return a web content with the text variable `title_content`.
+            return {"status": 0, "web-content": web_content, "title_content": "You're a bot owner!"}  # Return a web content with the text variable `title_content`.
 
         @dashboard_page(name="guild")  # Create a page nammed "guild" for the third party. It will be available at the URL `/third_party/mycog/guild`.
         async def rpc_callback(self, user: discord.User, guild: discord.Guild, **kwargs) -> dict:  # The kwarg `guild` means that Red-Dashboard will ask for the choice of a server among those to which the user has access.
-            return {"status": 0, "web-content": web_content, title_content: f"You're in guild {guild.name} ({guild.id})!"}  # Return a web content with the text variable `title_content`.
+            return {"status": 0, "web-content": web_content, "title_content": f"You're in guild {guild.name} ({guild.id})!"}  # Return a web content with the text variable `title_content`.
 
     web_content = """
     {% extends "base-site.html" %}
