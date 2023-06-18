@@ -52,7 +52,7 @@ Several keys are supported by the API endpoint:
 
 - `error_message`: Using the html file `error_message.html`, the provided message will be displayed directly to the user, without having to code a different html content.
 
-- `redirect` : The existing template with its name will be displayed. The variables of the response will be passed on.
+- `redirect`: The existing template with its name will be displayed. The variables of the response will be passed on.
 
 If content fields are not passed on, or if the request methods are other than `HEAD` and `GET`, the data will be returned directly as JSON.
 
