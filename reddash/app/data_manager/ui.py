@@ -149,3 +149,19 @@ class UIManager:
                 "UI Configuration file is corrupt.  An instance reset is required."
             ) from e
         ui.close()
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key in self._data:
+                self._data[key] = value
+            else:
+                raise KeyError(f"{key} is not a valid key.")
+        self.save()
+
+    def save(self):
+        try:
+            f = open(self.file, "w")
+        except PermissionError:
+            raise PermissionError(f"I require write permissions in {self.path}.")
+        json.dump(self._data, f)
+        f.close()

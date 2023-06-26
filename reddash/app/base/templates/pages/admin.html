@@ -157,6 +157,8 @@
                                     {% endfor %}
                                 </select>
                                 <p class="text-muted">Changes are saved automatically.</p>
+                                <br>
+                                <span id="setdefaultcolorstatus"></span>
                             </div>
                             <div class="tab-pane fade" id="support-server" role="tabpanel" aria-labelledby="support-server-tab">
                                 <h4 class="card-title">{{ _('Update Support Server') }}</h4>
@@ -243,6 +245,38 @@
         $("#sidebar-hidden").selectpicker('val', $(this).data("hidden"));
         $("#sidebar-entry-info").attr("hidden", false);
     });
+
+    // Update default color
+    document.getElementById("default-color-select").addEventListener("change", function() {
+        var newDefaultColor = this.value.toLowerCase();
+        var xhr = new XMLHttpRequest();
+        var url = `{{ url_for('api_blueprint.setdefaultcolor') }}`
+
+        xhr.open("POST", url, true)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) { return }
+            var json = JSON.parse(xhr.responseText)
+            if (json.status === 0) {
+                $("#setdefaultcolorstatus").html(`{{ _('Failed to set default color') }}: ${json.message}`)
+            } else if (json.status === 1 && json.data.status === 0) {
+                $("#setdefaultcolorstatus").html(`{{ _('Failed to set default color') }}: ${json.data.message}`)
+            } else {
+                $("#setdefaultcolorstatus").html("{{ _('Default color successfully set') }}.")
+            }
+        }
+        var data = {
+            dc: newDefaultColor,
+        }
+        try {
+            xhr.send(JSON.stringify(data));
+        } catch (error) {
+            console.log(error)
+        }
+
+        var selectpicker = document.getElementById("default-color-select");
+        selectpicker.setAttribute("val", "badge-" + newDefaultColor); // .toLowerCase()
+    })
 </script>
 
 {% endblock javascripts %}

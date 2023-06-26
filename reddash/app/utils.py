@@ -17,6 +17,8 @@ from fuzzywuzzy import process
 
 from reddash import __version__
 
+from .constants import AVAILABLE_COLORS
+
 WS_EXCEPTIONS = (
     ConnectionRefusedError,
     websocket._exceptions.WebSocketConnectionClosedException,
@@ -91,14 +93,7 @@ def add_constants(app):
         variables["color"] = request.cookies.get("color", app.data.ui["default_color"])
         variables["sidebar"] = process_sidebar(app)
         variables["connected"] = app.config["RPC_CONNECTED"]
-        variables["available_colors"] = [
-            {"name": "red", "class": "badge-red"},
-            {"name": "primary", "class": "badge-primary"},
-            {"name": "blue", "class": "badge-info"},
-            {"name": "green", "class": "badge-success"},
-            {"name": "darkgreen", "class": "badge-darkgreen"},
-            {"name": "yellow", "class": "badge-yellow"},
-        ]
+        variables["available_colors"] = AVAILABLE_COLORS
         variables = process_meta_tags(app, variables)
 
         return dict(version=__version__, variables=variables)

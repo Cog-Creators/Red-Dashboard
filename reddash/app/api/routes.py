@@ -20,6 +20,7 @@ from pygments import highlight
 from pygments.lexers import get_lexer_by_name, Python3TracebackLexer
 from pygments.formatters import HtmlFormatter
 
+from ..constants import AVAILABLE_COLORS
 from ..utils import get_user_id
 
 dashlog = logging.getLogger("reddash")
@@ -549,6 +550,28 @@ def fetchaliases(guild):
             return get_result(app, requeststr)
     except Exception:
         return jsonify({"status": 0, "message": "Not connected to bot"})
+
+# --------------------------------------- Admin ---------------------------------------
+
+@blueprint.route("/api/setdefaultcolor", methods=["POST"])
+def setdefaultcolor():
+    if not session.get("id"):
+        return jsonify({"status": 0, "message": "Not logged in"})
+
+    if not str(g.id) in app.data.core["variables"]["bot"]["owners"]:
+        return jsonify({"status": 0, "message": "Not bot owner"})
+
+    data = request.json
+    default_color = data["dc"].lower()
+    for color in AVAILABLE_COLORS:
+        if color["name"] == default_color or color["class"] == default_color:
+            default_color = color["name"]
+            break
+    else:
+        return jsonify({"status": 0, "message": "Color not found"})
+    app.data.ui.update(default_color=default_color)
+
+    return jsonify({"status": 2})
 
 
 # --------------------------------------- API ---------------------------------------

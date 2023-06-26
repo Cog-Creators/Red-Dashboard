@@ -64,3 +64,12 @@ ALLOWED_LOCALES = [
     "zh_HK",
     "zh_TW",
 ]
+
+AVAILABLE_COLORS = [
+    {"name": "red", "class": "badge-red"},
+    {"name": "primary", "class": "badge-primary"},
+    {"name": "blue", "class": "badge-info"},
+    {"name": "green", "class": "badge-success"},
+    {"name": "darkgreen", "class": "badge-darkgreen"},
+    {"name": "yellow", "class": "badge-yellow"},
+]
