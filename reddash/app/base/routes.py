@@ -70,7 +70,8 @@ def callback():
         dashlog.error(f"Failed to log someone in.\n{response.json()}")
         return redirect(url_for("base_blueprint.login_error_invalid_config"))
     new = requests.get(
-        "https://discordapp.com/api/v6/users/@me", headers={"Authorization": f"Bearer {token}"},
+        "https://discordapp.com/api/v6/users/@me",
+        headers={"Authorization": f"Bearer {token}"},
     )
     new_data = new.json()
     if "id" in new_data:
@@ -101,7 +102,8 @@ def callback():
 @blueprint.route("/admin", methods=["GET"])
 def admin():
     if not session.get("id"):
-        return render_template("login/login.html", status="0")
+        session["login_redirect"] = {"route": "base_blueprint.admin", "kwargs": {}}
+        return redirect(url_for("base_blueprint.login"))
 
     if not str(g.id) in app.data.core["variables"]["bot"]["owners"]:
         abort(403)
@@ -203,11 +205,49 @@ def index():
 
 @blueprint.route("/commands")
 def commands():
-    data = app.data.core["commands"]
+    data = [k for k in app.data.core["commands"].copy() if k["cmds"]]
     prefix = app.data.core["variables"]["bot"]["prefix"]
     return render_template(
         "pages/commands.html", cogs=[k["name"] for k in data], data=data, prefixes=prefix
     )
+
+
+@blueprint.route("/third_parties")
+def third_parties():
+    if not session.get("id"):
+        session["login_redirect"] = {"route": "base_blueprint.third_parties", "kwargs": {}}
+        return redirect(url_for("base_blueprint.login"))
+    _data = {
+        third_party: pages.copy()
+        for third_party, pages in app.data.core["variables"]["third_parties"].items()
+    }
+    commands_data = app.data.core["commands"]
+    cogs_data = {k["name"]: k for k in commands_data}
+    infos = {third_party: {} for third_party in _data}
+    data = {}
+    for third_party, pages in sorted(_data.items()):
+        if not pages:
+            continue
+        if all(page["hidden"] for page in pages.values()):
+            continue
+        real_cog_name = _data[third_party][list(pages)[0]]["real_cog_name"]
+        if real_cog_name in cogs_data:
+            infos[third_party]["name"] = cogs_data[real_cog_name]["name"]
+            infos[third_party]["desc"] = cogs_data[real_cog_name]["desc"]
+            infos[third_party]["author"] = cogs_data[real_cog_name]["author"]
+            infos[third_party]["repo"] = cogs_data[real_cog_name]["repo"]
+        else:
+            infos[third_party]["name"] = third_party.capitalize()
+            infos[third_party]["desc"] = ""
+            infos[third_party]["author"] = "Unknown"
+            infos[third_party]["repo"] = "Unknown"
+        data[third_party] = {}
+        if "null" in _data[third_party] and not _data[third_party]["null"]["hidden"]:
+            data[third_party]["Main Page"] = _data[third_party].pop("null")
+        for page in sorted(pages):
+            if not pages[page]["hidden"]:
+                data[third_party][page] = pages[page]
+    return render_template("pages/third_parties.html", third_parties=data, infos=infos)
 
 
 @blueprint.route("/credits")

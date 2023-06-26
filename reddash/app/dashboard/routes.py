@@ -11,6 +11,7 @@ dashlog = logging.getLogger("reddash")
 @blueprint.route("/dashboard")
 def dashboard():
     if not session.get("id"):
+        session["login_redirect"] = {"route": "dashboard_blueprint.dashboard", "kwargs": {}}
         return redirect(url_for("base_blueprint.login"))
     return render_template("dashboard.html")
 
@@ -18,12 +19,13 @@ def dashboard():
 @blueprint.route("/guild/<guild>")
 def guild(guild):
     if not session.get("id"):
+        session["login_redirect"] = {"route": "dashboard_blueprint.dashboard", "kwargs": {}}
         return redirect(url_for("base_blueprint.login"))
 
     try:
         int(guild)
     except ValueError:
-        raise ValueError("Guild ID must be integer")
+        return render_template("guild.html", data={"status": 1, "data": {"status": 1}})
 
     try:
         request = {
@@ -46,6 +48,6 @@ def guild(guild):
                 data = {"status": 0, "message": "Not connected to bot"}
         if not data:
             data = {"status": 1, "data": result["result"]}
-    except:
+    except Exception:
         data = {"status": 0, "message": "Not connected to bot"}
     return render_template("guild.html", data=data)

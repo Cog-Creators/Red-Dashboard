@@ -46,7 +46,7 @@ class TaskManager:
                         continue
 
                 if method == "DASHBOARDRPC__GET_VARIABLES":
-                    if not self.app.data.core["variables"]["bot"]["id"]:
+                    if not self.app.data.core["variables"].get("bot", {"id": None})["id"]:
                         self.logger.info("Initial connection made with Redbot.  Syncing data.")
                     self.app.data.core.update(variables=result["result"])
                 else:
@@ -126,12 +126,16 @@ class TaskManager:
     def start_tasks(self):
         self.threads.append(
             threading.Thread(
-                target=self.update_variables, args=["DASHBOARDRPC__GET_VARIABLES"], daemon=True,
+                target=self.update_variables,
+                args=["DASHBOARDRPC__GET_VARIABLES"],
+                daemon=True,
             )
         )
         self.threads.append(
             threading.Thread(
-                target=self.update_variables, args=["DASHBOARDRPC__GET_COMMANDS"], daemon=True,
+                target=self.update_variables,
+                args=["DASHBOARDRPC__GET_COMMANDS"],
+                daemon=True,
             )
         )
         self.threads.append(threading.Thread(target=self.update_version, daemon=True))

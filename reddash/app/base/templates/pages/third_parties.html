@@ -1,0 +1,94 @@
+{% extends "base-site.html" %}
+
+{% block title %} {{ _('Third Parties') }} {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div id="commandpane">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-profile">
+                <div class="card-header">
+                    <h6 class="card-category text-gray">{{ _('Third Parties') }}</h6>
+                </div>
+                <div class="card-body">
+                    {% if third_parties %}
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="nav nav-pills flex-column" id="commandtabs" role="tablist" aria-orientation="vertical">
+                                {% for third_party in third_parties %}
+                                <a class="nav-link taboption {% if loop.index == 1 %} active {% endif %}" id="{{ third_party }}-tab" data-toggle="pill" href="#{{ third_party }}" role="tab" aria-controls="{{ third_party }}" aria-selected="false">{{ infos[third_party]['name'] }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <span id="topOfTabContent"></span>
+                            <div class="tab-content" id="myTabContent">
+                                {% for third_party in third_parties %}
+                                <div class="tab-pane fade {% if loop.index == 1 %} show active {% endif %}" id="{{ third_party }}" role="tabpanel" aria-labelledby="{{ third_party }}-tab">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4 class="card-title">{{ infos[third_party]['name']|safe }}</h4>
+                                                            <p>{{ infos[third_party]['desc']|safe }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <p>{{ (_('Author: {author}')).format(author=infos[third_party]['author'])
+                                                                }}
+                                                            </p>
+                                                            <p>{{ (_('Repo: {repo}')).format(repo=infos[third_party]['repo']) }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <table class="table tablesorter">
+                                                        <thead class="text-primary">
+                                                            <tr>
+                                                                <th>{{ _('Pages') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="padding-left: {{ loop.depth0 * 40 + 7 }}px">
+                                                                    <ol>
+                                                                        {% for page in third_parties[third_party] %}
+                                                                            {% if page != "Main Page" %}
+                                                                                <li><a href="/third_party/{{ third_party }}/{{ page }}"><h6>{{ page }}</h6></a></li>
+                                                                            {% else %}
+                                                                                <li><a href="/third_party/{{ third_party }}"><h6>{{ page }}</h6></a></li>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    </ol>
+                                                                </th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%- endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <h4 class="card-title">{{ _('This page is currently unavailable: no third party has been added to the Dashboard.') }}</h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

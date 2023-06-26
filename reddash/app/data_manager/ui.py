@@ -69,6 +69,17 @@ class UIManager:
                 },
                 {
                     "pos": 4,
+                    "name": "builtin-third_parties",
+                    "icon": "icon-components",
+                    "route": "base_blueprint.third_parties",
+                    "is_http": False,
+                    "session": True,
+                    "admin": False,
+                    "locked": False,
+                    "hidden": False,
+                },
+                {
+                    "pos": 5,
                     "name": "builtin-credits",
                     "icon": "icon-book-bookmark",
                     "route": "base_blueprint.credits",
@@ -79,7 +90,7 @@ class UIManager:
                     "hidden": False,
                 },
                 {
-                    "pos": 5,
+                    "pos": 6,
                     "name": "builtin-admin",
                     "icon": "icon-coins",
                     "route": "base_blueprint.admin",
@@ -90,7 +101,7 @@ class UIManager:
                     "hidden": False,
                 },
                 {
-                    "pos": 6,
+                    "pos": 7,
                     "name": "builtin-login",
                     "icon": "icon-key-25",
                     "route": "base_blueprint.login",
@@ -101,7 +112,7 @@ class UIManager:
                     "hidden": False,
                 },
                 {
-                    "pos": 7,
+                    "pos": 8,
                     "name": "builtin-logout",
                     "icon": "icon-user-run",
                     "route": "base_blueprint.logout",
@@ -138,3 +149,19 @@ class UIManager:
                 "UI Configuration file is corrupt.  An instance reset is required."
             ) from e
         ui.close()
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            if key in self._data:
+                self._data[key] = value
+            else:
+                raise KeyError(f"{key} is not a valid key.")
+        self.save()
+
+    def save(self):
+        try:
+            f = open(self.file, "w")
+        except PermissionError:
+            raise PermissionError(f"I require write permissions in {self.path}.")
+        json.dump(self._data, f)
+        f.close()
