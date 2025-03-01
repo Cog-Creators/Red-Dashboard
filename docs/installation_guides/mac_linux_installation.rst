@@ -1,6 +1,14 @@
 Mac/Linux Installation
 ======================
 
+.. danger::
+    This project is **discontinued**, is no longer supported, and is known to
+    be **completely non-functional**. If you are searching for a dashboard,
+    please search the [Index](https://index.discord.red/) for one in active
+    development.
+
+:::{dropdown} Outdated install instructions
+
 .. attention::
 
    This webserver and it's accompanying cog is built for Red Discord Bot. It will not work with other bots. If you haven’t already, install Red `here <https://docs.discord.red/en/stable/>`__.
@@ -112,3 +120,5 @@ Once you are inside your virtual environment, update setup packages then install
    python -m pip install -U Red-Dashboard
 
 *You can continue to* `Installing Companion Cog <../configuration_guides/installing_companion_cog>` *or* `Automatic Startup <systemctl_startup>`.
+
+:::
