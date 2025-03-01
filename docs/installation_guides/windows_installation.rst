@@ -4,7 +4,7 @@ Windows Installation
 .. danger::
     This project is **discontinued**, is no longer supported, and is known to
     be **completely non-functional**. If you are searching for a dashboard,
-    please search the [Index](https://index.discord.red/) for one in active
+    please search the `Index <https://index.discord.red/>`_ for one in active
     development.
 
 .. dropdown:: Outdated install instructions

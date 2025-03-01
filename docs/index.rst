@@ -9,42 +9,40 @@ Welcome to Red Dashboard's documentation!
 .. danger::
     This project is **discontinued**, is no longer supported, and is known to
     be **completely non-functional**. If you are searching for a dashboard,
-    please search the [Index](https://index.discord.red/) for one in active
+    please search the `Index <https://index.discord.red/>`_ for one in active
     development.
 
-.. dropdown:: Outdated install instructions
+.. toctree::
+   :maxdepth: 1
+   :caption: Webserver installation
 
-   .. toctree::
-      :maxdepth: 1
-      :caption: Webserver installation
+   installation_guides/mac_linux_installation
+   installation_guides/windows_installation
+   installation_guides/systemctl_startup
 
-      installation_guides/mac_linux_installation
-      installation_guides/windows_installation
-      installation_guides/systemctl_startup
+.. toctree::
+   :maxdepth: 1
+   :caption: Cog installation
 
-   .. toctree::
-      :maxdepth: 1
-      :caption: Cog installation
+   configuration_guides/installing_companion_cog
+   configuration_guides/index
 
-      configuration_guides/installing_companion_cog
-      configuration_guides/index
+.. toctree::
+   :maxdepth: 1
+   :caption: Launching dashboard
 
-   .. toctree::
-      :maxdepth: 1
-      :caption: Launching dashboard
+   launching_guides/running_webserver_one_bot
+   launching_guides/running_webserver_multi_bot
 
-      launching_guides/running_webserver_one_bot
-      launching_guides/running_webserver_multi_bot
+.. toctree::
+   :maxdepth: 1
+   :caption: Reverse proxy
 
-   .. toctree::
-      :maxdepth: 1
-      :caption: Reverse proxy
+   reverse_proxy_apache
+   reverse_proxy_nginx
 
-      reverse_proxy_apache
-      reverse_proxy_nginx
+.. toctree::
+   :maxdepth: 1
+   :caption: Support
 
-   .. toctree::
-      :maxdepth: 1
-      :caption: Support
-
-      help_and_support
+   help_and_support
