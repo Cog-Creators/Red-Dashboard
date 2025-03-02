@@ -1,9 +1,17 @@
 Installing Companion Cog
 ========================
 
+.. danger::
+    This project is **discontinued**, is no longer supported, and is known to
+    be **completely non-functional**. If you are searching for a dashboard,
+    please search the `Index <https://index.discord.red/>`_ for one in active
+    development.
+
+----
+
 .. attention::
 
-   This webserver and it's accompanying cog is built for Red Discord Bot. It will not work with other bots. If you haven’t already, install Red `here <https://docs.discord.red/en/stable/>`__.
+This webserver and it's accompanying cog is built for Red Discord Bot. It will not work with other bots. If you haven’t already, install Red `here <https://docs.discord.red/en/stable/>`__.
 
 Welcome to the Dashboard Cog Installation Guide. While running the below directions, the following is assumed:
 

@@ -1,8 +1,16 @@
-![Red-Dashboard](https://repository-images.githubusercontent.com/268283173/ca43baea-0048-49f4-9f89-67c121369c3c "Red-Dashboard")
 # Red-Dashboard
-*An easy-to-use interactive web dashboard to control your Redbot.*
 
-> This webserver is in **alpha stages**, and is not yet encouraged for use.  Repository owners nor any contributors are responsible for any possible data corruptions or data loss that may occur while using this program.  Proceed at your own risk.
+> [!CAUTION]
+> This project is **discontinued**, is no longer supported, and is known to be **completely non-functional**.
+> If you are searching for a dashboard, please search the [Index](https://index.discord.red/) for one in active development.
+
+<details>
+<summary>Outdated README</summary>
+<br>
+
+![Red-Dashboard](https://repository-images.githubusercontent.com/268283173/ca43baea-0048-49f4-9f89-67c121369c3c "Red-Dashboard")
+
+*An easy-to-use interactive web dashboard to control your Redbot.*
 
 ## Overview
 The Red Discord Bot - Dashboard is an easy-to-use interactive web dashboard to control your Redbot, allowing for easier customization of settings and more interactive plugins to develop and get your bot ready for production.  Using Discord Open Authentication, users will log into the dashboard using their Discord account, ensuring that all users are only allowed to customize and view settings that they are explicitly given permission to control, providing a safe and secure experience for all users.
@@ -29,3 +37,5 @@ I would like to thank the following, for all the contributions they have made th
 * Cog Creators, for making such an amazing bot.
 * All the people who tested the dashboard, and gave feedback.
 * AppSeed, for creating a template that I use as the base for the Dashboard.
+
+</details>

@@ -6,6 +6,12 @@
 Welcome to Red Dashboard's documentation!
 =========================================
 
+.. danger::
+    This project is **discontinued**, is no longer supported, and is known to
+    be **completely non-functional**. If you are searching for a dashboard,
+    please search the `Index <https://index.discord.red/>`_ for one in active
+    development.
+
 .. toctree::
    :maxdepth: 1
    :caption: Webserver installation

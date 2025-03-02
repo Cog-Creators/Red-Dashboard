@@ -1,19 +1,11 @@
 Help & Support
 ==============
 
-Support Server
---------------
-
 .. danger::
-
-    As said before, this cog is in very early stage development, and is not
-    intended for public use, and I am looking for **bugs**, **issues** and
-    **feedback**. If you cannot understand the (relatively simple) instructions,
-    then now is not a good time to install, and its better to wait until it
-    is officially released. I would recommend searching google for the answers
-    to your questions.
-
-    `Link to the support server <https://discord.gg/vQZTdB9>`__
+    This project is **discontinued**, is no longer supported, and is known to
+    be **completely non-functional**. If you are searching for a dashboard,
+    please search the `Index <https://index.discord.red/>`_ for one in active
+    development.
 
 Common Questions
 ----------------
