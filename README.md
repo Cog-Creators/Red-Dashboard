@@ -1,7 +1,8 @@
 # Red-Dashboard
 
-### ⚠️ This project is **discontinued**, is no longer supported, and is known to be **completely non-functional**.
-If you are searching for a dashboard, please search the [Index](https://index.discord.red/) for one in active development.
+> [!CAUTION]
+> This project is **discontinued**, is no longer supported, and is known to be **completely non-functional**.
+> If you are searching for a dashboard, please search the [Index](https://index.discord.red/) for one in active development.
 
 <details>
 <summary>Outdated README</summary>
