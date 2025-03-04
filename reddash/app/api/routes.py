@@ -611,3 +611,35 @@ def third_party_spotify_callback():
     except Exception as e:
         app.progress.print("".join(traceback.format_exception(type(e), e, e.__traceback__)))
         return render_template("third_party/spotify.html", context="2", msg=str(e))
+
+
+@blueprint.route("/third_party/callback/<provider>")
+def third_party_oauth_callback(provider):
+    args = request.args.copy()
+    args["provider"] = provider
+    if not session.get("id"):
+        session["login_redirect"] = {
+            "route": f"api_blueprint.third_party_oauth_callback",
+            "kwargs": args,
+        }
+        return redirect(url_for("base_blueprint.login"))
+    args["url"] = request.url
+    try:
+        requeststr = {
+            "jsonrpc": "2.0",
+            "id": 0,
+            "method": "DASHBOARDRPC_OAUTH__OAUTH_RECEIVE",
+            "params": [str(g.id), args],
+        }
+        with app.lock:
+            result = get_result(app, requeststr).json
+        if result["status"] == 0:
+            return render_template("third_party/oauth.html", context="2", msg=result["message"])
+        if result["data"]["status"] == 0:
+            return render_template(
+                "third_party/oauth.html", context="3", msg=result["data"]["message"]
+            )
+        return render_template("third_party/oauth.html", context="1", msg="")
+    except Exception as e:
+        app.progress.print("".join(traceback.format_exception(type(e), e, e.__traceback__)))
+        return render_template("third_party/oauth.html", context="2", msg=str(e))
